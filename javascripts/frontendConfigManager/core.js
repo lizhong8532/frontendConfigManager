@@ -817,9 +817,9 @@ uinv.FCM.configMgr = {
 			obj2str:function(o){
 				var _obj = uinv.FCM.configMgr;
 				var _this = this;
-
+				
 				if(typeof o == 'undefined'){
-					return "";
+					return '""';
 				}
 				
 			    var r = [];
@@ -3379,6 +3379,9 @@ uinv.FCM.configMgr = {
 				
 				var o = _this.keyFindObj(key);
 				var panel = _this.nameFindPanel(o.panel);
+				if(!panel){
+					return false;
+				}
 				
 				var imgSrc =  _obj.global.projectPath + _this.getPanelImagePath(panel) ;
 				
@@ -4616,8 +4619,12 @@ uinv.FCM.configMgr = {
 				
 				obj[i].tmp = [];
 				for(var n=0,m=obj[i].item.length;n<m;n++){
+					if( typeof obj[i].itemData == "undefined" ){
+						obj[i].itemData = [];			
+					}  
+					
 					obj[i].tmp.push({
-						'itemName' : obj[i].item[n],
+						'itemName' : obj[i].item[n] == '分割线' ? 'separator' : obj[i].item[n] ,
 						'config' : typeof obj[i].itemData[obj[i].item[n]] == 'undefined' ? {} :  _obj.model.object.clone( obj[i].itemData[obj[i].item[n]] )
 					});
 				}
