@@ -1,0 +1,40 @@
+
+<div class="row">
+	<span class="comments">配置</span>
+	<span class="form">
+		上传配置 <input type="file" onchange="uinv.FCM.configMgr.model.backup.configUpload(this);" />
+		| 
+		<button onclick="uinv.FCM.configMgr.model.backup.configCompression();">备份配置</button>
+	</span>
+</div>
+
+<div class="config-system">Loading...</div>
+
+
+
+
+
+<script type="text/javascript">
+
+
+var data = [
+
+{ group : "system", name:"isConsoleEnabled", caption:"系统调试窗口", type:"boolean", defaultValue:false },
+{ group : "system", name:"isDirectOpenWhenSearchSingleCabinet", caption:"搜索到一个机柜时是否直接打开", type:"boolean", defaultValue:false },
+{ group : "system", name:"isFromSceneRootWhenSearchKey", caption:"总是从园区级别开始搜索", type:"boolean", defaultValue:true },
+{ group : "system", name:"isTouchscreenOpen", caption:"触摸屏开启", type:"boolean", defaultValue:false }
+//{ group : "system", name:"bgColor", caption:"颜色", type:"color", defaultValue:"#FF0000" }
+
+];
+
+
+uinv.FCM.configMgr.form.createHtml({ 
+	"dom" : $(".config-system"),
+	"data" : data	
+});
+
+
+</script>
+
+
+

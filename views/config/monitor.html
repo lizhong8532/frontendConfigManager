@@ -1,0 +1,36 @@
+
+<div style="margin-top:30px;">
+	<h3>对象列表</h3>
+	<div class="obj-list"></div>
+	<button onclick="uinv.FCM.configMgr.model.monitor.createObject();">创建对象</button>
+</div>
+
+<div style="margin-top:30px;">
+	<h3>面板列表</h3>
+	<div class="style-list"></div>
+	<input  type="file" onchange="uinv.FCM.configMgr.model.monitor.uploadPanel(this);" />
+</div>
+
+
+<div style="margin-top:30px;">
+	<h3>监控警告</h3>
+	<div class="alarm">
+		<p>监控时间 <input path="monitor" type="text" cate="alarm" name="monitorTime" /></p>
+		<p>告警时间 <input path="monitor" type="text" cate="alarm" name="alarmTime" /></p>
+		<p>图标大小 <input path="monitor" type="text" cate="alarm" name="alarmIconSize" /></p>
+		<div class="alarmlevel" path="monitor" type="text" cate="alarmlevel" name="alarmLevel"></div>
+		<button onclick="uinv.FCM.configMgr.model.monitor.addAlarmLevel();">添加</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+(function(){
+ uinv.FCM.configMgr.model.monitor.init({
+	'objBox' : '.obj-list',
+	'styleBox' : '.style-list',
+	'alarmlevelBox' : '.alarmlevel'
+ });
+})(uinv.FCM.configMgr);
+
+</script>

@@ -1,0 +1,14 @@
+<div class="row">
+	<button onclick="uinv.FCM.configMgr.model.panel.createObject();">创建新物体</button>
+	<button onclick="uinv.FCM.configMgr.model.panel.globalPanelManager();">面板管理</button>
+</div>
+
+<div class="panel-list"></div>
+
+<script type="text/javascript">
+
+(function(){
+	uinv.FCM.configMgr.model.panel.init('.panel-list');
+})(uinv.FCM.configMgr);
+
+</script>

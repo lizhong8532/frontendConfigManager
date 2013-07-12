@@ -1,0 +1,50 @@
+<div class="config-page" >
+	<ul class="menu">
+		<li to="./views/config/layout.html">布局</li>
+		<li to="./views/config/system.html">系统</li>
+		<li to="./views/config/monitor.html">监控</li>
+		<li to="./views/config/viewpoint.html">视角</li>
+		<li to="./views/config/layer.html">图层</li>
+		<li to="./views/config/selector.html">选择器</li>
+		<li to="./views/config/resources.html">资源</li>
+		<li to="./views/config/statistics.html">统计</li>
+		<li to="./views/config/panel.html">面板</li>
+	</ul>
+
+	<div class="config-load" style="position:relative;">
+		Loading...
+	</div>
+	
+	<div class="row btn config-submit-btn" style="text-align:center; display:none;">
+		<button onclick="uinv.FCM.configMgr.form.submit();">提交</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+(function(){
+	var obj = $('.config-page .config-load');
+	
+	$('.config-page .menu li').each(function(){
+		$(this).click(function(){
+		
+			obj.html('Loading...');
+			$('.config-submit-btn').hide();
+		
+			uinv.FCM.configMgr.form.load({
+				'page' : $(this).attr('to'),
+				'obj'  : obj
+			});
+			
+			$(this).parents('.menu').find('li.ok').removeClass('ok');
+			$(this).addClass('ok');
+			
+		});
+	});
+	
+	// 默认打开第一个选项
+	$('.config-page .menu li:first').click();
+	
+})(uinv.FCM.configMgr);
+
+</script>
