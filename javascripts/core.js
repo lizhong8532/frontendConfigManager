@@ -2145,7 +2145,7 @@ uinv.FCM.configMgr.model.dialog.show = function(str){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	_this.id = 'config-dialog-'+ _obj.model.key.create(10);
+	_this.id = _obj.model.key.create(10);
 	
 	var html = '';
 	html += '<div class="config-dialog-bg config-dialog-bg-'+_this.id+'"></div>';
@@ -3976,7 +3976,7 @@ uinv.FCM.configMgr.model.monitor.init = function(param){
 	
 	_obj.form.submitCallback = 	function(){
 		_obj.model.stringDB.set( _this.index, _this.obj );
-		for(var i=0,k=_this.deleteFileArr;i<k;i++){
+		for(var i=0,k=_this.deleteFileArr.length;i<k;i++){
 			uinv.server.manager.frame.delFile(_this.deleteFileArr[i]);
 		}
 	};
@@ -4593,7 +4593,10 @@ uinv.FCM.configMgr.api.getMonitor = function(){
 		}
 	}
 	
-	return obj;
+	return {
+		'monitorTime' : _obj.data.monitor.alarm.monitorTime,
+		'monitorPanelConfig' : obj
+	};
 };
 
 // 获取视角数据
@@ -4729,9 +4732,16 @@ uinv.FCM.configMgr.api.getAlarm = function(){
 	
 	var obj = _obj.model.object.clone( _obj.data.monitor.alarm );
 	
+	if(typeof obj.alarmLevel == 'undefined'){
+		obj.alarmLevel = [];
+	}
+	
 	for(var i=0,k=obj.alarmLevel.length;i<k;i++){
 		obj.alarmLevel[i].color = _obj.model.colorpicke.toRgb(obj.alarmLevel[i].color);
 	}
+	
+	// 把moniterTime删除，放到moniter接口
+	delete obj.monitorTime;
 	
 	return obj;
 };
