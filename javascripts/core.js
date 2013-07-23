@@ -119,9 +119,9 @@ uinv.FCM.configMgr.model.selector.show = function(fun){
 			html += _this.publicShowHtml(_this.obj['tree']);
 		html += '</div>';
 		
-		html += '<div class="action" style="text-align:center;">';
-			html += '<button onclick="uinv.FCM.configMgr.model.dialog.close();">取消</button>';
-			html += '<button onclick="uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit();">确定</button>';
+		html += '<div class="action">';
+			html += '<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
+			html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit();" />';
 		html += '</div>';
 	html += '</div>';
 	
@@ -527,8 +527,13 @@ uinv.FCM.configMgr.model.selector.editNodeWhere = function(key){
 				html += '<input type="radio" name="wheretype" value="attribute" /> ';
 				html += '属性定义';
 			html += '</span>';
-			html += ' 属性名 <input type="text" name="key" value="'+_this.obj['lib'][key]['formDataRemember']['attribute'][0]['key']+'" /> ';
-			html += ' 属性值 <input type="text" name="value" value="'+_this.obj['lib'][key]['formDataRemember']['attribute'][0]['value']+'" />';
+			
+			html += '<div class="row" style="clear:both;">';
+				html += '<span>属性名</span><input type="text" name="key" value="'+_this.obj['lib'][key]['formDataRemember']['attribute'][0]['key']+'" /> ';
+			html += '</div>';
+			html += '<div class="row">';
+				html += '<span>属性值 </span><input type="text" name="value" value="'+_this.obj['lib'][key]['formDataRemember']['attribute'][0]['value']+'" />';
+			html += '</div>';
 		html += '</div>';
 		
 		html += '<div class="row">';
@@ -540,8 +545,8 @@ uinv.FCM.configMgr.model.selector.editNodeWhere = function(key){
 		html += '</div>';
 		
 		html += '<div class="btn">';
-			html += '<button onclick="uinv.FCM.configMgr.model.selector.cancelAddNodeWhere();">取消</button>';
-			html += '<button onclick="uinv.FCM.configMgr.model.selector.addNodeWhereFormSubmit(\''+key+'\');">确定</button>';
+			html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.selector.addNodeWhereFormSubmit(\''+key+'\');" />';
+			html += '<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.selector.cancelAddNodeWhere();"  />';
 		html += '</div>';
 	html += '</div>';
 	
@@ -564,6 +569,7 @@ uinv.FCM.configMgr.model.selector.contextMenu = function(evt,obj){
 	if (e.stopPropagation){
 		e.stopPropagation();
 	}else{
+		e.returnValue = false; // 解决IE8右键弹出
 		e.cancelBubble = true;
 	}
 	
@@ -584,14 +590,14 @@ uinv.FCM.configMgr.model.selector.contextMenu = function(evt,obj){
 uinv.FCM.configMgr.model.selector.treeNodeShow = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	_this.keyFindNodeHtmlObj(key).find('>.childrenNode').show();
+	_this.keyFindNodeHtmlObj(key).removeClass('childrenNodeHide').find('>.childrenNode').show();
 };
 
 // 收起
 uinv.FCM.configMgr.model.selector.treeNodeHide = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	_this.keyFindNodeHtmlObj(key).find('>.childrenNode').hide();
+	_this.keyFindNodeHtmlObj(key).addClass('childrenNodeHide').find('>.childrenNode').hide();
 };
 
 // 动作路由
@@ -609,8 +615,8 @@ uinv.FCM.configMgr.model.selector.getContextMenuHtml = function(e, key){
 	var _this = this;
 	
 	var pos = {
-		x : e.pageX - _obj.form.box.offset().left,
-		y : e.pageY - _obj.form.box.offset().top
+		x : e.clientX - _obj.form.box.offset().left,
+		y : e.clientY - _obj.form.box.offset().top
 	};
 	
 	var html = '';
@@ -1934,7 +1940,7 @@ uinv.FCM.configMgr.model.layer.globalLayerManager = function(){
 		html += '</ul>';
 		
 		html += '<div class="action" style="width:100%;text-align:center;">';
-			html += '<button onclick="uinv.FCM.configMgr.model.dialog.close(uinv.FCM.configMgr.model.layer.globalLayerManagerCallBack);">Close</button>';
+			html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.dialog.close(uinv.FCM.configMgr.model.layer.globalLayerManagerCallBack);" />';
 		html += '</div>';
 	html += '</div>';
 	
@@ -1982,6 +1988,52 @@ uinv.FCM.configMgr.model.layer.init = function(classStr){
 
 
 /************ 图层END *************/
+
+
+// 两个对象比较
+uinv.FCM.configMgr.model.object.o2o = function(o1,o2){
+	
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;	
+
+	if(typeof o1 != typeof o2){
+		return false;	
+	}
+
+	if(typeof o1.length != typeof o2.length ){
+		return false;	
+	}
+
+	var bool = true;
+
+	for(var i in o1){
+		if(i in o2){
+			if(typeof o1[i] == 'object' ){
+				bool = _this.o2o(o1[i],o2[i]);	
+			}else if(o1[i] !== o2[i] ){
+				bool = false;	
+			}
+
+		}else{
+			bool = false;	
+		}
+	}	
+
+	for(var i in o2){
+		if(i in o1){
+			if(typeof o2[i] == 'object' ){
+				bool = _this.o2o(o2[i],o1[i]);	
+			}else if(o2[i] !== o1[i] ){
+				bool = false;	
+			}
+		}else{
+			bool = false;	
+		}			
+	}
+	
+	return bool;
+};
+
 
 // 覆盖对象
 uinv.FCM.configMgr.model.object.coverObj = function( formobj, toobj){
@@ -2083,7 +2135,7 @@ uinv.FCM.configMgr.model.colorpicke.toRgb = function(str){
 		var sColorChange = [];
 		
 		for(var i=1; i<7; i+=2){
-			sColorChange.push(parseInt("0x"+sColor.slice(i,i+2)) / 255);	
+			sColorChange.push(parseInt("0x"+sColor.slice(i,i+2)));	
 		}
 
 		return sColorChange;
@@ -2460,15 +2512,15 @@ uinv.FCM.configMgr.model.resources.resourcesManager = function(key){
 	
 	var html = '';
 	html += '<div class="'+_this.resourcesManagerClass+'" style="width:400px; height:200px; padding:10px;">';
-		html += '<p style="margin:10px auto 0;">资源名称 ： <input type="text" original="'+title+'" name="title" value="'+title+'" /></p>';
-		html += '<p style="margin:10px auto 0; display:none;">服务器目录 ： <input type="text" original="'+data['serverPath']+'" name="serverPath" value="'+data['serverPath']+'" /></p>';
-		html += '<p style="margin:10px auto 0;">本地目录： <input type="text" name="localPath" value="'+data['localPath']+'" /></p>';
-		html += '<p style="margin:10px auto 0;">版本： <input type="text" name="version" value="'+data['version']+'" readonly /></p>';
-		html += '<p style="margin:10px auto 0;">资源包： <input type="file" name="resourcesFile" /></p>';
+		html += '<p style="margin:10px auto 0;"><span>资源名称</span><input type="text" original="'+title+'" name="title" value="'+title+'" /></p>';
+		html += '<p style="margin:10px auto 0; display:none;"><span>服务器目录</span><input type="text" original="'+data['serverPath']+'" name="serverPath" value="'+data['serverPath']+'" /></p>';
+		html += '<p style="margin:10px auto 0;"><span>本地目录</span><input type="text" name="localPath" value="'+data['localPath']+'" /></p>';
+		html += '<p style="margin:10px auto 0;"><span>版本</span><input type="text" name="version" value="'+data['version']+'" readonly /></p>';
+		html += '<p style="margin:10px auto 0;"><span>资源包</span><input type="file" name="resourcesFile" /></p>';
 		html += '<input type="hidden" name="type" value="'+type+'" />';
-		html += '<p style="margin:10px auto 0;text-align:center;" class="action">';
-			html += '<button onclick="uinv.FCM.configMgr.model.dialog.close();">取消</button>';
-			html += '<button onclick="uinv.FCM.configMgr.model.resources.handleResourcesManager(this);">确定</button>';
+		html += '<p class="action">';
+			html += '<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
+			html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.resources.handleResourcesManager(this);" />';
 		html += '</p>';
 	html += '</div>';
 	
@@ -3223,7 +3275,7 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 			html += _this.panelConfigFormHtml(panel);
 		html += '</div>';
 		
-		html += '<div class="action"><button onclick="uinv.FCM.configMgr.model.monitor.configHide(\''+o.panel+'\');">确定</button></div>';
+		html += '<div class="action"><input class="btn_save" onclick="uinv.FCM.configMgr.model.monitor.configHide(\''+o.panel+'\');" /></div>';
 	html += '</div>';
 	
 	_obj.model.dialog.show(html);
@@ -3599,14 +3651,40 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 	
 	o.imagePath = o.previewImagePath;
 	
+	if(!_this.checkModifyBody(o)){
+		return false;
+	}
+	
 	var bool = true;
-	if( _this.nameFindPanel(o.name) ){
+	
+	var obj =  _this.nameFindPanel(o.name);
+	
+	if( obj ){
 		bool = _obj.note.confirm('面板'+o.name+'应经存在，是否要覆盖？');
+	}
+	
+	if( obj && obj.modifyCount > o.modifyCount && typeof obj.form != "undefined" && obj.form.length == obj.modifyCount ){
+		var msg = "";
+		msg = "您上传的新面板modifyCount比原面板modifyCount小\r\n";
+		msg += "将要删除原面板配置信息的最后"+(obj.modifyCount-o.modifyCount)+"行配置\r\n";
+		msg += "内容为：\r\n";
+		
+		var arr = [];
+		for(var i=o.modifyCount;i<obj.modifyCount;i++){
+			arr.push(obj.form[i]);
+		}
+		msg += _obj.model.transform.obj2str( arr );
+		
+		bool = _obj.note.confirm(msg);
+		
+		if(bool){
+			obj.form.splice(o.modifyCount, obj.modifyCount - o.modifyCount);	
+		}
 	}
 	
 	if(bool){
 		var o = _this.addPanelToMemory(o);
-		uinv.server.manager.frame.cutGeneralFile( fileName , _this.getPanelZipPath(o) );
+		uinv.server.manager.frame.cutGeneralFile( o.downloadFile , _this.getPanelZipPath(o) );
 		uinv.server.manager.frame.cutGeneralFile( o.imagePath , _this.getPanelImagePath(o) );
 		
 		// 写入系统下载
@@ -3675,8 +3753,16 @@ uinv.FCM.configMgr.model.monitor.addPanelToMemory = function(obj){
 	}
 	
 	if(_this.nameFindPanel(obj.name)){
+		
+		var o = _this.nameFindPanel(obj.name);
 		var index = _this.nameFindPanelIndex(obj.name);
-		_this.obj.panel.splice(index, 1 , obj);
+		
+		//if(o.modifyCount == obj.modifyCount && _obj.model.object.o2o(obj.modify,o.modify)){
+			//obj.form = _obj.model.object.clone( o.form );
+		//}
+		
+		obj.form =  _obj.model.object.clone( o.form );
+		_this.obj.panel.splice( index, 1 ,obj );
 	}else{
 		_this.obj.panel.push(obj);
 	}
@@ -3687,12 +3773,54 @@ uinv.FCM.configMgr.model.monitor.addPanelToMemory = function(obj){
 uinv.FCM.configMgr.model.monitor.isUsePanel = function(name){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	
 	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
 		if(  _obj.data.monitor.object[i]['panel'] == name ){
 			return true;
 		}
 	}
 	return false;	
+};
+
+// 检测modify内容是否合法
+uinv.FCM.configMgr.model.monitor.checkModifyBody = function(o){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	if(typeof o == 'undefined'){
+		return false;
+	}
+	
+	var msg = "上传失败\r\n";
+	var error = false;
+	
+	for(var i in o.modify){
+		for(var j in o.modify[i]){
+			var bool = false;
+			
+			for(var k in _this.panelConfigAttributeField){	
+				if( _this.panelConfigAttributeField[k].value == o.modify[i][j].attribute ){
+					bool = true;
+				}
+			}
+			
+			if(!bool){
+				error = true;
+				msg +=  i +" -> " + j + " -> attribute " + o.modify[i][j].attribute + " 字段不存在 \r\n";
+			}
+			
+			if( o.modify[i][j].row >=  o.modifyCount ){
+				msg += i +" -> " + j + " -> row : " + o.modify[i][j].row + " 超出modifyCount的值 \r\n";
+			}
+		}
+	}
+	
+	if(error){
+		_obj.note.alert(msg);
+		return false;
+	}else{
+		return true;
+	}
 };
 
 // delete object
@@ -3795,6 +3923,11 @@ uinv.FCM.configMgr.model.monitor.nameFindPanelIndex = function(name){
 uinv.FCM.configMgr.model.monitor.nameFindPanel = function(name){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	
+	if(typeof _this.obj.panel == "undefined"){
+		_this.obj.panel = [];
+	}
+	
 	for(var i=0,k=_this.obj.panel.length;i<k;i++){
 		if(  _this.obj.panel[i]['name'] == name ){
 			return _this.obj.panel[i];
@@ -4105,7 +4238,7 @@ uinv.FCM.configMgr.form.createTypeHtml = {};
 uinv.FCM.configMgr.form.createTypeHtml["boolean"] = function(o){
 	var html = "";
 	
-	html += '<div class="row">';
+	html += '<div class="row '+o.level+'">';
 		html += '<span class="comments">'+o.caption+'</span>';
 		html += '<span class="form">';
 			html += '<input path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" value="1" /> 是';
@@ -4120,7 +4253,7 @@ uinv.FCM.configMgr.form.createTypeHtml["boolean"] = function(o){
 uinv.FCM.configMgr.form.createTypeHtml["color"] = function(o){
 	var html = "";
 	
-	html += '<div class="row">';
+	html += '<div class="row '+o.level+'">';
 		html += '<span class="comments">'+o.caption+'</span>';
 		html += '<span class="form">';
 			html += '<input path="'+o.group+'" type="radio" cate="color" name="'+o.name+'" value="'+o.defaultValue+'" />';
@@ -4135,7 +4268,7 @@ uinv.FCM.configMgr.form.createTypeHtml["image"] = function(o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;				
 	var html = "";
-	html += '<div class="row '+o.dir+'">';
+	html += '<div class="row '+o.dir+' '+o.level+'">';
 		html += '<span class="comments">'+o.caption+'</span>';
 		html += '<span class="form">';
 			html += '<img path="'+o.group+'" src="'+_obj.data[o.group][o.name]+'" cate="image" name="'+o.name+'" />';
@@ -4522,7 +4655,13 @@ uinv.FCM.configMgr.data.viewpoint = [];
 // 监控
 uinv.FCM.configMgr.data.monitor = {
 	'object' : [],	// 对象
-	'alarm' : {}	// 告警
+	
+	// 告警
+	'alarm' : { 
+	 	alarmTime : 0,
+	 	alarmIconSize : 1,
+	 	monitorTime : 1
+	}	
 };
 
 // 系统下载
@@ -4579,18 +4718,31 @@ uinv.FCM.configMgr.api.getMonitor = function(){
 	for(var i=0,k=obj.length;i<k;i++){
 		obj[i].condition = _obj.other.conditionReplaceName( obj[i].where );
 		obj[i].data = _obj.model.object.clone( _obj.model.monitor.nameFindPanel(obj[i].panel) );
-		delete obj[i].data.des;
-		delete obj[i].data.caption;
-		delete obj[i].data.name;
-		//obj[i].image = "baseRes\\image\\生命.png";
-		delete obj[i].data.resPath;
-		delete obj[i].where;
-		
+	
 		for(var n=0,m=obj[i].data.form.length;n<m;n++){
 			for(var g=0,h=obj[i].data.form[n].styleConfig.length;g<h;g++){
 				obj[i].data.form[n].styleConfig[g].config = _obj.model.colorpicke.toRgb(obj[i].data.form[n].styleConfig[g].config);
 			}
 		}
+		
+		for(var j in obj[i].data.modify){
+			for(var p in obj[i].data.modify[j]){
+				if(typeof obj[i].data.form[ obj[i].data.modify[j][p].row ] != 'undefined'){
+					obj[i].data.showMapping[j][p] = obj[i].data.form[ obj[i].data.modify[j][p].row ][ obj[i].data.modify[j][p].attribute ];
+				}
+			}
+		}
+		
+		delete obj[i].data.des;
+		delete obj[i].data.caption;
+		delete obj[i].data.name;
+		delete obj[i].data.resPath;
+		delete obj[i].where;
+		delete obj[i].data.form;
+		delete obj[i].key;
+		delete obj[i].panel;
+		delete obj[i].data.previewImagePath;
+		
 	}
 	
 	return {
@@ -4626,8 +4778,10 @@ uinv.FCM.configMgr.api.getStatistics = function(){
 			obj[i][n].condition = obj[i][n].where;
 			delete obj[i][n].where;
 			
-			obj[i][n].color = _obj.model.colorpicke.toRgb(obj[i][n].color);
+			obj[i][n].config = _obj.model.colorpicke.toRgb(obj[i][n].color);
 			obj[i][n].number = Number( obj[i][n].number );
+			
+			delete obj[i][n].color;
 		}
 	}
 	
@@ -4737,7 +4891,8 @@ uinv.FCM.configMgr.api.getAlarm = function(){
 	}
 	
 	for(var i=0,k=obj.alarmLevel.length;i<k;i++){
-		obj.alarmLevel[i].color = _obj.model.colorpicke.toRgb(obj.alarmLevel[i].color);
+		obj.alarmLevel[i].config = _obj.model.colorpicke.toRgb(obj.alarmLevel[i].color);
+		delete obj.alarmLevel[i].color;
 	}
 	
 	// 把moniterTime删除，放到moniter接口
