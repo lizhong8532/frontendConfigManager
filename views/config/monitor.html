@@ -1,25 +1,40 @@
 
 <div>
-	<h3>对象列表</h3>
-	<div class="obj-list"></div>
-	<button onclick="uinv.FCM.configMgr.model.monitor.createObject();">创建对象</button>
+	<h3><s>对象列表</s></h3>
+	<div class="list_title">
+		<div><s>对象分配</s></div>
+		<div class="list_300"><s>面板名称</s></div>
+		<div class="list_60">&nbsp;</div>
+		<div class="list_60">&nbsp;</div>
+	</div>
+	<div class="list_warp">
+		<ul class="obj-list"></ul>
+	</div>
+	<button onclick="uinv.FCM.configMgr.model.monitor.createObject();"><s>创建对象</s></button>
 </div>
 
 <div style="margin-top:30px;">
-	<h3>面板列表</h3>
-	<div class="style-list"></div>
+	<h3><s>面板列表</s></h3>
+	<div class="list_title">
+		<div><s>面板名称</s></div>
+		<div class="list_300"><s>面板描述</s></div>
+		<div class="list_60">&nbsp;</div>
+		<div class="list_60">&nbsp;</div>
+	</div>
+	<div class="list_warp">
+		<ul class="style-list"></ul>
+	</div>
 	<input  type="file" onchange="uinv.FCM.configMgr.model.monitor.uploadPanel(this);" />
 </div>
 
-
 <div style="margin-top:30px;">
-	<h3>监控警告</h3>
+	<h3><s>监控警告</s></h3>
 	<div class="alarm">
-		<p>监控时间 <input path="monitor" type="text" cate="alarm" name="monitorTime" /></p>
-		<p>告警时间 <input path="monitor" type="text" cate="alarm" name="alarmTime" /></p>
-		<p>图标大小 <input path="monitor" type="text" cate="alarm" name="alarmIconSize" /></p>
+		<p><s>监控时间 </s><input path="monitor" type="text" cate="alarm" name="monitorTime" /></p>
+		<p><s>告警时间 </s><input path="monitor" type="text" cate="alarm" name="alarmTime" /></p>
+		<p><s>图标大小 </s><input path="monitor" type="text" cate="alarm" name="alarmIconSize" /></p>
 		<div class="alarmlevel" path="monitor" type="text" cate="alarmlevel" name="alarmLevel"></div>
-		<button onclick="uinv.FCM.configMgr.model.monitor.addAlarmLevel();">添加</button>
+		<input type="button" class="btn_add" onclick="uinv.FCM.configMgr.model.monitor.addAlarmLevel();" />
 	</div>
 </div>
 
@@ -34,3 +49,5 @@
 })(uinv.FCM.configMgr);
 
 </script>
+
+

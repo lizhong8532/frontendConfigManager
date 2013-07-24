@@ -1,30 +1,48 @@
 
 /** 配置页 **/
 /* 全局 */
-.config-page { width:95%; height:100%; background:#FFF; padding:10px; }
+.config-page {height:100%; background:#f4f4f4; padding:10px; border:#ddd 1px solid;}
 
 /* 菜单 */
-.config-page .menu { background:#eee; width:100%; height:30px; border:1px solid #999; }
+.config-page .menu { background:#f4f4f4; padding:0 10px; height:23px;border-bottom:1px #bdbdbd solid; font-size:12px;}
+.config-page .menu li:first-child{border-left:1px #bdbdbd solid;}
 .config-page .menu:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
-.config-page .menu li { display:block; width:100px; height:100%; line-height:30px; text-align:center; float:left; border-left:1px solid #ccc; cursor:pointer; }
+.config-page .menu li { display:block; padding:0 10px; height:100%; line-height:22px; text-align:center; float:left; border-top:1px solid #bdbdbd; border-right:1px solid #bdbdbd; cursor:pointer; }
 .config-page .menu li:hover ,
-.config-page .menu li.ok { background:#ffffff; color:blue; border-bottom:1px solid #fff; }
+.config-page .menu li.ok { background:#6f6f6f; color:#fff; }
 
 /* 每一项的配置 */
-.config-page .row { padding:20px 0; border-bottom:1px dashed #ccc; }
-.config-page .row span.comments { display:inline-block; width:30%; text-align:right; color:#006400;   }
+.config-page .row { line-height:28px;}
+.config-page .row.logo { line-height:50px;}
+.config-page .row.top span.comments{ padding-left:5px;color:#7c7c7c;}
+.config-page .row span.comments { display:inline-block; width:185px; padding-left:25px; text-align:left; color:#000;}
+.config-page .row.top span.form { margin-left:70px; }
 .config-page .row span.form { margin-left:50px; }
-.config-page .row span.form img { max-width:300px; }
+.config-page .row span.form img { max-width:100px;max-height:50px;vertical-align:middle;}
+.config-page .row button { margin-left:10px; padding:0 10px;line-height:22px;}
 
 /* 顶部按钮 */
 .config-page .info { padding:20px 0; text-align:center; }
 
 /* 提交按钮 */
-.config-page .btn button { width:150px; height:50px; font-size:16px; }
+.config-submit-btn{margin-top:15px;text-align:right;}
+.config-page .btn button { width:120px; line-height:32px; font-size:16px; }
 
 /* 弹窗基本样式 */
-.config-dialog-bg { position:absolute;width:100%;height:100%;left:0;top:0;z-index:9999; opacity:.7; background:#000; }
-.config-dialog { position:fixed; left:50%; top:50%; border:5px solid #EEE; background:#FFF; padding:10px; z-index:9999999; }
+.config-dialog-bg { position:absolute;width:100%;height:100%;left:0;top:0;z-index:9999; background:#000; opacity:0.6;filter:Alpha(opacity=70)}
+.config-dialog { position:fixed; left:50%; top:50%; border:5px solid #b1b1b1; background:#eee; padding:10px 20px; z-index:9999999; }
+.config-dialog .selector .action {text-align:center;}
+.config-dialog .selector .action input,.addnodewhere .btn input{margin:0 5px;}
+.addnodewhere{font-size:12px;}
+.addnodewhere .row{margin-bottom:5px;line-height:30px;clear:both;}
+.addnodewhere .row span{float:left;vertical-align:middle;width:100px;}
+.addnodewhere .btn{text-align:center;margin:3px 0;}
+
+/* select、input */
+.classidselect{width:180px;line-height:23px;height:23px;}
+.row input[type="text"]{width:180px;line-height:23px;height:23px;border:1px #e0e0e0 solid;text-indent:3px;}
+.itemConfig .row input[type="text"]{width:300px;}
+.addnodewhere .row textarea{width:288px;height:82px;border:1px #e0e0e0 solid;}
 
 /* 错误消息样式 */
 .config-page .error-page { margin:100px auto; width:300px; height:50px; color:red; }
@@ -33,7 +51,7 @@
 .config-dialog .img {  width:800px; height:300px; position:relative; }
 .config-dialog .img:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
 
-.config-dialog .img .close { position:absolute; right:0; top:0; z-index:999; }
+.config-dialog .img .close { position:absolute; right:0; top:0; z-index:999; line-height:22px;}
 
 .config-dialog .img .left { float:left; width:49%; height:100%; }
 
@@ -43,9 +61,9 @@
 .config-dialog .img .left .header .action span { float:left; }
 
 .config-dialog .img .left .header .action span.uploadbtn a { display:block;height:20px;width:80px; 
-	background:#f5f5f5;position:relative; line-height:20px; text-align:center; border:1px solid #CCC; color:#999; }
+	background:#f5f5f5;position:relative; line-height:20px; text-align:center; border:1px solid #CCC; color:#0398DD;font-weight:bold; font-size:14px;}
 
-.config-dialog .img .left .header .action span.uploadbtn a input { opacity:0;position:absolute;left:0;top:0;width:100%;height:100%; cursor:pointer; display:block; }
+.config-dialog .img .left .header .action span.uploadbtn a input { opacity:0;filter:alpha(opacity=0);position:absolute;left:0;top:0;width:100%;height:100%; cursor:pointer; display:block; }
 
 .config-dialog .img .left .imglist {  position:relative; height:80%; overflow-y:auto; border:1px solid #EEE; padding:5px; margin-top:20px; }
 .config-dialog .img .left .imglist:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
@@ -63,31 +81,50 @@
 .config-dialog .img .right .views {  position:relative; width:100%;height:100%; }
 .config-dialog .img .right .views img { max-height:95%; max-width:95%;  position:absolute; left:50%; top:50%;  }
 
+.config-dialog .img .header h3{font-size:14px;}
 
 /* 选择器样式 */
-.config-dialog .selector {  }
 .config-dialog .selector .tree .treeNode { padding-left:20px; }
 .config-dialog .selector .tree .treeNode span { cursor:pointer;  }
 .config-dialog .selector .tree .where > span { color:red; }
 .config-dialog .selector .tree .treeNode span:hover,
 .config-dialog .selector .tree .ok > span { color:#FFF; background:blue; }
 
-.config-contextmenu { border:2px solid #5599FF; }
-.config-contextmenu li { cursor:pointer; }
+.config-contextmenu { border:2px solid #5599FF; font-size:12px;}
+.config-contextmenu li { cursor:pointer; line-height:26px; padding:0 0 0 10px;}
 .config-contextmenu li:hover { background:#FFF; }
 
-.config-load .selector { min-height:300px; border:1px solid #EEE; margin-top:20px; padding:10px; }
+.config-load{font-size:13px;background:#eee; border:1px #b1b1b1 solid; border-radius:5px; margin-top:20px;padding:12px;}
+.config-load .selector { min-height:300px; max-height:400px;overflow-y:auto;}
 .config-load .selector div > span { cursor:pointer;  }
 .config-load .selector div.where > span { color:red;  }
 .config-load .selector div.ok > span { background:blue; color:#FFF; } 
 
+.treeNode input{vertical-align:middle;}
+.treeNode{line-height:24px;background:url(images/icon_slider.png) 0 -28px no-repeat;}
+div.childrenNodeHide{background:url(images/icon_slider.png) 0 6px no-repeat;}
+
 /* layer样式 */
 .layer-list:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
-.layer-list .list { width:80%; border:1px solid #eee; margin:10px; float:left; background:#F5F5F5;  }
-.layer-list .list .header { font-weight:bold; color:blue; text-indent:30px; padding:5px 0; background:#D2D2D2; padding:10px; }
-.layer-list .list ul { padding:5px; padding:10px; }
-.layer-list .list ul li.checked { color:#000; }
-.layer-list .list ul li { color:#ccc; }
+.layer-list{padding:10px 0;overflow:hidden;}
+.layer-list .list { width:420px; border:1px solid black; margin-right:10px; display:inline-block; float:left; background:#F5F5F5;  }
+.layer-list .list .header { color:#0398DD; cursor:pointer; background:#c7c7c7; padding:4px 10px; }
+.layer-list .header .action{top:4px;}
+.layer-list .list ul {max-height:300px;overflow-y:auto;min-height:310px;}
+.layer-list .list ul li{ padding:5px; overflow:hidden; color:#ccc; line-height:22px;}
+.layer-list .list ul li.checked { color:#000;}
+.layer-list .list li span{float:left;height:22px;text-align:center;}
+.config-load a{color:#0398DD;text-decoration:underline;}
+.layer-list .list li .layer_name{width:140px;}
+.layer-list .list li .layer_up{width:60px;}
+.layer-list .list li .layer_edit{width:60px;}
+.layer-list .list li .layer_del{width:60px;}
+.layer-list .list li .layer_checkbox{width:60px;}
+.layer-list .list li .layer_checkbox input{margin-top:5px;}
+
+.layer_create{border:2px black solid;width:600px;padding:15px 10px;}
+.layer_create span{float:right;}
+.layer_create span input{width:150px;}
 
 /* panel样式 */
 .panel-list:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
@@ -98,14 +135,63 @@
 .panel-list .list ul li { color:#ccc; }
 
 /* 统计样式 */
+.statistics-list{padding:10px 0;}
 .statistics-list:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
-.statistics-list .list { width:80%; border:1px solid #eee; margin:10px; float:left; background:#F5F5F5;  }
-.statistics-list .list .header { font-weight:bold; color:blue; text-indent:30px; padding:5px 0; background:#D2D2D2; padding:10px; }
+.statistics-list .list {width:80%;border:1px solid #eee; float:left; }
+.statistics-list .list .header { font-weight:bold; text-indent:10px; line-height:22px; }
 .statistics-list .list ul { padding:5px; padding:10px; }
 .statistics-list .list ul li.checked { color:#000; }
 .statistics-list .list ul li { color:#ccc; }
 
+.statistics-list .list table th{background:#c7c7c7;}
+.statistics-list .list table th,.statistics-list .list table td{padding:2px 4px 2px 6px;border:1px black solid;}
+.statistics-list .action{margin-top:15px;}
+
 /* 图层编辑 */
+.itemConfig{font-size:15px;line-height:22px;}
 .itemConfig ul:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
 .itemConfig ul li { float:left; width:60px; display:block; height:25px; }
+.itemConfig .action {text-align:center;margin:10px auto;}
+.itemConfig .action input{margin:0 5px;}
+.row_select{width:120px;}
 
+
+/* 监控 */
+.alarm p{padding-left:25px;line-height:28px;margin:3px 0;overflow:hidden;}
+.obj-list li .name a{text-decoration:none;}
+.alarm p input,.alarm .row input,.viewpoint-list .form input,.list_warp li input{width:120px;border:1px solid #E0E0E0;height:23px;text-indent:3px;}
+.alarm .row{padding-left:80px;}
+
+.list_warp{max-height:400px;overflow-y:auto;width:580px;margin-bottom:20px;}
+.list_title,.obj-list,.style-list{overflow:hidden;border:1px black solid;border-right:none;width:546px;background:#c7c7c7;}
+.list_title div,.obj-list div,.style-list div{float:left;line-height:22px;height:22px;width:122px;text-align:center;border-right:1px black solid;}
+.list_title .list_60,.obj-list .list_60,.style-list .list_60{width:60px;}
+.list_title .list_300,.obj-list .list_300,.style-list .list_300{width:300px;}
+.obj-list,.style-list{border-top:none;border-bottom:none;background:none;}
+.obj-list li,.style-list li{border-bottom:1px black solid;overflow:hidden;}
+.alarmlevel{max-height:200px;overflow-x:auto;width:360px;}
+/* 视角 */
+.viewpoint-list{padding-left:25px;}
+.viewpoint-list h3{font-size:14px;margin:4px 0 0 -26px;}
+.viewpoint-list h3 span{color:#0398DD;cursor:pointer;}
+.viewpoint-list h3 input{height:25px;}
+/* 资源 */
+.resources-list li{line-height:22px;}
+.config_page_title{height:30px;line-height:30px;padding:0 10px;color:#fff;border:#3079ed 1px solid;font-size:14px;font-weight:bolder;border-bottom:0;background:url("images/bg_menu.png") 0 -4px repeat-x;}
+
+.resourcesManager p span{display:inline-block;width:100px;}
+.resourcesManager p input[type="text"]{width:180px;border:1px solid #E0E0E0;height:23px;text-indent:3px;}
+.resourcesManager .action{text-align:center;margin-top:15px;}
+.resourcesManager .action input{margin:0 5px;}
+.resources-list,.resoureces-title,.resources-list li{overflow:hidden;}
+.resources-list{max-height:400px;overflow-y:auto;border:1px black solid;border-top:none;}
+.resources-list h3,.resources-list p,.resoureces-title h3,.resoureces-title p{float:left;line-height:22px;text-align:center;}
+.resources-list h3,.resoureces-title h3{width:10%;font-size:14px;font-weight:normal;}
+.resources-list p,.resoureces-title p{width:30%;}
+.resources-list .res_10,.resoureces-title .res_10{width:10%;}
+.resoureces-title{margin-top:20px;background:#c7c7c7;border:1px black solid;}
+
+/* 覆盖colorPicke*/
+.config-load .sp-replacer,.itemConfig .sp-replacer{padding:2px;}
+.config-load .sp-preview,.itemConfig .sp-preview{height:12px;width:35px;}
+.config-load .sp-dd,.itemConfig .sp-dd{height:12px;line-height:12px;padding:1px 0;}
