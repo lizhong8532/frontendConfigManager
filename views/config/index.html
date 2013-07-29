@@ -1,16 +1,18 @@
 <div class="config_page_title"><s>系统配置</s></div>
 <div class="config-page" >
-	<ul class="menu">
-		<li to="./views/config/layout.html"><s>布局</s></li>
-		<li to="./views/config/system.html"><s>系统</s></li>
-		<li to="./views/config/monitor.html"><s>监控</s></li>
-		<li to="./views/config/viewpoint.html"><s>视角</s></li>
-		<li to="./views/config/layer.html"><s>图层</s></li>
-		<li to="./views/config/selector.html"><s>选择器</s></li>
-		<li to="./views/config/resources.html"><s>资源</s></li>
-		<li to="./views/config/statistics.html"><s>统计</s></li>
-		<li to="./views/config/panel.html"><s>面板</s></li>
-	</ul>
+	<div class="menu_title">
+		<ul class="menu">
+			<li to="./views/config/layer.html"><s>图层</s></li>
+			<li to="./views/config/viewpoint.html"><s>视角</s></li>
+			<li to="./views/config/monitor.html"><s>监控</s></li>
+			<li to="./views/config/layout.html"><s>布局</s></li>
+			<li to="./views/config/system.html"><s>系统</s></li>
+			<li to="./views/config/selector.html"><s>选择器</s></li>
+			<li to="./views/config/resources.html"><s>资源</s></li>
+			<li to="./views/config/statistics.html"><s>统计</s></li>
+			<li to="./views/config/panel.html"><s>面板</s></li>
+		</ul>
+	</div>
 
 	<div class="config-load" style="position:relative;">
 		Loading...
@@ -18,6 +20,7 @@
 	
 	<div class="row btn config-submit-btn" style="display:none;">
 		<input type="button" class="btn_save" onclick="uinv.FCM.configMgr.form.submit();" />
+		<div class="config-info"></div>
 	</div>
 </div>
 
@@ -35,6 +38,7 @@
 		
 			obj.html('Loading...');
 			$('.config-submit-btn').hide();
+			$('.config-info').html('');
 		
 			uinv.FCM.configMgr.form.load({
 				'page' : $(this).attr('to'),

@@ -1,6 +1,6 @@
-<div class="row">
-	<button onclick="uinv.FCM.configMgr.model.panel.createObject();"><s>创建新物体</s></button>
-	<button onclick="uinv.FCM.configMgr.model.panel.globalPanelManager();"><s>面板管理</s></button>
+<div class="panel-action">
+	<div class="file-btn fl"><span><s>上传面板</s></span><input type="file" onchange="uinv.FCM.configMgr.model.panel.upload(this);" /></div>
+	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.panel.createObject();"><s>创建对象</s></button>
 </div>
 
 <div class="panel-list"></div>

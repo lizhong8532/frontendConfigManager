@@ -1,17 +1,17 @@
 
-<div class="row">
-	<span class="comments"><s>配置</s></span>
-	<span class="form">
-		<s>上传配置 </s><input type="file" onchange="uinv.FCM.configMgr.model.backup.configUpload(this);" />
-		| 
-		<button onclick="uinv.FCM.configMgr.model.backup.configCompression();"><s>备份配置</s></button>
-	</span>
+<div class="config-backup">
+	<div class="up box">
+		<span><s>上传配置 </s></span>
+		<input type="file" onchange="uinv.FCM.configMgr.model.backup.configUpload(this);" />
+	</div>
+	
+	<div class="backup box">
+		<span><s>下载配置</s></span>
+		<button title="点击打包下载" onclick="uinv.FCM.configMgr.model.backup.configCompression(this);"></button>		
+	</div>
 </div>
-
+<i class="config-line1"></i>
 <div class="config-system">Loading...</div>
-
-
-
 
 
 <script type="text/javascript">
