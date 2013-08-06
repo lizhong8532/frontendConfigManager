@@ -1,4 +1,31 @@
-/** 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: core.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: core.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/** 
  * -------------------------------------------------------------
  * Copyright (c) 2013 可视化配置, All rights reserved. 
  *  
@@ -6,7 +33,7 @@
  * @author: lizhong 
  * @description: 后台可视化配置功能 
  * @project: 可视化配置 
- * @date: 2013-08-06 
+ * @date: 2013-08-05 
  * ------------------------------------------------------------- 
  */ 
 
@@ -238,12 +265,6 @@ namespace.reg('uinv.FCM.configMgr.api');
  */
 namespace.reg('uinv.FCM.configMgr.translate');
 
-/**
- * @description 信息
- * @namespace uinv.FCM.configMgr.msg
- */
-namespace.reg('uinv.FCM.configMgr.msg');
-
 
 
 
@@ -262,43 +283,34 @@ uinv.FCM.configMgr.api.getMonitor = function(){
 	
 	_obj.model.monitor.obj = _obj.model.stringDB.get(_obj.model.monitor.index);
 	
-	for(var i=0,k=obj.length;i<k;i++){
+	for(var i=0,k=obj.length;i&lt;k;i++){
 		obj[i].condition = _obj.other.conditionReplaceName( obj[i].where );
 		obj[i].data = _obj.model.object.clone( _obj.model.monitor.nameFindPanel(obj[i].panel) );
 	
-		for(var n=0,m=obj[i].form.length;n<m;n++){
-			for(var g=0,h=obj[i].form[n].styleConfig.length;g<h;g++){
-				obj[i].form[n].styleConfig[g].config = _obj.model.colorpicke.toRgb(obj[i].form[n].styleConfig[g].config);
+		for(var n=0,m=obj[i].data.form.length;n&lt;m;n++){
+			for(var g=0,h=obj[i].data.form[n].styleConfig.length;g&lt;h;g++){
+				obj[i].data.form[n].styleConfig[g].config = _obj.model.colorpicke.toRgb(obj[i].data.form[n].styleConfig[g].config);
 			}
 		}
 		
 		for(var j in obj[i].data.modify){
 			for(var p in obj[i].data.modify[j]){
-				if(typeof obj[i].form[ obj[i].data.modify[j][p].row ] != 'undefined'){
-					obj[i].data.showMapping[j][p] = obj[i].form[ obj[i].data.modify[j][p].row ][ obj[i].data.modify[j][p].attribute ];
+				if(typeof obj[i].data.form[ obj[i].data.modify[j][p].row ] != 'undefined'){
+					obj[i].data.showMapping[j][p] = obj[i].data.form[ obj[i].data.modify[j][p].row ][ obj[i].data.modify[j][p].attribute ];
 				}
 			}
 		}
 		
-		
-		for(var o in obj[i].config){
-			if( typeof obj[i].config[o] == 'object' ){
-				obj[i].data[o] =  _obj.model.object.clone(obj[i].config[o]);
-			}else{
-				obj[i].data[o] =  obj[i].config[o];
-			}
-		}
-		
-
 		delete obj[i].data.des;
 		delete obj[i].data.caption;
 		delete obj[i].data.name;
 		delete obj[i].data.resPath;
 		delete obj[i].where;
-		delete obj[i].form;
+		delete obj[i].data.form;
 		delete obj[i].key;
 		delete obj[i].panel;
-		delete obj[i].config;
+		delete obj[i].data.previewImagePath;
+		
 	}
 	
 	return {
@@ -320,7 +332,7 @@ uinv.FCM.configMgr.api.getViewpoint = function(){
 	
 	var obj = _obj.model.object.clone( _obj.data.viewpoint );
 
-	for(var i=0,k=obj.length;i<k;i++){
+	for(var i=0,k=obj.length;i&lt;k;i++){
 		obj[i].condition = _obj.other.conditionReplaceName( obj[i].where );
 		delete obj[i].where;
 	}
@@ -342,7 +354,7 @@ uinv.FCM.configMgr.api.getStatistics = function(){
 	var obj = _obj.model.object.clone( _obj.data.statistics );
 	
 	for(var i in obj){
-		for(var n=0,m=obj[i].length;n<m;n++){
+		for(var n=0,m=obj[i].length;n&lt;m;n++){
 			obj[i][n].condition = obj[i][n].where;
 			delete obj[i][n].where;
 			
@@ -394,11 +406,11 @@ uinv.FCM.configMgr.api.getLayer = function(){
 	
 	_obj.model.layer.obj = _obj.model.stringDB.get(_obj.model.layer.index);
 	
-	for(var i=0,k=obj.length;i<k;i++){
+	for(var i=0,k=obj.length;i&lt;k;i++){
 		obj[i].condition = _obj.other.conditionReplaceName( obj[i].obj );
 		
 		obj[i].tmp = [];
-		for(var n=0,m=obj[i].item.length;n<m;n++){
+		for(var n=0,m=obj[i].item.length;n&lt;m;n++){
 			if( typeof obj[i].itemData == "undefined" ){
 				obj[i].itemData = [];			
 			}  
@@ -452,7 +464,7 @@ uinv.FCM.configMgr.api.getForm = function(group){
 	
 	var o = _obj.model.object.clone(_obj.form.createFormData);
 	
-	for(var i=0,k=o.length;i<k;i++){
+	for(var i=0,k=o.length;i&lt;k;i++){
 		o[i].value = _obj.data[o[i].group][o[i].name];
 		if(o[i].type == 'color'){
 			o[i].value = _obj.model.colorpicke.toRgb(o[i].value);
@@ -461,7 +473,7 @@ uinv.FCM.configMgr.api.getForm = function(group){
 	
 	if(group){
 		var arr = [];
-		for(var i=0,k=o.length;i<k;i++){
+		for(var i=0,k=o.length;i&lt;k;i++){
 			if(o[i].group == group){
 				arr.push(o[i]);
 			}
@@ -489,7 +501,7 @@ uinv.FCM.configMgr.api.getAlarm = function(){
 		obj.alarmLevel = [];
 	}
 	
-	for(var i=0,k=obj.alarmLevel.length;i<k;i++){
+	for(var i=0,k=obj.alarmLevel.length;i&lt;k;i++){
 		obj.alarmLevel[i].config = _obj.model.colorpicke.toRgb(obj.alarmLevel[i].color);
 		delete obj.alarmLevel[i].color;
 	}
@@ -644,7 +656,7 @@ uinv.FCM.configMgr.form.box = null;
 uinv.FCM.configMgr.form.groupFindItem = function(groupName){
 	var _this = this;
 	var arr = [];
-	for( var i=0,k=_this.createFormData.length;i<k;i++ ){
+	for( var i=0,k=_this.createFormData.length;i&lt;k;i++ ){
 		if( _this.createFormData[i].group == groupName ){
 			arr.push( _this.createFormData[i] );
 		}
@@ -666,7 +678,7 @@ uinv.FCM.configMgr.form.createHtml = function(o){
 	o.data = _this.groupFindItem(o.group);
 	
 	var html = "";
-	for(var i=0,k=o.data.length;i<k;i++){
+	for(var i=0,k=o.data.length;i&lt;k;i++){
 		
 		if(typeof o.data[i].itemkey == "undefined"){
 			 o.data[i].itemkey = "";
@@ -807,18 +819,18 @@ uinv.FCM.configMgr.form.createTypeHtml.boolean = function(o){
 	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey];
 	
 	var html = "";
-	html += '<div class="row '+o.level+'">';
-		html += '<span class="comments"><s>'+o.caption+'</s></span>';
-		html += '<span class="form">';
+	html += '&lt;div class="row '+o.level+'">';
+		html += '&lt;span class="comments">&lt;s>'+o.caption+'&lt;/s>&lt;/span>';
+		html += '&lt;span class="form">';
 			if(value){
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" checked value="1" /><s>是</s></label>';
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" value="0" /><s>否</s></label>';					
+				html += '&lt;label>&lt;input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" checked value="1" />&lt;s>是&lt;/s>&lt;/label>';
+				html += '&lt;label>&lt;input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" value="0" />&lt;s>否&lt;/s>&lt;/label>';					
 			}else{
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" value="1" /><s>是</s></label>';
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" checked value="0" /><s>否</s></label>';			
+				html += '&lt;label>&lt;input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" value="1" />&lt;s>是&lt;/s>&lt;/label>';
+				html += '&lt;label>&lt;input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" checked value="0" />&lt;s>否&lt;/s>&lt;/label>';			
 			}
-		html += '</span>';
-	html += '</div>';
+		html += '&lt;/span>';
+	html += '&lt;/div>';
 	
 	return html;	
 };
@@ -834,12 +846,12 @@ uinv.FCM.configMgr.form.createTypeHtml.color = function(o){
 	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey];
 	
 	var html = "";
-	html += '<div class="row '+o.level+'">';
-		html += '<span class="comments"><s>'+o.caption+'</s></span>';
-		html += '<span class="form">';
-			html += '<input itemkey="'+o.itemkey+'" path="'+o.group+'" type="text" cate="color" name="'+o.name+'" value="'+value+'" />';
-		html += '</span>';
-	html += '</div>';
+	html += '&lt;div class="row '+o.level+'">';
+		html += '&lt;span class="comments">&lt;s>'+o.caption+'&lt;/s>&lt;/span>';
+		html += '&lt;span class="form">';
+			html += '&lt;input itemkey="'+o.itemkey+'" path="'+o.group+'" type="text" cate="color" name="'+o.name+'" value="'+value+'" />';
+		html += '&lt;/span>';
+	html += '&lt;/div>';
 	
 	return html;
 };
@@ -855,13 +867,13 @@ uinv.FCM.configMgr.form.createTypeHtml.image = function(o){
 	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey];
 	
 	var html = "";
-	html += '<div class="row '+o.dir+' '+o.level+'">';
-		html += '<span class="comments"><s>'+o.caption+'</s></span>';
-		html += '<span class="form">';
-			html += '<img itemkey="'+o.itemkey+'" path="'+o.group+'" src="'+value+'" cate="image" name="'+o.name+'" />';
-			html += '<button onclick="uinv.FCM.configMgr.model.images.show({dir:\''+o.dir+'\',name:\''+o.name+'\'});"><s>更换图片</s></button>';
-		html += '</span>';
-	html += '</div>';
+	html += '&lt;div class="row '+o.dir+' '+o.level+'">';
+		html += '&lt;span class="comments">&lt;s>'+o.caption+'&lt;/s>&lt;/span>';
+		html += '&lt;span class="form">';
+			html += '&lt;img itemkey="'+o.itemkey+'" path="'+o.group+'" src="'+value+'" cate="image" name="'+o.name+'" />';
+			html += '&lt;button onclick="uinv.FCM.configMgr.model.images.show({dir:\''+o.dir+'\',name:\''+o.name+'\'});">&lt;s>更换图片&lt;/s>&lt;/button>';
+		html += '&lt;/span>';
+	html += '&lt;/div>';
 	
 	return html;				
 };
@@ -877,12 +889,12 @@ uinv.FCM.configMgr.form.createTypeHtml.number = function(o){
 	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey];
 	
 	var html = "";
-	html += '<div class="row '+o.level+'">';
-		html += '<span class="comments"><s>'+o.caption+'</s></span>';
-		html += '<span class="form">';
-			html += '<input itemkey="'+o.itemkey+'" path="'+o.group+'" type="text" cate="number" name="'+o.name+'" value="'+value+'" />';
-		html += '</span>';
-	html += '</div>';
+	html += '&lt;div class="row '+o.level+'">';
+		html += '&lt;span class="comments">&lt;s>'+o.caption+'&lt;/s>&lt;/span>';
+		html += '&lt;span class="form">';
+			html += '&lt;input itemkey="'+o.itemkey+'" path="'+o.group+'" type="text" cate="number" name="'+o.name+'" value="'+value+'" />';
+		html += '&lt;/span>';
+	html += '&lt;/div>';
 	
 	return html;
 };
@@ -898,12 +910,12 @@ uinv.FCM.configMgr.form.createTypeHtml.string = function(o){
 	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey];
 	
 	var html = "";
-	html += '<div class="row '+o.level+'">';
-		html += '<span class="comments"><s>'+o.caption+'</s></span>';
-		html += '<span class="form">';
-			html += '<input itemkey="'+o.itemkey+'" path="'+o.group+'" type="text" cate="string" name="'+o.name+'" value="'+value+'" />';
-		html += '</span>';
-	html += '</div>';
+	html += '&lt;div class="row '+o.level+'">';
+		html += '&lt;span class="comments">&lt;s>'+o.caption+'&lt;/s>&lt;/span>';
+		html += '&lt;span class="form">';
+			html += '&lt;input itemkey="'+o.itemkey+'" path="'+o.group+'" type="text" cate="string" name="'+o.name+'" value="'+value+'" />';
+		html += '&lt;/span>';
+	html += '&lt;/div>';
 	
 	return html;
 };
@@ -917,10 +929,10 @@ uinv.FCM.configMgr.form.createTypeHtml.array = function(o){
 	var _this = uinv.FCM.configMgr.form;
 	
 	var html = "";
-	html += '<div class="row '+o.level+'">';
-		html += '<span class="comments"><s>'+o.caption+'</s></span>';
-		html += '<span class="form">';
-			for(var i=0,k=o.settings.length;i<k;i++){
+	html += '&lt;div class="row '+o.level+'">';
+		html += '&lt;span class="comments">&lt;s>'+o.caption+'&lt;/s>&lt;/span>';
+		html += '&lt;span class="form">';
+			for(var i=0,k=o.settings.length;i&lt;k;i++){
 				if( typeof _this.createTypeHtml[o.settings[i].type] == 'function' ){
 					o.settings[i].name = o.name;
 					o.settings[i].group = o.group;
@@ -931,8 +943,8 @@ uinv.FCM.configMgr.form.createTypeHtml.array = function(o){
 					html += _this.createTypeHtml[o.settings[i].type](o.settings[i]);
 				}
 			}
-		html += '</span>';
-	html += '</div>';
+		html += '&lt;/span>';
+	html += '&lt;/div>';
 	
 	return html;
 };
@@ -1410,7 +1422,7 @@ uinv.FCM.configMgr.global.projectPath = '';
  * @style 1px高的虚线
  * @type String
  */
-uinv.FCM.configMgr.global.line1 = '<i class="config-line1"></i>';
+uinv.FCM.configMgr.global.line1 = '&lt;i class="config-line1">&lt;/i>';
 /**
  * @description 初始化
  * @constructor init()
@@ -1449,7 +1461,7 @@ uinv.FCM.configMgr.init = function(){
  * @static
  */
 uinv.FCM.configMgr.model.array.inArray = function(str, arr){
-	for(var i = 0 ,k = arr.length; i<k ;i++){
+	for(var i = 0 ,k = arr.length; i&lt;k ;i++){
 		
 		// 这里使用 相等 而非 全等
 		if(str == arr[i]){
@@ -1471,7 +1483,7 @@ uinv.FCM.configMgr.model.array.inArray = function(str, arr){
  * @static
  */
 uinv.FCM.configMgr.model.array.strInArrayIndex = function(str, arr){
-	for(var i = 0 ,k = arr.length; i<k ;i++){
+	for(var i = 0 ,k = arr.length; i&lt;k ;i++){
 		
 		// 这里使用 相等 而非 全等
 		if(str == arr[i]){
@@ -1583,17 +1595,17 @@ uinv.FCM.configMgr.model.backup.updateFileArr = function(){
 	// 添加全局路径
 	_this.folders.push(_obj.global.path);
 	
-	for(var i=0,k=_this.backModel.length;i<k;i++){
+	for(var i=0,k=_this.backModel.length;i&lt;k;i++){
 		if( typeof _this.model[_this.backModel[i]].model != 'undefined' && typeof _obj.model[_this.model[_this.backModel[i]].model].backupFiles == 'function'  ){					
 			var arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFiles();
-			for(var n=0,m=arr.length;n<m;n++){
+			for(var n=0,m=arr.length;n&lt;m;n++){
 				_this.files.push(arr[n]);
 			}
 		}
 		
 		if( typeof _this.model[_this.backModel[i]].model != 'undefined' && typeof _obj.model[_this.model[_this.backModel[i]].model].backupFolders == 'function'  ){					
 			var arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFolders();
-			for(var n=0,m=arr.length;n<m;n++){
+			for(var n=0,m=arr.length;n&lt;m;n++){
 				_this.folders.push(arr[n]);
 			}
 		}
@@ -1619,7 +1631,7 @@ uinv.FCM.configMgr.model.backup.updateText = function(){
 		'string' : {}
 	};
 	
-	for(var i=0,k=_this.backModel.length;i<k;i++){ 
+	for(var i=0,k=_this.backModel.length;i&lt;k;i++){ 
 		if( typeof _this.model[_this.backModel[i]].data != 'undefined' && typeof o.config[_this.model[_this.backModel[i]].data] != 'undefined' ){
 			backObj['config'][_this.model[_this.backModel[i]].data] = o.config[_this.model[_this.backModel[i]].data];
 		}
@@ -1643,7 +1655,7 @@ uinv.FCM.configMgr.model.backup.configCompression = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	$(obj).css('left','8888888px').parent().find('span').html(_obj.msg.S2);
+	$(obj).css('left','8888888px').parent().find('span').html("正在打包...");
 	
 	_this.updateFileArr();
 	_this.updateText();
@@ -1651,7 +1663,7 @@ uinv.FCM.configMgr.model.backup.configCompression = function(obj){
 	uinv.server.manager.frame.placeZip( _this.text, _this.folders, _this.files, function(result){
 		if(result.success){
 			document.location = _obj.global.projectPath + result.data;
-			$(obj).css('left','0').parent().find('span').html(_obj.msg.S2);
+			$(obj).css('left','0').parent().find('span').html("下载配置");
 		}else{
 			_obj.note.alert(result.data);
 		}
@@ -1673,10 +1685,10 @@ uinv.FCM.configMgr.model.backup.configUpload = function(obj){
 	
 	var arr = fileName.split(".");
 	if(arr[arr.length-1] != 'zip'){
-		_obj.note.alert(_obj.msg.S3);
+		_obj.note.alert("错误：请正确备份的zip压缩包文件！");
 		return false;
 	}
-	var bool = _obj.note.confirm(_obj.msg.F1(fileName));
+	var bool = _obj.note.confirm("恢复操作将会丢失目前所有的配置信息，确认把"+fileName+"恢复到系统上？");
 	if(!bool){
 		return false;
 	}
@@ -1686,7 +1698,7 @@ uinv.FCM.configMgr.model.backup.configUpload = function(obj){
 			try{
 				var o = _obj.model.transform.str2obj(result.data);
 			}catch(e){
-				_obj.note.alert(_obj.msg.S4);
+				_obj.note.alert('数据格式错误！');
 				return false;
 			}
 			
@@ -1778,7 +1790,7 @@ uinv.FCM.configMgr.model.colorpicke.toHex = function(aColor){
 	var _this = this;
 	
 	var strHex = "#";
-	for(var i=0; i<aColor.length; i++){
+	for(var i=0; i&lt;aColor.length; i++){
 		var hex = Number(aColor[i]).toString(16);
 		
 		if(hex === "0"){
@@ -1810,7 +1822,7 @@ uinv.FCM.configMgr.model.colorpicke.toRgb = function(str){
 	if(sColor && reg.test(sColor)){
 		if(sColor.length === 4){
 			var sColorNew = "#";
-			for(var i=1; i<4; i+=1){
+			for(var i=1; i&lt;4; i+=1){
 				sColorNew += sColor.slice(i,i+1).concat(sColor.slice(i,i+1));	
 			}
 			sColor = sColorNew;
@@ -1819,7 +1831,7 @@ uinv.FCM.configMgr.model.colorpicke.toRgb = function(str){
 		//处理六位的颜色值
 		var sColorChange = [];
 		
-		for(var i=1; i<7; i+=2){
+		for(var i=1; i&lt;7; i+=2){
 			sColorChange.push(parseInt("0x"+sColor.slice(i,i+2)));	
 		}
 
@@ -1880,8 +1892,8 @@ uinv.FCM.configMgr.model.dialog.show = function(str){
 	_this.id = _obj.model.key.create(10);
 	
 	var html = '';
-	html += '<div class="config-dialog-bg config-dialog-bg-'+_this.id+'"></div>';
-	html += '<div class="config-dialog config-dialog-'+_this.id+'" style="display:none;">'+str+'</div>';
+	html += '&lt;div class="config-dialog-bg config-dialog-bg-'+_this.id+'">&lt;/div>';
+	html += '&lt;div class="config-dialog config-dialog-'+_this.id+'" style="display:none;">'+str+'&lt;/div>';
 	
 	$('body').css('position','relative').append(html);
 	
@@ -1940,7 +1952,7 @@ uinv.FCM.configMgr.model.download.pathFindObj = function(path){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	for(var i=0,k=_obj.data.download.length;i<k;i++){
+	for(var i=0,k=_obj.data.download.length;i&lt;k;i++){
 		if( _obj.data.download[i].url == path ){
 			return _obj.data.download[i];
 		}
@@ -1960,7 +1972,7 @@ uinv.FCM.configMgr.model.download.pathFindIndex = function(path){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	for(var i=0,k=_obj.data.download.length;i<k;i++){
+	for(var i=0,k=_obj.data.download.length;i&lt;k;i++){
 		if( _obj.data.download[i].url == path ){
 			return i;
 		}
@@ -2065,7 +2077,7 @@ uinv.FCM.configMgr.model.images.imUpload = function(obj, dir){
 	var result = uinv.server.manager.frame.isFileExist(path+'/'+filename);
 	var bool = true;
 	if(result.data){
-		bool = _obj.note.confirm(_obj.msg.F2(filename));
+		bool = _obj.note.confirm(filename + '图片已存在，是否要覆盖旧的' + filename + '图片');
 	}
 	
 	if(bool){
@@ -2083,7 +2095,7 @@ uinv.FCM.configMgr.model.images.imUpload = function(obj, dir){
 uinv.FCM.configMgr.model.images.delImages = function(path){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	var bool = _obj.note.confirm(_obj.msg.S5);
+	var bool = _obj.note.confirm("删除后不可恢复，确认删除图片？");
 	if(bool){
 		uinv.server.manager.frame.delImage(path, function(result){ _this.deleteImagesCallback(result); });	
 	}
@@ -2191,7 +2203,7 @@ uinv.FCM.configMgr.model.images.getData = function(){
 uinv.FCM.configMgr.model.images.viewsImg = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	var img = '<img src="'+$(obj).attr('src')+'" />';
+	var img = '&lt;img src="'+$(obj).attr('src')+'" />';
 	_obj.model.dialog.getObj().find('.img .right .views').html(img);
 	var $obj = _obj.model.dialog.getObj().find('.img .right .views img');
 	$obj.css({
@@ -2228,7 +2240,7 @@ uinv.FCM.configMgr.model.images.updateList = function(){
 	var path = _obj.global.path + _this.path + _this.dir + '/';
 	
 	var arr = [];
-	for(var i=0,k=data.length; i<k; i++){
+	for(var i=0,k=data.length; i&lt;k; i++){
 		
 		if( _obj.model.array.inArray(data[i], _this.limit)){
 			continue;
@@ -2250,10 +2262,10 @@ uinv.FCM.configMgr.model.images.updateList = function(){
 		}
 		
 		var img = '';
-		img += '<li class="' + cla + '" onmouseover="uinv.FCM.configMgr.model.images.viewsImg( $(this).find(\'img\').get(0) );" onclick="uinv.FCM.configMgr.model.images.selectImg(this);" >';
-			img += '<img onerror="$(this).parent().remove();" src="'+ _obj.global.projectPath + path+data[i]+'" style="max-width:'+_this.imgWidth+'px;max-height:'+_this.imgHeight+'px;" title="'+_this.decode(data[i])+'" />';
-			img += '<a onclick="uinv.FCM.configMgr.model.images.delImages(\''+path+data[i]+'\');" class="deletebtn" href="javascript:void(0);">DEL</a>';
-		img += '</li>';
+		img += '&lt;li class="' + cla + '" onmouseover="uinv.FCM.configMgr.model.images.viewsImg( $(this).find(\'img\').get(0) );" onclick="uinv.FCM.configMgr.model.images.selectImg(this);" >';
+			img += '&lt;img onerror="$(this).parent().remove();" src="'+ _obj.global.projectPath + path+data[i]+'" style="max-width:'+_this.imgWidth+'px;max-height:'+_this.imgHeight+'px;" title="'+_this.decode(data[i])+'" />';
+			img += '&lt;a onclick="uinv.FCM.configMgr.model.images.delImages(\''+path+data[i]+'\');" class="deletebtn" href="javascript:void(0);">DEL&lt;/a>';
+		img += '&lt;/li>';
 		
 		arr.push(img);
 		
@@ -2292,26 +2304,26 @@ uinv.FCM.configMgr.model.images.show = function(param){
 	}
 	
 	var html = '';
-	html += '<div class="img">';
-		html += '<div class="left">';
-			html += '<div class="header">';
-				html += '<div class="action">';
-					html += '<span class="uploadbtn">';
-						html += '<a href="javascript:void(0);"><s>上传图片</s>';
-							html += '<input onchange="uinv.FCM.configMgr.model.images.imUpload(this);" type="file"  />';
-						html += '</a>';
-					html += '</span>';
-				html += '</div>';
-			html += '</div>';
-			html += '<div class="imglist" onmouseout="uinv.FCM.configMgr.model.images.out();">Loading...</div>';
-		html += '</div>';
-		html += '<div class="right">';
-			html += '<div class="views"></div>';
-		html += '</div>';
-		html += '<div class="close">';
-			html += '<button title="点击关闭窗口" onclick="uinv.FCM.configMgr.model.images.close();"><s>Close</s></button>';
-		html += '</div>';
-	html+= '</div>';
+	html += '&lt;div class="img">';
+		html += '&lt;div class="left">';
+			html += '&lt;div class="header">';
+				html += '&lt;div class="action">';
+					html += '&lt;span class="uploadbtn">';
+						html += '&lt;a href="javascript:void(0);">&lt;s>上传图片&lt;/s>';
+							html += '&lt;input onchange="uinv.FCM.configMgr.model.images.imUpload(this);" type="file"  />';
+						html += '&lt;/a>';
+					html += '&lt;/span>';
+				html += '&lt;/div>';
+			html += '&lt;/div>';
+			html += '&lt;div class="imglist" onmouseout="uinv.FCM.configMgr.model.images.out();">Loading...&lt;/div>';
+		html += '&lt;/div>';
+		html += '&lt;div class="right">';
+			html += '&lt;div class="views">&lt;/div>';
+		html += '&lt;/div>';
+		html += '&lt;div class="close">';
+			html += '&lt;button title="点击关闭窗口" onclick="uinv.FCM.configMgr.model.images.close();">&lt;s>Close&lt;/s>&lt;/button>';
+		html += '&lt;/div>';
+	html+= '&lt;/div>';
 	
 	_obj.model.dialog.show(html);
 	_this.updateList();
@@ -2372,7 +2384,7 @@ uinv.FCM.configMgr.model.key.create = function(len){
 	var l = len || 10;
 	var str = '';
 	
-	for(var i = 0 ; i<l ; i++){
+	for(var i = 0 ; i&lt;l ; i++){
 		str += _this.randStr();
 	}
 
@@ -2434,7 +2446,7 @@ uinv.FCM.configMgr.model.layer.keyFindObj = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	for(var i = 0,k=_obj.data.layer.length; i<k; i++){
+	for(var i = 0,k=_obj.data.layer.length; i&lt;k; i++){
 		if( key == _obj.data.layer[i].key){
 			return _obj.data.layer[i];
 		}
@@ -2452,7 +2464,7 @@ uinv.FCM.configMgr.model.layer.keyFindObj = function(key){
 uinv.FCM.configMgr.model.layer.keyDelObj = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	for(var i = 0, k = _obj.data.layer.length; i<k; i++){
+	for(var i = 0, k = _obj.data.layer.length; i&lt;k; i++){
 		if( key == _obj.data.layer[i].key ){
 			_obj.data.layer.splice(i,1);
 			return true;
@@ -2476,7 +2488,7 @@ uinv.FCM.configMgr.model.layer.createObject = function(){
 		// 检查是否已存在对象
 		var bool = _this.checkObjectExist( obj.where );
 		if(bool) {
-			_obj.note.alert(_obj.msg.S6);
+			_obj.note.alert('错误：条件[ '+_obj.model.transform.obj2str(obj.where)+' ] 的对象已存在!' );
 			return false;
 		}
 	
@@ -2504,7 +2516,7 @@ uinv.FCM.configMgr.model.layer.insertDividingLine = function(obj,key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	if(!key){
-		_obj.note.dialog(_obj.msg.S7);
+		_obj.note.dialog('错误：请指定对象！');
 		return false;
 	}
 	
@@ -2555,7 +2567,7 @@ uinv.FCM.configMgr.model.layer.deleteObjLayer = function(obj){
 		$(obj).parents('li').remove();
 		
 	}else{
-		com = _obj.note.confirm(_obj.msg.S8);
+		com = _obj.note.confirm('确定删除吗？');
 		
 		if(!com){
 			return false;
@@ -2622,15 +2634,15 @@ uinv.FCM.configMgr.model.layer.modifyObjectName = function(key,obj){
 	var _this = this;
 	var value = $(obj).html();
 	var h3 = $(obj).parent();
-	h3.html( '<input type="text" value="'+value+'" />' );
+	h3.html( '&lt;input type="text" value="'+value+'" />' );
 	h3.find('input').focus().blur(function(){
 		_this.keyFindObj(key).name = $(this).val();
-		$(this).parent().html( '<span onclick="uinv.FCM.configMgr.model.layer.modifyObjectName(\''+key+'\',this);">' +  $(this).val() + '</span>');
+		$(this).parent().html( '&lt;span onclick="uinv.FCM.configMgr.model.layer.modifyObjectName(\''+key+'\',this);">' +  $(this).val() + '&lt;/span>');
 	}).keydown(function(evt){
 		var e = evt || windown.event;
 		if(e.keyCode == 13){
 			_this.keyFindObj(key).name = $(this).val();
-			$(this).parent().html('<span onclick="uinv.FCM.configMgr.model.layer.modifyObjectName(\''+key+'\',this);">' +  $(this).val() + '</span>');
+			$(this).parent().html('&lt;span onclick="uinv.FCM.configMgr.model.layer.modifyObjectName(\''+key+'\',this);">' +  $(this).val() + '&lt;/span>');
 		}
 	});
 };
@@ -2647,26 +2659,26 @@ uinv.FCM.configMgr.model.layer.mkhtml = function(obj){
 	var _this = this;
 
 	var html = '';
-	html += '<div class="list obj-'+obj.key+'">';
-		html += '<div class="header" style="position:relative;">';
-			html += '<h3><span onclick="uinv.FCM.configMgr.model.layer.modifyObjectName(\''+obj.key+'\',this);">'+obj.name+'</span></h3>';
-			html += '<span class="action" style="position:absolute;right:10px;">';
-				html += '<a onclick="uinv.FCM.configMgr.model.layer.insertDividingLine(this,\''+obj.key+'\');" href="javascript:void(0);"><s>分割线</s></a>';
+	html += '&lt;div class="list obj-'+obj.key+'">';
+		html += '&lt;div class="header" style="position:relative;">';
+			html += '&lt;h3>&lt;span onclick="uinv.FCM.configMgr.model.layer.modifyObjectName(\''+obj.key+'\',this);">'+obj.name+'&lt;/span>&lt;/h3>';
+			html += '&lt;span class="action" style="position:absolute;right:10px;">';
+				html += '&lt;a onclick="uinv.FCM.configMgr.model.layer.insertDividingLine(this,\''+obj.key+'\');" href="javascript:void(0);">&lt;s>分割线&lt;/s>&lt;/a>';
 				html += ' | ';
-				html += '<a onclick="uinv.FCM.configMgr.model.layer.deleteObj(\''+obj.key+'\');" href="javascript:void(0);"><s>删除</s></a>';
-			html += '</span>';
-		html += '</div>';
-		html += '<ul>';
+				html += '&lt;a onclick="uinv.FCM.configMgr.model.layer.deleteObj(\''+obj.key+'\');" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>';
+			html += '&lt;/span>';
+		html += '&lt;/div>';
+		html += '&lt;ul>';
 		
-		for(var i=0,k=obj.order.length; i<k; i++){
+		for(var i=0,k=obj.order.length; i&lt;k; i++){
 			if( obj.order[i] in _this.obj ){
 				html += _this.mkHtmlList( obj, _this.obj[obj.order[i]] );
 			}else{
 				html += _this.mkHtmlList( obj, {'name':obj.order[i] });
 			}
 		}
-		html += '</ul>';
-	html += '</div>';
+		html += '&lt;/ul>';
+	html += '&lt;/div>';
 	
 	return html;
 };
@@ -2687,29 +2699,29 @@ uinv.FCM.configMgr.model.layer.mkHtmlList = function(obj, layer){
 	var delbtnValue = layer.name == u.le.get('分割线') ? '撤销' : '删除';
 	
 	var html = '';
-	html += '<li>';
-		html +=  '<span class="layer_name">'+layer.name+'</span>';
-		html += '<span class="action layer_up">';
-			html += '<a onclick="uinv.FCM.configMgr.model.layer.upMove(this);" class="'+_this.upMoveBtnClass+'" href="javascript:void(0);" style="display:none;"><s>上移</s></a>';
-			html += '</span>';
+	html += '&lt;li>';
+		html +=  '&lt;span class="layer_name">'+layer.name+'&lt;/span>';
+		html += '&lt;span class="action layer_up">';
+			html += '&lt;a onclick="uinv.FCM.configMgr.model.layer.upMove(this);" class="'+_this.upMoveBtnClass+'" href="javascript:void(0);" style="display:none;">&lt;s>上移&lt;/s>&lt;/a>';
+			html += '&lt;/span>';
 			if( typeof layer['itemConfig'] == 'object' ){
-				html += '<span class="layer_edit">';
-				html += '<a onclick="uinv.FCM.configMgr.model.layer.itemConfig(\''+key+'\',\''+obj.key+'\');" href="javascript:void(0);"><s>编辑</s></a>';
-				html += '</span>';				
+				html += '&lt;span class="layer_edit">';
+				html += '&lt;a onclick="uinv.FCM.configMgr.model.layer.itemConfig(\''+key+'\',\''+obj.key+'\');" href="javascript:void(0);">&lt;s>编辑&lt;/s>&lt;/a>';
+				html += '&lt;/span>';				
 			}else{
-				html += '<span class="layer_edit">';
+				html += '&lt;span class="layer_edit">';
 				html +='&nbsp;';
-				html +='</span>';
+				html +='&lt;/span>';
 			}
-			html += '<span class="layer_del">';
-			html += '<a onclick="uinv.FCM.configMgr.model.layer.deleteObjLayer(this);" href="javascript:void(0);"><s>'+delbtnValue+'</s></a>';
-			html += '</span>';
-			html += '<span class="layer_checkbox">';
-			html += '<input onclick="uinv.FCM.configMgr.model.layer.checkd(this);"';
+			html += '&lt;span class="layer_del">';
+			html += '&lt;a onclick="uinv.FCM.configMgr.model.layer.deleteObjLayer(this);" href="javascript:void(0);">&lt;s>'+delbtnValue+'&lt;/s>&lt;/a>';
+			html += '&lt;/span>';
+			html += '&lt;span class="layer_checkbox">';
+			html += '&lt;input onclick="uinv.FCM.configMgr.model.layer.checkd(this);"';
 			html += ' name="'+ obj.key +'" value="'+ key +'"';
 			html += ' cate="layer" path="layer" type="checkbox" />';
-		html += '</span>';
-	html += '</li>';
+		html += '&lt;/span>';
+	html += '&lt;/li>';
 	
 	return html;
 };
@@ -2727,7 +2739,7 @@ uinv.FCM.configMgr.model.layer.itemConfig = function(key, objectKey){
 	var _this = this;	
 	
 	if(typeof _this.obj[key]['itemConfig'] == 'undefined'){
-		_this.note.alert(_obj.msg.S9);
+		_this.note.alert('此项不可编辑，数据错误！');
 	}
 
 	_layer = _this.keyFindObj(objectKey);
@@ -2735,18 +2747,18 @@ uinv.FCM.configMgr.model.layer.itemConfig = function(key, objectKey){
 	_layer['itemData'][key] = typeof _layer['itemData'][key] == 'undefined' ? {} : _layer['itemData'][key];
 
 	var html = '';
-	html += '<div class="itemConfig" style="padding:10px;">';
-	for(var i = 0 , k = _this.obj[key]['itemConfig'].length; i<k; i++){
+	html += '&lt;div class="itemConfig" style="padding:10px;">';
+	for(var i = 0 , k = _this.obj[key]['itemConfig'].length; i&lt;k; i++){
 		if( typeof _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']] == 'function' ){
 			html += _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']](_this.obj[key]['itemConfig'][i],key, objectKey);
 		}
 	}
-	html += '<p class="action">';
-		html += '<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
-		html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.layer.itemConfigSubmit();" />';
-	html += '</p>';
+	html += '&lt;p class="action">';
+		html += '&lt;input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
+		html += '&lt;input class="btn_save" onclick="uinv.FCM.configMgr.model.layer.itemConfigSubmit();" />';
+	html += '&lt;/p>';
 	
-	html += '</div>';
+	html += '&lt;/div>';
 	
 	_obj.model.dialog.show(html);
 	_this.itemConfigFormInit(objectKey);
@@ -2909,7 +2921,7 @@ uinv.FCM.configMgr.model.layer.checkedLayerOrder = function(name){
 	var layerForm = _obj.form.box.find('*[name=' + name + ']:checked');
 	
 	if( layerObj.item.length == layerForm.length ){
-		for( var i = 0, k = layerObj.item.length; i<k; i++ ){
+		for( var i = 0, k = layerObj.item.length; i&lt;k; i++ ){
 			var obj = _obj.form.box.find('*[name=' + name + '][value="' + layerObj.item[i] + '"]');
 			var index = obj.parents('li').index();
 			if(i != index){
@@ -2959,7 +2971,7 @@ uinv.FCM.configMgr.model.layer.upMove = function(obj){
 uinv.FCM.configMgr.model.layer.checkHasKey = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	for(var i = 0 ,k = _obj.data.layer.length ; i<k ; i++){
+	for(var i = 0 ,k = _obj.data.layer.length ; i&lt;k ; i++){
 		if( _obj.data.layer[i].key == key ){
 			return true;
 		}
@@ -3049,7 +3061,7 @@ uinv.FCM.configMgr.model.layer.checkObjectExist = function( obj ){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	for(var i=0,k=_obj.data.layer.length; i<k; i++){
+	for(var i=0,k=_obj.data.layer.length; i&lt;k; i++){
 		if( _this.judgeObjectIsEq(obj, _obj.data.layer[i].obj ) ){
 			return true;
 		}
@@ -3115,7 +3127,7 @@ uinv.FCM.configMgr.model.layer.addLayerToGlobalLibCallback = function( obj ){
 	_this.obj[obj.name] = _obj.model.object.clone(obj);
 	
 	// 添加到各个图层
-	for(var i = 0,k=_obj.data.layer.length; i<k; i++){
+	for(var i = 0,k=_obj.data.layer.length; i&lt;k; i++){
 		var key = _obj.data.layer[i].key;
 		
 		//_obj.data.layer[i].lib[obj.name] = _obj.model.object.clone(obj);
@@ -3215,7 +3227,7 @@ uinv.FCM.configMgr.model.layer.upload = function(obj, selector){
 	if(selector){
 		var layerObj = _this.keyFindObj( selector );
 		if(typeof layerObj.lib == 'undefined'){
-			_obj.note.alert(_obj.msg.s10);
+			_obj.note.alert('错误：物体不存在！');
 			return;
 		}
 	}
@@ -3244,7 +3256,7 @@ uinv.FCM.configMgr.model.layer.uploadCallback = function(result){
 
 		if(bool){
 			if(_obj.model.array.isArray(obj)){
-				for(var i = 0,k=obj.length; i<k; i++){
+				for(var i = 0,k=obj.length; i&lt;k; i++){
 					_this.add(obj[i] , _this.addCallback );
 				}
 			}else{
@@ -3269,11 +3281,12 @@ uinv.FCM.configMgr.model.layer.verificationLayerData = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
+	var msg = '数据格式错误';
 	if(_obj.model.array.isArray(obj)){
 	
-		for(var i = 0, k=obj.length; i<k; i++){
+		for(var i = 0, k=obj.length; i&lt;k; i++){
 			if( !_obj.model.object.isObject( obj[i] ) || typeof obj[i].name == 'undefined' ){
-				_obj.note.dialog( _obj.msg.S11 );
+				_obj.note.dialog( msg );
 				return false;
 			}
 		}
@@ -3284,11 +3297,11 @@ uinv.FCM.configMgr.model.layer.verificationLayerData = function(obj){
 		if( typeof obj.name != 'undefined' ){
 			return true;
 		}else{
-			_obj.note.dialog(_obj.msg.S11  );
+			_obj.note.dialog( msg );
 			return false;
 		}
 	}else{
-		_obj.note.dialog( _obj.msg.S11  );
+		_obj.note.dialog( msg );
 		return false;
 	}
 };
@@ -3305,12 +3318,12 @@ uinv.FCM.configMgr.model.layer.globalLayerListHtml = function(obj){
 	var _this = this;
 	
 	var html = '';
-	html += '<li style="margin:10px; position:relative;" key="'+ obj.name +'">';
+	html += '&lt;li style="margin:10px; position:relative;" key="'+ obj.name +'">';
 		html += obj.name;
-		html += '<span class="action" style="position:absolute;right:0; top:0;">';
-			html += '<a onclick="uinv.FCM.configMgr.model.layer.deleteGlobalLayer(this, \''+ obj.name+'\');" href="javascript:void(0);"><s>删除</s></a>';
-		html += '</span>';
-	html += '</li>';
+		html += '&lt;span class="action" style="position:absolute;right:0; top:0;">';
+			html += '&lt;a onclick="uinv.FCM.configMgr.model.layer.deleteGlobalLayer(this, \''+ obj.name+'\');" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>';
+		html += '&lt;/span>';
+	html += '&lt;/li>';
 	
 	return html;
 };
@@ -3325,24 +3338,24 @@ uinv.FCM.configMgr.model.layer.globalLayerManager = function(){
 	var _this = this;
 	
 	var html = '';
-	html += '<div style="width:500px;" class="'+_this.globalLayerManagementBoxClass+'">';
-		html += '<div>';
-			html += '<s>上传新图层</s><input type="file" onchange="uinv.FCM.configMgr.model.layer.upload(this);" /><br />';
-			html += '<input type="text" /><button><s>添加分类</s></button>';
-		html += '</div>';
+	html += '&lt;div style="width:500px;" class="'+_this.globalLayerManagementBoxClass+'">';
+		html += '&lt;div>';
+			html += '&lt;s>上传新图层&lt;/s>&lt;input type="file" onchange="uinv.FCM.configMgr.model.layer.upload(this);" />&lt;br />';
+			html += '&lt;input type="text" />&lt;button>&lt;s>添加分类&lt;/s>&lt;/button>';
+		html += '&lt;/div>';
 		
-		html += '<br />';
+		html += '&lt;br />';
 		
-		html += '<ul style="width:100%;">';
+		html += '&lt;ul style="width:100%;">';
 		for(var i in _this.obj){
 			html += _this.globalLayerListHtml( _this.obj[i] );
 		}
-		html += '</ul>';
+		html += '&lt;/ul>';
 		
-		html += '<div class="action" style="width:100%;text-align:center;">';
-			html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.dialog.close(uinv.FCM.configMgr.model.layer.globalLayerManagerCallBack);" />';
-		html += '</div>';
-	html += '</div>';
+		html += '&lt;div class="action" style="width:100%;text-align:center;">';
+			html += '&lt;input class="btn_save" onclick="uinv.FCM.configMgr.model.dialog.close(uinv.FCM.configMgr.model.layer.globalLayerManagerCallBack);" />';
+		html += '&lt;/div>';
+	html += '&lt;/div>';
 	
 	_obj.model.dialog.show(html);
 };
@@ -3394,7 +3407,7 @@ uinv.FCM.configMgr.model.layer.init = function(classStr){
 	_this.obj = _this.getLayerList();
 
 	var html = '';
-	for(var i=0,k=_obj.data.layer.length; i<k; i++){
+	for(var i=0,k=_obj.data.layer.length; i&lt;k; i++){
 		html += _this.mkhtml( _obj.data.layer[i] );
 	}
 	
@@ -3624,17 +3637,17 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.string = function(obj,key,ob
 	var value = typeof obj['defaultItem'] == 'undefined' ? '' :  obj['defaultItem'];
 	
  	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
+ 	html += '&lt;p class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
+	 		html += '&lt;span>'+obj['name']+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
+	 		html += '&lt;span>'+obj['caption']+'&lt;/span>';
 	 	}
  	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="string" path="'+key+'" value="'+value+'" />';
+ 		html += '&lt;input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="string" path="'+key+'" value="'+value+'" />';
  	
- 	html += '</p>';
+ 	html += '&lt;/p>';
  	return html;
 };
 
@@ -3652,17 +3665,17 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.number = function(obj,key,ob
 	var value = typeof obj['defaultItem'] == 'undefined' ? '' :  obj['defaultItem'];
 	
  	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
+ 	html += '&lt;p class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
+	 		html += '&lt;span>'+obj['name']+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
+	 		html += '&lt;span>'+obj['caption']+'&lt;/span>';
 	 	}
 	 	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="number" path="'+key+'" value="'+value+'" />';
+ 		html += '&lt;input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="number" path="'+key+'" value="'+value+'" />';
  	
- 	html += '</p>';
+ 	html += '&lt;/p>';
  	return html;
 };
 
@@ -3680,23 +3693,23 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.bool = function(obj,key,obje
 	var value = typeof obj['defaultItem'] == 'undefined' ? false :  obj['defaultItem'];
 	
  	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
+ 	html += '&lt;p class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
+	 		html += '&lt;span>'+obj['name']+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
+	 		html += '&lt;span>'+obj['caption']+'&lt;/span>';
 	 	}
 	 	
 	 	if(value){
- 			html += obj['items'][true]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="1" checked /> ';
- 			html += obj['items'][false]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="0" /> ';
+ 			html += obj['items'][true]+'&lt;input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="1" checked /> ';
+ 			html += obj['items'][false]+'&lt;input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="0" /> ';
 	 	}else{
-	 		html += obj['items'][true]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="1" /> ';
- 			html += obj['items'][false]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="0" checked /> ';
+	 		html += obj['items'][true]+'&lt;input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="1" /> ';
+ 			html += obj['items'][false]+'&lt;input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="0" checked /> ';
 	 	}
 	 	
- 	html += '</p>';
+ 	html += '&lt;/p>';
  	return html;
 };
 
@@ -3714,17 +3727,17 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.color = function(obj,key,obj
 	var value = typeof obj['defaultItem'] == 'undefined' ? '#FFFFFF' :  obj['defaultItem'];
 	
  	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
+ 	html += '&lt;p class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
+	 		html += '&lt;span>'+obj['name']+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
+	 		html += '&lt;span>'+obj['caption']+'&lt;/span>';
 	 	}
  	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="color" path="'+key+'" value="'+value+'"  />';
+ 		html += '&lt;input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="color" path="'+key+'" value="'+value+'"  />';
  	
- 	html += '</p>';
+ 	html += '&lt;/p>';
  	return html;
 };
 
@@ -3740,21 +3753,21 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml['3dposition'] = function(obj
 	var _this = uinv.FCM.configMgr.model.layer;
 	
  	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
+ 	html += '&lt;div class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
+	 		html += '&lt;span>'+obj['name']+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
+	 		html += '&lt;span>'+obj['caption']+'&lt;/span>';
 	 	}
 	 	
- 		html += '<ul>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="3dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="3dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][2]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="3dposition" path="'+key+'"  /></li>';
- 		html += '</ul>';
+ 		html += '&lt;ul>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj['items'][0]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="3dposition" path="'+key+'"  />&lt;/li>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj['items'][1]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="3dposition" path="'+key+'"  />&lt;/li>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj['items'][2]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="3dposition" path="'+key+'"  />&lt;/li>';
+ 		html += '&lt;/ul>';
  	
- 	html += '</div>';
+ 	html += '&lt;/div>';
  	return html;					
 };
 
@@ -3770,20 +3783,20 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml['2dposition'] = function(obj
 	var _this = uinv.FCM.configMgr.model.layer;
 	
  	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
+ 	html += '&lt;div class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span><s>'+obj['name']+'</s></span>';	
+	 		html += '&lt;span>&lt;s>'+obj['name']+'&lt;/s>&lt;/span>';	
 	 	}else{
-	 		html += '<span><s>'+obj['caption']+'</s></span>';
+	 		html += '&lt;span>&lt;s>'+obj['caption']+'&lt;/s>&lt;/span>';
 	 	}
 	 	
- 		html += '<ul>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="2dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="2dposition" path="'+key+'"  /></li>';
- 		html += '</ul>';
+ 		html += '&lt;ul>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj['items'][0]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="2dposition" path="'+key+'"  />&lt;/li>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj['items'][1]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="2dposition" path="'+key+'"  />&lt;/li>';
+ 		html += '&lt;/ul>';
  	
- 	html += '</div>';
+ 	html += '&lt;/div>';
  	return html;					
 };
 
@@ -3801,24 +3814,24 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.select = function(obj,key,ob
 	var value = typeof obj['defaultItem'] == 'undefined' ? '' :  obj['defaultItem'];
 	
  	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
+ 	html += '&lt;div class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
+	 		html += '&lt;span>'+obj['name']+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
+	 		html += '&lt;span>'+obj['caption']+'&lt;/span>';
 	 	}
 	 	
-	 	html += '<select class="row_select" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="select" path="'+key+'">';
-	 	for(var i = 0, k = obj['items'].length; i<k; i++){
+	 	html += '&lt;select class="row_select" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="select" path="'+key+'">';
+	 	for(var i = 0, k = obj['items'].length; i&lt;k; i++){
 	 		if( obj['items'][i]==value ){
-	 			html += '<option value="'+obj['items'][i]+'" selected>'+obj['items'][i]+'</option>';
+	 			html += '&lt;option value="'+obj['items'][i]+'" selected>'+obj['items'][i]+'&lt;/option>';
 	 		}else{
-	 			html += '<option value="'+obj['items'][i]+'">'+obj['items'][i]+'</option>';
+	 			html += '&lt;option value="'+obj['items'][i]+'">'+obj['items'][i]+'&lt;/option>';
 	 		}
 	 	}
-	 	html += '</select>';
-	 html += '</div>';
+	 	html += '&lt;/select>';
+	 html += '&lt;/div>';
 	 return html;
 };
 //---------------------------------------------------------
@@ -3829,7 +3842,7 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.select = function(obj,key,ob
  * @deprecated 所有使用条件下拉的条件列表
  * @type Array
  */
-uinv.FCM.configMgr.model.monitor.conditionArr = ['<','>','='];
+uinv.FCM.configMgr.model.monitor.conditionArr = ['&lt;','>','='];
 
 /**
  * @description 待删除文件列表
@@ -3909,11 +3922,11 @@ uinv.FCM.configMgr.model.monitor.getSelectOptionHtml = function(position, value)
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var html = '';
-	for(var i=0,k=_this.position[position].length; i<k; i++){
+	for(var i=0,k=_this.position[position].length; i&lt;k; i++){
 		if( value == _this.position[position][i].value ){
-			html += '<option value="'+_this.position[position][i].value+'" selected>'+_this.position[position][i].name+'</option>';
+			html += '&lt;option value="'+_this.position[position][i].value+'" selected>'+_this.position[position][i].name+'&lt;/option>';
 		}else{
-			html += '<option value="'+_this.position[position][i].value+'">'+_this.position[position][i].name+'</option>';
+			html += '&lt;option value="'+_this.position[position][i].value+'">'+_this.position[position][i].name+'&lt;/option>';
 		}
 	}
 	
@@ -3940,66 +3953,66 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 	var imgSrc =  _obj.global.projectPath + _this.getPanelImagePath(panel) ;
 	
 	var html = '';
-	html += '<div class="monitor">';
-		html += '<div class="monitor_warp">';
-			html += '<div class="monitor_name"><span><s>面板图片</s></span><img src="'+imgSrc+'" /></div>';
-				html += '<div class="monitor_set">';
+	html += '&lt;div class="monitor">';
+		html += '&lt;div class="monitor_warp">';
+			html += '&lt;div class="monitor_name">&lt;span>&lt;s>面板图片&lt;/s>&lt;/span>&lt;img src="'+imgSrc+'" />&lt;/div>';
+				html += '&lt;div class="monitor_set">';
 				
 					var tmps = typeof o.config.pivotLayout  == 'undefined' ? panel.pivotLayout : o.config.pivotLayout ;
-					html += '<div class="each"  key="pivotLayout" cate="array">';
-						html += '<span class="monitor_setname"><s>二维位置</s></span>';
-						for(var i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
+					html += '&lt;div class="each"  key="pivotLayout" cate="array">';
+						html += '&lt;span class="monitor_setname">&lt;s>二维位置&lt;/s>&lt;/span>';
+						for(var i=0,tmp=['x','y','z'];i&lt;tmp.length;i++){ 
 							if(i==tmp.length-1){
-								html += '<span>';
-									html += '<select name="pivotLayout" style="display:none;">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'</select>';
-								html += '</span>';
+								html += '&lt;span>';
+									html += '&lt;select name="pivotLayout" style="display:none;">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'&lt;/select>';
+								html += '&lt;/span>';
 							}else{
-								html += '<span>';
-									html += '<select name="pivotLayout">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'</select>';
-								html += '</span>';
+								html += '&lt;span>';
+									html += '&lt;select name="pivotLayout">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'&lt;/select>';
+								html += '&lt;/span>';
 							}
 						}
-					html += '</div>';
+					html += '&lt;/div>';
 					
 					var tmps = typeof o.config.layout  == 'undefined' ? panel.layout : o.config.layout;
-					html += '<div class="each" key="layout" cate="array">';
-						html += '<span class="monitor_setname"><s>三维位置</s></span>';
-						for(var i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
-							html += '<span>';
-								html += '<select name="layout">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'</select>';
-							html += '</span>';
+					html += '&lt;div class="each" key="layout" cate="array">';
+						html += '&lt;span class="monitor_setname">&lt;s>三维位置&lt;/s>&lt;/span>';
+						for(var i=0,tmp=['x','y','z'];i&lt;tmp.length;i++){ 
+							html += '&lt;span>';
+								html += '&lt;select name="layout">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'&lt;/select>';
+							html += '&lt;/span>';
 						}
-					html += '</div>';
+					html += '&lt;/div>';
 					
 					var tmps = typeof o.config.layoutOffset == 'undefined' ? panel.layoutOffset : o.config.layoutOffset ;
-					html += '<div class="each" key="layoutOffset" cate="array">';
-						html += '<span class="monitor_setname"><s>偏移设置</s></span>';
-						html += '<span>';
-							html += '<input type="text" name="layoutOffset" value="'+tmps[0]+'" /> m ';
-						html += '</span>';
-						html += '<span>';
-							html += '<input type="text" name="layoutOffset" value="'+tmps[1]+'" /> m ';
-						html += '</span>';
-						html += '<span>';
-							html += '<input type="text" name="layoutOffset" value="'+tmps[2]+'" /> m ';
-						html += '</span>';
-					html += '</div>';
+					html += '&lt;div class="each" key="layoutOffset" cate="array">';
+						html += '&lt;span class="monitor_setname">&lt;s>偏移设置&lt;/s>&lt;/span>';
+						html += '&lt;span>';
+							html += '&lt;input type="text" name="layoutOffset" value="'+tmps[0]+'" /> m ';
+						html += '&lt;/span>';
+						html += '&lt;span>';
+							html += '&lt;input type="text" name="layoutOffset" value="'+tmps[1]+'" /> m ';
+						html += '&lt;/span>';
+						html += '&lt;span>';
+							html += '&lt;input type="text" name="layoutOffset" value="'+tmps[2]+'" /> m ';
+						html += '&lt;/span>';
+					html += '&lt;/div>';
 					
 					var tmps = typeof o.config.canvasScale == 'undefined' ? panel.canvasScale : o.config.canvasScale ;
-					html += '<div class="each" key="canvasScale" cate="number">';
-						html += '<span class="monitor_setname"><s>面板大小</s></span>';
-						html += '<span class="monitor_zoom">';
-							html += '<input type="text" name="canvasScale" value="'+tmps+'" />';
-						html += '</span>';
-					html += '</div>';
-				html += '</div>';
-			html += '</div>';
-		html += '<div class="each" key="form" cate="form">';
+					html += '&lt;div class="each" key="canvasScale" cate="number">';
+						html += '&lt;span class="monitor_setname">&lt;s>面板大小&lt;/s>&lt;/span>';
+						html += '&lt;span class="monitor_zoom">';
+							html += '&lt;input type="text" name="canvasScale" value="'+tmps+'" />';
+						html += '&lt;/span>';
+					html += '&lt;/div>';
+				html += '&lt;/div>';
+			html += '&lt;/div>';
+		html += '&lt;div class="each" key="form" cate="form">';
 			html += _this.panelConfigFormHtml(panel,o);
-		html += '</div>';
+		html += '&lt;/div>';
 		
-		html += '<div class="config-submit-btn"><input class="btn_save" onclick="uinv.FCM.configMgr.model.monitor.configHide(\''+o.panel+'\',\''+key+'\');" /></div>';
-	html += '</div>';
+		html += '&lt;div class="config-submit-btn">&lt;input class="btn_save" onclick="uinv.FCM.configMgr.model.monitor.configHide(\''+o.panel+'\',\''+key+'\');" />&lt;/div>';
+	html += '&lt;/div>';
 	
 	_obj.model.dialog.show(html);
 	
@@ -4038,7 +4051,7 @@ uinv.FCM.configMgr.model.monitor.synchronousFormData = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var o = _this.keyFindObj(key);
-	for(var i=0,k=_this.obj.panel.length;i<k;i++){
+	for(var i=0,k=_this.obj.panel.length;i&lt;k;i++){
 		for( var n in  _this.obj.panel[i].modify ){					
 			for( var m in  _this.obj.panel[i].modify[n] ){
 				
@@ -4064,32 +4077,32 @@ uinv.FCM.configMgr.model.monitor.panelConfigFormHtml = function(panel,o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var html = '';
-	html += '<table class="monitor_table">';
-		html += '<tr>';
-			for(var i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
-				html += '<th>'+ _this.panelConfigAttributeField[i].name +'</th>';
+	html += '&lt;table class="monitor_table">';
+		html += '&lt;tr>';
+			for(var i=0,k=_this.panelConfigAttributeField.length;i&lt;k;i++){
+				html += '&lt;th>'+ _this.panelConfigAttributeField[i].name +'&lt;/th>';
 			}
-		html += '</tr>';
+		html += '&lt;/tr>';
 		
-		for(var n=0;n<panel.modifyCount;n++){
-			html += '<tr class="row">';
-				for(var i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
-					html += '<td>'+ _this.configTypeToHtml[_this.panelConfigAttributeField[i].type]( _this.panelConfigAttributeField[i], o.form[n] ) +'</td>';
+		for(var n=0;n&lt;panel.modifyCount;n++){
+			html += '&lt;tr class="row">';
+				for(var i=0,k=_this.panelConfigAttributeField.length;i&lt;k;i++){
+					html += '&lt;td>'+ _this.configTypeToHtml[_this.panelConfigAttributeField[i].type]( _this.panelConfigAttributeField[i], o.form[n] ) +'&lt;/td>';
 				}							
-			html += '</tr>';
+			html += '&lt;/tr>';
 		}
 		
 		
-	html += '</table>';
-	html += '<div class="color-config">';
-		for(var n=0;n<panel.modifyCount;n++){
+	html += '&lt;/table>';
+	html += '&lt;div class="color-config">';
+		for(var n=0;n&lt;panel.modifyCount;n++){
 			var param = [];
 			if(typeof o.form[n] == 'object' && typeof o.form[n].styleConfig == 'object'){
 				param = o.form[n].styleConfig;
 			}
 			html += _this.styleConfigHtml( param );
 		}
-	html += '</div>';
+	html += '&lt;/div>';
 	
 	return html;
 };
@@ -4115,31 +4128,31 @@ uinv.FCM.configMgr.model.monitor.styleConfigHtmlRow = function(data){
 	
 	var html = '';
 	
-	html += '<tr class="one" style="list-style:none;">';
-		html += '<td>';
-			html += '<select name="condition" cate="string">';
-				for(var i=0,k=_this.conditionArr.length;i<k;i++){
+	html += '&lt;tr class="one" style="list-style:none;">';
+		html += '&lt;td>';
+			html += '&lt;select name="condition" cate="string">';
+				for(var i=0,k=_this.conditionArr.length;i&lt;k;i++){
 					if(data.condition == _this.conditionArr[i]){
-						html += '<option value="'+_this.conditionArr[i]+'" selected>'+_this.conditionArr[i]+'</option>';
+						html += '&lt;option value="'+_this.conditionArr[i]+'" selected>'+_this.conditionArr[i]+'&lt;/option>';
 					}else{
-						html += '<option value="'+_this.conditionArr[i]+'">'+_this.conditionArr[i]+'</option>';
+						html += '&lt;option value="'+_this.conditionArr[i]+'">'+_this.conditionArr[i]+'&lt;/option>';
 					}
 				}		
-			html += '</select>';
-		html += '</td>';
+			html += '&lt;/select>';
+		html += '&lt;/td>';
 		
-		html += '<td>';
-			html += '<input type="text" name="number" cate="number" value="'+data.number+'" />';
-		html += '</td>';
+		html += '&lt;td>';
+			html += '&lt;input type="text" name="number" cate="number" value="'+data.number+'" />';
+		html += '&lt;/td>';
 		
-		html += '<td>';
-			html += '<input type="text" name="config" cate="color" value="'+data.config+'" />';
-		html += '</td>';
+		html += '&lt;td>';
+			html += '&lt;input type="text" name="config" cate="color" value="'+data.config+'" />';
+		html += '&lt;/td>';
 		
-		html += '<td>';
-			html += '<a onclick="uinv.FCM.configMgr.model.monitor.deleteStyleConfigRow(this);" href="javascript:void(0);"><s>删除</s></a>';
-		html += '</td>';
-	html += '</tr>';
+		html += '&lt;td>';
+			html += '&lt;a onclick="uinv.FCM.configMgr.model.monitor.deleteStyleConfigRow(this);" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>';
+		html += '&lt;/td>';
+	html += '&lt;/tr>';
 	return html;
 };
 
@@ -4189,24 +4202,24 @@ uinv.FCM.configMgr.model.monitor.styleConfigHtml = function(data){
 	
 	var html = '';
 	
-	html += '<div class="row" style="display:none;">';
-		html += '<div class="monitor_twarp">';
-			html += '<table class="monitor_table">';
-				html += '<tr>';
-					html += '<th><s>条件</s></th>';
-					html += '<th><s>数值</s></th>';
-					html += '<th><s>颜色</s></th>';
-					html += '<th><s>操作</s></th>';
-				html += '</tr>';
-				for(var i=0,k=data.length;i<k;i++){
+	html += '&lt;div class="row" style="display:none;">';
+		html += '&lt;div class="monitor_twarp">';
+			html += '&lt;table class="monitor_table">';
+				html += '&lt;tr>';
+					html += '&lt;th>&lt;s>条件&lt;/s>&lt;/th>';
+					html += '&lt;th>&lt;s>数值&lt;/s>&lt;/th>';
+					html += '&lt;th>&lt;s>颜色&lt;/s>&lt;/th>';
+					html += '&lt;th>&lt;s>操作&lt;/s>&lt;/th>';
+				html += '&lt;/tr>';
+				for(var i=0,k=data.length;i&lt;k;i++){
 					html += _this.styleConfigHtmlRow(data[i]);
 				}
-			html += '</table>';
-		html += '</div>';
-		html += '<div class="action" style="margin-bottom:10px;">';
-			html += '<input type="button" class="btn_add" onclick="uinv.FCM.configMgr.model.monitor.addStyleConfigHtmlRow(this);" />';
-		html += '</div>';
-	html += '</div>';
+			html += '&lt;/table>';
+		html += '&lt;/div>';
+		html += '&lt;div class="action" style="margin-bottom:10px;">';
+			html += '&lt;input type="button" class="btn_add" onclick="uinv.FCM.configMgr.model.monitor.addStyleConfigHtmlRow(this);" />';
+		html += '&lt;/div>';
+	html += '&lt;/div>';
 
 	return html;
 };
@@ -4248,7 +4261,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 		if(result.success){
 			var o = _obj.model.transform.str2obj(result.data);
 			if( _obj.model.array.isArray(o) ){
-				for(var i=0,k=o.length;i<k;i++){
+				for(var i=0,k=o.length;i&lt;k;i++){
 					_this.uploadPanelHandle(o[i], fileName);
 				}
 			}else{
@@ -4294,7 +4307,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 		msg += "内容为：\r\n";
 		
 		var arr = [];
-		for(var i=o.modifyCount;i<obj.modifyCount;i++){
+		for(var i=o.modifyCount;i&lt;obj.modifyCount;i++){
 			arr.push(obj.form[i]);
 		}
 		msg += _obj.model.transform.obj2str( arr );
@@ -4325,7 +4338,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 		
 		// 如果要删除的文件与新上传的面板同名，取消删除
 		var path = _this.getPanelPath(o);
-		for(var i=0;i<_this.deleteFileArr.length;i++){
+		for(var i=0;i&lt;_this.deleteFileArr.length;i++){
 			if(_this.deleteFileArr[i] == path){
 				_this.deleteFileArr.splice(i,1);
 				i=0;
@@ -4438,7 +4451,7 @@ uinv.FCM.configMgr.model.monitor.isUsePanel = function(name){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
+	for(var i=0,k=_obj.data.monitor.object.length;i&lt;k;i++){
 		if(  _obj.data.monitor.object[i]['panel'] == name ){
 			return true;
 		}
@@ -4590,7 +4603,7 @@ uinv.FCM.configMgr.model.monitor.addObjectToMemory = function(obj){
 uinv.FCM.configMgr.model.monitor.keyFindObjIndex = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
+	for(var i=0,k=_obj.data.monitor.object.length;i&lt;k;i++){
 		if(  _obj.data.monitor.object[i]['key'] == key ){
 			return i;
 		}
@@ -4608,7 +4621,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObjIndex = function(key){
 uinv.FCM.configMgr.model.monitor.keyFindObj = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
+	for(var i=0,k=_obj.data.monitor.object.length;i&lt;k;i++){
 		if(  _obj.data.monitor.object[i]['key'] == key ){
 			return  _obj.data.monitor.object[i];
 		}
@@ -4626,7 +4639,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObj = function(key){
 uinv.FCM.configMgr.model.monitor.nameFindPanelIndex = function(name){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	for(var i=0,k=_this.obj.panel.length;i<k;i++){
+	for(var i=0,k=_this.obj.panel.length;i&lt;k;i++){
 		if(  _this.obj.panel[i]['name'] == name ){
 			return i;
 		}
@@ -4649,7 +4662,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanel = function(name){
 		_this.obj.panel = [];
 	}
 	
-	for(var i=0,k=_this.obj.panel.length;i<k;i++){
+	for(var i=0,k=_this.obj.panel.length;i&lt;k;i++){
 		if(  _this.obj.panel[i]['name'] == name ){
 			return _this.obj.panel[i];
 		}
@@ -4658,7 +4671,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanel = function(name){
 };
 
 /**
- * @description 物体面板选择下拉控件处理<br />
+ * @description 物体面板选择下拉控件处理&lt;br />
  * 1) 如果新选择的面板modifyCount跟上一个modifyCount不一致，将会删除物体config数据
  * @method objSelectPanel
  * @param {DOM} obj 下拉控件节点
@@ -4717,26 +4730,26 @@ uinv.FCM.configMgr.model.monitor.objHtmlRow = function(obj){
 	var _this = this;
 	
 	var html = '';
-	html += '<tr key="'+obj.key+'">';
-		html += '<td class="name">';
-			html += '<a onclick="uinv.FCM.configMgr.model.monitor.objectRename(this,\''+obj.key+'\');" href="javascript:void(0);">'+obj.name+'</a>';
-		html += '</td>';
+	html += '&lt;tr key="'+obj.key+'">';
+		html += '&lt;td class="name">';
+			html += '&lt;a onclick="uinv.FCM.configMgr.model.monitor.objectRename(this,\''+obj.key+'\');" href="javascript:void(0);">'+obj.name+'&lt;/a>';
+		html += '&lt;/td>';
 		
-		html += '<td>';
-			html += '<select onchange="uinv.FCM.configMgr.model.monitor.objSelectPanel(this,\''+obj.key+'\');">';
-				html += '<option value="">'+u.le.get('请选择面板')+'</option>';
-				for(var i=0,k=_this.obj.panel.length;i<k;i++){
+		html += '&lt;td>';
+			html += '&lt;select onchange="uinv.FCM.configMgr.model.monitor.objSelectPanel(this,\''+obj.key+'\');">';
+				html += '&lt;option value="">'+u.le.get('请选择面板')+'&lt;/option>';
+				for(var i=0,k=_this.obj.panel.length;i&lt;k;i++){
 					if( typeof obj.panel != 'undefined' && obj.panel == _this.obj.panel[i]['name'] ){
-						html += '<option value="'+_this.obj.panel[i]['name']+'" selected>'+_this.obj.panel[i]['caption']+'</option>';
+						html += '&lt;option value="'+_this.obj.panel[i]['name']+'" selected>'+_this.obj.panel[i]['caption']+'&lt;/option>';
 					}else{
-						html += '<option value="'+_this.obj.panel[i]['name']+'">'+_this.obj.panel[i]['caption']+'</option>';
+						html += '&lt;option value="'+_this.obj.panel[i]['name']+'">'+_this.obj.panel[i]['caption']+'&lt;/option>';
 					}
 				}
-			html += '</select>';
-		html += '</td>';
-		html += '<td><a onclick="uinv.FCM.configMgr.model.monitor.configShow(\''+obj.key+'\');" href="javascript:void(0);"><s>编辑</s></a></td>';
-		html += '<td><a onclick="uinv.FCM.configMgr.model.monitor.deleteObject(\''+obj.key+'\');" href="javascript:void(0);"><s>删除</s></a></td>';
-	html += '</tr>';
+			html += '&lt;/select>';
+		html += '&lt;/td>';
+		html += '&lt;td>&lt;a onclick="uinv.FCM.configMgr.model.monitor.configShow(\''+obj.key+'\');" href="javascript:void(0);">&lt;s>编辑&lt;/s>&lt;/a>&lt;/td>';
+		html += '&lt;td>&lt;a onclick="uinv.FCM.configMgr.model.monitor.deleteObject(\''+obj.key+'\');" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>&lt;/td>';
+	html += '&lt;/tr>';
 	return html;
 	
 };
@@ -4751,7 +4764,7 @@ uinv.FCM.configMgr.model.monitor.objHtml = function(){
 	var _this = this;
 	
 	var html = '';
-	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
+	for(var i=0,k=_obj.data.monitor.object.length;i&lt;k;i++){
 		html += _this.objHtmlRow( _obj.data.monitor.object[i] );
 	}
 	
@@ -4773,7 +4786,7 @@ uinv.FCM.configMgr.model.monitor.objectRename = function(obj,key){
 	var box = $(obj).parent();
 	var html = box.html();
 	
-	box.html( '<input type="text" value="'+value+'" />' );
+	box.html( '&lt;input type="text" value="'+value+'" />' );
 	box.find('input').focus().blur(function(){
 		var value = $(this).val();
 		box.html(html).find('a').html(value);
@@ -4800,12 +4813,12 @@ uinv.FCM.configMgr.model.monitor.styleHtmlRow = function(obj){
 	var _this = this;
 
 	var html = '';
-	html += '<tr key="'+obj.name+'">';
-		html += '<td class="name">'+obj.caption+'</td>';
-		html += '<td>' +obj.des+ '</td>';
-		//html += '<td><a href="javascript:void(0);"><s>上传</s></a></td>';
-		html += '<td><a onclick="uinv.FCM.configMgr.model.monitor.deletePanel(\''+obj.name+'\');" href="javascript:void(0);"><s>删除</s></a></td>';
-	html += '</tr>';
+	html += '&lt;tr key="'+obj.name+'">';
+		html += '&lt;td class="name">'+obj.caption+'&lt;/td>';
+		html += '&lt;td>' +obj.des+ '&lt;/td>';
+		//html += '&lt;td>&lt;a href="javascript:void(0);">&lt;s>上传&lt;/s>&lt;/a>&lt;/td>';
+		html += '&lt;td>&lt;a onclick="uinv.FCM.configMgr.model.monitor.deletePanel(\''+obj.name+'\');" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>&lt;/td>';
+	html += '&lt;/tr>';
 	return html;
 };
 
@@ -4819,7 +4832,7 @@ uinv.FCM.configMgr.model.monitor.styleHtml = function(){
 	var _this = this;
 	
 	var html = '';
-	for(var i=0,k=_this.obj.panel.length;i<k;i++){
+	for(var i=0,k=_this.obj.panel.length;i&lt;k;i++){
 		html += _this.styleHtmlRow( _this.obj.panel[i] );
 	}
 	
@@ -4838,7 +4851,7 @@ uinv.FCM.configMgr.model.monitor.alarmLevelHtml = function(){
 	var _this = this;
 	if( typeof  _obj.data.monitor.alarm.alarmLevel == 'object' ){
 		var html = '';
-		for(var i=0,k=_obj.data.monitor.alarm.alarmLevel.length;i<k;i++){
+		for(var i=0,k=_obj.data.monitor.alarm.alarmLevel.length;i&lt;k;i++){
 			html += _this.alarmLevelHtmlRow( _obj.data.monitor.alarm.alarmLevel[i] );
 		}
 	}
@@ -4857,17 +4870,17 @@ uinv.FCM.configMgr.model.monitor.alarmLevelHtmlRow = function(o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var html = '';
-	html += '<tr class="row">';
-		html += '<td>';
-			html += '<input type="text" name="name" value="'+o.name+'" />';
-		html += '</td>';
-		html += '<td>';
-			html += '<input type="text" name="color" value="'+o.color+'" />';
-		html += '</td>';
-		html += '<td>';
-			html += '<a onclick="uinv.FCM.configMgr.model.monitor.deleteAlarmLevelRow(this);" href="javascript:void(0);"><s>删除</s></a>';
-		html += '</td>';
-	html += '</tr>';
+	html += '&lt;tr class="row">';
+		html += '&lt;td>';
+			html += '&lt;input type="text" name="name" value="'+o.name+'" />';
+		html += '&lt;/td>';
+		html += '&lt;td>';
+			html += '&lt;input type="text" name="color" value="'+o.color+'" />';
+		html += '&lt;/td>';
+		html += '&lt;td>';
+			html += '&lt;a onclick="uinv.FCM.configMgr.model.monitor.deleteAlarmLevelRow(this);" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>';
+		html += '&lt;/td>';
+	html += '&lt;/tr>';
 	return html;
 };
 
@@ -4910,7 +4923,7 @@ uinv.FCM.configMgr.model.monitor.init = function(param){
 	
 	_obj.form.submitCallback = 	function(){
 		_obj.model.stringDB.set( _this.index, _this.obj );
-		for(var i=0,k=_this.deleteFileArr.length;i<k;i++){
+		for(var i=0,k=_this.deleteFileArr.length;i&lt;k;i++){
 			uinv.server.manager.frame.delFile(_this.deleteFileArr[i]);
 		}
 	};
@@ -5062,7 +5075,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.string = function(o,form){
 		var form = {};
 		form[o.value] = '';
 	}
-	return '<input type="text" name="'+o.value+'" value="'+form[o.value]+'" cate="string" />';
+	return '&lt;input type="text" name="'+o.value+'" value="'+form[o.value]+'" cate="string" />';
 };
 
 /**
@@ -5076,7 +5089,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.number =  function(o,form){
 		var form = {};
 		form[o.value] = 0;
 	}
-	return '<input type="text" name="'+o.value+'" value="'+form[o.value]+'" cate="number" />';
+	return '&lt;input type="text" name="'+o.value+'" value="'+form[o.value]+'" cate="number" />';
 };
 
 /**
@@ -5092,15 +5105,15 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.boolean = function(o,form){
 	}
 	var html = '';
 	
-	html += '<select name="'+o.value+'" cate="boolean">';
+	html += '&lt;select name="'+o.value+'" cate="boolean">';
 		if( form[o.value] ){
-			html += '<option value="1" selected>是</option>';
-			html += '<option value="0">否</option>';
+			html += '&lt;option value="1" selected>是&lt;/option>';
+			html += '&lt;option value="0">否&lt;/option>';
 		}else{
-			html += '<option value="1">是</option>';
-			html += '<option value="0"  selected>否</option>';							
+			html += '&lt;option value="1">是&lt;/option>';
+			html += '&lt;option value="0"  selected>否&lt;/option>';							
 		}
-	html += '</select>';
+	html += '&lt;/select>';
 
 	return html;
 };
@@ -5125,7 +5138,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.styleConfig = function(o,form)
 		
 	_this.styleConfigHtml(form[o.value]);
 	
-	return '<input type="button" class="btn_set" name="'+o.value+'" cate="styleConfig" onclick="uinv.FCM.configMgr.model.monitor.settingStyleConfigDisplay(this);" />';
+	return '&lt;input type="button" class="btn_set" name="'+o.value+'" cate="styleConfig" onclick="uinv.FCM.configMgr.model.monitor.settingStyleConfigDisplay(this);" />';
 };
 /**
  * @description 比较两个对象是否完全相等
@@ -5224,7 +5237,7 @@ uinv.FCM.configMgr.model.object.clone = function(obj) {
 
     if (obj instanceof Array) {
         var copy = [];
-        for (var i = 0, len = obj.length; i < len; ++i) {
+        for (var i = 0, len = obj.length; i &lt; len; ++i) {
             copy[i] = _this.clone(obj[i]);
         }
         return copy;
@@ -5238,7 +5251,7 @@ uinv.FCM.configMgr.model.object.clone = function(obj) {
         return copy;
     }
 
-    _obj.note.alert(_obj.msg.S12);
+    _obj.note.alert("不能复制对象");
 };
 
 /**
@@ -5309,7 +5322,7 @@ uinv.FCM.configMgr.model.panel.keyFindObj = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	for(var i = 0,k=_obj.data.panel.length; i<k; i++){
+	for(var i = 0,k=_obj.data.panel.length; i&lt;k; i++){
 		if( key == _obj.data.panel[i].key){
 			return _obj.data.panel[i];
 		}
@@ -5327,7 +5340,7 @@ uinv.FCM.configMgr.model.panel.keyFindObj = function(key){
 uinv.FCM.configMgr.model.panel.keyDelObj = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	for(var i = 0, k = _obj.data.panel.length; i<k; i++){
+	for(var i = 0, k = _obj.data.panel.length; i&lt;k; i++){
 		if( key == _obj.data.panel[i].key ){
 			_obj.data.panel.splice(i,1);
 			return true;
@@ -5351,7 +5364,7 @@ uinv.FCM.configMgr.model.panel.createObject = function(){
 		// 检查是否已存在对象
 		var bool = _this.checkObjectExist( obj.where );
 		if(bool) {
-			_obj.note.alert(_obj.msg.S6);
+			_obj.note.alert('错误：条件[ '+_obj.model.transform.obj2str(obj.where)+' ] 的对象已存在!' );
 			return false;
 		}
 	
@@ -5379,7 +5392,7 @@ uinv.FCM.configMgr.model.panel.insertDividingLine = function(obj,key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	if(!key){
-		_obj.note.dialog(_obj.msg.S7);
+		_obj.note.dialog('错误：请指定对象！');
 		return false;
 	}
 	
@@ -5430,7 +5443,7 @@ uinv.FCM.configMgr.model.panel.deleteObjPanel = function(obj){
 		$(obj).parents('li').remove();
 		
 	}else{
-		com = _obj.note.confirm(_obj.msg.S8);
+		com = _obj.note.confirm('确定删除吗？');
 		
 		if(!com){
 			return false;
@@ -5497,15 +5510,15 @@ uinv.FCM.configMgr.model.panel.modifyObjectName = function(key,obj){
 	var _this = this;
 	var value = $(obj).html();
 	var h3 = $(obj).parent();
-	h3.html( '<input type="text" value="'+value+'" />' );
+	h3.html( '&lt;input type="text" value="'+value+'" />' );
 	h3.find('input').focus().blur(function(){
 		_this.keyFindObj(key).name = $(this).val();
-		$(this).parent().html( '<span onclick="uinv.FCM.configMgr.model.panel.modifyObjectName(\''+key+'\',this);">' +  $(this).val() + '</span>');
+		$(this).parent().html( '&lt;span onclick="uinv.FCM.configMgr.model.panel.modifyObjectName(\''+key+'\',this);">' +  $(this).val() + '&lt;/span>');
 	}).keydown(function(evt){
 		var e = evt || windown.event;
 		if(e.keyCode == 13){
 			_this.keyFindObj(key).name = $(this).val();
-			$(this).parent().html('<span onclick="uinv.FCM.configMgr.model.panel.modifyObjectName(\''+key+'\',this);">' +  $(this).val() + '</span>');
+			$(this).parent().html('&lt;span onclick="uinv.FCM.configMgr.model.panel.modifyObjectName(\''+key+'\',this);">' +  $(this).val() + '&lt;/span>');
 		}
 	});
 };
@@ -5522,26 +5535,26 @@ uinv.FCM.configMgr.model.panel.mkhtml = function(obj){
 	var _this = this;
 
 	var html = '';
-	html += '<div class="list obj-'+obj.key+'">';
-		html += '<div class="header" style="position:relative;">';
-			html += '<h3><span onclick="uinv.FCM.configMgr.model.panel.modifyObjectName(\''+obj.key+'\',this);">'+obj.name+'</span></h3>';
-			html += '<span class="action" style="position:absolute;right:10px;">';
-				//html += '<a onclick="uinv.FCM.configMgr.model.panel.insertDividingLine(this,\''+obj.key+'\');" href="javascript:void(0);"><s>分割线</s></a>';
+	html += '&lt;div class="list obj-'+obj.key+'">';
+		html += '&lt;div class="header" style="position:relative;">';
+			html += '&lt;h3>&lt;span onclick="uinv.FCM.configMgr.model.panel.modifyObjectName(\''+obj.key+'\',this);">'+obj.name+'&lt;/span>&lt;/h3>';
+			html += '&lt;span class="action" style="position:absolute;right:10px;">';
+				//html += '&lt;a onclick="uinv.FCM.configMgr.model.panel.insertDividingLine(this,\''+obj.key+'\');" href="javascript:void(0);">&lt;s>分割线&lt;/s>&lt;/a>';
 				//html += ' | ';
-				html += '<a onclick="uinv.FCM.configMgr.model.panel.deleteObj(\''+obj.key+'\');" href="javascript:void(0);"><s>删除</s></a>';
-			html += '</span>';
-		html += '</div>';
-		html += '<ul>';
+				html += '&lt;a onclick="uinv.FCM.configMgr.model.panel.deleteObj(\''+obj.key+'\');" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>';
+			html += '&lt;/span>';
+		html += '&lt;/div>';
+		html += '&lt;ul>';
 		
-		for(var i=0,k=obj.order.length; i<k; i++){
+		for(var i=0,k=obj.order.length; i&lt;k; i++){
 			if( obj.order[i] in _this.obj ){
 				html += _this.mkHtmlList( obj, _this.obj[obj.order[i]] );
 			}else{
 				html += _this.mkHtmlList( obj, {'name':obj.order[i] });
 			}
 		}
-		html += '</ul>';
-	html += '</div>';
+		html += '&lt;/ul>';
+	html += '&lt;/div>';
 	
 	return html;
 };
@@ -5562,29 +5575,29 @@ uinv.FCM.configMgr.model.panel.mkHtmlList = function(obj, panel){
 	var delbtnValue = panel.name == u.le.get('分割线') ? '撤销' : '删除';
 	
 	var html = '';
-	html += '<li>';
-		html +=  '<span class="panel_name">'+panel.name+'</span>';
-		html += '<span class="action panel_up">';
-			html += '<a onclick="uinv.FCM.configMgr.model.panel.upMove(this);" class="'+_this.upMoveBtnClass+'" href="javascript:void(0);" style="display:none;"><s>上移</s></a>';
-			html += '</span>';
+	html += '&lt;li>';
+		html +=  '&lt;span class="panel_name">'+panel.name+'&lt;/span>';
+		html += '&lt;span class="action panel_up">';
+			html += '&lt;a onclick="uinv.FCM.configMgr.model.panel.upMove(this);" class="'+_this.upMoveBtnClass+'" href="javascript:void(0);" style="display:none;">&lt;s>上移&lt;/s>&lt;/a>';
+			html += '&lt;/span>';
 			if( typeof panel['itemConfig'] == 'object' ){
-				html += '<span class="panel_edit">';
-				html += '<a onclick="uinv.FCM.configMgr.model.panel.itemConfig(\''+key+'\',\''+obj.key+'\');" href="javascript:void(0);"><s>编辑</s></a>';
-				html += '</span>';				
+				html += '&lt;span class="panel_edit">';
+				html += '&lt;a onclick="uinv.FCM.configMgr.model.panel.itemConfig(\''+key+'\',\''+obj.key+'\');" href="javascript:void(0);">&lt;s>编辑&lt;/s>&lt;/a>';
+				html += '&lt;/span>';				
 			}else{
-				html += '<span class="panel_edit">';
+				html += '&lt;span class="panel_edit">';
 				html +='&nbsp;';
-				html +='</span>';
+				html +='&lt;/span>';
 			}
-			html += '<span class="panel_del">';
-			html += '<a onclick="uinv.FCM.configMgr.model.panel.deleteObjPanel(this);" href="javascript:void(0);"><s>'+delbtnValue+'</s></a>';
-			html += '</span>';
-			html += '<span class="panel_checkbox">';
-			html += '<input onclick="uinv.FCM.configMgr.model.panel.checkd(this);"';
+			html += '&lt;span class="panel_del">';
+			html += '&lt;a onclick="uinv.FCM.configMgr.model.panel.deleteObjPanel(this);" href="javascript:void(0);">&lt;s>'+delbtnValue+'&lt;/s>&lt;/a>';
+			html += '&lt;/span>';
+			html += '&lt;span class="panel_checkbox">';
+			html += '&lt;input onclick="uinv.FCM.configMgr.model.panel.checkd(this);"';
 			html += ' name="'+ obj.key +'" value="'+ key +'"';
 			html += ' cate="panel" path="panel" type="checkbox" />';
-		html += '</span>';
-	html += '</li>';
+		html += '&lt;/span>';
+	html += '&lt;/li>';
 	
 	return html;
 };
@@ -5602,7 +5615,7 @@ uinv.FCM.configMgr.model.panel.itemConfig = function(key, objectKey){
 	var _this = this;	
 	
 	if(typeof _this.obj[key]['itemConfig'] == 'undefined'){
-		_this.note.alert(_obj.msg.S9);
+		_this.note.alert('此项不可编辑，数据错误！');
 	}
 
 	_panel = _this.keyFindObj(objectKey);
@@ -5610,18 +5623,18 @@ uinv.FCM.configMgr.model.panel.itemConfig = function(key, objectKey){
 	_panel['itemData'][key] = typeof _panel['itemData'][key] == 'undefined' ? {} : _panel['itemData'][key];
 
 	var html = '';
-	html += '<div class="itemConfig" style="padding:10px;">';
-	for(var i = 0 , k = _this.obj[key]['itemConfig'].length; i<k; i++){
+	html += '&lt;div class="itemConfig" style="padding:10px;">';
+	for(var i = 0 , k = _this.obj[key]['itemConfig'].length; i&lt;k; i++){
 		if( typeof _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']] == 'function' ){
 			html += _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']](_this.obj[key]['itemConfig'][i],key, objectKey);
 		}
 	}
-	html += '<p class="action">';
-		html += '<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
-		html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.panel.itemConfigSubmit();" />';
-	html += '</p>';
+	html += '&lt;p class="action">';
+		html += '&lt;input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
+		html += '&lt;input class="btn_save" onclick="uinv.FCM.configMgr.model.panel.itemConfigSubmit();" />';
+	html += '&lt;/p>';
 	
-	html += '</div>';
+	html += '&lt;/div>';
 	
 	_obj.model.dialog.show(html);
 	_this.itemConfigFormInit(objectKey);
@@ -5784,7 +5797,7 @@ uinv.FCM.configMgr.model.panel.checkedPanelOrder = function(name){
 	var panelForm = _obj.form.box.find('*[name=' + name + ']:checked');
 	
 	if( panelObj.item.length == panelForm.length ){
-		for( var i = 0, k = panelObj.item.length; i<k; i++ ){
+		for( var i = 0, k = panelObj.item.length; i&lt;k; i++ ){
 			var obj = _obj.form.box.find('*[name=' + name + '][value="' + panelObj.item[i] + '"]');
 			var index = obj.parents('li').index();
 			if(i != index){
@@ -5834,7 +5847,7 @@ uinv.FCM.configMgr.model.panel.upMove = function(obj){
 uinv.FCM.configMgr.model.panel.checkHasKey = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	for(var i = 0 ,k = _obj.data.panel.length ; i<k ; i++){
+	for(var i = 0 ,k = _obj.data.panel.length ; i&lt;k ; i++){
 		if( _obj.data.panel[i].key == key ){
 			return true;
 		}
@@ -5924,7 +5937,7 @@ uinv.FCM.configMgr.model.panel.checkObjectExist = function( obj ){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	for(var i=0,k=_obj.data.panel.length; i<k; i++){
+	for(var i=0,k=_obj.data.panel.length; i&lt;k; i++){
 		if( _this.judgeObjectIsEq(obj, _obj.data.panel[i].obj ) ){
 			return true;
 		}
@@ -5990,7 +6003,7 @@ uinv.FCM.configMgr.model.panel.addPanelToGlobalLibCallback = function( obj ){
 	_this.obj[obj.name] = _obj.model.object.clone(obj);
 	
 	// 添加到各个面板
-	for(var i = 0,k=_obj.data.panel.length; i<k; i++){
+	for(var i = 0,k=_obj.data.panel.length; i&lt;k; i++){
 		var key = _obj.data.panel[i].key;
 		
 		//_obj.data.panel[i].lib[obj.name] = _obj.model.object.clone(obj);
@@ -6090,7 +6103,7 @@ uinv.FCM.configMgr.model.panel.upload = function(obj, selector){
 	if(selector){
 		var panelObj = _this.keyFindObj( selector );
 		if(typeof panelObj.lib == 'undefined'){
-			_obj.note.alert(_obj.msg.s10);
+			_obj.note.alert('错误：物体不存在！');
 			return;
 		}
 	}
@@ -6119,7 +6132,7 @@ uinv.FCM.configMgr.model.panel.uploadCallback = function(result){
 
 		if(bool){
 			if(_obj.model.array.isArray(obj)){
-				for(var i = 0,k=obj.length; i<k; i++){
+				for(var i = 0,k=obj.length; i&lt;k; i++){
 					_this.add(obj[i] , _this.addCallback );
 				}
 			}else{
@@ -6144,11 +6157,12 @@ uinv.FCM.configMgr.model.panel.verificationPanelData = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
+	var msg = '数据格式错误';
 	if(_obj.model.array.isArray(obj)){
 	
-		for(var i = 0, k=obj.length; i<k; i++){
+		for(var i = 0, k=obj.length; i&lt;k; i++){
 			if( !_obj.model.object.isObject( obj[i] ) || typeof obj[i].name == 'undefined' ){
-				_obj.note.dialog( _obj.msg.S11  );
+				_obj.note.dialog( msg );
 				return false;
 			}
 		}
@@ -6159,11 +6173,11 @@ uinv.FCM.configMgr.model.panel.verificationPanelData = function(obj){
 		if( typeof obj.name != 'undefined' ){
 			return true;
 		}else{
-			_obj.note.dialog( _obj.msg.S11  );
+			_obj.note.dialog( msg );
 			return false;
 		}
 	}else{
-		_obj.note.dialog( _obj.msg.S11  );
+		_obj.note.dialog( msg );
 		return false;
 	}
 };
@@ -6180,12 +6194,12 @@ uinv.FCM.configMgr.model.panel.globalPanelListHtml = function(obj){
 	var _this = this;
 	
 	var html = '';
-	html += '<li style="margin:10px; position:relative;" key="'+ obj.name +'">';
+	html += '&lt;li style="margin:10px; position:relative;" key="'+ obj.name +'">';
 		html += obj.name;
-		html += '<span class="action" style="position:absolute;right:0; top:0;">';
-			html += '<a onclick="uinv.FCM.configMgr.model.panel.deleteGlobalPanel(this, \''+ obj.name+'\');" href="javascript:void(0);"><s>删除</s></a>';
-		html += '</span>';
-	html += '</li>';
+		html += '&lt;span class="action" style="position:absolute;right:0; top:0;">';
+			html += '&lt;a onclick="uinv.FCM.configMgr.model.panel.deleteGlobalPanel(this, \''+ obj.name+'\');" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>';
+		html += '&lt;/span>';
+	html += '&lt;/li>';
 	
 	return html;
 };
@@ -6200,24 +6214,24 @@ uinv.FCM.configMgr.model.panel.globalPanelManager = function(){
 	var _this = this;
 	
 	var html = '';
-	html += '<div style="width:500px;" class="'+_this.globalPanelManagementBoxClass+'">';
-		html += '<div>';
-			html += '<s>上传新面板</s><input type="file" onchange="uinv.FCM.configMgr.model.panel.upload(this);" /><br />';
-			html += '<input type="text" /><button><s>添加分类</s></button>';
-		html += '</div>';
+	html += '&lt;div style="width:500px;" class="'+_this.globalPanelManagementBoxClass+'">';
+		html += '&lt;div>';
+			html += '&lt;s>上传新面板&lt;/s>&lt;input type="file" onchange="uinv.FCM.configMgr.model.panel.upload(this);" />&lt;br />';
+			html += '&lt;input type="text" />&lt;button>&lt;s>添加分类&lt;/s>&lt;/button>';
+		html += '&lt;/div>';
 		
-		html += '<br />';
+		html += '&lt;br />';
 		
-		html += '<ul style="width:100%;">';
+		html += '&lt;ul style="width:100%;">';
 		for(var i in _this.obj){
 			html += _this.globalPanelListHtml( _this.obj[i] );
 		}
-		html += '</ul>';
+		html += '&lt;/ul>';
 		
-		html += '<div class="action" style="width:100%;text-align:center;">';
-			html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.dialog.close(uinv.FCM.configMgr.model.panel.globalPanelManagerCallBack);" />';
-		html += '</div>';
-	html += '</div>';
+		html += '&lt;div class="action" style="width:100%;text-align:center;">';
+			html += '&lt;input class="btn_save" onclick="uinv.FCM.configMgr.model.dialog.close(uinv.FCM.configMgr.model.panel.globalPanelManagerCallBack);" />';
+		html += '&lt;/div>';
+	html += '&lt;/div>';
 	
 	_obj.model.dialog.show(html);
 };
@@ -6269,7 +6283,7 @@ uinv.FCM.configMgr.model.panel.init = function(classStr){
 	_this.obj = _this.getPanelList();
 
 	var html = '';
-	for(var i=0,k=_obj.data.panel.length; i<k; i++){
+	for(var i=0,k=_obj.data.panel.length; i&lt;k; i++){
 		html += _this.mkhtml( _obj.data.panel[i] );
 	}
 	
@@ -6498,17 +6512,17 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.string = function(obj,key,ob
 	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem;
 	
  	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
+ 	html += '&lt;p class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
+	 		html += '&lt;span>'+obj.name+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
+	 		html += '&lt;span>'+obj.caption+'&lt;/span>';
 	 	}
  	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="string" path="'+key+'" value="'+value+'" />';
+ 		html += '&lt;input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="string" path="'+key+'" value="'+value+'" />';
  	
- 	html += '</p>';
+ 	html += '&lt;/p>';
  	return html;
 };
 
@@ -6526,17 +6540,17 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.number = function(obj,key,ob
 	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem;
 	
  	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
+ 	html += '&lt;p class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
+	 		html += '&lt;span>'+obj.name+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
+	 		html += '&lt;span>'+obj.caption+'&lt;/span>';
 	 	}
 	 	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="number" path="'+key+'" value="'+value+'" />';
+ 		html += '&lt;input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="number" path="'+key+'" value="'+value+'" />';
  	
- 	html += '</p>';
+ 	html += '&lt;/p>';
  	return html;
 };
 
@@ -6554,23 +6568,23 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.bool = function(obj,key,obje
 	var value = typeof obj.defaultItem == 'undefined' ? false :  obj.defaultItem;
 	
  	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
+ 	html += '&lt;p class="row" style="margin:10px auto;">';
  		
  	if( typeof obj.caption == 'undefined' ){
- 		html += '<span>'+obj.name+'</span>';	
+ 		html += '&lt;span>'+obj.name+'&lt;/span>';	
  	}else{
- 		html += '<span>'+obj.caption+'</span>';
+ 		html += '&lt;span>'+obj.caption+'&lt;/span>';
  	}
 	 	
  	if(value){
-		html += obj.items[true]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" checked /> ';
-		html += obj.items[false]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" /> ';
+		html += obj.items[true]+'&lt;input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" checked /> ';
+		html += obj.items[false]+'&lt;input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" /> ';
  	}else{
- 		html += obj.items[true]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" /> ';
-		html += obj.items[false]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" checked /> ';
+ 		html += obj.items[true]+'&lt;input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" /> ';
+		html += obj.items[false]+'&lt;input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" checked /> ';
  	}
 	 	
- 	html += '</p>';
+ 	html += '&lt;/p>';
  	return html;
 };
 
@@ -6588,17 +6602,17 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.color = function(obj,key,obj
 	var value = typeof obj.defaultItem == 'undefined' ? '#FFFFFF' :  obj.defaultItem;
 	
  	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
+ 	html += '&lt;p class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
+	 		html += '&lt;span>'+obj.name+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
+	 		html += '&lt;span>'+obj.caption+'&lt;/span>';
 	 	}
  	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="color" path="'+key+'" value="'+value+'"  />';
+ 		html += '&lt;input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="color" path="'+key+'" value="'+value+'"  />';
  	
- 	html += '</p>';
+ 	html += '&lt;/p>';
  	return html;
 };
 
@@ -6614,21 +6628,21 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml['3dposition'] = function(obj
 	var _this = uinv.FCM.configMgr.model.panel;
 	
  	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
+ 	html += '&lt;div class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
+	 		html += '&lt;span>'+obj.name+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
+	 		html += '&lt;span>'+obj.caption+'&lt;/span>';
 	 	}
 	 	
- 		html += '<ul>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="3dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="3dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[2]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="3dposition" path="'+key+'"  /></li>';
- 		html += '</ul>';
+ 		html += '&lt;ul>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj.items[0]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="3dposition" path="'+key+'"  />&lt;/li>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj.items[1]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="3dposition" path="'+key+'"  />&lt;/li>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj.items[2]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="3dposition" path="'+key+'"  />&lt;/li>';
+ 		html += '&lt;/ul>';
  	
- 	html += '</div>';
+ 	html += '&lt;/div>';
  	return html;					
 };
 
@@ -6644,20 +6658,20 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml['2dposition'] = function(obj
 	var _this = uinv.FCM.configMgr.model.panel;
 	
  	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
+ 	html += '&lt;div class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span><s>'+obj.name+'</s></span>';	
+	 		html += '&lt;span>&lt;s>'+obj.name+'&lt;/s>&lt;/span>';	
 	 	}else{
-	 		html += '<span><s>'+obj.caption+'</s></span>';
+	 		html += '&lt;span>&lt;s>'+obj.caption+'&lt;/s>&lt;/span>';
 	 	}
 	 	
- 		html += '<ul>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="2dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="2dposition" path="'+key+'"  /></li>';
- 		html += '</ul>';
+ 		html += '&lt;ul>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj.items[0]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="2dposition" path="'+key+'"  />&lt;/li>';
+	 		html += '&lt;li style="list-style:none;">&lt;span>&lt;s>'+obj.items[1]+'&lt;/s>&lt;/span>&lt;input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="2dposition" path="'+key+'"  />&lt;/li>';
+ 		html += '&lt;/ul>';
  	
- 	html += '</div>';
+ 	html += '&lt;/div>';
  	return html;					
 };
 
@@ -6675,24 +6689,24 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.select = function(obj,key,ob
 	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem;
 	
  	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
+ 	html += '&lt;div class="row" style="margin:10px auto;">';
  		
 	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
+	 		html += '&lt;span>'+obj.name+'&lt;/span>';	
 	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
+	 		html += '&lt;span>'+obj.caption+'&lt;/span>';
 	 	}
 	 	
-	 	html += '<select class="row_select" objectkey="'+objectKey+'" name="'+obj.name+'" cate="select" path="'+key+'">';
-	 	for(var i = 0, k = obj.items.length; i<k; i++){
+	 	html += '&lt;select class="row_select" objectkey="'+objectKey+'" name="'+obj.name+'" cate="select" path="'+key+'">';
+	 	for(var i = 0, k = obj.items.length; i&lt;k; i++){
 	 		if( obj.items[i]==value ){
-	 			html += '<option value="'+obj.items[i]+'" selected>'+obj.items[i]+'</option>';
+	 			html += '&lt;option value="'+obj.items[i]+'" selected>'+obj.items[i]+'&lt;/option>';
 	 		}else{
-	 			html += '<option value="'+obj.items[i]+'">'+obj.items[i]+'</option>';
+	 			html += '&lt;option value="'+obj.items[i]+'">'+obj.items[i]+'&lt;/option>';
 	 		}
 	 	}
-	 	html += '</select>';
-	 html += '</div>';
+	 	html += '&lt;/select>';
+	 html += '&lt;/div>';
 	 return html;
 };
 //-----------------------------------
@@ -6771,37 +6785,34 @@ uinv.FCM.configMgr.model.resources.uploadResourcesFileCallback = function(result
  * @static
  */
 uinv.FCM.configMgr.model.resources.checkForm = function(param){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;	
-	
 	var result = {
 		'error' : 0,
-		'msg'   : []
+		'msg'   : ''
 	};
 	
 	if( typeof param.title == 'undefined' || param.title === "" ){
 		result.error = 1;
-		result.msg.push(_obj.msg.S13);
+		result.msg += "资源名称不能为空\r\n";
 	}
 	
 	if( typeof param.serverPath == 'undefined' || param.serverPath === "" ){
 		result.error = 1;
-		result.msg.push(_obj.msg.S14);
+		result.msg += "服务器路径不能为空 \r\n";
 	}
 	
 	if( typeof param.version == 'undefined' || param.version === "" ){
 		result.error = 1;
-		result.msg.push(_obj.msg.S15);
+		result.msg += "版本号不能为空 \r\n";
 	}	
 
 	if( typeof param.localPath == 'undefined' || param.localPath === "" ){
 		result.error = 1;
-		result.msg.push(_obj.msg.S16);
+		result.msg += "本地路径不能为空 \r\n";
 	}
 	
 	if( param.type == 'create' && ( typeof param.resourcesFile == 'undefined' || param.resourcesFile === "" ) ){
 		result.error = 1;
-		result.msg.push(_obj.msg.S17);
+		result.msg += "资源包不能为空 \r\n";
 	}
 	
 	return result;
@@ -6843,7 +6854,7 @@ uinv.FCM.configMgr.model.resources.handleResourcesManager = function(obj){
 	var res = _this.checkForm(param);
 	
 	if( res.error ){
-		_obj.note.alert( res.msg.join("\r\n") );
+		_obj.note.alert( res.msg );
 		return false;
 	}
 	
@@ -6853,14 +6864,14 @@ uinv.FCM.configMgr.model.resources.handleResourcesManager = function(obj){
 		if( ( param.type=='create' && _this.serverPathFindObj(param.serverPath) ) || 
 				( param.type=='update' && _this.serverPathFindObj(param.serverPath) && 
 				_obj.data.resources[param.originalTitle].serverPath != param.serverPath )  ){
-			_obj.note.alert(_obj.msg.F3(pathinfo.filename));
+			_obj.note.alert(pathinfo.filename + '资源已存在！');
 			return false;
 		}
 		
 		var bool = true;
 	
 		if(param.type=='create' && param.title in _obj.data.resources){
-			bool = _obj.note.confirm( _obj.msg.F4(param.title) );
+			bool = _obj.note.confirm( param.title + u.le.get('已存在，确认要覆盖旧的吗？'));
 			if(bool){
 				_this.delFileArr.push(_obj.data.resources[param.title].serverPath);
 			}else{
@@ -6871,7 +6882,7 @@ uinv.FCM.configMgr.model.resources.handleResourcesManager = function(obj){
 		if( param.type=='create' || (param.type=='update' && param.serverPath != _obj.data.resources[param.originalTitle].serverPath ) ){
 			var result = uinv.server.manager.frame.isFileExist(param.serverPath);	
 			if(result.data){
-				bool = _obj.note.confirm( _obj.msg.F5(pathinfo.filename) );
+				bool = _obj.note.confirm('同名资源包'+pathinfo.filename+'已存在服务器，确认要覆盖旧的吗？');
 				if(!bool){
 					return;
 				}
@@ -6968,7 +6979,7 @@ uinv.FCM.configMgr.model.resources.resourcesManager = function(key){
 	var _this = this;
 	
 	if(key && typeof _obj.data.resources[key] == 'undefined'){
-		_this.note.alert( _obj.msg.S10 );
+		_this.note.alert('对象不存在');
 		return false;
 	}
 	
@@ -6977,18 +6988,18 @@ uinv.FCM.configMgr.model.resources.resourcesManager = function(key){
 	var data = _this.keyFindObj(key);
 	
 	var html = '';
-	html += '<div class="'+_this.resourcesManagerClass+'" style="width:400px; height:200px; padding:10px;">';
-		html += '<p style="margin:10px auto 0;"><span><s>资源名称</s></span><input type="text" original="'+title+'" name="title" value="'+title+'" /></p>';
-		html += '<p style="margin:10px auto 0; display:none;"><span><s>服务器目录</s></span><input type="text" original="'+data.serverPath+'" name="serverPath" value="'+data.serverPath+'" /></p>';
-		html += '<p style="margin:10px auto 0;"><span><s>本地目录</s></span><input type="text" name="localPath" value="'+data.localPath+'" /></p>';
-		html += '<p style="margin:10px auto 0;"><span><s>版本</s></span><input type="text" name="version" value="'+data.version+'" readonly /></p>';
-		html += '<p style="margin:10px auto 0;"><span><s>资源包</s></span><input type="file" name="resourcesFile" /></p>';
-		html += '<input type="hidden" name="type" value="'+type+'" />';
-		html += '<p class="action">';
-			html += '<input type="button" class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
-			html += '<input type="button" class="btn_save" onclick="uinv.FCM.configMgr.model.resources.handleResourcesManager(this);" />';
-		html += '</p>';
-	html += '</div>';
+	html += '&lt;div class="'+_this.resourcesManagerClass+'" style="width:400px; height:200px; padding:10px;">';
+		html += '&lt;p style="margin:10px auto 0;">&lt;span>&lt;s>资源名称&lt;/s>&lt;/span>&lt;input type="text" original="'+title+'" name="title" value="'+title+'" />&lt;/p>';
+		html += '&lt;p style="margin:10px auto 0; display:none;">&lt;span>&lt;s>服务器目录&lt;/s>&lt;/span>&lt;input type="text" original="'+data.serverPath+'" name="serverPath" value="'+data.serverPath+'" />&lt;/p>';
+		html += '&lt;p style="margin:10px auto 0;">&lt;span>&lt;s>本地目录&lt;/s>&lt;/span>&lt;input type="text" name="localPath" value="'+data.localPath+'" />&lt;/p>';
+		html += '&lt;p style="margin:10px auto 0;">&lt;span>&lt;s>版本&lt;/s>&lt;/span>&lt;input type="text" name="version" value="'+data.version+'" readonly />&lt;/p>';
+		html += '&lt;p style="margin:10px auto 0;">&lt;span>&lt;s>资源包&lt;/s>&lt;/span>&lt;input type="file" name="resourcesFile" />&lt;/p>';
+		html += '&lt;input type="hidden" name="type" value="'+type+'" />';
+		html += '&lt;p class="action">';
+			html += '&lt;input type="button" class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
+			html += '&lt;input type="button" class="btn_save" onclick="uinv.FCM.configMgr.model.resources.handleResourcesManager(this);" />';
+		html += '&lt;/p>';
+	html += '&lt;/div>';
 	
 	_obj.model.dialog.show(html);
 };
@@ -7073,18 +7084,18 @@ uinv.FCM.configMgr.model.resources.mkhtml = function(){
 	var _this = this;
 	var html = '';
 	for(var i in _obj.data.resources){
-		html += '<tr>';
-			html += '<td>' + i + '</td>';
-			html += '<td><a href="'+ _obj.global.projectPath +_obj.data.resources[i].serverPath+'" target="_blank" title="'+u.le.get("点击下载")+'">' + _obj.data.resources[i].serverPath + '</a></td>';
-			html += '<td>' + _obj.data.resources[i].localPath + '</td>';
-			html += '<td>' + _obj.data.resources[i].version + '</td>';
-			html += '<td>';
-				html += '<a onclick="uinv.FCM.configMgr.model.resources.delResource(\''+i+'\');" href="javascript:void(0);"><s>删除</s></a>';
-			html += '</td>';
-			html += '<td>';
-				html += '<a onclick="uinv.FCM.configMgr.model.resources.resourcesManager(\''+i+'\');" href="javascript:void(0);"><s>更新</s></a>';
-			html += '</td>';
-		html += '</td>';
+		html += '&lt;tr>';
+			html += '&lt;td>' + i + '&lt;/td>';
+			html += '&lt;td>&lt;a href="'+ _obj.global.projectPath +_obj.data.resources[i].serverPath+'" target="_blank" title="'+u.le.get("点击下载")+'">' + _obj.data.resources[i].serverPath + '&lt;/a>&lt;/td>';
+			html += '&lt;td>' + _obj.data.resources[i].localPath + '&lt;/td>';
+			html += '&lt;td>' + _obj.data.resources[i].version + '&lt;/td>';
+			html += '&lt;td>';
+				html += '&lt;a onclick="uinv.FCM.configMgr.model.resources.delResource(\''+i+'\');" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>';
+			html += '&lt;/td>';
+			html += '&lt;td>';
+				html += '&lt;a onclick="uinv.FCM.configMgr.model.resources.resourcesManager(\''+i+'\');" href="javascript:void(0);">&lt;s>更新&lt;/s>&lt;/a>';
+			html += '&lt;/td>';
+		html += '&lt;/td>';
 	}
 	_obj.form.box.find(_this.classStr).find('tr:gt(0)').remove();
 	_obj.form.box.find(_this.classStr).append( html );
@@ -7102,7 +7113,7 @@ uinv.FCM.configMgr.model.resources.delResource = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	var bool = _obj.note.confirm( _obj.msg.S18 );
+	var bool = _obj.note.confirm("服务器会删除此资源包，确认删除吗？");
 	if(!bool){
 		return false;
 	}
@@ -7218,16 +7229,16 @@ uinv.FCM.configMgr.model.selector.show = function(fun){
 	_this.publicSelectNodeSubmitCallback = fun;
 	
 	var html = '';
-	html += '<div class="selector" style="width:500px;height:300px;">';
-		html += '<div class="tree" style="height:250px;width:100%;border:1px solid #EEE;overflow-y:auto;">';
+	html += '&lt;div class="selector" style="width:500px;height:300px;">';
+		html += '&lt;div class="tree" style="height:250px;width:100%;border:1px solid #EEE;overflow-y:auto;">';
 			html += _this.publicShowHtml(_this.obj.tree);
-		html += '</div>';
+		html += '&lt;/div>';
 		
-		html += '<div class="action">';
-			html += '<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
-			html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit();" />';
-		html += '</div>';
-	html += '</div>';
+		html += '&lt;div class="action">';
+			html += '&lt;input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />';
+			html += '&lt;input class="btn_save" onclick="uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit();" />';
+		html += '&lt;/div>';
+	html += '&lt;/div>';
 	
 	_obj.model.dialog.show(html);
 };
@@ -7265,10 +7276,10 @@ uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit = function(){
 				_this.publicSelectNodeSubmitCallback(_obj.model.object.clone(obj));
 			}
 		}else{ 
-			_obj.note.alert( _obj.msg.S19 );
+			_obj.note.alert('错误：系统异常!');
 		}
 	}else{
-		_obj.note.alert( _obj.msg.S20 );
+		_obj.note.alert('提示：请选择节点!');
 	}
 };
 
@@ -7288,7 +7299,7 @@ uinv.FCM.configMgr.model.selector.publicSelectNode = function(obj,key){
 	if(_this.objIsExistWhere(key)){
 		$(obj).parents('.treeNode:eq(0)').addClass('ok');
 	}else{
-		_obj.note.alert( _obj.msg.S21 );
+		_obj.note.alert('未添加条件的节点不能选择!');
 	}
 };
 
@@ -7309,22 +7320,22 @@ uinv.FCM.configMgr.model.selector.publicShowHtml = function(obj){
 	}
 	
 	var html = '';
-	for(var i = 0, k = obj.length; i<k; i++){
+	for(var i = 0, k = obj.length; i&lt;k; i++){
 		if( _this.objIsExistWhere(obj[i].key ) ){
-			html += '<div class="treeNode where" key="'+obj[i].key+'">';
-			html += '<span onclick="uinv.FCM.configMgr.model.selector.publicSelectNode(this,\''+obj[i].key+'\');">'+ _this.obj.lib[obj[i].key].name +'</span>';
+			html += '&lt;div class="treeNode where" key="'+obj[i].key+'">';
+			html += '&lt;span onclick="uinv.FCM.configMgr.model.selector.publicSelectNode(this,\''+obj[i].key+'\');">'+ _this.obj.lib[obj[i].key].name +'&lt;/span>';
 		}else{
-			html += '<div class="treeNode">';
-			html += '<span>'+ _this.obj.lib[obj[i].key].name +'</span>';
+			html += '&lt;div class="treeNode">';
+			html += '&lt;span>'+ _this.obj.lib[obj[i].key].name +'&lt;/span>';
 		}
 		
 		if( typeof obj[i].childrenNode == 'object' ){
-			html += '<div class="childrenNode">';
+			html += '&lt;div class="childrenNode">';
 				html += _this.publicShowHtml(obj[i].childrenNode);
-			html += '</div>';
+			html += '&lt;/div>';
 		}
 		
-		html += '</div>';
+		html += '&lt;/div>';
 	}
 	
 	return html;
@@ -7389,7 +7400,7 @@ uinv.FCM.configMgr.model.selector.nodeRename = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	var html = '<input type="text" value="'+_this.obj.lib[key].name+'" />';
+	var html = '&lt;input type="text" value="'+_this.obj.lib[key].name+'" />';
 	_this.keyFindNodeHtmlObj(key).find('>span').html(html).find('input').focus().blur(function(){
 		_this.obj.lib[key].name = $(this).val();
 		$(this).parent().html( _this.obj.lib[key].name );
@@ -7434,15 +7445,10 @@ uinv.FCM.configMgr.model.selector.keyFindNodeHtmlObj = function(key){
 uinv.FCM.configMgr.model.selector.deleteNode = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	
-	var bool = _obj.note.confirm( _obj.msg.S23 );
-	
-	if(bool){
-		var node = _this.keyFindTreeNodeObj( _this.obj.tree, key);
-		node.parent.splice(node.index,1);
-		delete _this.obj.lib[key];
-		_this.keyFindNodeHtmlObj(key).remove();		
-	}
+	var node = _this.keyFindTreeNodeObj( _this.obj.tree, key);
+	node.parent.splice(node.index,1);
+	delete _this.obj.lib[key];
+	_this.keyFindNodeHtmlObj(key).remove();
 };
 
 
@@ -7520,10 +7526,10 @@ uinv.FCM.configMgr.model.selector.insertNodeToTreeDom = function(node, parentKey
 	var _this = this;
 	
 	var html = '';
-	html += '<div  key="'+node.key+'" class="treeNode" style="padding-left:20px;">';
-		html += '<span onclick="uinv.FCM.configMgr.model.selector.selectNode(\''+node.key+'\',event);"  oncontextmenu="uinv.FCM.configMgr.model.selector.contextMenu(event,this);">'+node.name+'</span>';
-		html += '<div class="childrenNode"></div>';
-	html += '</div>';
+	html += '&lt;div  key="'+node.key+'" class="treeNode" style="padding-left:20px;">';
+		html += '&lt;span onclick="uinv.FCM.configMgr.model.selector.selectNode(\''+node.key+'\',event);"  oncontextmenu="uinv.FCM.configMgr.model.selector.contextMenu(event,this);">'+node.name+'&lt;/span>';
+		html += '&lt;div class="childrenNode">&lt;/div>';
+	html += '&lt;/div>';
 
 	_this.keyFindNodeHtmlObj( _this.selectKey ).find('>.childrenNode').append(html);
 };
@@ -7541,7 +7547,7 @@ uinv.FCM.configMgr.model.selector.insertNodeToTreeDom = function(node, parentKey
 uinv.FCM.configMgr.model.selector.keyFindTreeNodeObj = function(obj,key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;				
-	for(var i = 0, k=obj.length; i<k; i++){
+	for(var i = 0, k=obj.length; i&lt;k; i++){
 		if(obj[i].key == key){
 			return {'obj':obj[i],'parent':obj,'index':i};
 		}
@@ -7568,20 +7574,20 @@ uinv.FCM.configMgr.model.selector.recursionTreeHtml = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var html = '';
-	for(var i = 0, k=obj.length; i<k; i++){
+	for(var i = 0, k=obj.length; i&lt;k; i++){
 		if( _this.objIsExistWhere( obj[i].key ) ){
-			html += '<div class="treeNode where" style="padding-left:20px;"  key="'+obj[i].key+'">';
+			html += '&lt;div class="treeNode where" style="padding-left:20px;"  key="'+obj[i].key+'">';
 		}else{
-			html += '<div class="treeNode" style="padding-left:20px;"  key="'+obj[i].key+'">';
+			html += '&lt;div class="treeNode" style="padding-left:20px;"  key="'+obj[i].key+'">';
 		}
-			html += '<span onclick="uinv.FCM.configMgr.model.selector.selectNode(\''+obj[i].key+'\',event);" oncontextmenu="uinv.FCM.configMgr.model.selector.contextMenu(event,this);">'+_this.obj.lib[obj[i].key].name+'</span>';
+			html += '&lt;span onclick="uinv.FCM.configMgr.model.selector.selectNode(\''+obj[i].key+'\',event);" oncontextmenu="uinv.FCM.configMgr.model.selector.contextMenu(event,this);">'+_this.obj.lib[obj[i].key].name+'&lt;/span>';
 			
-			html += '<div class="childrenNode">';
+			html += '&lt;div class="childrenNode">';
 			if(typeof obj[i].childrenNode == 'object'){
 				html +=  _this.recursionTreeHtml(obj[i].childrenNode);
 			}
-			html += '</div>';
-		html += '</div>';
+			html += '&lt;/div>';
+		html += '&lt;/div>';
 	}
 	return html;
 };
@@ -7598,12 +7604,12 @@ uinv.FCM.configMgr.model.selector.treeHtml = function(){
 	
 	var html = '';
 	
-	html += '<div class="childrenNode">';
+	html += '&lt;div class="childrenNode">';
 	if(typeof _this.obj.tree == 'object'){
 		html += _this.recursionTreeHtml(  _this.obj.tree );
 	}
 	
-	html += '</div>';
+	html += '&lt;/div>';
 	
 	return html;
 };
@@ -7717,59 +7723,59 @@ uinv.FCM.configMgr.model.selector.editNodeWhere = function(key){
 	}
 	
 	var html = '';
-	html += '<div class="addnodewhere">';
+	html += '&lt;div class="addnodewhere">';
 		
-		html += '<div class="row">';
-			html += '<span>';
-				html += '<input type="radio" name="wheretype" value="classid" checked /> ';
-				html += '<s>classid</s>';
-			html += '</span>';
-			html += '<select class="classidselect" name="classid">';
+		html += '&lt;div class="row">';
+			html += '&lt;span>';
+				html += '&lt;input type="radio" name="wheretype" value="classid" checked /> ';
+				html += '&lt;s>classid&lt;/s>';
+			html += '&lt;/span>';
+			html += '&lt;select class="classidselect" name="classid">';
 			for(var i in classid){
 				if( _this.obj.lib[key].formDataRemember.classid == classid[i].classId ) {
-					html += '<option value="'+classid[i].classId+'" selected>'+ classid[i].caption +'</option>';
+					html += '&lt;option value="'+classid[i].classId+'" selected>'+ classid[i].caption +'&lt;/option>';
 				}else{
-					html += '<option value="'+classid[i].classId+'">'+ classid[i].caption +'</option>';
+					html += '&lt;option value="'+classid[i].classId+'">'+ classid[i].caption +'&lt;/option>';
 				}
 			}
-			html += '</select>';
-		html += '</div>';
+			html += '&lt;/select>';
+		html += '&lt;/div>';
 		
-		html += '<div class="row">';
-			html += '<span>';
-				html += '<input type="radio" name="wheretype" value="name" /> ';
-				html += '<s>物体名称</s>';
-			html += '</span>';
-			html += '<input type="text" name="name" value="'+_this.obj.lib[key].formDataRemember.name+'" />';
-		html += '</div>';
+		html += '&lt;div class="row">';
+			html += '&lt;span>';
+				html += '&lt;input type="radio" name="wheretype" value="name" /> ';
+				html += '&lt;s>物体名称&lt;/s>';
+			html += '&lt;/span>';
+			html += '&lt;input type="text" name="name" value="'+_this.obj.lib[key].formDataRemember.name+'" />';
+		html += '&lt;/div>';
 		
-		html += '<div class="row">';
-			html += '<span>';
-				html += '<input type="radio" name="wheretype" value="attribute" /> ';
-				html += '<s>属性定义</s>';
-			html += '</span>';
+		html += '&lt;div class="row">';
+			html += '&lt;span>';
+				html += '&lt;input type="radio" name="wheretype" value="attribute" /> ';
+				html += '&lt;s>属性定义&lt;/s>';
+			html += '&lt;/span>';
 			
-			html += '<div class="row" style="clear:both;">';
-				html += '<span><s>属性名</s></span><input type="text" name="key" value="'+_this.obj.lib[key].formDataRemember.attribute[0].key+'" /> ';
-			html += '</div>';
-			html += '<div class="row">';
-				html += '<span><s>属性值</s></span><input type="text" name="value" value="'+_this.obj.lib[key].formDataRemember.attribute[0].value+'" />';
-			html += '</div>';
-		html += '</div>';
+			html += '&lt;div class="row" style="clear:both;">';
+				html += '&lt;span>&lt;s>属性名&lt;/s>&lt;/span>&lt;input type="text" name="key" value="'+_this.obj.lib[key].formDataRemember.attribute[0].key+'" /> ';
+			html += '&lt;/div>';
+			html += '&lt;div class="row">';
+				html += '&lt;span>&lt;s>属性值&lt;/s>&lt;/span>&lt;input type="text" name="value" value="'+_this.obj.lib[key].formDataRemember.attribute[0].value+'" />';
+			html += '&lt;/div>';
+		html += '&lt;/div>';
 		
-		html += '<div class="row">';
-			html += '<span>';
-				html += '<input type="radio" name="wheretype" value="fun" /> ';
-				html += '<s>函数</s>';
-			html += '</span>';
-			html += '<textarea name="fun">'+_this.obj.lib[key].formDataRemember.fun+'</textarea>';
-		html += '</div>';
+		html += '&lt;div class="row">';
+			html += '&lt;span>';
+				html += '&lt;input type="radio" name="wheretype" value="fun" /> ';
+				html += '&lt;s>函数&lt;/s>';
+			html += '&lt;/span>';
+			html += '&lt;textarea name="fun">'+_this.obj.lib[key].formDataRemember.fun+'&lt;/textarea>';
+		html += '&lt;/div>';
 		
-		html += '<div class="btn">';
-			html += '<input class="btn_save" onclick="uinv.FCM.configMgr.model.selector.addNodeWhereFormSubmit(\''+key+'\');" />';
-			html += '<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.selector.cancelAddNodeWhere();"  />';
-		html += '</div>';
-	html += '</div>';
+		html += '&lt;div class="btn">';
+			html += '&lt;input class="btn_save" onclick="uinv.FCM.configMgr.model.selector.addNodeWhereFormSubmit(\''+key+'\');" />';
+			html += '&lt;input class="btn_cancel" onclick="uinv.FCM.configMgr.model.selector.cancelAddNodeWhere();"  />';
+		html += '&lt;/div>';
+	html += '&lt;/div>';
 	
 	_obj.model.dialog.show(html);
 	_this.addNodeWhereFormInit(key);
@@ -7870,30 +7876,30 @@ uinv.FCM.configMgr.model.selector.getContextMenuHtml = function(e, key){
 	};
 	
 	var html = '';
-	html += '<div class="config-contextmenu" style="background:#E6E6FA;width:100px;position:absolute;z-index:9999;left:'+pos.x+'px;top:'+pos.y+'px;">';
+	html += '&lt;div class="config-contextmenu" style="background:#E6E6FA;width:100px;position:absolute;z-index:9999;left:'+pos.x+'px;top:'+pos.y+'px;">';
 		if( key && key in _this.obj.lib ){
 			if(_this.keyFindNodeHtmlObj(key).find('>.childrenNode>.treeNode').length>=1){
 				if( _this.keyFindNodeHtmlObj(key).find('>.childrenNode').is(':visible') ){
-					html += '<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'treeNodeHide\',\''+key+'\');"><s>收起</s></li>';
+					html += '&lt;li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'treeNodeHide\',\''+key+'\');">&lt;s>收起&lt;/s>&lt;/li>';
 				}else{
-					html += '<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'treeNodeShow\',\''+key+'\');"><s>展开</s></li>';
+					html += '&lt;li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'treeNodeShow\',\''+key+'\');">&lt;s>展开&lt;/s>&lt;/li>';
 				}
 			}
 			
-			html += '<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'createNode\',\''+key+'\');"><s>创建节点</s></li>';
-			html += '<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'deleteNode\',\''+key+'\');"><s>删除节点</s></li>';
-			html += '<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'nodeRename\',\''+key+'\');"><s>重新命名</s></li>';
+			html += '&lt;li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'createNode\',\''+key+'\');">&lt;s>创建节点&lt;/s>&lt;/li>';
+			html += '&lt;li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'deleteNode\',\''+key+'\');">&lt;s>删除节点&lt;/s>&lt;/li>';
+			html += '&lt;li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'nodeRename\',\''+key+'\');">&lt;s>重新命名&lt;/s>&lt;/li>';
 			if( _this.objIsExistWhere(key) ){
-				html += '<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'editNodeWhere\',\''+key+'\');"><s>修改条件</s></li>';
-				html += '<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'delNodeWhere\',\''+key+'\');"><s>删除条件</s></li>';					
+				html += '&lt;li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'editNodeWhere\',\''+key+'\');">&lt;s>修改条件&lt;/s>&lt;/li>';
+				html += '&lt;li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'delNodeWhere\',\''+key+'\');">&lt;s>删除条件&lt;/s>&lt;/li>';					
 			}else{
-				html += '<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'editNodeWhere\',\''+key+'\');"><s>添加条件</s></li>';
+				html += '&lt;li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'editNodeWhere\',\''+key+'\');">&lt;s>添加条件&lt;/s>&lt;/li>';
 			}
 
 		}else{
-			html += '<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'createNode\',\''+key+'\');"><s>创建节点</s></li>';
+			html += '&lt;li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting(\'createNode\',\''+key+'\');">&lt;s>创建节点&lt;/s>&lt;/li>';
 		}
-	html += '</div>';
+	html += '&lt;/div>';
 	return html;
 };
 
@@ -7994,7 +8000,7 @@ uinv.FCM.configMgr.model.selector.init = function(classStr){
 		_this.contextMenuHide();
 	});
 	
-	$('.config-info').html( _obj.msg.S22 );
+	$('.config-info').html('加粗表示已添加条件');
 };
 /**
  * @description classid类型
@@ -8061,7 +8067,7 @@ uinv.FCM.configMgr.model.statistics.classStr = '';
  * @description 统计条件范围
  * @type Array
  */
-uinv.FCM.configMgr.model.statistics.where = ['<','>','='];
+uinv.FCM.configMgr.model.statistics.where = ['&lt;','>','='];
 
 /**
  * @description 统计对象名称映射
@@ -8137,28 +8143,28 @@ uinv.FCM.configMgr.model.statistics.mkhtmlTr = function(obj){
 	obj.number = typeof obj.number == 'undefined' ? '' : obj.number;
 
 	var html = '';
-	html += '<tr style="height:50px;" class="item">';
-		html += '<td>';
-			html += '<select key="where">';
-			for(var i = 0,k = _this.where.length; i<k; i++){
+	html += '&lt;tr style="height:50px;" class="item">';
+		html += '&lt;td>';
+			html += '&lt;select key="where">';
+			for(var i = 0,k = _this.where.length; i&lt;k; i++){
 				if(obj.where == _this.where[i]){
-					html += '<option value="'+_this.where[i]+'" selected>'+_this.where[i]+'</option>';
+					html += '&lt;option value="'+_this.where[i]+'" selected>'+_this.where[i]+'&lt;/option>';
 				}else{
-					html += '<option value="'+_this.where[i]+'">'+_this.where[i]+'</option>';
+					html += '&lt;option value="'+_this.where[i]+'">'+_this.where[i]+'&lt;/option>';
 				}
 			}
-			html += '</select>';
-		html += '</td>';
-		html += '<td>';
-			html += '<input class="config-input-text config-input-percentage" type="text" key="number" value="'+obj.number+'" /><span class="config-unit">%</span>';
-		html += '</td>';
-		html += '<td>';
-			html += '<input type="text" key="color" value="'+obj.color+'" />';
-		html += '</td>';
-		html += '<td>';
-			html += '<button onclick="uinv.FCM.configMgr.model.statistics.delRow(this);"><s>删除</s></button>';
-		html += '</td>';
-	html += '</tr>';
+			html += '&lt;/select>';
+		html += '&lt;/td>';
+		html += '&lt;td>';
+			html += '&lt;input class="config-input-text config-input-percentage" type="text" key="number" value="'+obj.number+'" />&lt;span class="config-unit">%&lt;/span>';
+		html += '&lt;/td>';
+		html += '&lt;td>';
+			html += '&lt;input type="text" key="color" value="'+obj.color+'" />';
+		html += '&lt;/td>';
+		html += '&lt;td>';
+			html += '&lt;button onclick="uinv.FCM.configMgr.model.statistics.delRow(this);">&lt;s>删除&lt;/s>&lt;/button>';
+		html += '&lt;/td>';
+	html += '&lt;/tr>';
 	
 	return html;
 };
@@ -8176,20 +8182,20 @@ uinv.FCM.configMgr.model.statistics.mkhtml = function(){
 	
 	for(var i in _obj.data.statistics){
 		var html = '';
-		html += '<div class="list">';
-			html += '<div class="header">'+_this.nameDisplay[i]+'</div>';
-			html += '<table style="width:100%;text-align:center;" path="statistics" name="'+i+'" cate="statistics">';
-				html += '<tr>';
-					html += '<th><s>条件</s></th>';
-					html += '<th><s>数值</s></th>';
-					html += '<th><s>颜色</s></th>';
-					html += '<th><s>删除</s></th>';
-				html += '</tr>';
-			html += '</table>';
-			html += '<div class="action" style="text-align:right;">';
-				html += '<input type="button" class="btn_add" onclick="uinv.FCM.configMgr.model.statistics.addRow(this);" />';
-			html += '</div>';
-		html += '</div>';
+		html += '&lt;div class="list">';
+			html += '&lt;div class="header">'+_this.nameDisplay[i]+'&lt;/div>';
+			html += '&lt;table style="width:100%;text-align:center;" path="statistics" name="'+i+'" cate="statistics">';
+				html += '&lt;tr>';
+					html += '&lt;th>&lt;s>条件&lt;/s>&lt;/th>';
+					html += '&lt;th>&lt;s>数值&lt;/s>&lt;/th>';
+					html += '&lt;th>&lt;s>颜色&lt;/s>&lt;/th>';
+					html += '&lt;th>&lt;s>删除&lt;/s>&lt;/th>';
+				html += '&lt;/tr>';
+			html += '&lt;/table>';
+			html += '&lt;div class="action" style="text-align:right;">';
+				html += '&lt;input type="button" class="btn_add" onclick="uinv.FCM.configMgr.model.statistics.addRow(this);" />';
+			html += '&lt;/div>';
+		html += '&lt;/div>';
 		arr.push(html);
 	}
 	
@@ -8310,9 +8316,6 @@ uinv.FCM.configMgr.model.stringDB.set = function( index , obj, fun ){
  * @static
  */
 uinv.FCM.configMgr.model.transform.obj2str = function(o){
-	
-	return $.toJson(o);
-	
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
@@ -8334,7 +8337,7 @@ uinv.FCM.configMgr.model.transform.obj2str = function(o){
             }
             r= "{"+r.join()+"}";
         }else{
-            for( var i=0,k = o.length; i<k ; i++ ){
+            for( var i=0,k = o.length; i&lt;k ; i++ ){
                 r.push( _this.obj2str(o[i]) );
             }
             r= "[" + r.join() + "]";
@@ -8352,8 +8355,6 @@ uinv.FCM.configMgr.model.transform.obj2str = function(o){
  * @static
  */
 uinv.FCM.configMgr.model.transform.str2obj = function(s){
-	return $.jsonTo(s);
-	
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
@@ -8412,7 +8413,7 @@ uinv.FCM.configMgr.model.viewpoint.createObject = function(){
 uinv.FCM.configMgr.model.viewpoint.keyFindObj = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	for(var i=0,k=_obj.data.viewpoint.length; i<k; i++){
+	for(var i=0,k=_obj.data.viewpoint.length; i&lt;k; i++){
 		if( _obj.data.viewpoint[i].key == key ){
 			return _obj.data.viewpoint[i];
 		}
@@ -8431,7 +8432,7 @@ uinv.FCM.configMgr.model.viewpoint.keyFindObj = function(key){
 uinv.FCM.configMgr.model.viewpoint.keyFindIndex = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	for(var i=0,k=_obj.data.viewpoint.length; i<k; i++){
+	for(var i=0,k=_obj.data.viewpoint.length; i&lt;k; i++){
 		if( _obj.data.viewpoint[i].key == key ){
 			return i;
 		}
@@ -8505,15 +8506,15 @@ uinv.FCM.configMgr.model.viewpoint.mkhtmlRow = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;			
 	var html = '';
-	html += '<tr class="row" key="'+obj.key+'">';
-		html += '<td>';
-			html += '<h3><span onclick="uinv.FCM.configMgr.model.viewpoint.objectRename(this,\''+obj.key+'\');" class="name">'+obj.name+'</span></h3>';
-		html += '</td>';
+	html += '&lt;tr class="row" key="'+obj.key+'">';
+		html += '&lt;td>';
+			html += '&lt;h3>&lt;span onclick="uinv.FCM.configMgr.model.viewpoint.objectRename(this,\''+obj.key+'\');" class="name">'+obj.name+'&lt;/span>&lt;/h3>';
+		html += '&lt;/td>';
 		for(var i in obj['data']){
-			html += '<td><input class="w50" type="text" key="'+i+'" name="'+obj.key+'" cate="viewpoint" path="viewpoint" /></td>';
+			html += '&lt;td>&lt;input class="w50" type="text" key="'+i+'" name="'+obj.key+'" cate="viewpoint" path="viewpoint" />&lt;/td>';
 		}
-		html += '<td><a onclick="uinv.FCM.configMgr.model.viewpoint.objectDelete(this,\''+obj.key+'\');" href="javascript:void(0);"><s>删除</s></a></td>';
-	html += '</tr>';
+		html += '&lt;td>&lt;a onclick="uinv.FCM.configMgr.model.viewpoint.objectDelete(this,\''+obj.key+'\');" href="javascript:void(0);">&lt;s>删除&lt;/s>&lt;/a>&lt;/td>';
+	html += '&lt;/tr>';
 	return html;
 };
 
@@ -8526,7 +8527,7 @@ uinv.FCM.configMgr.model.viewpoint.mkhtml = function(){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var html = '';
-	for(var i=0,k=_obj.data.viewpoint.length; i<k; i++){
+	for(var i=0,k=_obj.data.viewpoint.length; i&lt;k; i++){
 		html += _this.mkhtmlRow(_obj.data.viewpoint[i]);	
 	}
 	
@@ -8550,7 +8551,7 @@ uinv.FCM.configMgr.model.viewpoint.objectRename = function(obj,key){
 	
 	var dom = $(obj).parent();
 	var html = dom.html();
-	dom.html( '<input type="text" value="'+$(obj).html()+'" />' );
+	dom.html( '&lt;input type="text" value="'+$(obj).html()+'" />' );
 	dom.find('input').focus().blur(function(){
 		_this.keyFindObj(key).name = $(this).val();
 		dom.html(html);
@@ -8577,13 +8578,9 @@ uinv.FCM.configMgr.model.viewpoint.objectDelete = function(obj,key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	var bool = _obj.note.confirm( _obj.msg.S24 );
-	
-	if(bool){
-		var index = _this.keyFindIndex(key);
-		_obj.data.viewpoint.splice(index,1);
-		$(obj).parents('*[key='+key+']').remove();	
-	}
+	var index = _this.keyFindIndex(key);
+	_obj.data.viewpoint.splice(index,1);
+	$(obj).parents('*[key='+key+']').remove();
 };
 
 /**
@@ -8598,68 +8595,6 @@ uinv.FCM.configMgr.model.viewpoint.init = function(classStr){
 	_this.classStr = classStr || '';
 	_this.mkhtml();
 };
-//----------------------------------------
-// 普通提示区
-//----------------------------------------
-
-uinv.FCM.configMgr.msg.S1 = "下载配置";
-uinv.FCM.configMgr.msg.S2 = "正在打包...";
-
-uinv.FCM.configMgr.msg.S3 = "错误(S3)：您上传的备份文件有错误，请重新上传正确备份的zip压缩包文件！";
-uinv.FCM.configMgr.msg.S4 = "错误(S4)：您上传的备份配置信息数据格式错误，不能执行恢复操作！";
-uinv.FCM.configMgr.msg.S5 = "警告(S5)：删除后不可以恢复，确认删除此图片？";
-uinv.FCM.configMgr.msg.S6 = "错误(S6)：同样条件的物体已存在，不能重复创建重复条件的物体！";
-uinv.FCM.configMgr.msg.S7 = "错误(S7)：请指定要操作的物体！";
-uinv.FCM.configMgr.msg.S8 = "警告(S8)：此操作将会把所有物体下同名项一并删除，继续删除吗？";
-uinv.FCM.configMgr.msg.S9 = "错误(S9)：此项不可编辑配置！";
-uinv.FCM.configMgr.msg.S10 = "错误(S10)：物体不存在！";
-uinv.FCM.configMgr.msg.S11 = "错误(S11)：数据格式验证不通过！";
-uinv.FCM.configMgr.msg.S12 = "错误(S12)：不能克隆对象！";
-
-uinv.FCM.configMgr.msg.S13 = "错误(S13)：资源名称不能为空！";
-uinv.FCM.configMgr.msg.S14 = "错误(S14)：服务器路径不能为空！";
-uinv.FCM.configMgr.msg.S15 = "错误(S15)：版本号不能为空！";
-uinv.FCM.configMgr.msg.S16 = "错误(S16)：本地路径不能为空 ！";
-uinv.FCM.configMgr.msg.S17 = "错误(S17)：资源包不能为空！";
-
-uinv.FCM.configMgr.msg.S18 = "警告(S18)：删除资源包不可恢复，确认删除吗？";
-uinv.FCM.configMgr.msg.S19 = "错误(S19)：系统异常！";
-
-uinv.FCM.configMgr.msg.S20 = "错误(S20)：请选择节点！";
-uinv.FCM.configMgr.msg.S21 = "错误(S21)：未添加条件的节点不能选择！";
-uinv.FCM.configMgr.msg.S22 = "节点字体加粗表示已添加条件";
-uinv.FCM.configMgr.msg.S23 = "警告(S23)：此操作将会将节点及它的子节点彻底删除，确认删除吗？";
-
-uinv.FCM.configMgr.msg.S24 = "警告(S24)：此操作将会将会删除此物体及物体的视角配置信息，确认删除吗？";
-
-
-
-//---------------------------------------
-// 函数提示区
-//---------------------------------------
-
-uinv.FCM.configMgr.msg.F1 = function(fileName){
-	return "警告(F1)：恢复操作将会把上传的配置信息覆盖当前系统的配置信息不可恢复\r\n确认继续"+fileName+"配置恢复操作？";	
-};
-
-uinv.FCM.configMgr.msg.F2 = function(fileName){
-	return "警告(F2)：" + fileName + "图片已存在，是否要覆盖旧的图片？";
-};
-
-uinv.FCM.configMgr.msg.F3 = function(fileName){
-	return "错误(F3)：" + fileName + "资源已存在！";
-};
-
-uinv.FCM.configMgr.msg.F4 = function(title){
-	return "警告(F4)：" + title + "资源已存在，要覆盖旧的资源项吗？";
-};
-
-uinv.FCM.configMgr.msg.F5 = function(fileName){
-	return "警告(F5)：同名资源包 "+fileName+" 已存在服务器，要覆盖旧的资源包吗？";
-};
-
-
-
 /**
  * @description 弹出警告信息，将信息翻译后调用系统的alert函数
  * @method alert
@@ -8689,10 +8624,10 @@ uinv.FCM.configMgr.note.confirm = function(str){
  */
 uinv.FCM.configMgr.note.dialog = function(str){
 	var html = '';
-	html += '<div class="dialog-note">';
-		html += '<div><s>' + str + '</s></div>';
-		html += '<div class="action"><button class="button-btn" onclick="uinv.FCM.configMgr.model.dialog.close();"><s>确定</s></button></div>';
-	html += '</div>';
+	html += '&lt;div class="dialog-note">';
+		html += '&lt;div>&lt;s>' + str + '&lt;/s>&lt;/div>';
+		html += '&lt;div class="action">&lt;button class="button-btn" onclick="uinv.FCM.configMgr.model.dialog.close();">&lt;s>确定&lt;/s>&lt;/button>&lt;/div>';
+	html += '&lt;/div>';
 	
 	uinv.FCM.configMgr.model.dialog.show(html);
 };
@@ -8720,7 +8655,7 @@ uinv.FCM.configMgr.other.conditionReplaceName = function(o){
 				break;
 			case 'attribute' :
 				o.REGTYPE_ATTRIBUTE = {};
-				for(var n=0,m=o[i].length;n<m;n++){
+				for(var n=0,m=o[i].length;n&lt;m;n++){
 					o.REGTYPE_ATTRIBUTE[o[i][n].key] =  o[i][n].value;
 				}
 				delete o[i];
@@ -8772,4 +8707,26 @@ uinv.FCM.configMgr.translate = function(){
 		}
 	});
 	*/
-};
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="init.html">init</a></li><li><a href="init_.html">init()</a></li></ul><h3>Namespaces</h3><ul><li><a href="uinv.FCM.configMgr.api.html">api</a></li><li><a href="uinv.FCM.configMgr.data.html">data</a></li><li><a href="uinv.FCM.configMgr.form.html">form</a></li><li><a href="uinv.FCM.configMgr.form.createTypeHtml.html">createTypeHtml</a></li><li><a href="uinv.FCM.configMgr.form.setValue.html">setValue</a></li><li><a href="uinv.FCM.configMgr.form.type.html">type</a></li><li><a href="uinv.FCM.configMgr.global.html">global</a></li><li><a href="uinv.FCM.configMgr.model.array.html">array</a></li><li><a href="uinv.FCM.configMgr.model.backup.html">backup</a></li><li><a href="uinv.FCM.configMgr.model.colorpicke.html">colorpicke</a></li><li><a href="uinv.FCM.configMgr.model.dialog.html">dialog</a></li><li><a href="uinv.FCM.configMgr.model.download.html">download</a></li><li><a href="uinv.FCM.configMgr.model.images.html">images</a></li><li><a href="uinv.FCM.configMgr.model.key.html">key</a></li><li><a href="uinv.FCM.configMgr.model.layer.html">layer</a></li><li><a href="_.html">itemConfigInitData;</a></li><li><a href="__.html">itemConfigSetData;</a></li><li><a href="uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.html">itemConfigTypeToHtml</a></li><li><a href="uinv.FCM.configMgr.model.monitor.html">monitor</a></li><li><a href="uinv.FCM.configMgr.model.monitor.configSetData.html">configSetData</a></li><li><a href="uinv.FCM.configMgr.model.monitor.configStyleTypeToData.html">configStyleTypeToData</a></li><li><a href="uinv.FCM.configMgr.model.monitor.configTypeToData.html">configTypeToData</a></li><li><a href="uinv.FCM.configMgr.model.monitor.configTypeToHtml.html">configTypeToHtml</a></li><li><a href="uinv.FCM.configMgr.model.object.html">object</a></li><li><a href="uinv.FCM.configMgr.model.panel.html">panel</a></li><li><a href="___.html">itemConfigInitData;</a></li><li><a href="____.html">itemConfigSetData;</a></li><li><a href="uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.html">itemConfigTypeToHtml</a></li><li><a href="uinv.FCM.configMgr.model.resources.html">resources</a></li><li><a href="uinv.FCM.configMgr.model.selector.html">selector</a></li><li><a href="uinv.FCM.configMgr.model.selector.whereTypeSetObj.html">whereTypeSetObj</a></li><li><a href="uinv.FCM.configMgr.model.statistics.html">statistics</a></li><li><a href="uinv.FCM.configMgr.model.stringDB.html">stringDB</a></li><li><a href="uinv.FCM.configMgr.model.transform.html">transform</a></li><li><a href="uinv.FCM.configMgr.model.viewpoint.html">viewpoint</a></li><li><a href="uinv.FCM.configMgr.note.html">note</a></li><li><a href="uinv.FCM.configMgr.other.html">other</a></li><li><a href="uinv.FCM.configMgr.translate.html">translate</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#addAlarmLevel">addAlarmLevel</a></li><li><a href="global.html#addHtmlRow">addHtmlRow</a></li><li><a href="global.html#addLayerOneToObj">addLayerOneToObj</a></li><li><a href="global.html#addLayerToGlobalLib">addLayerToGlobalLib</a></li><li><a href="global.html#addLayerToGlobalLibCallback">addLayerToGlobalLibCallback</a></li><li><a href="global.html#addLayerToObjLib">addLayerToObjLib</a></li><li><a href="global.html#addLayerToObjLibCallback">addLayerToObjLibCallback</a></li><li><a href="global.html#addNodeWhereFormInit">addNodeWhereFormInit</a></li><li><a href="global.html#addNodeWhereFormSubmit">addNodeWhereFormSubmit</a></li><li><a href="global.html#addObject">addObject</a></li><li><a href="global.html#addObjectToMemory">addObjectToMemory</a></li><li><a href="global.html#addPanelOneToObj">addPanelOneToObj</a></li><li><a href="global.html#addPanelToGlobalLib">addPanelToGlobalLib</a></li><li><a href="global.html#addPanelToGlobalLibCallback">addPanelToGlobalLibCallback</a></li><li><a href="global.html#addPanelToMemory">addPanelToMemory</a></li><li><a href="global.html#addPanelToObjLib">addPanelToObjLib</a></li><li><a href="global.html#addPanelToObjLibCallback">addPanelToObjLibCallback</a></li><li><a href="global.html#addRow">addRow</a></li><li><a href="global.html#addStyleConfigHtmlRow">addStyleConfigHtmlRow</a></li><li><a href="global.html#alarmLevelHtml">alarmLevelHtml</a></li><li><a href="global.html#alarmLevelHtmlRow">alarmLevelHtmlRow</a></li><li><a href="global.html#alert">alert</a></li><li><a href="global.html#backupFiles">backupFiles</a></li><li><a href="global.html#cancelAddNodeWhere">cancelAddNodeWhere</a></li><li><a href="global.html#cancelSelectNode">cancelSelectNode</a></li><li><a href="global.html#checkedLayerOrder">checkedLayerOrder</a></li><li><a href="global.html#checkedPanelOrder">checkedPanelOrder</a></li><li><a href="global.html#checkForm">checkForm</a></li><li><a href="global.html#checkHasKey">checkHasKey</a></li><li><a href="global.html#checkModifyBody">checkModifyBody</a></li><li><a href="global.html#checkObjectExist">checkObjectExist</a></li><li><a href="global.html#clone">clone</a></li><li><a href="global.html#close">close</a></li><li><a href="global.html#conditionReplaceName">conditionReplaceName</a></li><li><a href="global.html#configCompression">configCompression</a></li><li><a href="global.html#configHide">configHide</a></li><li><a href="global.html#configShow">configShow</a></li><li><a href="global.html#configUpload">configUpload</a></li><li><a href="global.html#confirm">confirm</a></li><li><a href="global.html#contextMenuHide">contextMenuHide</a></li><li><a href="global.html#contextMenuRouting">contextMenuRouting</a></li><li><a href="global.html#contextMenuShow">contextMenuShow</a></li><li><a href="global.html#coverObj">coverObj</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createHtml">createHtml</a></li><li><a href="global.html#createKey">createKey</a></li><li><a href="global.html#createNode">createNode</a></li><li><a href="global.html#createObject">createObject</a></li><li><a href="global.html#decode">decode</a></li><li><a href="global.html#del">del</a></li><li><a href="global.html#deleteAlarmLevelRow">deleteAlarmLevelRow</a></li><li><a href="global.html#deleteGlobalLayer">deleteGlobalLayer</a></li><li><a href="global.html#deleteGlobalPanel">deleteGlobalPanel</a></li><li><a href="global.html#deleteImagesCallback">deleteImagesCallback</a></li><li><a href="global.html#deleteNode">deleteNode</a></li><li><a href="global.html#deleteObj">deleteObj</a></li><li><a href="global.html#deleteObject">deleteObject</a></li><li><a href="global.html#deleteObjLayer1) 每一个物体下同名的图层都会一并删除2) 只是内存操作，不提交服务器3) 每一个物体下都删除同名的DOM节点">deleteObjLayer1) 每一个物体下同名的图层都会一并删除2) 只是内存操作，不提交服务器3) 每一个物体下都删除同名的DOM节点</a></li><li><a href="global.html#deleteObjPanel1) 每一个物体下同名的面板都会一并删除2) 只是内存操作，不提交服务器3) 每一个物体下都删除同名的DOM节点">deleteObjPanel1) 每一个物体下同名的面板都会一并删除2) 只是内存操作，不提交服务器3) 每一个物体下都删除同名的DOM节点</a></li><li><a href="global.html#deletePanel">deletePanel</a></li><li><a href="global.html#deleteStyleConfigRow">deleteStyleConfigRow</a></li><li><a href="global.html#delImages">delImages</a></li><li><a href="global.html#delNodeWhere">delNodeWhere</a></li><li><a href="global.html#delResource">delResource</a></li><li><a href="global.html#delRow">delRow</a></li><li><a href="global.html#dialog">dialog</a></li><li><a href="global.html#editNodeWhere">editNodeWhere</a></li><li><a href="global.html#formDataRememberInit">formDataRememberInit</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getAlarm">getAlarm</a></li><li><a href="global.html#getAllClassID">getAllClassID</a></li><li><a href="global.html#getContextMenuHtml">getContextMenuHtml</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDownload">getDownload</a></li><li><a href="global.html#getForm">getForm</a></li><li><a href="global.html#getLayer">getLayer</a></li><li><a href="global.html#getLayerList">getLayerList</a></li><li><a href="global.html#getMonitor">getMonitor</a></li><li><a href="global.html#getObj">getObj</a></li><li><a href="global.html#getOneClassID">getOneClassID</a></li><li><a href="global.html#getPanel">getPanel</a></li><li><a href="global.html#getPanelImagePath">getPanelImagePath</a></li><li><a href="global.html#getPanelList">getPanelList</a></li><li><a href="global.html#getPanelPath">getPanelPath</a></li><li><a href="global.html#getPanelZipPath">getPanelZipPath</a></li><li><a href="global.html#getResources">getResources</a></li><li><a href="global.html#getResourcesManagerFormData">getResourcesManagerFormData</a></li><li><a href="global.html#getSelectOptionHtml">getSelectOptionHtml</a></li><li><a href="global.html#getStatistics">getStatistics</a></li><li><a href="global.html#getViewpoint">getViewpoint</a></li><li><a href="global.html#globalLayerListHtml">globalLayerListHtml</a></li><li><a href="global.html#globalLayerManager">globalLayerManager</a></li><li><a href="global.html#globalLayerManagerCallBack">globalLayerManagerCallBack</a></li><li><a href="global.html#globalPanelListHtml">globalPanelListHtml</a></li><li><a href="global.html#globalPanelManager">globalPanelManager</a></li><li><a href="global.html#globalPanelManagerCallBack">globalPanelManagerCallBack</a></li><li><a href="global.html#groupFindItem">groupFindItem</a></li><li><a href="global.html#hide">hide</a></li><li><a href="global.html#hideUpMoveBtn">hideUpMoveBtn</a></li><li><a href="global.html#imUpload">imUpload</a></li><li><a href="global.html#inArray">inArray</a></li><li><a href="global.html#initData">initData</a></li><li><a href="global.html#insertDividingLine">insertDividingLine</a></li><li><a href="global.html#insertNodeToTreeDom">insertNodeToTreeDom</a></li><li><a href="global.html#insertNodeToTreeObj">insertNodeToTreeObj</a></li><li><a href="global.html#isNameFirstEach">isNameFirstEach</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isUsePanel">isUsePanel</a></li><li><a href="global.html#itemConfig">itemConfig</a></li><li><a href="global.html#itemConfigFormInit">itemConfigFormInit</a></li><li><a href="global.html#itemConfigSubmit">itemConfigSubmit</a></li><li><a href="global.html#judgeObjectIsEq">judgeObjectIsEq</a></li><li><a href="global.html#keyDeleteObjLayer">keyDeleteObjLayer</a></li><li><a href="global.html#keyDeleteObjLayerLi">keyDeleteObjLayerLi</a></li><li><a href="global.html#keyDeleteObjPanel">keyDeleteObjPanel</a></li><li><a href="global.html#keyDeleteObjPanelLi">keyDeleteObjPanelLi</a></li><li><a href="global.html#keyDelObj">keyDelObj</a></li><li><a href="global.html#keyFindIndex">keyFindIndex</a></li><li><a href="global.html#keyFindNodeHtmlObj">keyFindNodeHtmlObj</a></li><li><a href="global.html#keyFindObj">keyFindObj</a></li><li><a href="global.html#keyFindObjIndex">keyFindObjIndex</a></li><li><a href="global.html#keyFindTreeNodeObj">keyFindTreeNodeObj</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#mkhtml">mkhtml</a></li><li><a href="global.html#mkHtmlList">mkHtmlList</a></li><li><a href="global.html#mkhtmlRow">mkhtmlRow</a></li><li><a href="global.html#mkhtmlTr">mkhtmlTr</a></li><li><a href="global.html#modifyObjectName">modifyObjectName</a></li><li><a href="global.html#nameFindPanel">nameFindPanel</a></li><li><a href="global.html#nameFindPanelIndex">nameFindPanelIndex</a></li><li><a href="global.html#nodeRename">nodeRename</a></li><li><a href="global.html#o2o">o2o</a></li><li><a href="global.html#obj2str">obj2str</a></li><li><a href="global.html#objectDelete">objectDelete</a></li><li><a href="global.html#objectRename">objectRename</a></li><li><a href="global.html#objHtml">objHtml</a></li><li><a href="global.html#objHtmlRow">objHtmlRow</a></li><li><a href="global.html#objIsExistWhere">objIsExistWhere</a></li><li><a href="global.html#objSelectPanel">objSelectPanel</a></li><li><a href="global.html#order">order</a></li><li><a href="global.html#out">out</a></li><li><a href="global.html#panelConfigFormHtml">panelConfigFormHtml</a></li><li><a href="global.html#pathFindIndex">pathFindIndex</a></li><li><a href="global.html#pathFindObj">pathFindObj</a></li><li><a href="global.html#pathToDir">pathToDir</a></li><li><a href="global.html#pathToFileNameAndFoder">pathToFileNameAndFoder</a></li><li><a href="global.html#publicSelectNode">publicSelectNode</a></li><li><a href="global.html#publicSelectNodeSubmit">publicSelectNodeSubmit</a></li><li><a href="global.html#publicShowHtml">publicShowHtml</a></li><li><a href="global.html#randint">randint</a></li><li><a href="global.html#randStr">randStr</a></li><li><a href="global.html#readString">readString</a></li><li><a href="global.html#recursionTreeHtml">recursionTreeHtml</a></li><li><a href="global.html#removeObjLayerIsValue">removeObjLayerIsValue</a></li><li><a href="global.html#removeObjPanelIsValue">removeObjPanelIsValue</a></li><li><a href="global.html#resourcesManager">resourcesManager</a></li><li><a href="global.html#resourcesManagerClose">resourcesManagerClose</a></li><li><a href="global.html#resourcesManagerHandleCallback">resourcesManagerHandleCallback</a></li><li><a href="global.html#saveData">saveData</a></li><li><a href="global.html#selectImg">selectImg</a></li><li><a href="global.html#selectNode">selectNode</a></li><li><a href="global.html#serverPathFindObj">serverPathFindObj</a></li><li><a href="global.html#set">set</a></li><li><a href="global.html#setData">setData</a></li><li><a href="global.html#setDBCallback">setDBCallback</a></li><li><a href="global.html#setResourcesManagerFormData">setResourcesManagerFormData</a></li><li><a href="global.html#settingStyleConfigDisplay">settingStyleConfigDisplay</a></li><li><a href="global.html#show">show</a></li><li><a href="global.html#showUpMoveBtn">showUpMoveBtn</a></li><li><a href="global.html#str2obj">str2obj</a></li><li><a href="global.html#styleConfigHtml">styleConfigHtml</a></li><li><a href="global.html#styleConfigHtmlRow">styleConfigHtmlRow</a></li><li><a href="global.html#styleHtml">styleHtml</a></li><li><a href="global.html#styleHtmlRow">styleHtmlRow</a></li><li><a href="global.html#submit">submit</a></li><li><a href="global.html#synchronousFormData">synchronousFormData</a></li><li><a href="global.html#toHex">toHex</a></li><li><a href="global.html#toRgb">toRgb</a></li><li><a href="global.html#translate">translate</a></li><li><a href="global.html#treeHtml">treeHtml</a></li><li><a href="global.html#treeNodeHide">treeNodeHide</a></li><li><a href="global.html#treeNodeShow">treeNodeShow</a></li><li><a href="global.html#updateConfig">updateConfig</a></li><li><a href="global.html#updateFileArr">updateFileArr</a></li><li><a href="global.html#updateList">updateList</a></li><li><a href="global.html#updateText">updateText</a></li><li><a href="global.html#uploadImagesCallback">uploadImagesCallback</a></li><li><a href="global.html#uploadPanel">uploadPanel</a></li><li><a href="global.html#uploadPanelHandle">uploadPanelHandle</a></li><li><a href="global.html#uploadResourcesFileCallback">uploadResourcesFileCallback</a></li><li><a href="global.html#upMove">upMove</a></li><li><a href="global.html#verificationLayerData">verificationLayerData</a></li><li><a href="global.html#verificationPanelData">verificationPanelData</a></li><li><a href="global.html#viewsImg">viewsImg</a></li><li><a href="global.html#writeString">writeString</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Aug 05 2013 15:40:57 GMT+0800 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

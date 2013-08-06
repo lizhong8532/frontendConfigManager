@@ -6,6 +6,9 @@
 .mt15 { margin-top:15px; }
 .mt20 { margin-top:20px; }
 
+.mb10 { margin-bottom:10px; }
+.mb20 { margin-bottom:20px; }
+
 .mr10 { margin-right:10px; }
 .mr20 { margin-right:20px; }
 
@@ -22,6 +25,7 @@
 .config-line1 { display:block; zoom:1; width:100%; height:0; border-bottom:1px dashed #ccc; margin:20px 0; }
 
 .config-load .header { font-weight:bold; width:100%; text-indent:20px; height:30px; line-height:30px; background:#5599FF; color:#FFF; font-size:14px;  }
+.config-load:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
 .config-input-text { height:25px; padding:0 5px; border:1px solid #ddd; }
 .config-input-percentage { width:80px; }
 .config-unit { padding:0 10px; }
@@ -38,13 +42,13 @@
 /* 每一项的配置 */
 .config-page .row { line-height:28px;}
 .config-page .row.logo { line-height:50px;}
-.config-page .row.top span.comments{ padding-left:5px;color:#7c7c7c;}
-.config-page .row span.comments { display:inline-block; width:250px; padding-left:25px; text-align:left;}
+.config-page .row span.comments { padding-left:5px;color:#7c7c7c; display:inline-block; width:250px;  text-align:left;}
 .config-page .row:hover span.comments { font-weight:bold; }
-.config-page .row.top span.form { margin-left:70px; }
-.config-page .row span.form { margin-left:50px; }
+.config-page .row span.form { margin-left:50px; margin-left:70px;  }
 .config-page .row span.form img { max-width:100px;max-height:50px;vertical-align:middle;}
 .config-page .row button { margin-left:10px; padding:0 10px;line-height:22px;}
+.config-page .children span.comments { padding-left:25px; }
+.config-page .children span.form { margin-left:50px; }
 
 .config-page .row span.form label { margin-right:10px; }
 
@@ -138,8 +142,8 @@ div.childrenNodeHide{background:url(images/icon_slider.png) 0 6px no-repeat;}
 .config-load .layer-action { height:30px; }
 .config-load .layer-action:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
 .layer-list:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
-.layer-list{padding:10px 0;overflow:hidden;}
-.layer-list .list { margin:0 10px 10px 0;  background:#F5F5F5;  }
+.layer-list { padding:10px 0;overflow:hidden;}
+.layer-list .list { margin:0 10px 10px 0;  background:#F5F5F5; width:32%; float:left; }
 .layer-list .list .header span a { color:#FFF; font-size:12px; }
 .layer-list .list .header h3 { font-size:14px; }
 
@@ -153,11 +157,11 @@ div.childrenNodeHide{background:url(images/icon_slider.png) 0 6px no-repeat;}
 .config-load a { color:#0398DD;text-decoration:underline; }
 
 .layer-list .list ul li:hover .layer_name { font-weight:bold; }
-.layer-list .list li .layer_name {width:60%; text-align:left;}
+.layer-list .list li .layer_name {width:48%; text-align:left;}
 .layer-list .list li .layer_up,
 .layer-list .list li .layer_edit,
 .layer-list .list li .layer_del,
-.layer-list .list li .layer_checkbox { width:10%; text-align:right;}
+.layer-list .list li .layer_checkbox { width:13%; text-align:right;}
 
 .layer-list .list li .layer_checkbox input{margin-top:5px;}
 
@@ -169,8 +173,8 @@ div.childrenNodeHide{background:url(images/icon_slider.png) 0 6px no-repeat;}
 .config-load .panel-action { height:30px; }
 .config-load .panel-action:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
 .panel-list:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
-.panel-list{padding:10px 0;overflow:hidden;}
-.panel-list .list { margin:0 10px 10px 0;  background:#F5F5F5;  }
+.panel-list {padding:10px 0;overflow:hidden;}
+.panel-list .list { margin:0 10px 10px 0;  background:#F5F5F5; width:32%; float:left;  }
 .panel-list .list .header span a { color:#FFF; font-size:12px; }
 .panel-list .list .header h3 { font-size:14px; }
 
@@ -184,11 +188,11 @@ div.childrenNodeHide{background:url(images/icon_slider.png) 0 6px no-repeat;}
 .config-load a { color:#0398DD;text-decoration:underline; }
 
 .panel-list .list ul li:hover .panel_name { font-weight:bold; }
-.panel-list .list li .panel_name {width:60%; text-align:left;}
+.panel-list .list li .panel_name {width:48%; text-align:left;}
 .panel-list .list li .panel_up,
 .panel-list .list li .panel_edit,
 .panel-list .list li .panel_del,
-.panel-list .list li .panel_checkbox { width:10%; text-align:right;}
+.panel-list .list li .panel_checkbox { width:13%; text-align:right;}
 
 .panel-list .list li .panel_checkbox input{margin-top:5px;}
 
@@ -245,6 +249,12 @@ div.childrenNodeHide{background:url(images/icon_slider.png) 0 6px no-repeat;}
 .config-load .obj-list td { text-align:center;  border: 1px solid #CCCCCC; padding: 2px 4px 2px 6px; }
 
 .config-dialog .monitor { width:600px; }
+
+.config-load .monitor-box-up,
+.config-load .monitor-box-down { width:100%; height:300px; overflow-y:auto; }
+.config-load .monitor-box-up:after,
+.config-load .monitor-box-down:after { clear:both;content:".";display:block;height:0;visibility:hidden; overflow:hidden; }
+.config-load .monitor-box { float:left; width:48%;  }
 
 .list_warp { max-height:400px;overflow-y:auto;width:580px;margin-bottom:20px;}
 .list_title { overflow:hidden;border:#ccc 1px solid;border-right:none;width:100%; background:#F5F5F5; }

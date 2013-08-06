@@ -7,6 +7,16 @@ uinv.FCM.configMgr.form.createFormData = [
 { group : "system", level : "top", name:"isDirectOpenWhenSearchSingleCabinet", caption:"搜索到一个机柜时是否直接打开", type:"boolean", defaultValue:false },
 { group : "system", level : "top", name:"isFromSceneRootWhenSearchKey", caption:"总是从园区级别开始搜索", type:"boolean", defaultValue:true },
 { group : "system", level : "top", name:"isTouchscreenOpen", caption:"触摸屏开启", type:"boolean", defaultValue:false },
+{ group : "system", level : "top", name:"test", caption:"数组设置哦", type:"array", settings:[
+	{
+		caption : "宽",
+		type : 'number'
+	},
+	{
+		caption : "高",
+		type : 'number'
+	}
+], defaultValue:[80,50] },
 
 
 

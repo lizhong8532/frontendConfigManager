@@ -1,0 +1,24 @@
+{
+  "name": "可视化配置",
+  "version": "0.0.1",
+  "author": "lizhong",
+  "description": "后台可视化配置功能",
+  "dependencies": {
+    "grunt": "*",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-jshint": "*"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "~0.5.1"
+  },
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "BSD"
+}
