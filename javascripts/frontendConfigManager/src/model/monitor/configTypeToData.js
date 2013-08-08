@@ -1,7 +1,4 @@
-/**
- * @description 类型
- */
- 
+
 
 /**
  * @description 字符串类型
@@ -26,7 +23,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToData.number = function(o,data){
  * @param {DOM} o From表单控件节点
  * @param {Object} data 数据
  */
-uinv.FCM.configMgr.model.monitor.configTypeToData.boolean = function(o,data){
+uinv.FCM.configMgr.model.monitor.configTypeToData.bool = function(o,data){
 	if( $(o).val() == "1" ){
 		data[$(o).attr('name')] = true;
 	}else{

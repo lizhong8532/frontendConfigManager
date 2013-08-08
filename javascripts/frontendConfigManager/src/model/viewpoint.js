@@ -1,6 +1,4 @@
-/**
- * @description 视角模块
- */
+
 
 //----------------------------------
 // 基础定义
@@ -18,7 +16,7 @@ uinv.FCM.configMgr.model.viewpoint.classStr = '';
 
 /**
  * @description 创建物体
- * @method createObject
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @static
  */
 uinv.FCM.configMgr.model.viewpoint.createObject = function(){
@@ -33,7 +31,7 @@ uinv.FCM.configMgr.model.viewpoint.createObject = function(){
 
 /**
  * @description 根据key查找物体
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {String} key 物体key值
  * @return {Boolean|Object} 查找到物体返回Object 查找不到返回false
  * @static
@@ -52,7 +50,7 @@ uinv.FCM.configMgr.model.viewpoint.keyFindObj = function(key){
 
 /**
  * @description 根据key查找到物体的索引值
- * @method keyFindIndex
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {String} key 物体key值
  * @return {Number} -1 表示物体搜索不到
  * @static
@@ -69,18 +67,20 @@ uinv.FCM.configMgr.model.viewpoint.keyFindIndex = function(key){
 };
 
 /**
- * @description 生成唯一key
- * 1) 实际调用key模块生成32位的key值
+ * @description 生成唯一key<br />
+ * 1) 实际调用key模块生成32位的key值<br />
  * 2) 生成key以后会遍历目前所有物体使用的key，如果有重复的则重新生成直到生成的key没有被使用
- * @method createKey
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @return {String} key值
  * @static
  */
 uinv.FCM.configMgr.model.viewpoint.createKey = function(){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var key = "";
+	
 	do{
-		var key = _obj.model.key.create(32);
+		key = _obj.model.key.create(32);
 	}while( _this.keyFindObj(key) );
 	
 	return key;
@@ -88,7 +88,7 @@ uinv.FCM.configMgr.model.viewpoint.createKey = function(){
 
 /**
  * @description 添加新创建物体数据到内存
- * @method addObjectToMemory
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {Object} obj 选择器返回的物体
  * @return {Object} 初始化后的物体
  * @static
@@ -113,7 +113,7 @@ uinv.FCM.configMgr.model.viewpoint.addObjectToMemory = function(obj){
 
 /**
  * @description 添加物体DOM节点
- * @method addHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {Object} obj 物体数据
  * @static
  */
@@ -126,7 +126,7 @@ uinv.FCM.configMgr.model.viewpoint.addHtmlRow = function(obj){
 
 /**
  * @description 根据物体数据生成HTML文本
- * @method mkhtmlRow
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {Object} obj 物体数据
  * @return {String} HTML文本
  */
@@ -138,7 +138,7 @@ uinv.FCM.configMgr.model.viewpoint.mkhtmlRow = function(obj){
 		html += '<td>';
 			html += '<h3><span onclick="uinv.FCM.configMgr.model.viewpoint.objectRename(this,\''+obj.key+'\');" class="name">'+obj.name+'</span></h3>';
 		html += '</td>';
-		for(var i in obj['data']){
+		for(var i in obj.data){
 			html += '<td><input class="w50" type="text" key="'+i+'" name="'+obj.key+'" cate="viewpoint" path="viewpoint" /></td>';
 		}
 		html += '<td><a onclick="uinv.FCM.configMgr.model.viewpoint.objectDelete(this,\''+obj.key+'\');" href="javascript:void(0);"><s>删除</s></a></td>';
@@ -148,7 +148,7 @@ uinv.FCM.configMgr.model.viewpoint.mkhtmlRow = function(obj){
 
 /**
  * @description 创建所有物体的DOM节点
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @static
  */
 uinv.FCM.configMgr.model.viewpoint.mkhtml = function(){
@@ -165,10 +165,10 @@ uinv.FCM.configMgr.model.viewpoint.mkhtml = function(){
 };
 
 /**
- * @description 物体重命名 (内存也会改写)
- * 1) 内存会改写
+ * @description 物体重命名 (内存也会改写)<br />
+ * 1) 内存会改写<br />
  * 2) 实际上把触发事件的文本修改成input输入框，焦点离开或回车后恢复
- * @method objectRename
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {DOM} obj 触发事件的DOM节点
  * @param {String} key 物体key值
  * @static
@@ -195,10 +195,10 @@ uinv.FCM.configMgr.model.viewpoint.objectRename = function(obj,key){
 };
 
 /**
- * @description 删除物体
- * 1) 由触发这个事件的DOM节点往父节点找到row后删除
+ * @description 删除物体<br />
+ * 1) 由触发这个事件的DOM节点往父节点找到row后删除<br />
  * 2) 内存也会改写
- * @method objectDelete
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {DOM} obj 触发事件的DOM节点
  * @param {String} key 物体key值
  */
@@ -217,8 +217,8 @@ uinv.FCM.configMgr.model.viewpoint.objectDelete = function(obj,key){
 
 /**
  * @description 初始化
- * @constructor init
- * @param {} classStr
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
+ * @param {String} classStr
  * @static
  */
 uinv.FCM.configMgr.model.viewpoint.init = function(classStr){

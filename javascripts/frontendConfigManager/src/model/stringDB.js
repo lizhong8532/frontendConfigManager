@@ -1,11 +1,7 @@
-/**
- * @description 字符串数据存储模块
- */
-
 
 /**
  * @description 读取文本数据
- * @method readString
+ * @memberOf uinv.FCM.configMgr.model.stringDB
  * @see uinv.server.manager.frame.getString()
  * @return {Object} 读取结果
  * @static
@@ -16,7 +12,7 @@ uinv.FCM.configMgr.model.stringDB.readString = function(){
 
 /**
  * @description 写入文本数据
- * @method writeString
+ * @memberOf uinv.FCM.configMgr.model.stringDB
  * @see uinv.server.manager.frame.saveString()
  * @param {String} str 文本数据
  * @param {Function} fun 回调函数
@@ -38,7 +34,7 @@ uinv.FCM.configMgr.model.stringDB.writeString = function(str, fun){
 
 /**
  * @description 索引文本数据并返回索引的Object
- * @method get
+ * @memberOf uinv.FCM.configMgr.model.stringDB
  * @param {String} index 索引
  * @return {Object} 索引的Object
  * @static
@@ -67,7 +63,7 @@ uinv.FCM.configMgr.model.stringDB.get = function(index){
 
 /**
  * @description 根据索引把Object信息转字符串写入文本数据存储
- * @method set
+ * @memberOf uinv.FCM.configMgr.model.stringDB
  * @param {String} index 索引
  * @param {Object} obj 要存储的数据
  * @param {Function} fun 回调函数
@@ -80,7 +76,7 @@ uinv.FCM.configMgr.model.stringDB.set = function( index , obj, fun ){
 	
 	if( typeof obj == 'undefined' ) { 
 		return false;
-	};
+	}
 
 	var result = _this.readString();
 	var db = {};
@@ -91,8 +87,15 @@ uinv.FCM.configMgr.model.stringDB.set = function( index , obj, fun ){
 
 		db[index] = obj;
 		var str = _obj.model.transform.obj2str(db);
-		_this.writeString( str, fun );
+		
+		// Fixes #2
+		if(typeof str == "string" && str !== "" ){
+			_this.writeString( str, fun );
+		}else{
+			_obj.note.alert(_obj.msg.S26);
+		}
+		
 	}else{
-		alert(result.data);
+		_obj.note.alert(result.data);
 	}
 };

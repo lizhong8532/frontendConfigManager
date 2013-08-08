@@ -1,20 +1,18 @@
-/**
- * @description dialog
- */
+
  
 /**
- * @description dialog DOM 节点ID值
- * 1) 实际上这里只是一个声明
+ * @description dialog DOM 节点ID值<br />
+ * 1) 实际上这里只是一个声明<br />
  * 2) 每次创建一个dialog都会把最新的ID改写此定义
  * @type String
  */
 uinv.FCM.configMgr.model.dialog.id = '';
 
 /**
- * @description dialog 创建函数
- * 1) str 可以是一串字符 or HTML格式，宽高度自动计算并居中
+ * @description dialog 创建函数<br />
+ * 1) str 可以是一串字符 or HTML格式，宽高度自动计算并居中<br />
  * 2) 你也可以外包一层div赋值width height决定dialog的宽高
- * @method show
+ * @memberOf uinv.FCM.configMgr.model.dialog
  * @param {String} str 字符串或者HTML格式字符
  * @static
  */
@@ -42,7 +40,7 @@ uinv.FCM.configMgr.model.dialog.show = function(str){
 
 /**
  * @description 关闭dialog操作
- * @method close
+ * @memberOf uinv.FCM.configMgr.model.dialog
  * @param {Function} fun 回调函数
  * @static
  */
@@ -63,9 +61,9 @@ uinv.FCM.configMgr.model.dialog.close = function(fun){
 };
 
 /**
- * @description 获取dialog的DOM节点
+ * @description 获取dialog的DOM节点<br />
  * 1) 如果节点不存在会返回null，比如在没有创建dialog的情况调用此方法就会返回null， 因为页面中就不存dialog的DOM节点
- * @method getObj
+ * @memberOf uinv.FCM.configMgr.model.dialog
  * @return {DOM} dialog DOM节点
  * @static
  */

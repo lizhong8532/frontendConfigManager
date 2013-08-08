@@ -1,6 +1,4 @@
-/**
- * @description 类型
- */
+
 
 /**
  * @description classid类型

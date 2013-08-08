@@ -1,7 +1,4 @@
 
-/**
- * @description 类型
- */
 
 /**
  * @description 字符串类型
@@ -11,7 +8,7 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.string = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
 };
 
 /**
@@ -22,7 +19,7 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.number = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = Number($(obj).val());
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = Number($(obj).val());
 };
 
 
@@ -36,9 +33,9 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.bool = function(obj){
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
 	if( obj.checked ){
 		if(obj.value == '1'){
-			_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = true;
+			_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = true;
 		}else{
-			_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = false;
+			_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = false;
 		}
 	}
 };
@@ -51,39 +48,39 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.color = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
 };
 
 /**
  * @description 3D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.layer.itemConfigSetData['3dposition'] = function(obj){
+uinv.FCM.configMgr.model.layer.itemConfigSetData.position3d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if( typeof _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')].length == 3  ){
-		_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = [];
+	if( typeof _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _layer.itemData[$(obj).attr('path')][$(obj).attr('name')].length == 3  ){
+		_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = [];
 	}
 	
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
 };
 
 /**
  * @description 2D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.layer.itemConfigSetData['2dposition'] = function(obj){
+uinv.FCM.configMgr.model.layer.itemConfigSetData.position2d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if( typeof _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')].length == 2  ){
-		_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = [];
+	if( typeof _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _layer.itemData[$(obj).attr('path')][$(obj).attr('name')].length == 2  ){
+		_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = [];
 	}
 	
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
 };
 
 /**
@@ -97,7 +94,7 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.select = function(obj){
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
 	$(obj).find('option').each(function(){
 		if(this.selected){
-			_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = $(this).attr('value');
+			_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(this).attr('value');
 		}
 	});
 };

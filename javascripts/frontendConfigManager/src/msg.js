@@ -1,10 +1,8 @@
-/**
- * @description 信息提示
- */
 
 //----------------------------------------
 // 普通提示区
 //----------------------------------------
+
 
 uinv.FCM.configMgr.msg.S1 = "下载配置";
 uinv.FCM.configMgr.msg.S2 = "正在打包...";
@@ -35,7 +33,9 @@ uinv.FCM.configMgr.msg.S22 = "节点字体加粗表示已添加条件";
 uinv.FCM.configMgr.msg.S23 = "警告(S23)：此操作将会将节点及它的子节点彻底删除，确认删除吗？";
 
 uinv.FCM.configMgr.msg.S24 = "警告(S24)：此操作将会将会删除此物体及物体的视角配置信息，确认删除吗？";
+uinv.FCM.configMgr.msg.S25 = "错误(S25)：Form数据定义占用系统关键字！";
 
+uinv.FCM.configMgr.msg.S26 = "错误(S26)：副数据转换string异常！";
 
 
 //---------------------------------------

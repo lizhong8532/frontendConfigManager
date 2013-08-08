@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 		pkg: grunt.file.readJSON('package.json'),	
 		concat: {
       			options: {
-				stripBanners: true,
+				// stripBanners: true,
                 		banner: '/** \n' +
                         		' * -------------------------------------------------------------\n' +
                         		' * Copyright (c) 2013 <%= pkg.name %>, All rights reserved. \n' +
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
                         		' */ \n\n'
       			},
 			dist: {
-				src: ['src/namespace.js','src/**/*.js'],
+				src: ['src/namespace.js','src/**/*.js', 'src/README'],
 				dest: 'core.js'
 			}
 		},
@@ -25,11 +25,19 @@ module.exports = function (grunt) {
 		jshint: {
 			files: ['src/**/*.js'],
 		    	options: {
-				globals: {
-			    		jQuery: true,
-			    		console: true,
-			    		module: true
-				}
+
+				curly: true,
+				//eqeqeq: true,
+				newcap: true,
+				noarg: true,
+				//sub: true,
+				//undef: true,
+				//node: true,
+				evil:true,
+
+                		globals: {
+                    			jQuery: true
+                		}
 		    	}
 		},
 
@@ -38,6 +46,26 @@ module.exports = function (grunt) {
 				files: ['src/**/*.js'],
 				tasks: ['concat']
 		    	}
+		},
+
+		uglify: {
+            		options : {
+                		banner: '/** \n' +
+                        		' * -------------------------------------------------------------\n' +
+                        		' * Copyright (c) 2013 <%= pkg.name %>, All rights reserved. \n' +
+                        		' *  \n' +
+                        		' * @version: <%= pkg.version%> \n' +
+                        		' * @author: <%= pkg.author%> \n' +
+                        		' * @description: <%= pkg.description%> \n' +
+					' * @project: <%= pkg.name %> \n' +
+					' * @date: <%= grunt.template.today("yyyy-mm-dd") %> \n' +
+                        		' * ------------------------------------------------------------- \n' +
+                        		' */ \n\n'
+            		},
+            		build : {
+                		src : 'core.js',
+                		dest : 'core.min.js'
+            		}
 		}
 
 	});
@@ -45,6 +73,7 @@ module.exports = function (grunt) {
     	grunt.loadNpmTasks('grunt-contrib-jshint');
     	grunt.loadNpmTasks('grunt-contrib-concat');
     	grunt.loadNpmTasks('grunt-contrib-watch');
+    	grunt.loadNpmTasks('grunt-contrib-uglify');
  
     	grunt.registerTask('default', ['concat','jshint']);
 	

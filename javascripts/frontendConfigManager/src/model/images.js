@@ -1,7 +1,4 @@
-/**
- * @description 图片模块
- */
- 
+
  
 //----------------------------
 // 基础设置
@@ -49,7 +46,7 @@ uinv.FCM.configMgr.model.images.limit = [
 /**
  * @description 图片上传处理
  * @see uinv.server.manager.frame.upImage()
- * @method imUpload
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {DOM} obj file 节点
  * @param {String} dir 文件夹
  * @static
@@ -75,7 +72,7 @@ uinv.FCM.configMgr.model.images.imUpload = function(obj, dir){
 /**
  * @description 删除图片
  * @see uinv.server.manager.frame.delImage()
- * @method delImages
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {String} path 图片路径
  * @static
  */
@@ -90,7 +87,7 @@ uinv.FCM.configMgr.model.images.delImages = function(path){
 
 /**
  * @description 相册关闭
- * @method close
+ * @memberOf uinv.FCM.configMgr.model.images
  * @static
  */
 uinv.FCM.configMgr.model.images.close = function(){
@@ -101,7 +98,7 @@ uinv.FCM.configMgr.model.images.close = function(){
 
 /**
  * @description 上传图片回调函数
- * @method uploadImagesCallback
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {Object} result 上传图片的返回结果
  * @static
  */
@@ -119,7 +116,7 @@ uinv.FCM.configMgr.model.images.uploadImagesCallback = function(result){
 
 /**
  * @description 删除图片回调函数
- * @method deleteImagesCallback
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {Object} result 删除图片返回结果
  * @static
  */
@@ -143,7 +140,7 @@ uinv.FCM.configMgr.model.images.deleteImagesCallback = function(result){
 
 /**
  * @description 选择图片操作
- * @method selectImg
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {DOM} obj 选中图片的DOM节点
  * @static
  */
@@ -160,10 +157,10 @@ uinv.FCM.configMgr.model.images.selectImg = function(obj){
 };
 	
 /**
- * @description 读取某个操作目录下的图片列表
- * 1) 这里有个bug，实际上如果目录下有其它的飞文件也会返回
+ * @description 读取某个操作目录下的图片列表<br />
+ * 1) 这里有个bug，实际上如果目录下有其它的飞文件也会返回<br />
  * 2) 已针对这个bug写了一个过滤特定文件的程序
- * @method getData
+ * @memberOf uinv.FCM.configMgr.model.images
  * @return {Array} 文件列表
  * @static
  */
@@ -183,7 +180,7 @@ uinv.FCM.configMgr.model.images.getData = function(){
 
 /**
  * @description 相册面板右侧显示大图，传入img对象，即可显示，并自动居中
- * @method viewsImg
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {DOM} obj 图片DOM节点
  * @static
  */
@@ -202,7 +199,7 @@ uinv.FCM.configMgr.model.images.viewsImg = function(obj){
 
 /**
  * @description urldecode
- * @method decode
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {String} str urlencode 字符
  * @return {String} urldecode后的字符
  * @static
@@ -216,17 +213,20 @@ uinv.FCM.configMgr.model.images.decode = function(str){
 
 /**
  * @description 更新相册列表
- * @method updateList
+ * @memberOf uinv.FCM.configMgr.model.images
  * @static
  */
 uinv.FCM.configMgr.model.images.updateList = function(){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-
-	var data = _this.getData();
-	var path = _obj.global.path + _this.path + _this.dir + '/';
-	
-	var arr = [];
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		data = _this.getData(),
+		cla = "",
+		filename = "",
+		img = "",
+		arr = [],
+		pathinfo = [],
+		path = _obj.global.path + _this.path + _this.dir + '/';
+		
 	for(var i=0,k=data.length; i<k; i++){
 		
 		if( _obj.model.array.inArray(data[i], _this.limit)){
@@ -236,19 +236,19 @@ uinv.FCM.configMgr.model.images.updateList = function(){
 		var value = _obj.form.box.find('*[name='+ _this.name +']').attr('src');
 		
 		if( value ){
-			var pathinfo = value.split('/');
-			var filename = pathinfo[ pathinfo.length-1 ];
+			pathinfo = value.split('/');
+			filename = pathinfo[ pathinfo.length-1 ];
 		}else{
-			var filename = '';
+			filename = '';
 		}
 		
 		if(filename == data[i]){
-			var cla = 'ok';
+			cla = 'ok';
 		}else{
-			var cla = '';
+			cla = '';
 		}
 		
-		var img = '';
+		img = '';
 		img += '<li class="' + cla + '" onmouseover="uinv.FCM.configMgr.model.images.viewsImg( $(this).find(\'img\').get(0) );" onclick="uinv.FCM.configMgr.model.images.selectImg(this);" >';
 			img += '<img onerror="$(this).parent().remove();" src="'+ _obj.global.projectPath + path+data[i]+'" style="max-width:'+_this.imgWidth+'px;max-height:'+_this.imgHeight+'px;" title="'+_this.decode(data[i])+'" />';
 			img += '<a onclick="uinv.FCM.configMgr.model.images.delImages(\''+path+data[i]+'\');" class="deletebtn" href="javascript:void(0);">DEL</a>';
@@ -263,7 +263,7 @@ uinv.FCM.configMgr.model.images.updateList = function(){
 
 /**
  * @description 鼠标移除左侧图片列表框后操作函数
- * @method out
+ * @memberOf uinv.FCM.configMgr.model.images
  * @static
  */
 uinv.FCM.configMgr.model.images.out = function(){
@@ -275,7 +275,7 @@ uinv.FCM.configMgr.model.images.out = function(){
 
 /**
  * @description 相册显示主函数入口
- * @method show
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {Object} param { dir:操作的图片目录 , name:本次操作的name值以便于修改配置数据 }
  * @example uinv.FCM.configMgr.model.images.show({dir:"logo",name:"logo"});
  * @static

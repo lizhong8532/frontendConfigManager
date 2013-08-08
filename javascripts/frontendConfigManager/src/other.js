@@ -1,11 +1,8 @@
-/**
- * @description 其它模块
- */
 
 
 /**
  * @description 把条件名称转换为规范规范名称
- * @method conditionReplaceName
+ * @memberOf uinv.FCM.configMgr.other
  * @param {Object} o 数据
  * @return {Object} 返回转换后的数据
  * @static

@@ -1,6 +1,4 @@
-/**
- * @description 资源管理器
- */
+
 
 //-----------------------------------
 // 基础定义
@@ -13,8 +11,8 @@
 uinv.FCM.configMgr.model.resources.upResourcesDir = "/projects/resources";
 
 /**
- * @description 待删除文件
- * 1) 主要解决用户执行删除资源后提交保存时删除遗留的文件
+ * @description 待删除文件<br />
+ * 1) 主要解决用户执行删除资源后提交保存时删除遗留的文件<br />
  * 2) 最后还会二次判断确保没有正在被使用的资源文件
  * @type Array
  */
@@ -33,7 +31,7 @@ uinv.FCM.configMgr.model.resources.resourcesManagerClass = 'resourcesManager';
 
 /**
  * @description 根据传入参数设置某个资源的数据
- * @method setData
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} key 资源key值
  * @param {Object} param 要设置的数据
  * @static
@@ -50,7 +48,7 @@ uinv.FCM.configMgr.model.resources.setData = function(key, param){
 
 /**
  * @description 上传资源包后回调函数
- * @method uploadResourcesFileCallback
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {Object} result 上传资源包处理结果
  * @static
  */
@@ -72,7 +70,7 @@ uinv.FCM.configMgr.model.resources.uploadResourcesFileCallback = function(result
 	
 /**
  * @description 检测资源管理表单数据是否合法
- * @method checkForm
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {Object} param 检测表单的数据
  * @return {Object} { error 1 有错误 0 没有错误, msg 错误信息 }
  * @static
@@ -116,7 +114,7 @@ uinv.FCM.configMgr.model.resources.checkForm = function(param){
 
 /**
  * @description 资源表单处理回调函数
- * @method resourcesManagerHandleCallback
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @static
  */
 uinv.FCM.configMgr.model.resources.resourcesManagerHandleCallback = function(){
@@ -138,6 +136,7 @@ uinv.FCM.configMgr.model.resources.resourcesManagerHandleCallback = function(){
 
 /**
  * @description 创建新资源处理函数
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {Object} obj 要创建资源的数据
  * @return {Boolean} 如果表单有错误将return false 终止后面操作
  * @static
@@ -202,7 +201,7 @@ uinv.FCM.configMgr.model.resources.handleResourcesManager = function(obj){
 
 /**
  * @description 根据服务器路径查找资源
- * @method serverPathFindObj
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} path 路径
  * @return {Object} 如果返回null表示找不到
  * @static
@@ -217,11 +216,11 @@ uinv.FCM.configMgr.model.resources.serverPathFindObj = function(path){
 		}
 	}
 	return null;
-},
+};
 
 /**
  * @description 根据路径 返回 foder filename
- * @method pathToFileNameAndFoder
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} path 路径
  * @return {Object} {filename:文件名 , foder: 路径名}
  * @example var pathinfo = uinv.FCM.configMgr.model.resources.pathToFileNameAndFoder("/public/foder/filename.js");
@@ -230,8 +229,8 @@ uinv.FCM.configMgr.model.resources.serverPathFindObj = function(path){
 uinv.FCM.configMgr.model.resources.pathToFileNameAndFoder = function(path){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	
 	var result = {};
+	
 	if( typeof path == 'string' ){
 		var pathinfo = path.split('/');
 		result.filename = pathinfo[pathinfo.length-1];
@@ -248,10 +247,11 @@ uinv.FCM.configMgr.model.resources.pathToFileNameAndFoder = function(path){
 	
 	return result;
 };
+	
 
 /**
  * @description 资源管理器关闭
- * @method resourcesManagerClose
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @static
  */
 uinv.FCM.configMgr.model.resources.resourcesManagerClose = function(){
@@ -262,10 +262,10 @@ uinv.FCM.configMgr.model.resources.resourcesManagerClose = function(){
 };
 
 /**
- * @description 创建资源管理表单DOM节点
- * 1) key 存在表示修改操作
+ * @description 创建资源管理表单DOM节点<br />
+ * 1) key 存在表示修改操作<br />
  * 2) key 为空表示创建操作
- * @method resourcesManager
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {Stirng} key 要操作的资源key值
  * @return {Boolean} 有异常则return false 终止操作
  * @static
@@ -302,7 +302,7 @@ uinv.FCM.configMgr.model.resources.resourcesManager = function(key){
 
 /**
  * @description 根据key找到对象，如果key不存在，则返回空对象
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} key 资源key值
  * @return {Object} 资源数据
  * @static
@@ -327,7 +327,7 @@ uinv.FCM.configMgr.model.resources.keyFindObj = function(key){
 
 /**
  * @description 获取资源管理器表单数据
- * @method getResourcesManagerFormData
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @return {Object} 表单数据
  * @static
  */
@@ -358,7 +358,7 @@ uinv.FCM.configMgr.model.resources.getResourcesManagerFormData = function(){
 
 /**
  * @description 根据name值设置表单数据
- * @method setResourcesManagerFormData
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} key 表单name值
  * @param {String} value 表单值
  * @static
@@ -372,7 +372,7 @@ uinv.FCM.configMgr.model.resources.setResourcesManagerFormData = function(key,va
 
 /**
  * @description 创建资源标签页DOM节点
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @static
  */
 uinv.FCM.configMgr.model.resources.mkhtml = function(){
@@ -400,7 +400,7 @@ uinv.FCM.configMgr.model.resources.mkhtml = function(){
 		
 /**
  * @description 删除资源
- * @method delResource
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} key 要删除的资源key值
  * @return {Boolean} 如果取消操作则return false 终止后面的操作
  * @static
@@ -425,11 +425,11 @@ uinv.FCM.configMgr.model.resources.delResource = function(key){
 };
 
 /**
- * @description 备份接口
- * 1) 这个接口名为规范定义
- * 2) 当用户备份数据时将从这个接口获取额外需要打包备份的文件
+ * @description 备份接口<br />
+ * 1) 这个接口名为规范定义<br />
+ * 2) 当用户备份数据时将从这个接口获取额外需要打包备份的文件<br />
  * 3) 此函数遍历所有资源获取所有资源路径后返回作为额外备份文件
- * @method backupFiles
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @return {Array} 路径列表
  * @static
  */
@@ -447,15 +447,15 @@ uinv.FCM.configMgr.model.resources.backupFiles = function(){
 
 /**
  * @description 初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} classStr 资源盒型DOM的Class值
  * @static
  */
 uinv.FCM.configMgr.model.resources.init = function(classStr){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	
-	_obj.form.submitCallback = 	function(){
+
+	_obj.form.submitCallback = function(){
 		while( _this.delFileArr.length >= 1 ){
 			var path = _this.delFileArr.pop(); 
 			uinv.server.manager.frame.delFile(path);

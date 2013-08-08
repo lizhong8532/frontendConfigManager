@@ -1,6 +1,4 @@
-/**
- * @description 图层
- */
+
  
 //--------------------------
 // 基础定义
@@ -49,7 +47,7 @@ uinv.FCM.configMgr.model.layer.classStr = '';
 
 /**
  * @description 根据key查找到图层对象
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 图层key值
  * @return {Object} 图层对象
  * @static
@@ -69,7 +67,7 @@ uinv.FCM.configMgr.model.layer.keyFindObj = function(key){
 
 /**
  * @description 根据key值删除图层对象（内存操作）
- * @method keyDelObj
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 图层key值
  * @return {Boolean} true 删除成功 false 删除失败（可能key值不存在）
  */
@@ -87,9 +85,9 @@ uinv.FCM.configMgr.model.layer.keyDelObj = function(key){
 };
 
 /**
- * @description 创建物体方法
+ * @description 创建物体方法<br />
  * 1) 实际调用选择器模块的公有方法选择对象节点作为创建
- * @method createObject
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.createObject = function(){
@@ -118,7 +116,7 @@ uinv.FCM.configMgr.model.layer.createObject = function(){
 
 /**
  * @description 插入分割线
- * @method insertDividingLine
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 单击创建分割线的DOM节点
  * @param {String} key 创建分割线的图层key值
  * @return {Boolean} 如果key值为false将return false终止后面的操作
@@ -142,10 +140,10 @@ uinv.FCM.configMgr.model.layer.insertDividingLine = function(obj,key){
 };
 
 /**
- * @description 删除物体操作
- * 1) 执行内存删除操作
+ * @description 删除物体操作<br />
+ * 1) 执行内存删除操作<br />
  * 2) 执行页面DOM节点删除操作
- * @method deleteObj
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 物体key值
  * @static
  */
@@ -160,11 +158,11 @@ uinv.FCM.configMgr.model.layer.deleteObj = function(key){
 
 
 /**
- * @description 删除图层项操作
- * @method deleteObjLayer
- * 1) 每一个物体下同名的图层都会一并删除
- * 2) 只是内存操作，不提交服务器
+ * @description 删除图层项操作<br />
+ * 1) 每一个物体下同名的图层都会一并删除<br />
+ * 2) 只是内存操作，不提交服务器<br />
  * 3) 每一个物体下都删除同名的DOM节点
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 触发删除事件的DOM节点
  * @return {Boolean} 将弹出确认会话框，如果取消删除操作则return false终止后面删除动作
  * @static
@@ -194,7 +192,7 @@ uinv.FCM.configMgr.model.layer.deleteObjLayer = function(obj){
 
 /**
  * @description 根据图层key删除物体对象里的order与item的图层项
- * @method keyDeleteObjLayer
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体对象数据
  * @param {String} layerKey 图层key值
  * @static
@@ -202,21 +200,22 @@ uinv.FCM.configMgr.model.layer.deleteObjLayer = function(obj){
 uinv.FCM.configMgr.model.layer.keyDeleteObjLayer = function(obj, layerKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var index = 0;
 	
 	if( _obj.model.array.inArray(layerKey, obj.order) ){
-		var index = _obj.model.array.strInArrayIndex( layerKey, obj.order );
+		index = _obj.model.array.strInArrayIndex( layerKey, obj.order );
 		obj.order.splice(index,1);
 	}
 	
 	if( _obj.model.array.inArray(layerKey, obj.item) ){
-		var index = _obj.model.array.strInArrayIndex( layerKey, obj.item );
+		index = _obj.model.array.strInArrayIndex( layerKey, obj.item );
 		obj.item.splice(index,1);
 	}
 };
 
 /**
  * @description 根据对象key，图层key，删除DOM节点
- * @method keyDeleteObjLayerLi
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} objkey 对象key值
  * @param {String} layerkey 图层key值
  * @static
@@ -233,10 +232,10 @@ uinv.FCM.configMgr.model.layer.keyDeleteObjLayerLi = function(objkey,layerkey){
 };
 
 /**
- * @description 修改物体名称
- * 1) DOM节点文本修改
+ * @description 修改物体名称<br />
+ * 1) DOM节点文本修改<br />
  * 2) 内存操作修改
- * @method modifyObjectName
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 物体key值
  * @param {DOM} obj 触发修改名称事件的DOM节点
  * @static
@@ -261,7 +260,7 @@ uinv.FCM.configMgr.model.layer.modifyObjectName = function(key,obj){
 
 /**
  * @description 创建物体DOM节点函数
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体数据
  * @return {String} DOM节点
  * @static
@@ -297,7 +296,7 @@ uinv.FCM.configMgr.model.layer.mkhtml = function(obj){
 
 /**
  * @description 创建物体图层项的DOM节点
- * @method mkHtmlList
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体数据
  * @param {Object} layer 图层数据
  * @return {}
@@ -316,7 +315,7 @@ uinv.FCM.configMgr.model.layer.mkHtmlList = function(obj, layer){
 		html += '<span class="action layer_up">';
 			html += '<a onclick="uinv.FCM.configMgr.model.layer.upMove(this);" class="'+_this.upMoveBtnClass+'" href="javascript:void(0);" style="display:none;"><s>上移</s></a>';
 			html += '</span>';
-			if( typeof layer['itemConfig'] == 'object' ){
+			if( typeof layer.itemConfig == 'object' ){
 				html += '<span class="layer_edit">';
 				html += '<a onclick="uinv.FCM.configMgr.model.layer.itemConfig(\''+key+'\',\''+obj.key+'\');" href="javascript:void(0);"><s>编辑</s></a>';
 				html += '</span>';				
@@ -341,7 +340,7 @@ uinv.FCM.configMgr.model.layer.mkHtmlList = function(obj, layer){
 
 /**
  * @description 图层编辑配置DOM节点创建 并且初始化图层配置数据
- * @method itemConfig
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 图层key值
  * @param {String} objectKey 隶属物体key值
  * @static
@@ -350,19 +349,19 @@ uinv.FCM.configMgr.model.layer.itemConfig = function(key, objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;	
 	
-	if(typeof _this.obj[key]['itemConfig'] == 'undefined'){
+	if(typeof _this.obj[key].itemConfig == 'undefined'){
 		_this.note.alert(_obj.msg.S9);
 	}
 
 	_layer = _this.keyFindObj(objectKey);
-	_layer['itemData'] = typeof _layer['itemData'] == 'undefined' ? {} : _layer['itemData'];
-	_layer['itemData'][key] = typeof _layer['itemData'][key] == 'undefined' ? {} : _layer['itemData'][key];
+	_layer.itemData = typeof _layer.itemData == 'undefined' ? {} : _layer.itemData;
+	_layer.itemData[key] = typeof _layer.itemData[key] == 'undefined' ? {} : _layer.itemData[key];
 
 	var html = '';
 	html += '<div class="itemConfig" style="padding:10px;">';
-	for(var i = 0 , k = _this.obj[key]['itemConfig'].length; i<k; i++){
-		if( typeof _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']] == 'function' ){
-			html += _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']](_this.obj[key]['itemConfig'][i],key, objectKey);
+	for(var i = 0 , k = _this.obj[key].itemConfig.length; i<k; i++){
+		if( typeof _this.itemConfigTypeToHtml[_this.obj[key].itemConfig[i].type] == 'function' ){
+			html += _this.itemConfigTypeToHtml[_this.obj[key].itemConfig[i].type](_this.obj[key].itemConfig[i],key, objectKey);
 		}
 	}
 	html += '<p class="action">';
@@ -378,7 +377,7 @@ uinv.FCM.configMgr.model.layer.itemConfig = function(key, objectKey){
 
 /**
  * @description 初始化图层配置项表单
- * @method itemConfigFormInit
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.itemConfigFormInit = function(){
@@ -394,7 +393,7 @@ uinv.FCM.configMgr.model.layer.itemConfigFormInit = function(){
 
 /**
  * @description 图层配置表单提交 将表单值写入内存中
- * @method itemConfigSubmit
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.itemConfigSubmit = function(){
@@ -412,7 +411,7 @@ uinv.FCM.configMgr.model.layer.itemConfigSubmit = function(){
 
 /**
  * @description 添加图层DOM节点到物体DOM树里
- * @method addLayerOneToObj
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 物体key值
  * @param {String} html 创建的DOM图层节点
  * @static
@@ -425,7 +424,7 @@ uinv.FCM.configMgr.model.layer.addLayerOneToObj = function( key, html ){
 
 /**
  * @description 根据value删除物体DOM树下的图层项DOM节点
- * @method removeObjLayerIsValue
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 物体key值
  * @param {String} value 图层DOM节点的value值
  * @static
@@ -438,7 +437,7 @@ uinv.FCM.configMgr.model.layer.removeObjLayerIsValue = function( key, value ){
 
 /**
  * @description 图层排序 把已勾选的图层排到前面，未勾选的图层排到后面
- * @method order
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj DOM节点
  * @static
  */
@@ -449,7 +448,7 @@ uinv.FCM.configMgr.model.layer.order = function(obj){
 	var num = 0;
 	var index = 0;
 	_obj.form.box.find( '*[name='+$(obj).attr('name')+']' ).each(function(i){
-		if( this.checked == true && this != obj){
+		if( this.checked === true && this != obj){
 			num++;
 		}else if( this==obj ){
 			index = i;
@@ -458,7 +457,7 @@ uinv.FCM.configMgr.model.layer.order = function(obj){
 	
 	// 排序
 	if(index != num){
-		if(obj.checked == true){
+		if(obj.checked === true){
 			_obj.form.box.find( '*[name='+$(obj).attr('name')+']:eq('+num+')' ).parents('li').before( $(obj).parents('li') );
 		}else{
 			_obj.form.box.find( '*[name='+$(obj).attr('name')+']:eq('+num+')' ).parents('li').after( $(obj).parents('li') );
@@ -468,7 +467,7 @@ uinv.FCM.configMgr.model.layer.order = function(obj){
 
 /**
  * @description 显示图层上移按钮 因为图层未勾选的时候会隐藏
- * @method showUpMoveBtn
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 触发事件的DOM节点
  * @static
  */
@@ -481,7 +480,7 @@ uinv.FCM.configMgr.model.layer.showUpMoveBtn = function(obj){
 
 /**
  * @description 隐藏上移按钮 因为图层取消选中状态时要隐藏下移按钮
- * @method hideUpMoveBtn 
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj DOM节点
  * @static
  */
@@ -492,8 +491,9 @@ uinv.FCM.configMgr.model.layer.hideUpMoveBtn = function(obj){
 };
 
 /**
- * @description 选中图层触发函数
+ * @description 选中图层触发函数<br />
  * 1) 初始化图层checkbox为true的时候也触发
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 选中图层的checkbox DOM节点
  * @static
  */
@@ -503,7 +503,7 @@ uinv.FCM.configMgr.model.layer.checkd = function(obj){
 	// 排序
 	_this.order(obj);
 	
-	if(obj.checked == true){
+	if(obj.checked === true){
 		// 添加class
 		$(obj).parents('li').addClass('checked');
 		
@@ -521,7 +521,7 @@ uinv.FCM.configMgr.model.layer.checkd = function(obj){
 
 /**
  * @description 选中图层后要把选中的图层排到前面，主要防止在它前面有未选中的图层
- * @method checkedLayerOrder
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} name 图层name值
  * @static
  */
@@ -545,7 +545,7 @@ uinv.FCM.configMgr.model.layer.checkedLayerOrder = function(name){
 
 /**
  * @description 上移图层操作
- * @method upMove
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 触发事件的DOM节点
  * @static
  */
@@ -556,14 +556,14 @@ uinv.FCM.configMgr.model.layer.upMove = function(obj){
 	var checkObj =  $(obj).parents('li').find('input[type=checkbox][name]');
 	
 	// 如果图层没有被选中状态，就return退出，不执行上移操作
-	if( checkObj.get(0).checked == false ) {
+	if( checkObj.get(0).checked === false ) {
 		return;
 	}
 	
 	var index = $(obj).parents('li').index();
 	
 	// 如果图层排在首位就return退出，不执行上移操作
-	if(index == 0){
+	if(index === 0){
 		return;
 	}
 	
@@ -575,7 +575,7 @@ uinv.FCM.configMgr.model.layer.upMove = function(obj){
 
 /**
  * @description 判断key是否已被使用，防止key重复
- * @method checkHasKey
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key值
  * @return {Boolean}
  * @static
@@ -594,18 +594,21 @@ uinv.FCM.configMgr.model.layer.checkHasKey = function(key){
 
 /**
  * @description 创建物体 （内存操作）
- * @method addObject
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体数据
  * @return {Object} 组合过的物体数据
  * @static
  */
 uinv.FCM.configMgr.model.layer.addObject = function( obj ){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		key = "",
+		i = null,
+		bool = false;
 	
 	do{
-		var key = _obj.model.key.create(32);
-		var bool = _this.checkHasKey(key);
+		key = _obj.model.key.create(32);
+		bool = _this.checkHasKey(key);
 	}while(bool);
 	
 	var comObj = {
@@ -617,7 +620,7 @@ uinv.FCM.configMgr.model.layer.addObject = function( obj ){
 		'item' : []
 	};
 	
-	for(var i in _this.obj ){
+	for(i in _this.obj ){
 		comObj.order.push(i);
 	}
 	
@@ -626,10 +629,10 @@ uinv.FCM.configMgr.model.layer.addObject = function( obj ){
 };
 		
 /**
- * @description 检测两个物体是否相等
- * 1) 实际上只是检测物体的condition
+ * @description 检测两个物体是否相等<br />
+ * 1) 实际上只是检测物体的condition<br />
  * 2) 当前检测的condition只有name attribute classid
- * @method judgeObjectIsEq
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} o1 物体1
  * @param {Object} o2 物体2
  * @return {Boolean} true 相等 false 不相等
@@ -662,9 +665,9 @@ uinv.FCM.configMgr.model.layer.judgeObjectIsEq = function(o1,o2){
 };
 
 /**
- * @description 判断物体是否已经存在
+ * @description 判断物体是否已经存在<br />
  * 1) 实际上是遍历已创建的物体挨个比较是否有condition一样的物体 fun除外
- * @method checkObjectExist
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 要检测的物体
  * @return {Boolean} true 存在 false 不存在
  * @static
@@ -684,7 +687,7 @@ uinv.FCM.configMgr.model.layer.checkObjectExist = function( obj ){
 	
 /**
  * @description 添加图层逻辑业务处理
- * @method add
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层数据
  * @param {Function} fun 回调函数
  * @static
@@ -703,7 +706,7 @@ uinv.FCM.configMgr.model.layer.add = function(obj, fun){
 
 /**
  * @description 添加图层到全局对象 （内存操作）
- * @method addLayerToGlobalLib
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层数据
  * @param {Function} fun 回调函数
  * @static
@@ -727,7 +730,7 @@ uinv.FCM.configMgr.model.layer.addLayerToGlobalLib = function( obj, fun ){
 
 /**
  * @description 添加图层到全局对象 回调
- * @method addLayerToGlobalLibCallback
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层数据
  * @static
  */
@@ -754,7 +757,7 @@ uinv.FCM.configMgr.model.layer.addLayerToGlobalLibCallback = function( obj ){
 
 /**
  * @description 对象写到文本数据后回调函数
- * @method setDBCallback
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.setDBCallback = function(){
@@ -764,7 +767,7 @@ uinv.FCM.configMgr.model.layer.setDBCallback = function(){
 
 /**
  * @description 添加图层到指定物体的图层库内
- * @method addLayerToObjLib
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层
  * @param {Function} fun 回调函数
  * @static
@@ -795,7 +798,7 @@ uinv.FCM.configMgr.model.layer.addLayerToObjLib = function( obj, fun ){
 
 /**
  * @description 添加图层到指定对象回调函数
- * @method addLayerToObjLibCallback
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体数据
  * @param {Object} layer 图层数据
  * @static
@@ -816,7 +819,7 @@ uinv.FCM.configMgr.model.layer.addLayerToObjLibCallback = function( obj, layer )
 
 /**
  * @description 索引图层副数据
- * @method getLayerList
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @return {Object} 图层副数据
  */
 uinv.FCM.configMgr.model.layer.getLayerList = function(){
@@ -827,7 +830,7 @@ uinv.FCM.configMgr.model.layer.getLayerList = function(){
 
 /**
  * @description 图层上传
- * @method uinv.FCM.configMgr.model.layer.upload
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @see uinv.server.manager.frame.upAndUnZip()
  * @param {DOM} obj 上传空间DOM对象
  * @param {} selector
@@ -853,7 +856,7 @@ uinv.FCM.configMgr.model.layer.upload = function(obj, selector){
 
 /**
  * @description 上传图层回调函数 主要接受回传的图层内容，以做下一步处理
- * @method uinv.FCM.configMgr.model.layer.uploadCallback
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} result 执行上传操作后服务器返回的结果
  * @static
  */
@@ -884,7 +887,7 @@ uinv.FCM.configMgr.model.layer.uploadCallback = function(result){
 
 /**
  * @description 检测上传图层数据的合法性
- * @method verificationLayerData
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 上传的图层数据
  * @return {Boolean} true 合法 false 不合法
  * @static
@@ -919,7 +922,7 @@ uinv.FCM.configMgr.model.layer.verificationLayerData = function(obj){
 
 /**
  * @description 根据传入参数创建全局图层的DOM节点
- * @method globalLayerListHtml
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层数据
  * @return {String} DOM节点
  * @static
@@ -941,7 +944,7 @@ uinv.FCM.configMgr.model.layer.globalLayerListHtml = function(obj){
 
 /**
  * @description 全局图层管理页面入口
- * @method globalLayerManager
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.globalLayerManager = function(){
@@ -973,7 +976,7 @@ uinv.FCM.configMgr.model.layer.globalLayerManager = function(){
 
 /**
  * @description 关闭全局图层管理窗口回调函数
- * @method globalLayerManagerCallBack
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.globalLayerManagerCallBack = function(){
@@ -984,7 +987,7 @@ uinv.FCM.configMgr.model.layer.globalLayerManagerCallBack = function(){
 
 /**
  * @description 删除全局图层操作，只操作内存
- * @method deleteGlobalLayer
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 触发事件的DOM节点
  * @param {String} key 图层key值
  * @static
@@ -1001,7 +1004,7 @@ uinv.FCM.configMgr.model.layer.deleteGlobalLayer = function(obj, key){
 
 /**
  * @description 初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} classStr 图层盒子DOM Class 值
  * @static
  */

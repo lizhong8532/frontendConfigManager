@@ -1,13 +1,11 @@
-/**
- * @description 接口数据
- */
-
 
 /**
  * @description 获取监控面板数据
- * @method getMonitor
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} { monitorTime:监控时间, monitorPanelConfig:监控配置数据  }
  * @example var result = uinv.FCM.configMgr.api.getMonitor();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getMonitor = function(){
@@ -65,9 +63,11 @@ uinv.FCM.configMgr.api.getMonitor = function(){
 
 /**
  * @description 获取视角数据
- * @method getViewpoint
- * @return {Object} 视角数据
+ * @memberOf uinv.FCM.configMgr.api
+ * @return {Object} { 物体名称:{ x:Number, y:Number, z:Number }, ... }
  * @example var result = uinv.FCM.configMgr.api.getViewpoint();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getViewpoint = function(){
@@ -86,9 +86,11 @@ uinv.FCM.configMgr.api.getViewpoint = function(){
 
 /**
  * @description 获取统计数据
- * @method getStatistics
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 统计数据
  * @example var result = uinv.FCM.configMgr.api.getStatistics();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getStatistics = function(){
@@ -114,9 +116,11 @@ uinv.FCM.configMgr.api.getStatistics = function(){
 
 /**
  * @description 获取资源数据
- * @method getResources
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 资源数据
  * @example var result = uinv.FCM.configMgr.api.getResources();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getResources = function(){
@@ -137,9 +141,11 @@ uinv.FCM.configMgr.api.getResources = function(){
 
 /**
  * @description 获取图层数据
- * @method getLayer
+ * @method memberOf uinv.FCM.configMgr.api
  * @return {Object} 图层数据
  * @example var result = uinv.FCM.configMgr.api.getLayer();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getLayer = function(){
@@ -179,36 +185,69 @@ uinv.FCM.configMgr.api.getLayer = function(){
 
 /**
  * @description 获取面板数据
- * @method getPanel
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 面板数据
  * @example var result = uinv.FCM.configMgr.api.getPanel();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getPanel = function(){
 	var _obj = uinv.FCM.configMgr;
-	var _this = this;		
+	var _this = this;
+	
+	var obj = _obj.model.object.clone( _obj.data.panel );
+	
+	_obj.model.panel.obj = _obj.model.stringDB.get(_obj.model.panel.index);
+	
+	for(var i=0,k=obj.length;i<k;i++){
+		obj[i].condition = _obj.other.conditionReplaceName( obj[i].obj );
+		
+		obj[i].tmp = [];
+		for(var n=0,m=obj[i].item.length;n<m;n++){
+			if( typeof obj[i].itemData == "undefined" ){
+				obj[i].itemData = [];			
+			}  
+			
+			obj[i].tmp.push({
+				'itemName' : obj[i].item[n] == u.le.get('分割线') ? 'separator' : obj[i].item[n] ,
+				'config' : typeof obj[i].itemData[obj[i].item[n]] == 'undefined' ? {} :  _obj.model.object.clone( obj[i].itemData[obj[i].item[n]] )
+			});
+		}
+		
+		obj[i].item = obj[i].tmp;
+		delete obj[i].obj;
+		delete obj[i].tmp;
+		delete obj[i].order;
+	}
 	
 	return {
-		"objects" : [],
-		"lib" : {}
+		"objects" : obj,
+		"lib" : _obj.model.object.clone( _obj.model.panel.obj )
 	};
 };
 
 /**
  * @description 获取表单数据
- * @method getForm
+ * @memberOf uinv.FCM.configMgr.api
  * @param {String} group 过滤组数据，不传入则全部返回
  * @return {Object} 表单数据
- * @example var result = uinv.FCM.configMgr.api.getForm();
+ * @example 
+ * var result = uinv.FCM.configMgr.api.getForm(); // 全部返回<br />
+ * var result = uinv.FCM.configMgr.api.getForm("system"); // 返回group=system的数据
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getForm = function(group){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		i = 0,
+		k = 0;
 	
 	var o = _obj.model.object.clone(_obj.form.createFormData);
 	
-	for(var i=0,k=o.length;i<k;i++){
+	for(i=0,k=o.length;i<k;i++){
 		o[i].value = _obj.data[o[i].group][o[i].name];
 		if(o[i].type == 'color'){
 			o[i].value = _obj.model.colorpicke.toRgb(o[i].value);
@@ -217,7 +256,7 @@ uinv.FCM.configMgr.api.getForm = function(group){
 	
 	if(group){
 		var arr = [];
-		for(var i=0,k=o.length;i<k;i++){
+		for(i=0,k=o.length;i<k;i++){
 			if(o[i].group == group){
 				arr.push(o[i]);
 			}
@@ -230,9 +269,11 @@ uinv.FCM.configMgr.api.getForm = function(group){
 
 /**
  * @description 获取告警数据
- * @method getAlarm
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 告警级别数据
  * @example var result = uinv.FCM.configMgr.api.getAlarm();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getAlarm = function(){
@@ -258,9 +299,11 @@ uinv.FCM.configMgr.api.getAlarm = function(){
 
 /**
  * @description 获取系统下载数据
- * @method getDownload
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 下载数据
  * @example var result = uinv.FCM.configMgr.api.getDownload();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getDownload = function(){

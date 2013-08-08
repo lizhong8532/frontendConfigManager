@@ -1,6 +1,3 @@
-/**
- * @description 监控模块
- */
 
 //---------------------------------------------------------
 // 基础定义
@@ -10,7 +7,7 @@
  * @deprecated 所有使用条件下拉的条件列表
  * @type Array
  */
-uinv.FCM.configMgr.model.monitor.conditionArr = ['<','>','='];
+uinv.FCM.configMgr.model.monitor.conditionArr = ['<'];
 
 /**
  * @description 待删除文件列表
@@ -68,7 +65,7 @@ uinv.FCM.configMgr.model.monitor.panelConfigAttributeField = [
 	{ 'name' : '指标取值', 'value' : 'propertyPath', 'type' : 'string'},
 	{ 'name' : '最小值', 'value' : 'min', 'type' : 'number'},
 	{ 'name' : '最大值', 'value' : 'max', 'type' : 'number'},
-	{ 'name' : '进度条', 'value' : 'isProgressBar', 'type' : 'boolean' },
+	{ 'name' : '进度条', 'value' : 'isProgressBar', 'type' : 'bool' },
 	{ 'name' : '颜色设置', 'value' : 'styleConfig', 'type' : 'styleConfig' }
 ];
 
@@ -80,7 +77,7 @@ uinv.FCM.configMgr.model.monitor.panelConfigAttributeField = [
 
 /**
  * @description 获取position的select列表
- * @method getSelectOptionHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} position x y z 
  * @param {String} value 值
  * @return {String} HTML文本
@@ -103,14 +100,17 @@ uinv.FCM.configMgr.model.monitor.getSelectOptionHtml = function(position, value)
 
 /**
  * @description 打开监控配置
- * @method configShow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} key 物体key值
  * @return {Boolean} 如果物体没有选择面板则return false终止操作
  * @static
  */
 uinv.FCM.configMgr.model.monitor.configShow = function(key){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		i = null,
+		tmp = null,
+		tmps = null;
 	
 	var o = _this.keyFindObj(key);
 	var panel = _this.nameFindPanel(o.panel);
@@ -126,10 +126,10 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 			html += '<div class="monitor_name"><span><s>面板图片</s></span><img src="'+imgSrc+'" /></div>';
 				html += '<div class="monitor_set">';
 				
-					var tmps = typeof o.config.pivotLayout  == 'undefined' ? panel.pivotLayout : o.config.pivotLayout ;
+					tmps = typeof o.config.pivotLayout  == 'undefined' ? panel.pivotLayout : o.config.pivotLayout ;
 					html += '<div class="each"  key="pivotLayout" cate="array">';
 						html += '<span class="monitor_setname"><s>二维位置</s></span>';
-						for(var i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
+						for(i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
 							if(i==tmp.length-1){
 								html += '<span>';
 									html += '<select name="pivotLayout" style="display:none;">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'</select>';
@@ -142,17 +142,17 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 						}
 					html += '</div>';
 					
-					var tmps = typeof o.config.layout  == 'undefined' ? panel.layout : o.config.layout;
+					tmps = typeof o.config.layout  == 'undefined' ? panel.layout : o.config.layout;
 					html += '<div class="each" key="layout" cate="array">';
 						html += '<span class="monitor_setname"><s>三维位置</s></span>';
-						for(var i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
+						for(i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
 							html += '<span>';
 								html += '<select name="layout">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'</select>';
 							html += '</span>';
 						}
 					html += '</div>';
 					
-					var tmps = typeof o.config.layoutOffset == 'undefined' ? panel.layoutOffset : o.config.layoutOffset ;
+					tmps = typeof o.config.layoutOffset == 'undefined' ? panel.layoutOffset : o.config.layoutOffset ;
 					html += '<div class="each" key="layoutOffset" cate="array">';
 						html += '<span class="monitor_setname"><s>偏移设置</s></span>';
 						html += '<span>';
@@ -166,7 +166,7 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 						html += '</span>';
 					html += '</div>';
 					
-					var tmps = typeof o.config.canvasScale == 'undefined' ? panel.canvasScale : o.config.canvasScale ;
+					tmps = typeof o.config.canvasScale == 'undefined' ? panel.canvasScale : o.config.canvasScale ;
 					html += '<div class="each" key="canvasScale" cate="number">';
 						html += '<span class="monitor_setname"><s>面板大小</s></span>';
 						html += '<span class="monitor_zoom">';
@@ -191,7 +191,7 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 
 /**
  * @description 隐藏监控配置窗口
- * @method configHide
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 面板name值
  * @param {String} key 物体key值
  * @static
@@ -212,7 +212,7 @@ uinv.FCM.configMgr.model.monitor.configHide = function(name,key){
 /**
  * @description 同步监控信息配置数据
  * @param {String} key 物体key值
- * @method synchronousFormData
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.synchronousFormData = function(key){
@@ -235,35 +235,38 @@ uinv.FCM.configMgr.model.monitor.synchronousFormData = function(key){
 
 /**
  * @description 面板配置指标列表
- * @method panelConfigFormHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} panel 面板数据
  * @param {Object} o 物体配置数据
  * @return {String} 创建HTML文本
  * @static
  */
 uinv.FCM.configMgr.model.monitor.panelConfigFormHtml = function(panel,o){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-	var html = '';
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		n = 0,
+		i = 0,
+		html = '';
+
 	html += '<table class="monitor_table">';
 		html += '<tr>';
-			for(var i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
+			for(i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
 				html += '<th>'+ _this.panelConfigAttributeField[i].name +'</th>';
 			}
 		html += '</tr>';
-		
-		for(var n=0;n<panel.modifyCount;n++){
+
+		for(n=0;n<panel.modifyCount;n++){
 			html += '<tr class="row">';
-				for(var i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
+				for(i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
 					html += '<td>'+ _this.configTypeToHtml[_this.panelConfigAttributeField[i].type]( _this.panelConfigAttributeField[i], o.form[n] ) +'</td>';
 				}							
 			html += '</tr>';
 		}
-		
-		
+
+	
 	html += '</table>';
 	html += '<div class="color-config">';
-		for(var n=0;n<panel.modifyCount;n++){
+		for(n=0;n<panel.modifyCount;n++){
 			var param = [];
 			if(typeof o.form[n] == 'object' && typeof o.form[n].styleConfig == 'object'){
 				param = o.form[n].styleConfig;
@@ -277,7 +280,7 @@ uinv.FCM.configMgr.model.monitor.panelConfigFormHtml = function(panel,o){
 
 /**
  * @description 样式配置节点创建
- * @method styleConfigHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} data 面板数据
  * @return {String} HTML
  * @static
@@ -287,7 +290,7 @@ uinv.FCM.configMgr.model.monitor.styleConfigHtmlRow = function(data){
 	var _this = this;
 	if(typeof data == 'undefined'){
 	
-		var data = {
+		data = {
 			'condition' : _this.conditionArr[0],
 			'number' : 0,
 			'config' : '#FFFFFF'						
@@ -326,7 +329,7 @@ uinv.FCM.configMgr.model.monitor.styleConfigHtmlRow = function(data){
 
 /**
  * @description 删除样式配置
- * @method deleteStyleConfigRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} o 触发事件DOM节点
  * @static
  */
@@ -336,7 +339,7 @@ uinv.FCM.configMgr.model.monitor.deleteStyleConfigRow = function(o){
 
 /**
  * @description 添加一个样式配置节点
- * @method addStyleConfigHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} o 触发事件的DOM节点
  * @static
  */
@@ -359,7 +362,7 @@ uinv.FCM.configMgr.model.monitor.addStyleConfigHtmlRow = function(o){
 
 /**
  * @description 样式配置页面构建
- * @method styleConfigHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} data 样式配置数据
  * @return {String} HTML
  * @static
@@ -394,7 +397,7 @@ uinv.FCM.configMgr.model.monitor.styleConfigHtml = function(data){
 
 /**
  * @description 设置颜色条件面板显示
- * @method settingStyleConfigDisplay
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj 触发事件DOM节点
  * @static
  */
@@ -414,7 +417,7 @@ uinv.FCM.configMgr.model.monitor.settingStyleConfigDisplay = function(obj){
 
 /**
  * @description 上传监控面板
- * @method uploadPanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj file 控件
  * @static
  */
@@ -444,7 +447,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 
 /**
  * @description 上传监控面板处理函数
- * @method uploadPanelHandle
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 监控数据
  * @param {String} fileName 文件名
  * @return {Boolean} false异常
@@ -453,6 +456,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var i = 0;
 	
 	o.imagePath = o.previewImagePath;
 	
@@ -475,7 +479,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 		msg += "内容为：\r\n";
 		
 		var arr = [];
-		for(var i=o.modifyCount;i<obj.modifyCount;i++){
+		for(i=o.modifyCount;i<obj.modifyCount;i++){
 			arr.push(obj.form[i]);
 		}
 		msg += _obj.model.transform.obj2str( arr );
@@ -488,7 +492,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 	}
 	
 	if(bool){
-		var o = _this.addPanelToMemory(o);
+		o = _this.addPanelToMemory(o);
 		uinv.server.manager.frame.cutGeneralFile( o.downloadFile , _this.getPanelZipPath(o) );
 		uinv.server.manager.frame.cutGeneralFile( o.imagePath , _this.getPanelImagePath(o) );
 		
@@ -506,7 +510,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 		
 		// 如果要删除的文件与新上传的面板同名，取消删除
 		var path = _this.getPanelPath(o);
-		for(var i=0;i<_this.deleteFileArr.length;i++){
+		for(i=0;i<_this.deleteFileArr.length;i++){
 			if(_this.deleteFileArr[i] == path){
 				_this.deleteFileArr.splice(i,1);
 				i=0;
@@ -517,25 +521,26 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 
 /**
  * @description 全路径转路径
- * @method pathToDir
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} path 路径
  * @return {String} 路径
  * @example uinv.FCM.configMgr.model.monitor.pathToDir("/user/assf/asf.gif"); return  /user/assf
  * @static
  */
 uinv.FCM.configMgr.model.monitor.pathToDir = function(path){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-	var dir = "";
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		dir = "",
+		pathinfo = [];
 	
 	if(path.indexOf("/")>=0){
-		var pathinfo = path.split("/");
+		pathinfo = path.split("/");
 		pathinfo.pop();
 		dir = pathinfo.join("/");
 	}
 	
 	if(path.indexOf("\\")>=0){
-		var pathinfo = path.split("\\");
+		pathinfo = path.split("\\");
 		pathinfo.pop();
 		dir = pathinfo.join("\\");				
 	}
@@ -545,7 +550,7 @@ uinv.FCM.configMgr.model.monitor.pathToDir = function(path){
 
 /**
  * @description 根据面板配置信息获取监控面板主操作路径
- * @method getPanelPath
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {String} 路径
  * @static
@@ -559,7 +564,7 @@ uinv.FCM.configMgr.model.monitor.getPanelPath = function(o){
 
 /**
  * @description 根据面板数据获取面板图片路径
- * @method getPanelImagePath
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {String} 路径
  * @static
@@ -573,7 +578,7 @@ uinv.FCM.configMgr.model.monitor.getPanelImagePath = function(o){
 
 /**
  * @description 根据面板数据获取zip路径
- * @method getPanelZipPath
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {String} 路径
  * @static
@@ -587,7 +592,7 @@ uinv.FCM.configMgr.model.monitor.getPanelZipPath = function(o){
 
 /**
  * @description 添加面板数据到内存
- * @method addPanelToMemory
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 面板数据
  * @return {Object} 初始设置后的面板数据
  * @static
@@ -610,7 +615,7 @@ uinv.FCM.configMgr.model.monitor.addPanelToMemory = function(obj){
 
 /**
  * @description 检测面板是否被使用
- * @method isUsePanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 面板名称
  * @return {Boolean} true 使用 false 没使用
  * @static
@@ -620,7 +625,7 @@ uinv.FCM.configMgr.model.monitor.isUsePanel = function(name){
 	var _this = this;
 	
 	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
-		if(  _obj.data.monitor.object[i]['panel'] == name ){
+		if(  _obj.data.monitor.object[i].panel == name ){
 			return true;
 		}
 	}
@@ -629,7 +634,7 @@ uinv.FCM.configMgr.model.monitor.isUsePanel = function(name){
 
 /**
  * @description 加测面板数据modify配置项是否合法
- * @method checkModifyBody
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {Boolean} true 合法 false 不合法
  * @static
@@ -675,10 +680,10 @@ uinv.FCM.configMgr.model.monitor.checkModifyBody = function(o){
 };
 
 /**
- * @description 删除监控面板
- * 1) 内存删除
+ * @description 删除监控面板<br />
+ * 1) 内存删除<br />
  * 2) DOM删除
- * @method deletePanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 要删除面板的name值
  * @return {Boolean} false异常
  * @static
@@ -706,10 +711,10 @@ uinv.FCM.configMgr.model.monitor.deletePanel = function(name){
 };
 
 /**
- * @description 删除物体
- * 1) 内存删除
+ * @description 删除物体<br />
+ * 1) 内存删除<br />
  * 2) DOM删除
- * @method deleteObject
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} key 物体key值
  * @static
  */
@@ -724,7 +729,7 @@ uinv.FCM.configMgr.model.monitor.deleteObject = function(key){
 
 /**
  * @description 创建物体
- * @method createObject
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.createObject = function(){
@@ -741,7 +746,7 @@ uinv.FCM.configMgr.model.monitor.createObject = function(){
 
 /**
  * @description 添加物体数据到内存
- * @method addObjectToMemory
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 物体数据
  * @return {Object} 初始化后的物体数据
  * @static
@@ -749,9 +754,10 @@ uinv.FCM.configMgr.model.monitor.createObject = function(){
 uinv.FCM.configMgr.model.monitor.addObjectToMemory = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var key = "";
 	
 	do{
-		var key = _obj.model.key.create(10);
+		key = _obj.model.key.create(10);
 	}while(_this.keyFindObj(key));
 	
 	obj.key = key;
@@ -763,7 +769,7 @@ uinv.FCM.configMgr.model.monitor.addObjectToMemory = function(obj){
 
 /**
  * @description 根据key查找到物体索引值
- * @method keyFindObjIndex
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} key 物体key值
  * @return {Number} -1 找不到
  * @static
@@ -772,7 +778,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObjIndex = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
-		if(  _obj.data.monitor.object[i]['key'] == key ){
+		if(  _obj.data.monitor.object[i].key == key ){
 			return i;
 		}
 	}
@@ -781,7 +787,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObjIndex = function(key){
 
 /**
  * @description 根据key查找到物体数据
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} key 物体key值
  * @return {Boolean} false 表示找不到数据
  * @static
@@ -790,7 +796,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObj = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
-		if(  _obj.data.monitor.object[i]['key'] == key ){
+		if(  _obj.data.monitor.object[i].key == key ){
 			return  _obj.data.monitor.object[i];
 		}
 	}
@@ -799,7 +805,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObj = function(key){
 
 /**
  * @description 根据name值找到面板索引
- * @method nameFindPanelIndex
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 面板name值
  * @return {Number} -1 表示找不到
  * @static
@@ -808,7 +814,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanelIndex = function(name){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	for(var i=0,k=_this.obj.panel.length;i<k;i++){
-		if(  _this.obj.panel[i]['name'] == name ){
+		if(  _this.obj.panel[i].name == name ){
 			return i;
 		}
 	}
@@ -817,7 +823,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanelIndex = function(name){
 
 /**
  * @description 根据name值找到面板数据
- * @method nameFindPanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 面板name值
  * @return {Boolean} false表示找不到
  * @static
@@ -831,7 +837,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanel = function(name){
 	}
 	
 	for(var i=0,k=_this.obj.panel.length;i<k;i++){
-		if(  _this.obj.panel[i]['name'] == name ){
+		if(  _this.obj.panel[i].name == name ){
 			return _this.obj.panel[i];
 		}
 	}
@@ -841,7 +847,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanel = function(name){
 /**
  * @description 物体面板选择下拉控件处理<br />
  * 1) 如果新选择的面板modifyCount跟上一个modifyCount不一致，将会删除物体config数据
- * @method objSelectPanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj 下拉控件节点
  * @param {String} key 物体key值
  * @static
@@ -851,17 +857,17 @@ uinv.FCM.configMgr.model.monitor.objSelectPanel = function(obj,key){
 	var _this = this;
 	
 	var bool = true;
-	if( _this.nameFindPanel( _this.keyFindObj(key)['panel'] ).modifyCount != _this.nameFindPanel( obj.value ).modifyCount ){
-		bool = _obj.note.confirm("此操作将会删除原"+_this.keyFindObj(key)['panel']+"的配置信息，是否要继续操作？");
+	if( _this.nameFindPanel( _this.keyFindObj(key).panel ).modifyCount != _this.nameFindPanel( obj.value ).modifyCount ){
+		bool = _obj.note.confirm("此操作将会删除原"+_this.keyFindObj(key).panel+"的配置信息，是否要继续操作？");
 		if(bool){
 			_this.keyFindObj(key).form = {};
 		}
 	}
 	
 	if(bool){
-		_this.keyFindObj(key)['panel'] = obj.value;
+		_this.keyFindObj(key).panel = obj.value;
 	}else{
-		var panel = _this.keyFindObj(key)['panel'];
+		var panel = _this.keyFindObj(key).panel;
 		$(obj).find("option").each(function(){
 			if($(this).val() == panel){
 				this.selected = true;
@@ -874,7 +880,7 @@ uinv.FCM.configMgr.model.monitor.objSelectPanel = function(obj,key){
 
 /**
  * @description 物体DOM创建
- * @method addHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 物体数据
  * @static
  */
@@ -888,7 +894,7 @@ uinv.FCM.configMgr.model.monitor.addHtmlRow = function(obj){
 
 /**
  * @description 创建物体HTML文本
- * @method objHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 物体数据
  * @return {String} HTML
  * @static
@@ -907,10 +913,10 @@ uinv.FCM.configMgr.model.monitor.objHtmlRow = function(obj){
 			html += '<select onchange="uinv.FCM.configMgr.model.monitor.objSelectPanel(this,\''+obj.key+'\');">';
 				html += '<option value="">'+u.le.get('请选择面板')+'</option>';
 				for(var i=0,k=_this.obj.panel.length;i<k;i++){
-					if( typeof obj.panel != 'undefined' && obj.panel == _this.obj.panel[i]['name'] ){
-						html += '<option value="'+_this.obj.panel[i]['name']+'" selected>'+_this.obj.panel[i]['caption']+'</option>';
+					if( typeof obj.panel != 'undefined' && obj.panel == _this.obj.panel[i].name ){
+						html += '<option value="'+_this.obj.panel[i].name+'" selected>'+_this.obj.panel[i].caption+'</option>';
 					}else{
-						html += '<option value="'+_this.obj.panel[i]['name']+'">'+_this.obj.panel[i]['caption']+'</option>';
+						html += '<option value="'+_this.obj.panel[i].name+'">'+_this.obj.panel[i].caption+'</option>';
 					}
 				}
 			html += '</select>';
@@ -924,7 +930,7 @@ uinv.FCM.configMgr.model.monitor.objHtmlRow = function(obj){
 
 /**
  * @description 物体页面构建
- * @method objHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.objHtml = function(){
@@ -942,8 +948,9 @@ uinv.FCM.configMgr.model.monitor.objHtml = function(){
 };
 
 /**
- * @description 物体重命名
+ * @description 物体重命名<br />
  * 1) 同时写内存
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj 触发事件DOM节点
  * @param {String} key 物体key值
  */
@@ -958,20 +965,20 @@ uinv.FCM.configMgr.model.monitor.objectRename = function(obj,key){
 	box.find('input').focus().blur(function(){
 		var value = $(this).val();
 		box.html(html).find('a').html(value);
-		_this.keyFindObj(key)['name'] = value;
+		_this.keyFindObj(key).name = value;
 	}).keydown(function(evt){
 		var e  = evt || window.event;
 		if(e.keyCode==13){
 			var value = $(this).val();
 			box.html(html).find('a').html(value);
-			_this.keyFindObj(key)['name'] = value;
+			_this.keyFindObj(key).name = value;
 		}
 	});
 };
 
 /**
  * @description 面板DOM创建
- * @method styleHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 面板数据
  * @return {String} HTML
  * @static
@@ -992,7 +999,7 @@ uinv.FCM.configMgr.model.monitor.styleHtmlRow = function(obj){
 
 /**
  * @description 面板页面构建
- * @method styleHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.styleHtml = function(){
@@ -1011,14 +1018,15 @@ uinv.FCM.configMgr.model.monitor.styleHtml = function(){
 
 /**
  * @description 告警级别页面构建
- * @method alarmLevelHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.alarmLevelHtml = function(){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var html = "";
+	
 	if( typeof  _obj.data.monitor.alarm.alarmLevel == 'object' ){
-		var html = '';
 		for(var i=0,k=_obj.data.monitor.alarm.alarmLevel.length;i<k;i++){
 			html += _this.alarmLevelHtmlRow( _obj.data.monitor.alarm.alarmLevel[i] );
 		}
@@ -1029,7 +1037,7 @@ uinv.FCM.configMgr.model.monitor.alarmLevelHtml = function(){
 
 /**
  * @description 告警数据HTML创建
- * @method alarmLevelHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 告警数据
  * @return {String} HTML
  * @static
@@ -1054,7 +1062,7 @@ uinv.FCM.configMgr.model.monitor.alarmLevelHtmlRow = function(o){
 
 /**
  * @description 删除告警级别
- * @method deleteAlarmLevelRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj 触发事件DOM节点
  * @static
  */
@@ -1066,7 +1074,7 @@ uinv.FCM.configMgr.model.monitor.deleteAlarmLevelRow = function(obj){
 
 /**
  * @description 添加告警级别
- * @method addAlarmLevel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.addAlarmLevel = function(){
@@ -1081,24 +1089,24 @@ uinv.FCM.configMgr.model.monitor.addAlarmLevel = function(){
 
 /**
  * @description 初始化
- * @constructor init()
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} param 初始化参数
  * @static
  */
 uinv.FCM.configMgr.model.monitor.init = function(param){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	
-	_obj.form.submitCallback = 	function(){
+
+	_obj.form.submitCallback = function(){
 		_obj.model.stringDB.set( _this.index, _this.obj );
 		for(var i=0,k=_this.deleteFileArr.length;i<k;i++){
 			uinv.server.manager.frame.delFile(_this.deleteFileArr[i]);
 		}
 	};
 	
-	_this.objBoxClassStr = param['objBox'] || '';
-	_this.styleBoxClassStr = param['styleBox'] || '';
-	_this.alarmlevelBoxClassStr = param['alarmlevelBox'] || '';
+	_this.objBoxClassStr = param.objBox || '';
+	_this.styleBoxClassStr = param.styleBox || '';
+	_this.alarmlevelBoxClassStr = param.alarmlevelBox || '';
 	_this.obj = _obj.model.stringDB.get( _this.index );
 	_this.obj.panel = typeof _this.obj.panel == 'undefined' ? [] : _this.obj.panel;
 

@@ -1,6 +1,4 @@
-/**
- * @description 面板
- */
+
  
 //--------------------------
 // 基础定义
@@ -49,7 +47,7 @@ uinv.FCM.configMgr.model.panel.classStr = '';
 
 /**
  * @description 根据key查找到面板对象
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 面板key值
  * @return {Object} 面板对象
  * @static
@@ -69,7 +67,7 @@ uinv.FCM.configMgr.model.panel.keyFindObj = function(key){
 
 /**
  * @description 根据key值删除面板对象（内存操作）
- * @method keyDelObj
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 面板key值
  * @return {Boolean} true 删除成功 false 删除失败（可能key值不存在）
  */
@@ -87,9 +85,9 @@ uinv.FCM.configMgr.model.panel.keyDelObj = function(key){
 };
 
 /**
- * @description 创建物体方法
+ * @description 创建物体方法<br />
  * 1) 实际调用选择器模块的公有方法选择对象节点作为创建
- * @method createObject
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.createObject = function(){
@@ -118,7 +116,7 @@ uinv.FCM.configMgr.model.panel.createObject = function(){
 
 /**
  * @description 插入分割线
- * @method insertDividingLine
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 单击创建分割线的DOM节点
  * @param {String} key 创建分割线的面板key值
  * @return {Boolean} 如果key值为false将return false终止后面的操作
@@ -142,10 +140,10 @@ uinv.FCM.configMgr.model.panel.insertDividingLine = function(obj,key){
 };
 
 /**
- * @description 删除物体操作
- * 1) 执行内存删除操作
+ * @description 删除物体操作<br />
+ * 1) 执行内存删除操作<br />
  * 2) 执行页面DOM节点删除操作
- * @method deleteObj
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 物体key值
  * @static
  */
@@ -160,11 +158,11 @@ uinv.FCM.configMgr.model.panel.deleteObj = function(key){
 
 
 /**
- * @description 删除面板项操作
- * @method deleteObjPanel
- * 1) 每一个物体下同名的面板都会一并删除
- * 2) 只是内存操作，不提交服务器
+ * @description 删除面板项操作<br />
+ * 1) 每一个物体下同名的面板都会一并删除<br />
+ * 2) 只是内存操作，不提交服务器<br />
  * 3) 每一个物体下都删除同名的DOM节点
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 触发删除事件的DOM节点
  * @return {Boolean} 将弹出确认会话框，如果取消删除操作则return false终止后面删除动作
  * @static
@@ -194,7 +192,7 @@ uinv.FCM.configMgr.model.panel.deleteObjPanel = function(obj){
 
 /**
  * @description 根据面板key删除物体对象里的order与item的面板项
- * @method keyDeleteObjPanel
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体对象数据
  * @param {String} panelKey 面板key值
  * @static
@@ -202,21 +200,22 @@ uinv.FCM.configMgr.model.panel.deleteObjPanel = function(obj){
 uinv.FCM.configMgr.model.panel.keyDeleteObjPanel = function(obj, panelKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var index = 0;
 	
 	if( _obj.model.array.inArray(panelKey, obj.order) ){
-		var index = _obj.model.array.strInArrayIndex( panelKey, obj.order );
+		index = _obj.model.array.strInArrayIndex( panelKey, obj.order );
 		obj.order.splice(index,1);
 	}
 	
 	if( _obj.model.array.inArray(panelKey, obj.item) ){
-		var index = _obj.model.array.strInArrayIndex( panelKey, obj.item );
+		index = _obj.model.array.strInArrayIndex( panelKey, obj.item );
 		obj.item.splice(index,1);
 	}
 };
 
 /**
  * @description 根据对象key，面板key，删除DOM节点
- * @method keyDeleteObjPanelLi
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} objkey 对象key值
  * @param {String} panelkey 面板key值
  * @static
@@ -233,10 +232,10 @@ uinv.FCM.configMgr.model.panel.keyDeleteObjPanelLi = function(objkey,panelkey){
 };
 
 /**
- * @description 修改物体名称
- * 1) DOM节点文本修改
+ * @description 修改物体名称<br />
+ * 1) DOM节点文本修改<br />
  * 2) 内存操作修改
- * @method modifyObjectName
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 物体key值
  * @param {DOM} obj 触发修改名称事件的DOM节点
  * @static
@@ -261,7 +260,7 @@ uinv.FCM.configMgr.model.panel.modifyObjectName = function(key,obj){
 
 /**
  * @description 创建物体DOM节点函数
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体数据
  * @return {String} DOM节点
  * @static
@@ -297,7 +296,7 @@ uinv.FCM.configMgr.model.panel.mkhtml = function(obj){
 
 /**
  * @description 创建物体面板项的DOM节点
- * @method mkHtmlList
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体数据
  * @param {Object} panel 面板数据
  * @return {}
@@ -316,7 +315,7 @@ uinv.FCM.configMgr.model.panel.mkHtmlList = function(obj, panel){
 		html += '<span class="action panel_up">';
 			html += '<a onclick="uinv.FCM.configMgr.model.panel.upMove(this);" class="'+_this.upMoveBtnClass+'" href="javascript:void(0);" style="display:none;"><s>上移</s></a>';
 			html += '</span>';
-			if( typeof panel['itemConfig'] == 'object' ){
+			if( typeof panel.itemConfig == 'object' ){
 				html += '<span class="panel_edit">';
 				html += '<a onclick="uinv.FCM.configMgr.model.panel.itemConfig(\''+key+'\',\''+obj.key+'\');" href="javascript:void(0);"><s>编辑</s></a>';
 				html += '</span>';				
@@ -341,7 +340,7 @@ uinv.FCM.configMgr.model.panel.mkHtmlList = function(obj, panel){
 
 /**
  * @description 面板编辑配置DOM节点创建 并且初始化面板配置数据
- * @method itemConfig
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 面板key值
  * @param {String} objectKey 隶属物体key值
  * @static
@@ -350,19 +349,19 @@ uinv.FCM.configMgr.model.panel.itemConfig = function(key, objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;	
 	
-	if(typeof _this.obj[key]['itemConfig'] == 'undefined'){
+	if(typeof _this.obj[key].itemConfig == 'undefined'){
 		_this.note.alert(_obj.msg.S9);
 	}
 
 	_panel = _this.keyFindObj(objectKey);
-	_panel['itemData'] = typeof _panel['itemData'] == 'undefined' ? {} : _panel['itemData'];
-	_panel['itemData'][key] = typeof _panel['itemData'][key] == 'undefined' ? {} : _panel['itemData'][key];
+	_panel.itemData = typeof _panel.itemData == 'undefined' ? {} : _panel.itemData;
+	_panel.itemData[key] = typeof _panel.itemData[key] == 'undefined' ? {} : _panel.itemData[key];
 
 	var html = '';
 	html += '<div class="itemConfig" style="padding:10px;">';
-	for(var i = 0 , k = _this.obj[key]['itemConfig'].length; i<k; i++){
-		if( typeof _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']] == 'function' ){
-			html += _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']](_this.obj[key]['itemConfig'][i],key, objectKey);
+	for(var i = 0 , k = _this.obj[key].itemConfig.length; i<k; i++){
+		if( typeof _this.itemConfigTypeToHtml[_this.obj[key].itemConfig[i].type] == 'function' ){
+			html += _this.itemConfigTypeToHtml[_this.obj[key].itemConfig[i].type](_this.obj[key].itemConfig[i],key, objectKey);
 		}
 	}
 	html += '<p class="action">';
@@ -378,7 +377,7 @@ uinv.FCM.configMgr.model.panel.itemConfig = function(key, objectKey){
 
 /**
  * @description 初始化面板配置项表单
- * @method itemConfigFormInit
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.itemConfigFormInit = function(){
@@ -394,7 +393,7 @@ uinv.FCM.configMgr.model.panel.itemConfigFormInit = function(){
 
 /**
  * @description 面板配置表单提交 将表单值写入内存中
- * @method itemConfigSubmit
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.itemConfigSubmit = function(){
@@ -412,7 +411,7 @@ uinv.FCM.configMgr.model.panel.itemConfigSubmit = function(){
 
 /**
  * @description 添加面板DOM节点到物体DOM树里
- * @method addPanelOneToObj
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 物体key值
  * @param {String} html 创建的DOM面板节点
  * @static
@@ -425,7 +424,7 @@ uinv.FCM.configMgr.model.panel.addPanelOneToObj = function( key, html ){
 
 /**
  * @description 根据value删除物体DOM树下的面板项DOM节点
- * @method removeObjPanelIsValue
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 物体key值
  * @param {String} value 面板DOM节点的value值
  * @static
@@ -438,7 +437,7 @@ uinv.FCM.configMgr.model.panel.removeObjPanelIsValue = function( key, value ){
 
 /**
  * @description 面板排序 把已勾选的面板排到前面，未勾选的面板排到后面
- * @method order
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj DOM节点
  * @static
  */
@@ -449,7 +448,7 @@ uinv.FCM.configMgr.model.panel.order = function(obj){
 	var num = 0;
 	var index = 0;
 	_obj.form.box.find( '*[name='+$(obj).attr('name')+']' ).each(function(i){
-		if( this.checked == true && this != obj){
+		if( this.checked === true && this != obj){
 			num++;
 		}else if( this==obj ){
 			index = i;
@@ -458,7 +457,7 @@ uinv.FCM.configMgr.model.panel.order = function(obj){
 	
 	// 排序
 	if(index != num){
-		if(obj.checked == true){
+		if(obj.checked === true){
 			_obj.form.box.find( '*[name='+$(obj).attr('name')+']:eq('+num+')' ).parents('li').before( $(obj).parents('li') );
 		}else{
 			_obj.form.box.find( '*[name='+$(obj).attr('name')+']:eq('+num+')' ).parents('li').after( $(obj).parents('li') );
@@ -468,7 +467,7 @@ uinv.FCM.configMgr.model.panel.order = function(obj){
 
 /**
  * @description 显示面板上移按钮 因为面板未勾选的时候会隐藏
- * @method showUpMoveBtn
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 触发事件的DOM节点
  * @static
  */
@@ -481,7 +480,7 @@ uinv.FCM.configMgr.model.panel.showUpMoveBtn = function(obj){
 
 /**
  * @description 隐藏上移按钮 因为面板取消选中状态时要隐藏下移按钮
- * @method hideUpMoveBtn 
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj DOM节点
  * @static
  */
@@ -492,8 +491,9 @@ uinv.FCM.configMgr.model.panel.hideUpMoveBtn = function(obj){
 };
 
 /**
- * @description 选中面板触发函数
+ * @description 选中面板触发函数<br />
  * 1) 初始化面板checkbox为true的时候也触发
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 选中面板的checkbox DOM节点
  * @static
  */
@@ -503,7 +503,7 @@ uinv.FCM.configMgr.model.panel.checkd = function(obj){
 	// 排序
 	_this.order(obj);
 	
-	if(obj.checked == true){
+	if(obj.checked === true){
 		// 添加class
 		$(obj).parents('li').addClass('checked');
 		
@@ -521,7 +521,7 @@ uinv.FCM.configMgr.model.panel.checkd = function(obj){
 
 /**
  * @description 选中面板后要把选中的面板排到前面，主要防止在它前面有未选中的面板
- * @method checkedPanelOrder
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} name 面板name值
  * @static
  */
@@ -545,7 +545,7 @@ uinv.FCM.configMgr.model.panel.checkedPanelOrder = function(name){
 
 /**
  * @description 上移面板操作
- * @method upMove
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 触发事件的DOM节点
  * @static
  */
@@ -556,14 +556,14 @@ uinv.FCM.configMgr.model.panel.upMove = function(obj){
 	var checkObj =  $(obj).parents('li').find('input[type=checkbox][name]');
 	
 	// 如果面板没有被选中状态，就return退出，不执行上移操作
-	if( checkObj.get(0).checked == false ) {
+	if( checkObj.get(0).checked === false ) {
 		return;
 	}
 	
 	var index = $(obj).parents('li').index();
 	
 	// 如果面板排在首位就return退出，不执行上移操作
-	if(index == 0){
+	if(index === 0){
 		return;
 	}
 	
@@ -575,7 +575,7 @@ uinv.FCM.configMgr.model.panel.upMove = function(obj){
 
 /**
  * @description 判断key是否已被使用，防止key重复
- * @method checkHasKey
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key值
  * @return {Boolean}
  * @static
@@ -594,7 +594,7 @@ uinv.FCM.configMgr.model.panel.checkHasKey = function(key){
 
 /**
  * @description 创建物体 （内存操作）
- * @method addObject
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体数据
  * @return {Object} 组合过的物体数据
  * @static
@@ -602,10 +602,12 @@ uinv.FCM.configMgr.model.panel.checkHasKey = function(key){
 uinv.FCM.configMgr.model.panel.addObject = function( obj ){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var key = "";
+	var bool = false;
 	
 	do{
-		var key = _obj.model.key.create(32);
-		var bool = _this.checkHasKey(key);
+		key = _obj.model.key.create(32);
+		bool = _this.checkHasKey(key);
 	}while(bool);
 	
 	var comObj = {
@@ -626,10 +628,10 @@ uinv.FCM.configMgr.model.panel.addObject = function( obj ){
 };
 		
 /**
- * @description 检测两个物体是否相等
- * 1) 实际上只是检测物体的condition
+ * @description 检测两个物体是否相等<br />
+ * 1) 实际上只是检测物体的condition<br />
  * 2) 当前检测的condition只有name attribute classid
- * @method judgeObjectIsEq
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} o1 物体1
  * @param {Object} o2 物体2
  * @return {Boolean} true 相等 false 不相等
@@ -662,9 +664,9 @@ uinv.FCM.configMgr.model.panel.judgeObjectIsEq = function(o1,o2){
 };
 
 /**
- * @description 判断物体是否已经存在
+ * @description 判断物体是否已经存在<br />
  * 1) 实际上是遍历已创建的物体挨个比较是否有condition一样的物体 fun除外
- * @method checkObjectExist
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 要检测的物体
  * @return {Boolean} true 存在 false 不存在
  * @static
@@ -684,7 +686,7 @@ uinv.FCM.configMgr.model.panel.checkObjectExist = function( obj ){
 	
 /**
  * @description 添加面板逻辑业务处理
- * @method add
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板数据
  * @param {Function} fun 回调函数
  * @static
@@ -703,7 +705,7 @@ uinv.FCM.configMgr.model.panel.add = function(obj, fun){
 
 /**
  * @description 添加面板到全局对象 （内存操作）
- * @method addPanelToGlobalLib
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板数据
  * @param {Function} fun 回调函数
  * @static
@@ -727,7 +729,7 @@ uinv.FCM.configMgr.model.panel.addPanelToGlobalLib = function( obj, fun ){
 
 /**
  * @description 添加面板到全局对象 回调
- * @method addPanelToGlobalLibCallback
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板数据
  * @static
  */
@@ -754,7 +756,7 @@ uinv.FCM.configMgr.model.panel.addPanelToGlobalLibCallback = function( obj ){
 
 /**
  * @description 对象写到文本数据后回调函数
- * @method setDBCallback
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.setDBCallback = function(){
@@ -764,7 +766,7 @@ uinv.FCM.configMgr.model.panel.setDBCallback = function(){
 
 /**
  * @description 添加面板到指定物体的面板库内
- * @method addPanelToObjLib
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板
  * @param {Function} fun 回调函数
  * @static
@@ -795,7 +797,7 @@ uinv.FCM.configMgr.model.panel.addPanelToObjLib = function( obj, fun ){
 
 /**
  * @description 添加面板到指定对象回调函数
- * @method addPanelToObjLibCallback
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体数据
  * @param {Object} panel 面板数据
  * @static
@@ -816,7 +818,7 @@ uinv.FCM.configMgr.model.panel.addPanelToObjLibCallback = function( obj, panel )
 
 /**
  * @description 索引面板副数据
- * @method getPanelList
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @return {Object} 面板副数据
  */
 uinv.FCM.configMgr.model.panel.getPanelList = function(){
@@ -827,7 +829,7 @@ uinv.FCM.configMgr.model.panel.getPanelList = function(){
 
 /**
  * @description 面板上传
- * @method uinv.FCM.configMgr.model.panel.upload
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @see uinv.server.manager.frame.upAndUnZip()
  * @param {DOM} obj 上传空间DOM对象
  * @param {} selector
@@ -853,7 +855,7 @@ uinv.FCM.configMgr.model.panel.upload = function(obj, selector){
 
 /**
  * @description 上传面板回调函数 主要接受回传的面板内容，以做下一步处理
- * @method uinv.FCM.configMgr.model.panel.uploadCallback
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} result 执行上传操作后服务器返回的结果
  * @static
  */
@@ -884,7 +886,7 @@ uinv.FCM.configMgr.model.panel.uploadCallback = function(result){
 
 /**
  * @description 检测上传面板数据的合法性
- * @method verificationPanelData
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 上传的面板数据
  * @return {Boolean} true 合法 false 不合法
  * @static
@@ -919,7 +921,7 @@ uinv.FCM.configMgr.model.panel.verificationPanelData = function(obj){
 
 /**
  * @description 根据传入参数创建全局面板的DOM节点
- * @method globalPanelListHtml
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板数据
  * @return {String} DOM节点
  * @static
@@ -941,7 +943,7 @@ uinv.FCM.configMgr.model.panel.globalPanelListHtml = function(obj){
 
 /**
  * @description 全局面板管理页面入口
- * @method globalPanelManager
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.globalPanelManager = function(){
@@ -973,7 +975,7 @@ uinv.FCM.configMgr.model.panel.globalPanelManager = function(){
 
 /**
  * @description 关闭全局面板管理窗口回调函数
- * @method globalPanelManagerCallBack
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.globalPanelManagerCallBack = function(){
@@ -984,7 +986,7 @@ uinv.FCM.configMgr.model.panel.globalPanelManagerCallBack = function(){
 
 /**
  * @description 删除全局面板操作，只操作内存
- * @method deleteGlobalPanel
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 触发事件的DOM节点
  * @param {String} key 面板key值
  * @static
@@ -1001,7 +1003,7 @@ uinv.FCM.configMgr.model.panel.deleteGlobalPanel = function(obj, key){
 
 /**
  * @description 初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} classStr 面板盒子DOM Class 值
  * @static
  */

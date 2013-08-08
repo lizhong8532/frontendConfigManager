@@ -1,17 +1,15 @@
 
-/**
- * @description 类型
- */
 
 /**
  * @description 单选类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.radio = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
 	
-	if( obj.checked == true ){
+	if( obj.checked === true ){
 		if($(obj).attr('itemkey') !== ""){
 			_obj.data[$(obj).attr('path')][$(obj).attr('name')][$(obj).attr('itemkey')] = _this.box.find('*[name=' + $(obj).attr('name') + ']:checked').attr('value');
 		}else{
@@ -22,13 +20,14 @@ uinv.FCM.configMgr.form.setValue.radio = function(obj){
 
 /**
  * @description 布尔类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
-uinv.FCM.configMgr.form.setValue.boolean = function(obj){
+uinv.FCM.configMgr.form.setValue.bool = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
 
-	if( obj.checked == true ){
+	if( obj.checked === true ){
 		
 		if($(obj).attr('itemkey') !== ""){
 			if(obj.value == "1"){
@@ -49,6 +48,7 @@ uinv.FCM.configMgr.form.setValue.boolean = function(obj){
 
 /**
  * @description 文本类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.text = function(obj){
@@ -64,6 +64,7 @@ uinv.FCM.configMgr.form.setValue.text = function(obj){
 
 /**
  * @description 字符串类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.string = function(obj){
@@ -79,6 +80,7 @@ uinv.FCM.configMgr.form.setValue.string = function(obj){
 
 /**
  * @description 数字类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.number = function(obj){
@@ -94,6 +96,7 @@ uinv.FCM.configMgr.form.setValue.number = function(obj){
 
 /**
  * @description 图片类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.image = function(obj){
@@ -108,6 +111,7 @@ uinv.FCM.configMgr.form.setValue.image = function(obj){
 	
 /**
  * @description 颜色类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.color = function(obj){
@@ -122,6 +126,7 @@ uinv.FCM.configMgr.form.setValue.color = function(obj){
 		
 /**
  * @description 图层类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.layer = function(obj){
@@ -132,20 +137,21 @@ uinv.FCM.configMgr.form.setValue.layer = function(obj){
 	var layerObj = _obj.model.layer.keyFindObj( name );
 	
 	if(_this.isNameFirstEach(name) ){
-		layerObj['item'] = [];
-		layerObj['order'] = [];
+		layerObj.item = [];
+		layerObj.order = [];
 		_this.nameInit.push( name );
 	}
 	
-	layerObj['order'].push( $(obj).attr('value') );
+	layerObj.order.push( $(obj).attr('value') );
 	
-	if( obj.checked == true ){
-		layerObj['item'].push( $(obj).attr('value') );
+	if( obj.checked === true ){
+		layerObj.item.push( $(obj).attr('value') );
 	}
 };
 
 /**
  * @description 面板类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.panel = function(obj){
@@ -157,20 +163,21 @@ uinv.FCM.configMgr.form.setValue.panel = function(obj){
 	var panelObj = _obj.model.panel.keyFindObj( name );
 	
 	if(_this.isNameFirstEach(name) ){
-		panelObj['item'] = [];
-		panelObj['order'] = [];
+		panelObj.item = [];
+		panelObj.order = [];
 		_this.nameInit.push( name );
 	}
 	
-	panelObj['order'].push( $(obj).attr('value') );
+	panelObj.order.push( $(obj).attr('value') );
 	
-	if( obj.checked == true ){
-		panelObj['item'].push( $(obj).attr('value') );
+	if( obj.checked === true ){
+		panelObj.item.push( $(obj).attr('value') );
 	}
 };
 
 /**
  * @description 统计类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.statistics = function(obj){
@@ -197,16 +204,18 @@ uinv.FCM.configMgr.form.setValue.statistics = function(obj){
 
 /**
  * @description 视角类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.viewpoint = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
-	_obj.model.viewpoint.keyFindObj( $(obj).attr('name') )['data'][$(obj).attr('key')] = Number($(obj).val());
+	_obj.model.viewpoint.keyFindObj( $(obj).attr('name') ).data[$(obj).attr('key')] = Number($(obj).val());
 };
 
 /**
  * @description 告警类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.alarm = function(obj){
@@ -217,6 +226,7 @@ uinv.FCM.configMgr.form.setValue.alarm = function(obj){
 
 /**
  * @description 告警层级
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.alarmlevel = function(obj){

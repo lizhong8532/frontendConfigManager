@@ -1,22 +1,19 @@
 
-/**
- * @description 选择器
- */
 
 //----------------
 // 选择器基础定义
 //----------------
 
 /**
- * @description 提交选择节点后的回调函数
- * 1) 调用show方法时传入，如果为null则等于没有回调函数
+ * @description 提交选择节点后的回调函数<br />
+ * 1) 调用show方法时传入，如果为null则等于没有回调函数<br />
  * 2) 主要是返回选择的结果
  * @type Function
  */
 uinv.FCM.configMgr.model.selector.publicSelectNodeSubmitCallback = null;
 
 /**
- * @description 选择器主容器的class值
+ * @description 选择器主容器的class值<br />
  * 1) 模块初始的时候传入，大部分DOM操作将依赖此值
  * @type String
  */
@@ -46,11 +43,11 @@ uinv.FCM.configMgr.model.selector.selectKey = '';
 //------------------------------
 
 /**
- * @description 创建对象选择器公用方法 呈现
- * 1) 通过dialog模块呈现
- * 2) 回调函数 返回 obj { 'name' : '物体名称', 'where' : { 物体的条件 } }
+ * @description 创建对象选择器公用方法 呈现<br />
+ * 1) 通过dialog模块呈现<br />
+ * 2) 回调函数 返回 obj { 'name' : '物体名称', 'where' : { 物体的条件 } }<br />
  * 3) 主要用于其它模块创建对象时使用
- * @method show
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Function} fun 回调函数
  * @static
  */
@@ -78,9 +75,9 @@ uinv.FCM.configMgr.model.selector.show = function(fun){
 };
 
 /**
- * @description 创建对象选择器公用方法 关闭
+ * @description 创建对象选择器公用方法 关闭<br />
  * 1) 实际是调用dialog模块的close方法
- * @method hide
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.hide = function(){
@@ -90,10 +87,10 @@ uinv.FCM.configMgr.model.selector.hide = function(){
 };
 
 /**
- * @description 创建对象选择器公用方法 提交处理函数
- * 1) 主要判断是否选择了节点
+ * @description 创建对象选择器公用方法 提交处理函数<br />
+ * 1) 主要判断是否选择了节点<br />
  * 2) 回调函数在这里触发，并将返回选择的结果
- * @method publicSelectNodeSubmit
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit = function(){
@@ -119,7 +116,7 @@ uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit = function(){
 
 /**
  * @description 创建对象选择器公用模块 选择节点处理函数
- * @method publicSelectNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {DOM} obj DOM节点
  * @param {String} key 被操作节点的key值
  * @static
@@ -138,9 +135,9 @@ uinv.FCM.configMgr.model.selector.publicSelectNode = function(obj,key){
 };
 
 /**
- * @description 创建对象选择器公用模块 创建DOM节点
+ * @description 创建对象选择器公用模块 创建DOM节点<br />
  * 1) 此方法为递归调用 如当前节点下还有子节点时再把子节点传入递归调用
- * @method publicShowHtml
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} obj 树的节点
  * @return {String} dom 节点
  * @static
@@ -183,7 +180,7 @@ uinv.FCM.configMgr.model.selector.publicShowHtml = function(obj){
 /**
  * @description 关闭为节点添加条件的Dialog
  * @param {Function} fun 回调方法
- * @method cancelAddNodeWhere
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.cancelAddNodeWhere = function(fun){
@@ -198,7 +195,7 @@ uinv.FCM.configMgr.model.selector.cancelAddNodeWhere = function(fun){
 /**
  * @description 获取所有整个系统定义的所有Class ID
  * @see uinv.factory.getAllClass()
- * @method getAllClassID
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @return {Object} ClassID Object
  * @static
  */
@@ -209,7 +206,7 @@ uinv.FCM.configMgr.model.selector.getAllClassID = function(){
 /**
  * @description 获取某一个ClassID的信息
  * @param {Number} classid 
- * @method getOneClassID
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @return {Object} classid 的属性
  * @static
  */
@@ -226,7 +223,7 @@ uinv.FCM.configMgr.model.selector.getOneClassID = function(classid){
 
 /**
  * @description 节点重命名
- * @method nodeRename
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 要操作节点的key值
  * @static
  */
@@ -248,10 +245,10 @@ uinv.FCM.configMgr.model.selector.nodeRename = function(key){
 };
 
 /**
- * @description 根据某一个几点的key值返回该节点的DOM对象
- * 1) 如果key值有效，则返回此节点的DOM对象
+ * @description 根据某一个几点的key值返回该节点的DOM对象<br />
+ * 1) 如果key值有效，则返回此节点的DOM对象<br />
  * 2) 如果key值为空，则返回整个selector盒子DOM对象
- * @method keyFindNodeHtmlObj
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点的key值
  * @return {DOM} DOM对象
  * @static
@@ -268,11 +265,11 @@ uinv.FCM.configMgr.model.selector.keyFindNodeHtmlObj = function(key){
 };
 
 /**
- * @description 删除节点
- * 1) 页面上删除DOM节点
- * 2) 内存里删除节点对象
+ * @description 删除节点<br />
+ * 1) 页面上删除DOM节点<br />
+ * 2) 内存里删除节点对象<br />
  * 3) 如果节点下面有子节点也会一并删除
- * @method deleteNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 要删除的key对象
  * @static
  */
@@ -292,18 +289,19 @@ uinv.FCM.configMgr.model.selector.deleteNode = function(key){
 
 
 /**
- * @description 创建节点
- * 1) 如果传入父节点则在此父节点下创建子节点
- * 2) 如果不传入父节点则在根下创建节点
- * 3) 创建相应的DOM节点
+ * @description 创建节点<br />
+ * 1) 如果传入父节点则在此父节点下创建子节点<br />
+ * 2) 如果不传入父节点则在根下创建节点<br />
+ * 3) 创建相应的DOM节点<br />
  * 4) 内存里写入节点信息
- * @method createNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} parentKey 创建节点的父节点key值
  * @static
  */
 uinv.FCM.configMgr.model.selector.createNode = function(parentKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var key = "";
 	_this.selectKey = parentKey || '';
 	
 	if(typeof _this.obj.lib == 'undefined'){
@@ -315,19 +313,19 @@ uinv.FCM.configMgr.model.selector.createNode = function(parentKey){
 	}
 	
 	do{
-		var key = _obj.model.key.create();
+		key = _obj.model.key.create();
 	}while(key in _this.obj.lib);
 	
-	var node = { 'name' : '新节点' , 'key': key };
+	var node = { name: '新节点', key: key };
 	_this.insertNodeToTreeObj(node, parentKey);
 	_this.insertNodeToTreeDom(node, parentKey);
 };
 
 /**
- * @description 把一个节点插入内存中树中
- * 1) 如果传入父节点的key，则在父节点的key下插入此节点
+ * @description 把一个节点插入内存中树中<br />
+ * 1) 如果传入父节点的key，则在父节点的key下插入此节点<br />
  * 2) 如果不传入父节点则在根下插入此节点
- * @method insertNodeToTreeObj
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} node 要插入的节点
  * @param {String} parentKey 父节点key值
  * @static
@@ -352,10 +350,10 @@ uinv.FCM.configMgr.model.selector.insertNodeToTreeObj = function(node,parentKey)
 };
 
 /**
- * @description 将节点插入到DOM树里
- * 1) 如果传入父节点key，则在父节点的DOM树下插入子节点
+ * @description 将节点插入到DOM树里<br />
+ * 1) 如果传入父节点key，则在父节点的DOM树下插入子节点<br />
  * 2) 如果不传入父节点key，则在根树下插入子节点
- * @method insertNodeToTreeDom
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} node 要操作的节点
  * @param {String} parentKey 父节点key值
  * @static
@@ -374,10 +372,10 @@ uinv.FCM.configMgr.model.selector.insertNodeToTreeDom = function(node, parentKey
 };
 
 /**
- * @description 根据key值查找到节点对象
- * 1) 此方法为递归查找
+ * @description 根据key值查找到节点对象<br />
+ * 1) 此方法为递归查找<br />
  * 2) 如果搜索到匹配节点后将return，不再执行后面的遍历匹配
- * @method keyFindTreeNodeObj
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} obj 要搜索的对象
  * @param {String} key 要匹配的key值
  * @return {Boolean|Object} 返回false表示没有匹配项 返回object表示匹配到的节点对象
@@ -404,7 +402,7 @@ uinv.FCM.configMgr.model.selector.keyFindTreeNodeObj = function(obj,key){
 
 /**
  * @description 递归创建树的DOM节点
- * @method recursionTreeHtml
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} obj 节点对象
  * @return {String} DOM节点
  * @static
@@ -433,7 +431,7 @@ uinv.FCM.configMgr.model.selector.recursionTreeHtml = function(obj){
 
 /**
  * @description 创建树的DOM节点方法
- * @method treeHtml
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @return {String} DOM节点
  * @static
  */
@@ -455,7 +453,7 @@ uinv.FCM.configMgr.model.selector.treeHtml = function(){
 
 /**
  * @description 添加条件的提交操作
- * @method addNodeWhereFormSubmit
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -476,7 +474,7 @@ uinv.FCM.configMgr.model.selector.addNodeWhereFormSubmit = function(key){
 
 /**
  * @description 判断节点是否存在条件
- * @method objIsExistWhere
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @return {Boolean} true 有条件 false 无条件
  * @static
@@ -493,7 +491,7 @@ uinv.FCM.configMgr.model.selector.objIsExistWhere = function(key){
 			
 /**
  * @description 添加条件表单初始化
- * @method addNodeWhereFormInit
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -507,7 +505,7 @@ uinv.FCM.configMgr.model.selector.addNodeWhereFormInit = function(key){
 
 /**
  * @description 节点form数据记忆的初始化 （内存操作）
- * @method formDataRememberInit
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -523,10 +521,10 @@ uinv.FCM.configMgr.model.selector.formDataRememberInit = function(key){
 };
 
 /**
- * @description 删除节点的条件
- * 1) 从内存中删除条件
+ * @description 删除节点的条件<br />
+ * 1) 从内存中删除条件<br />
  * 2) DOM节点删除有条件的Class值，使他恢复没有条件时的样式
- * @method delNodeWhere
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -542,7 +540,7 @@ uinv.FCM.configMgr.model.selector.delNodeWhere = function(key){
 
 /**
  * @description 编辑节点条件方法
- * @method editNodeWhere
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @return {Boolean} 如果key值无效或者key值不存在树里就return flase 终止下面的操作
  * @static
@@ -623,6 +621,7 @@ uinv.FCM.configMgr.model.selector.editNodeWhere = function(key){
 
 /**
  * @description 右键弹出主处理函数
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Event} evt
  * @param {DOM} obj 触发右键的DOM节点
  * @return {Boolean}
@@ -660,7 +659,7 @@ uinv.FCM.configMgr.model.selector.contextMenu = function(evt,obj){
 
 /**
  * @description 子节点展开
- * @method treeNodeShow 
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -672,7 +671,7 @@ uinv.FCM.configMgr.model.selector.treeNodeShow = function(key){
 
 /**
  * @description 子节点收起
- * @method treeNodeHide
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -684,7 +683,7 @@ uinv.FCM.configMgr.model.selector.treeNodeHide = function(key){
 
 /**
  * @description 右键菜单操作触发动作路由
- * @method contextMenuRouting
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Function} fun 触发的方法
  * @param {String} key 操作的方法
  * @static
@@ -699,7 +698,7 @@ uinv.FCM.configMgr.model.selector.contextMenuRouting = function(fun, key){
 
 /**
  * @description 获取创建右键DOM节点
- * @method getContextMenuHtml
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Event} e
  * @param {String} key 节点key值
  * @return {String} 创建右键菜单DOM节点
@@ -744,7 +743,7 @@ uinv.FCM.configMgr.model.selector.getContextMenuHtml = function(e, key){
 
 /**
  * @description 右键DOM节点添加到DOM树种并显示
- * @method contextMenuShow
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Event} e 
  * @param {String} key 节点key值
  * @static
@@ -761,7 +760,7 @@ uinv.FCM.configMgr.model.selector.contextMenuShow = function(e, key){
 
 /**
  * @description 右键DOM节点隐藏 实际上右键的DOM节点会被remove删除操作
- * @method contextMenuHide
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.contextMenuHide = function(){
@@ -771,10 +770,10 @@ uinv.FCM.configMgr.model.selector.contextMenuHide = function(){
 };
 
 /**
- * @description 当前节点选择操作
- * 1) 样式中添加选中节点的样式
+ * @description 当前节点选择操作<br />
+ * 1) 样式中添加选中节点的样式<br />
  * 2) 内存记录当前选中的节点key值
- * @method selectNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @param {Event} evt
  * @static
@@ -802,10 +801,10 @@ uinv.FCM.configMgr.model.selector.selectNode = function(key,evt){
 };
 
 /**
- * @description 撤销选中的节点
- * 1) DOM节点上移除选中样式
+ * @description 撤销选中的节点<br />
+ * 1) DOM节点上移除选中样式<br />
  * 2) 内存里删除选中记录
- * @method cancelSelectNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.cancelSelectNode = function(){
@@ -817,7 +816,7 @@ uinv.FCM.configMgr.model.selector.cancelSelectNode = function(){
 
 /**
  * @description 选择器模块初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} classStr 选择器盒子DOM Class 值
  * @static
  */

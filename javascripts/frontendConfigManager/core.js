@@ -1,245 +1,252 @@
 /** 
  * -------------------------------------------------------------
- * Copyright (c) 2013 可视化配置, All rights reserved. 
+ * Copyright (c) 2013 frontendConfigManager, All rights reserved. 
  *  
- * @version: 0.0.1 
+ * @version: 0.0.0 
  * @author: lizhong 
- * @description: 后台可视化配置功能 
- * @project: 可视化配置 
- * @date: 2013-08-06 
+ * @description: frontendConfigManager 
+ * @project: frontendConfigManager 
+ * @date: 2013-08-08 
  * ------------------------------------------------------------- 
  */ 
 
+
 /**
- * @description 全局配置
+ * @fileOverview 可视化系统单入口命名空间
+ * @namespace uinv.FCM.configMgr
+ */
+namespace.reg('uinv.FCM.configMgr');
+
+/**
+ * @fileOverview 全局配置
  * @namespace uinv.FCM.configMgr.global
  */
 namespace.reg('uinv.FCM.configMgr.global');
 
 /**
- * @description 提示模块
+ * @fileOverview 提示模块
  * @namespace uinv.FCM.configMgr.note
  */
 namespace.reg('uinv.FCM.configMgr.note');
 
 /**
- * @description 对象与字符串互相转换模块
+ * @fileOverview 对象与字符串互相转换模块
  * @namespace uinv.FCM.configMgr.model.transform
  */
 namespace.reg('uinv.FCM.configMgr.model.transform');
 
 /**
- * @description 数组模块
+ * @fileOverview 数组模块
  * @namespace uinv.FCM.configMgr.model.array
  */
 namespace.reg('uinv.FCM.configMgr.model.array');
 
 /**
- * @description 选择器模块
+ * @fileOverview 选择器模块
  * @namespace uinv.FCM.configMgr.model.selector
  */
 namespace.reg('uinv.FCM.configMgr.model.selector');
 
 /**
  * @description 选择器条件修改时根据不同的条件类型把表单值设置值到内存中
- * @namespace uinv.FCM.configMgr.model.selector.whereTypeSetObj
+ * @memberOf uinv.FCM.configMgr.model.selector
  */
 namespace.reg('uinv.FCM.configMgr.model.selector.whereTypeSetObj');
 
 /**
- * @description 字符串读写操作模块 主要调用后台接口实现副配置信息的存储
+ * @fileOverview 字符串读写操作模块 主要调用后台接口实现副配置信息的存储
  * @namespace uinv.FCM.configMgr.model.stringDB
  */
 namespace.reg('uinv.FCM.configMgr.model.stringDB');
 
 /**
- * @description 随机字符串生成模块
+ * @fileOverview 随机字符串生成模块
  * @namespace uinv.FCM.configMgr.model.key
  */
 namespace.reg('uinv.FCM.configMgr.model.key');
 
 /**
- * @description 图层模块
+ * @fileOverview 图层模块
  * @namespace uinv.FCM.configMgr.model.layer
  */
 namespace.reg('uinv.FCM.configMgr.model.layer');
 
 /**
  * @description 根据图层配置项的类型创建DOM节点
- * @namespace uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml
+ * @memberOf uinv.FCM.configMgr.model.layer
  */
 namespace.reg('uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml');
 
 /**
  * @description 根据图层配置项的类型初始化不同类型控件
- * @namespace uinv.FCM.configMgr.model.layer.itemConfigInitData;
+ * @memberOf uinv.FCM.configMgr.model.layer
  */
 namespace.reg('uinv.FCM.configMgr.model.layer.itemConfigInitData');
 
 /**
  * @description 根据图层配置项的类型不同存储数据方法
- * @namespace uinv.FCM.configMgr.model.layer.itemConfigSetData;
+ * @memberOf uinv.FCM.configMgr.model.layer
  */
 namespace.reg('uinv.FCM.configMgr.model.layer.itemConfigSetData');
 
 /**
- * @description 面板模块
+ * @fileOverview 面板模块
  * @namespace uinv.FCM.configMgr.model.panel
  */
 namespace.reg('uinv.FCM.configMgr.model.panel');
 
 /**
  * @description 根据面板配置项的类型创建DOM节点
- * @namespace uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml
+ * @memberOf uinv.FCM.configMgr.model.panel
  */
 namespace.reg('uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml');
 
 /**
  * @description 根据面板配置项的类型初始化不同类型控件
- * @namespace uinv.FCM.configMgr.model.panel.itemConfigInitData;
+ * @memberOf uinv.FCM.configMgr.model.panel
  */
 namespace.reg('uinv.FCM.configMgr.model.panel.itemConfigInitData');
 
 /**
  * @description 根据面板配置项的类型不同存储数据方法
- * @namespace uinv.FCM.configMgr.model.panel.itemConfigSetData;
+ * @memberOf uinv.FCM.configMgr.model.panel
  */
 namespace.reg('uinv.FCM.configMgr.model.panel.itemConfigSetData');
 
 /**
- * @description object操作模块
+ * @fileOverview object操作模块
  * @namespace uinv.FCM.configMgr.model.object
  */
 namespace.reg('uinv.FCM.configMgr.model.object');
 
 /**
- * @description 色盘模块
+ * @fileOverview 色盘模块
  * @namespace uinv.FCM.configMgr.model.colorpicke
  */
 namespace.reg('uinv.FCM.configMgr.model.colorpicke');
 
 /**
- * @description 浮层模块
+ * @fileOverview 浮层模块
  * @namespace uinv.FCM.configMgr.model.dialog
  */
 namespace.reg('uinv.FCM.configMgr.model.dialog');
 
 /**
- * @description 统计模块
+ * @fileOverview 统计模块
  * @namespace uinv.FCM.configMgr.model.statistics
  */
 namespace.reg('uinv.FCM.configMgr.model.statistics');
 
 /**
- * @description 资源模块
+ * @fileOverview 资源模块
  * @namespace uinv.FCM.configMgr.model.resources
  */
 namespace.reg('uinv.FCM.configMgr.model.resources');
 
 /**
- * @description 视点模块
+ * @fileOverview 视点模块
  * @namespace uinv.FCM.configMgr.model.viewpoint
  */
 namespace.reg('uinv.FCM.configMgr.model.viewpoint');
 
 /**
- * @description 备份模块
+ * @fileOverview 备份模块
  * @namespace uinv.FCM.configMgr.model.backup
  */
 namespace.reg('uinv.FCM.configMgr.model.backup');
 
 /**
- * @description 监控模块
+ * @fileOverview 监控模块
  * @namespace uinv.FCM.configMgr.model.monitor
  */
 namespace.reg('uinv.FCM.configMgr.model.monitor');
 
 /**
  * @description 监控配置表单数据写入内存
- * @namespace uinv.FCM.configMgr.model.monitor.configSetData
+ * @memberOf uinv.FCM.configMgr.model.monitor
  */
 namespace.reg('uinv.FCM.configMgr.model.monitor.configSetData');
 
 /**
  * @description 根据不同类型给出不同的控件
- * @namespace uinv.FCM.configMgr.model.monitor.configTypeToHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  */
 namespace.reg('uinv.FCM.configMgr.model.monitor.configTypeToHtml');
 
 /**
  * @description 根据监控面板配置表单空间类型保存数据到内存
- * @namespace uinv.FCM.configMgr.model.monitor.configTypeToData
+ * @memberOf uinv.FCM.configMgr.model.monitor
  */
 namespace.reg('uinv.FCM.configMgr.model.monitor.configTypeToData');
 
 /**
  * @description 根据监控面板配置表单控件类型返回相应类型的值
- * @namespace uinv.FCM.configMgr.model.monitor.configStyleTypeToData
+ * @memberOf uinv.FCM.configMgr.model.monitor
  */
 namespace.reg('uinv.FCM.configMgr.model.monitor.configStyleTypeToData');
 
 /**
- * @description 下载模块
+ * @fileOverview 下载模块
  * @namespace uinv.FCM.configMgr.model.download
  */
 namespace.reg('uinv.FCM.configMgr.model.download');
 
 /**
- * @description 图片模块
+ * @fileOverview 图片模块
  * @namespace uinv.FCM.configMgr.model.images
  */
 namespace.reg('uinv.FCM.configMgr.model.images');
 
 /**
- * @description 表单操作
+ * @fileOverview 表单操作
  * @namespace uinv.FCM.configMgr.form
  */
 namespace.reg('uinv.FCM.configMgr.form');
 
 /**
  * @description 根据类型创建DOM对象
- * @namespace uinv.FCM.configMgr.form.createTypeHtml
+ * @memberOf uinv.FCM.configMgr.form
  */
 namespace.reg('uinv.FCM.configMgr.form.createTypeHtml');
 
 /**
  * @description 根据不同控件类型，设置表单各种类型的初始值
- * @namespace uinv.FCM.configMgr.form.type
+ * @memberOf uinv.FCM.configMgr.form
  */
 namespace.reg('uinv.FCM.configMgr.form.type');
 
 /**
  * @description 根据不同的表单控件类型获取值到内存
- * @namespace uinv.FCM.configMgr.form.setValue
+ * @memberOf uinv.FCM.configMgr.form
  */
 namespace.reg('uinv.FCM.configMgr.form.setValue');
 
 /**
- * @description 主配置数据
+ * @fileOverview 主配置数据
  * @namespace uinv.FCM.configMgr.data
  */
 namespace.reg('uinv.FCM.configMgr.data');
 
 /**
- * @description 其它
+ * @fileOverview 其它
  * @namespace uinv.FCM.configMgr.other
  */
 namespace.reg('uinv.FCM.configMgr.other');
 
 /**
- * @description api接口
+ * @fileOverview api接口
  * @namespace uinv.FCM.configMgr.api
  */
 namespace.reg('uinv.FCM.configMgr.api');
 
 /**
- * @description 翻译
+ * @fileOverview 翻译
  * @namespace uinv.FCM.configMgr.translate
  */
 namespace.reg('uinv.FCM.configMgr.translate');
 
 /**
- * @description 信息
+ * @fileOverview 信息
  * @namespace uinv.FCM.configMgr.msg
  */
 namespace.reg('uinv.FCM.configMgr.msg');
@@ -247,11 +254,14 @@ namespace.reg('uinv.FCM.configMgr.msg');
 
 
 
+
 /**
  * @description 获取监控面板数据
- * @method getMonitor
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} { monitorTime:监控时间, monitorPanelConfig:监控配置数据  }
  * @example var result = uinv.FCM.configMgr.api.getMonitor();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getMonitor = function(){
@@ -309,9 +319,11 @@ uinv.FCM.configMgr.api.getMonitor = function(){
 
 /**
  * @description 获取视角数据
- * @method getViewpoint
- * @return {Object} 视角数据
+ * @memberOf uinv.FCM.configMgr.api
+ * @return {Object} { 物体名称:{ x:Number, y:Number, z:Number }, ... }
  * @example var result = uinv.FCM.configMgr.api.getViewpoint();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getViewpoint = function(){
@@ -330,9 +342,11 @@ uinv.FCM.configMgr.api.getViewpoint = function(){
 
 /**
  * @description 获取统计数据
- * @method getStatistics
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 统计数据
  * @example var result = uinv.FCM.configMgr.api.getStatistics();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getStatistics = function(){
@@ -358,9 +372,11 @@ uinv.FCM.configMgr.api.getStatistics = function(){
 
 /**
  * @description 获取资源数据
- * @method getResources
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 资源数据
  * @example var result = uinv.FCM.configMgr.api.getResources();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getResources = function(){
@@ -381,9 +397,11 @@ uinv.FCM.configMgr.api.getResources = function(){
 
 /**
  * @description 获取图层数据
- * @method getLayer
+ * @method memberOf uinv.FCM.configMgr.api
  * @return {Object} 图层数据
  * @example var result = uinv.FCM.configMgr.api.getLayer();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getLayer = function(){
@@ -423,36 +441,69 @@ uinv.FCM.configMgr.api.getLayer = function(){
 
 /**
  * @description 获取面板数据
- * @method getPanel
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 面板数据
  * @example var result = uinv.FCM.configMgr.api.getPanel();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getPanel = function(){
 	var _obj = uinv.FCM.configMgr;
-	var _this = this;		
+	var _this = this;
+	
+	var obj = _obj.model.object.clone( _obj.data.panel );
+	
+	_obj.model.panel.obj = _obj.model.stringDB.get(_obj.model.panel.index);
+	
+	for(var i=0,k=obj.length;i<k;i++){
+		obj[i].condition = _obj.other.conditionReplaceName( obj[i].obj );
+		
+		obj[i].tmp = [];
+		for(var n=0,m=obj[i].item.length;n<m;n++){
+			if( typeof obj[i].itemData == "undefined" ){
+				obj[i].itemData = [];			
+			}  
+			
+			obj[i].tmp.push({
+				'itemName' : obj[i].item[n] == u.le.get('分割线') ? 'separator' : obj[i].item[n] ,
+				'config' : typeof obj[i].itemData[obj[i].item[n]] == 'undefined' ? {} :  _obj.model.object.clone( obj[i].itemData[obj[i].item[n]] )
+			});
+		}
+		
+		obj[i].item = obj[i].tmp;
+		delete obj[i].obj;
+		delete obj[i].tmp;
+		delete obj[i].order;
+	}
 	
 	return {
-		"objects" : [],
-		"lib" : {}
+		"objects" : obj,
+		"lib" : _obj.model.object.clone( _obj.model.panel.obj )
 	};
 };
 
 /**
  * @description 获取表单数据
- * @method getForm
+ * @memberOf uinv.FCM.configMgr.api
  * @param {String} group 过滤组数据，不传入则全部返回
  * @return {Object} 表单数据
- * @example var result = uinv.FCM.configMgr.api.getForm();
+ * @example 
+ * var result = uinv.FCM.configMgr.api.getForm(); // 全部返回<br />
+ * var result = uinv.FCM.configMgr.api.getForm("system"); // 返回group=system的数据
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getForm = function(group){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		i = 0,
+		k = 0;
 	
 	var o = _obj.model.object.clone(_obj.form.createFormData);
 	
-	for(var i=0,k=o.length;i<k;i++){
+	for(i=0,k=o.length;i<k;i++){
 		o[i].value = _obj.data[o[i].group][o[i].name];
 		if(o[i].type == 'color'){
 			o[i].value = _obj.model.colorpicke.toRgb(o[i].value);
@@ -461,7 +512,7 @@ uinv.FCM.configMgr.api.getForm = function(group){
 	
 	if(group){
 		var arr = [];
-		for(var i=0,k=o.length;i<k;i++){
+		for(i=0,k=o.length;i<k;i++){
 			if(o[i].group == group){
 				arr.push(o[i]);
 			}
@@ -474,9 +525,11 @@ uinv.FCM.configMgr.api.getForm = function(group){
 
 /**
  * @description 获取告警数据
- * @method getAlarm
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 告警级别数据
  * @example var result = uinv.FCM.configMgr.api.getAlarm();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getAlarm = function(){
@@ -502,9 +555,11 @@ uinv.FCM.configMgr.api.getAlarm = function(){
 
 /**
  * @description 获取系统下载数据
- * @method getDownload
+ * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 下载数据
  * @example var result = uinv.FCM.configMgr.api.getDownload();
+ * @author lizhong
+ * @since 2013-07
  * @static
  */
 uinv.FCM.configMgr.api.getDownload = function(){
@@ -513,6 +568,11 @@ uinv.FCM.configMgr.api.getDownload = function(){
 	
 	return _obj.model.object.clone(_obj.data.download);
 };
+
+/**
+ * @description 系统配置
+ * @type Object
+ */
 uinv.FCM.configMgr.data.system = {};
 /**
  * @description 数据定义
@@ -590,9 +650,9 @@ uinv.FCM.configMgr.data.monitor = {
 	 * @type Object
 	 */
 	'alarm' : { 
-	 	alarmTime : 0,
-	 	alarmIconSize : 1,
-	 	monitorTime : 1
+		alarmTime : 0,
+		alarmIconSize : 1,
+		monitorTime : 1
 	}	
 };
 
@@ -601,6 +661,7 @@ uinv.FCM.configMgr.data.monitor = {
  * @type Array
  */
 uinv.FCM.configMgr.data.download = [];
+
 //----------------------------------------------------
 // 基础定义
 //----------------------------------------------------
@@ -629,6 +690,12 @@ uinv.FCM.configMgr.form.obj = null;
  */
 uinv.FCM.configMgr.form.box = null;
 
+/**
+ * 
+ * @description 系统保留data关键字
+ * @type Array
+ */
+uinv.FCM.configMgr.form.keywords = ["download","layer","monitor","panel","resources","statistics","viewpoint"];
 
 //------------------------------------------
 // 函数区
@@ -637,15 +704,15 @@ uinv.FCM.configMgr.form.box = null;
 
 /**
  * @description 根据组获取所有项
- * @method groupFindItem
+ * @memberOf uinv.FCM.configMgr.form
  * @param {String} groupName 组名
  * @return {Array} 列表
  */
-uinv.FCM.configMgr.form.groupFindItem = function(groupName){
+uinv.FCM.configMgr.form.tabFindItem = function(tabName){
 	var _this = this;
 	var arr = [];
 	for( var i=0,k=_this.createFormData.length;i<k;i++ ){
-		if( _this.createFormData[i].group == groupName ){
+		if( _this.createFormData[i].tab == tabName ){
 			arr.push( _this.createFormData[i] );
 		}
 	}
@@ -654,46 +721,86 @@ uinv.FCM.configMgr.form.groupFindItem = function(groupName){
 };
 
 /**
+ * @description 检测表单数据是否占用系统保留关键字
+ * @memberOf uinv.FCM.configMgr.form
+ * @return {Boolean} true 占用 false 不占用
+ * @static
+ */
+uinv.FCM.configMgr.form.checkFormKeyword = function(){
+	var _obj = uinv.FCM.configMgr;	
+	var _this = this;
+	
+	for( var n=0,m=_this.createFormData.length;n<m;n++ ){
+		for(var i=0,k=_this.keywords.length; i<k; i++){
+			if( _this.createFormData[n].group === _this.keywords[i] ){
+				return true;
+			}
+		}
+	}
+	
+	return false;
+};
+
+/**
  * @description 根据表单数据创建构建表单页面
- * @method createHtml
- * @param {Array} o 表单数据
+ * @memberOf uinv.FCM.configMgr.form
+ * @param {Array} o {dom:生成网页后加载的盒子，tab:标签页数据} 表单数据
+ * @return {Boolean} return false 占用关键字
  * @static 
  */
 uinv.FCM.configMgr.form.createHtml = function(o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	o.data = _this.groupFindItem(o.group);
-	
+	o.data = _this.tabFindItem(o.tab);
+
 	var html = "";
 	for(var i=0,k=o.data.length;i<k;i++){
-		
-		if(typeof o.data[i].itemkey == "undefined"){
-			 o.data[i].itemkey = "";
-		}
-
-		// 赋值
-		if(typeof _obj.data[o.data[i].group] == "undefined"){
-			_obj.data[o.data[i].group] = {};
-		}	
-		
-		if( typeof _obj.data[o.data[i].group][o.data[i].name] == 'undefined' ){
-			_obj.data[o.data[i].group][o.data[i].name] = o.data[i].defaultValue;
-		}
-		
 		if( typeof _this.createTypeHtml[o.data[i].type] == 'function' ){
 			html += _this.createTypeHtml[o.data[i].type]( o.data[i]  );
 		}
-
 	}
 	
 	o.dom.html(html);
 };
 
 /**
- * @description 装载页面
+ * @description 根据表单数据初始化DATA
+ * @memberOf uinv.FCM.configMgr.form
+ * @return {Boolean} return false 占用关键字
+ * @static 
+ */
+uinv.FCM.configMgr.form.initFormDataToData = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	var o = _this.createFormData;
+	
+	if( _this.checkFormKeyword() ){
+		_obj.note.alert( _obj.msg.S25 );
+		return false;
+	}
+	
+	for(var i=0,k=o.length;i<k;i++){
+		
+		if(typeof o[i].itemkey == "undefined"){
+			o[i].itemkey = "";
+		}
+
+		// 赋值
+		if(typeof _obj.data[o[i].group] == "undefined"){
+			_obj.data[o[i].group] = {};
+		}	
+		
+		if( typeof _obj.data[o[i].group][o[i].name] == 'undefined' ){
+			_obj.data[o[i].group][o[i].name] = o[i].defaultValue;
+		}
+	}
+};
+
+/**
+ * @description 装载页面<br />
  * 1) 如果异常将显示404
- * @method load
+ * @memberOf uinv.FCM.configMgr.form
  * @param {Object} param { page:页面名称, obj:页面DOM对象 }
  * @static
  */
@@ -702,23 +809,23 @@ uinv.FCM.configMgr.form.load = function(param){
 	var _this = this;
 	_this.box  = param.obj || $('.config-load');
 	_this.box.load(
-	    param.page + '?' + Date.parse(new Date()),
-	    function(response, status, xhr) {
-	    	if ( status=="success" ){	
+		param.page + '?' + Date.parse(new Date()),
+		function(response, status, xhr) {
+			if ( status=="success" ){	
 				_this.init();
 				$('.config-submit-btn').show();
-	    	}else{
+			}else{
 				$(this).load('./views/config/404.html');
-	    	}
-	    	
-	    	uinv.FCM.configMgr.translate();
-	    }
+			}
+
+			uinv.FCM.configMgr.translate();
+		}
 	);
 };
 
 /**
  * @description 提交表单到服务器存储
- * @method submit
+ * @memberOf uinv.FCM.configMgr.form
  * @static
  */
 uinv.FCM.configMgr.form.submit = function(){
@@ -737,7 +844,7 @@ uinv.FCM.configMgr.form.submit = function(){
 	uinv.server.manager.frame.saveFrameConfig( uinv.util.toJSON( _obj.data ) , function(result){
 		_obj.note.dialog(result.data);
 		
-		if(result['success'] && typeof _this.submitCallback == 'function'){
+		if(result.success && typeof _this.submitCallback == 'function'){
 			_this.submitCallback();
 		}
 	}); 
@@ -745,7 +852,7 @@ uinv.FCM.configMgr.form.submit = function(){
 
 /**
  * @description 保存文本数据，包括副数据
- * @method saveData
+ * @memberOf uinv.FCM.configMgr.form
  * @static
  */
 uinv.FCM.configMgr.form.saveData = function(){
@@ -753,7 +860,7 @@ uinv.FCM.configMgr.form.saveData = function(){
 	var _this = this;
 	
 	uinv.server.manager.frame.saveFrameConfig( uinv.util.toJSON( _obj.data ) , function(result){
-		if(result['success'] && typeof _this.submitCallback == 'function'){
+		if(result.success && typeof _this.submitCallback == 'function'){
 			_this.submitCallback();
 		}
 	}); 
@@ -761,7 +868,7 @@ uinv.FCM.configMgr.form.saveData = function(){
 
 /**
  * @description 判断这个name是否是第一次轮询
- * @method isNameFirstEach
+ * @memberOf uinv.FCM.configMgr.form
  * @param {String} name 控件name值
  * @return {Boolean} true 第一次轮询 false 不是第一次轮询
  * @static
@@ -778,7 +885,7 @@ uinv.FCM.configMgr.form.isNameFirstEach = function(name){
 
 /**
  * @description 初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.form
  * @static
  */
 uinv.FCM.configMgr.form.init = function(){
@@ -796,12 +903,14 @@ uinv.FCM.configMgr.form.init = function(){
 	_obj.translate();
 };
 
+
+
 /**
  * @description 布尔类型
  * @param {Object} o 表单数据
  * @return {String} HTML
  */
-uinv.FCM.configMgr.form.createTypeHtml.boolean = function(o){
+uinv.FCM.configMgr.form.createTypeHtml.bool = function(o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
 	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey];
@@ -811,11 +920,11 @@ uinv.FCM.configMgr.form.createTypeHtml.boolean = function(o){
 		html += '<span class="comments"><s>'+o.caption+'</s></span>';
 		html += '<span class="form">';
 			if(value){
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" checked value="1" /><s>是</s></label>';
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" value="0" /><s>否</s></label>';					
+				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="bool" name="'+o.name+'" checked value="1" /><s>是</s></label>';
+				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="bool" name="'+o.name+'" value="0" /><s>否</s></label>';					
 			}else{
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" value="1" /><s>是</s></label>';
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" checked value="0" /><s>否</s></label>';			
+				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="bool" name="'+o.name+'" value="1" /><s>是</s></label>';
+				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="bool" name="'+o.name+'" checked value="0" /><s>否</s></label>';			
 			}
 		html += '</span>';
 	html += '</div>';
@@ -937,15 +1046,17 @@ uinv.FCM.configMgr.form.createTypeHtml.array = function(o){
 	return html;
 };
 
+
 /**
  * @description 单选类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.radio = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
 	
-	if( obj.checked == true ){
+	if( obj.checked === true ){
 		if($(obj).attr('itemkey') !== ""){
 			_obj.data[$(obj).attr('path')][$(obj).attr('name')][$(obj).attr('itemkey')] = _this.box.find('*[name=' + $(obj).attr('name') + ']:checked').attr('value');
 		}else{
@@ -956,13 +1067,14 @@ uinv.FCM.configMgr.form.setValue.radio = function(obj){
 
 /**
  * @description 布尔类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
-uinv.FCM.configMgr.form.setValue.boolean = function(obj){
+uinv.FCM.configMgr.form.setValue.bool = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
 
-	if( obj.checked == true ){
+	if( obj.checked === true ){
 		
 		if($(obj).attr('itemkey') !== ""){
 			if(obj.value == "1"){
@@ -983,6 +1095,7 @@ uinv.FCM.configMgr.form.setValue.boolean = function(obj){
 
 /**
  * @description 文本类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.text = function(obj){
@@ -998,6 +1111,7 @@ uinv.FCM.configMgr.form.setValue.text = function(obj){
 
 /**
  * @description 字符串类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.string = function(obj){
@@ -1013,6 +1127,7 @@ uinv.FCM.configMgr.form.setValue.string = function(obj){
 
 /**
  * @description 数字类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.number = function(obj){
@@ -1028,6 +1143,7 @@ uinv.FCM.configMgr.form.setValue.number = function(obj){
 
 /**
  * @description 图片类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.image = function(obj){
@@ -1042,6 +1158,7 @@ uinv.FCM.configMgr.form.setValue.image = function(obj){
 	
 /**
  * @description 颜色类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.color = function(obj){
@@ -1056,6 +1173,7 @@ uinv.FCM.configMgr.form.setValue.color = function(obj){
 		
 /**
  * @description 图层类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.layer = function(obj){
@@ -1066,20 +1184,21 @@ uinv.FCM.configMgr.form.setValue.layer = function(obj){
 	var layerObj = _obj.model.layer.keyFindObj( name );
 	
 	if(_this.isNameFirstEach(name) ){
-		layerObj['item'] = [];
-		layerObj['order'] = [];
+		layerObj.item = [];
+		layerObj.order = [];
 		_this.nameInit.push( name );
 	}
 	
-	layerObj['order'].push( $(obj).attr('value') );
+	layerObj.order.push( $(obj).attr('value') );
 	
-	if( obj.checked == true ){
-		layerObj['item'].push( $(obj).attr('value') );
+	if( obj.checked === true ){
+		layerObj.item.push( $(obj).attr('value') );
 	}
 };
 
 /**
  * @description 面板类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.panel = function(obj){
@@ -1091,20 +1210,21 @@ uinv.FCM.configMgr.form.setValue.panel = function(obj){
 	var panelObj = _obj.model.panel.keyFindObj( name );
 	
 	if(_this.isNameFirstEach(name) ){
-		panelObj['item'] = [];
-		panelObj['order'] = [];
+		panelObj.item = [];
+		panelObj.order = [];
 		_this.nameInit.push( name );
 	}
 	
-	panelObj['order'].push( $(obj).attr('value') );
+	panelObj.order.push( $(obj).attr('value') );
 	
-	if( obj.checked == true ){
-		panelObj['item'].push( $(obj).attr('value') );
+	if( obj.checked === true ){
+		panelObj.item.push( $(obj).attr('value') );
 	}
 };
 
 /**
  * @description 统计类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.statistics = function(obj){
@@ -1131,16 +1251,18 @@ uinv.FCM.configMgr.form.setValue.statistics = function(obj){
 
 /**
  * @description 视角类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.viewpoint = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
-	_obj.model.viewpoint.keyFindObj( $(obj).attr('name') )['data'][$(obj).attr('key')] = Number($(obj).val());
+	_obj.model.viewpoint.keyFindObj( $(obj).attr('name') ).data[$(obj).attr('key')] = Number($(obj).val());
 };
 
 /**
  * @description 告警类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.alarm = function(obj){
@@ -1151,6 +1273,7 @@ uinv.FCM.configMgr.form.setValue.alarm = function(obj){
 
 /**
  * @description 告警层级
+ * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.alarmlevel = function(obj){
@@ -1166,6 +1289,9 @@ uinv.FCM.configMgr.form.setValue.alarmlevel = function(obj){
 		_obj.data[$(obj).attr('path')].alarm[$(obj).attr('name')].push(o);
 	});
 };
+
+ 
+ 
 /**
  * @description 单选类型
  * @param {DOM} obj 控件节点
@@ -1189,7 +1315,7 @@ uinv.FCM.configMgr.form.type.radio = function(obj){
  * @description 布尔类型
  * @param {DOM} obj 控件节点
  */
-uinv.FCM.configMgr.form.type.boolean = function(obj){
+uinv.FCM.configMgr.form.type.bool = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;			
 
@@ -1302,8 +1428,8 @@ uinv.FCM.configMgr.form.type.layer = function(obj){
 		$(obj).attr('disabled', true);
 	}
 	
-	if(typeof layerObj['item'] == 'object'){
-		if( _obj.model.array.inArray( $(obj).attr('value') , layerObj['item'] ) ){
+	if(typeof layerObj.item == 'object'){
+		if( _obj.model.array.inArray( $(obj).attr('value') , layerObj.item ) ){
 			$(obj).attr('checked', true);
 			_obj.model.layer.checkd(obj);
 		}	
@@ -1322,8 +1448,8 @@ uinv.FCM.configMgr.form.type.panel = function(obj){
 	
 	var panelObj = _obj.model.panel.keyFindObj( $(obj).attr('name') );
 	
-	if(typeof panelObj['item'] == 'object'){
-		if( _obj.model.array.inArray( $(obj).attr('value') , panelObj['item'] ) ){
+	if(typeof panelObj.item == 'object'){
+		if( _obj.model.array.inArray( $(obj).attr('value') , panelObj.item ) ){
 			$(obj).attr('checked', true);
 			_obj.model.panel.checkd(obj);
 		}	
@@ -1359,7 +1485,7 @@ uinv.FCM.configMgr.form.type.statistics = function(obj){
 uinv.FCM.configMgr.form.type.viewpoint = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
-	$(obj).val( _obj.model.viewpoint.keyFindObj( $(obj).attr('name') )['data'][$(obj).attr('key')] );
+	$(obj).val( _obj.model.viewpoint.keyFindObj( $(obj).attr('name') ).data[$(obj).attr('key')] );
 };
 
 /**
@@ -1387,19 +1513,19 @@ uinv.FCM.configMgr.form.type.alarmlevel = function(obj){
 		_obj.model.colorpicke.show(dom);
 	});
 };
+
 /**
- * @description 可视化配置基础路径
- * 1) 理论上所有通过可视化配置上传的所有文件都存放在基础路径下
- * 2) 实际上会有单独的模块存放的文件在基础路径之外，比如资源模块上传的资源都存放在这个基础路径之外
+ * @description 可视化配置基础路径<br />
+ * 1) 理论上所有通过可视化配置上传的所有文件都存放在基础路径下<br />
+ * 2) 实际上会有单独的模块存放的文件在基础路径之外，比如资源模块上传的资源都存放在这个基础路径之外<br />
  * 3) 备份配置时会把这个路径下的所有文件及子目录一并备份
- * 
  * @type String
  */
 uinv.FCM.configMgr.global.path = '/frontendConfigManager';
 
 /**
- * @description 项目路径
- * 1) 实际上当脚本初始化后会在init函数内自动获取项目路径重新赋值
+ * @description 项目路径<br />
+ * 1) 实际上当脚本初始化后会在init函数内自动获取项目路径重新赋值<br />
  * 2) 比如URL路径http://localhost:8080/uinv_frontend/admin.html则截取uinv_frontend
  * @type String
  */
@@ -1411,22 +1537,35 @@ uinv.FCM.configMgr.global.projectPath = '';
  * @type String
  */
 uinv.FCM.configMgr.global.line1 = '<i class="config-line1"></i>';
+
 /**
- * @description 初始化
- * @constructor init()
+ * @description 是否加载完
+ * @type Boolean
+ */
+uinv.FCM.configMgr.global.onload = false;
+
+
+/**
+ * @description 可视化配置系统初始化
+ * @memberOf uinv.FCM.configMgr
  * @static
  */
 uinv.FCM.configMgr.init = function(){
+	
 	var _this = this;
 	
+	// Fixes #1
 	// 请求服务器获取对象
-	uinv.server.manager.frame.getFrameConfig(function(result){
-		if( result.success && result.data ){
-			var data = _this.model.transform.str2obj(result.data);
-			_this.model.object.coverObj( data, uinv.FCM.configMgr.data );
-		}
-	});
+	var result = uinv.server.manager.frame.getFrameConfig();
 	
+	if( result.success && result.data ){
+		var data = _this.model.transform.str2obj(result.data);
+		_this.model.object.coverObj( data, uinv.FCM.configMgr.data );
+	}
+		
+	// 检测表单生成数据
+	uinv.FCM.configMgr.form.initFormDataToData();		
+		
 	// 添加目录
 	uinv.ui.manager.navBar.config['menu-config'] =  './views/config/index.html';
 	
@@ -1437,12 +1576,15 @@ uinv.FCM.configMgr.init = function(){
 	var path = window.document.location.pathname.split('/');
 	path.pop();
 	_this.global.projectPath = path.join('/');
+	
 };
 
+
+
 /**
- * @description 判断字符串是否在数组里
+ * @description 判断字符串是否在数组里<br />
  * 1) 这里判断使用普通相等，并非全等
- * @method inArray
+ * @memberOf uinv.FCM.configMgr.model.array
  * @param {String} str 查找字符串
  * @param {Array} arr 被查找数组
  * @return {Boolean}
@@ -1460,11 +1602,12 @@ uinv.FCM.configMgr.model.array.inArray = function(str, arr){
 };
 
 /**
- * @description 判断字符串在数组中的索引 
- * 1) 从第一个元素开始匹配
- * 2) 匹配到字符串后将返回当前index，不在查找后面的数组项
- * 3) 使用普通相等判断，并非全等
+ * @description 判断字符串在数组中的索引<br />
+ * 1) 从第一个元素开始匹配<br />
+ * 2) 匹配到字符串后将返回当前index，不在查找后面的数组项<br />
+ * 3) 使用普通相等判断，并非全等<br />
  * 4) 如果遍历数组到最后一项仍没有查找到结果将返回 -1
+ * @memberOf uinv.FCM.configMgr.model.array
  * @param {String} str 
  * @param {Array} arr
  * @return {Number} 索引 -1 表示字符串不在数组中
@@ -1483,6 +1626,7 @@ uinv.FCM.configMgr.model.array.strInArrayIndex = function(str, arr){
 
 /**
  * @description 判断object是否是数组类型
+ * @memberOf uinv.FCM.configMgr.model.array
  * @param {Object} o 要判断的Object
  * @return {Boolean} true 数组	false 非数组
  * @static
@@ -1490,6 +1634,8 @@ uinv.FCM.configMgr.model.array.strInArrayIndex = function(str, arr){
 uinv.FCM.configMgr.model.array.isArray = function(o){
 	return o instanceof Array;
 };
+
+ 
 //----------------------------------------------
 // 基础定义
 //----------------------------------------------
@@ -1557,7 +1703,7 @@ uinv.FCM.configMgr.model.backup.text = '';
 
 /**
  * @description 初始化数据备份基础数据
- * @method initData
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @static
  */
 uinv.FCM.configMgr.model.backup.initData = function(){
@@ -1571,12 +1717,14 @@ uinv.FCM.configMgr.model.backup.initData = function(){
 
 /**
  * @description 更新文件备份记录列表
- * @method updateFileArr
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @static
  */
 uinv.FCM.configMgr.model.backup.updateFileArr = function(){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		n = 0,
+		arr = [];
 	
 	_this.initData();
 	
@@ -1585,15 +1733,15 @@ uinv.FCM.configMgr.model.backup.updateFileArr = function(){
 	
 	for(var i=0,k=_this.backModel.length;i<k;i++){
 		if( typeof _this.model[_this.backModel[i]].model != 'undefined' && typeof _obj.model[_this.model[_this.backModel[i]].model].backupFiles == 'function'  ){					
-			var arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFiles();
-			for(var n=0,m=arr.length;n<m;n++){
+			arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFiles();
+			for(n=0,m=arr.length;n<m;n++){
 				_this.files.push(arr[n]);
 			}
 		}
 		
 		if( typeof _this.model[_this.backModel[i]].model != 'undefined' && typeof _obj.model[_this.model[_this.backModel[i]].model].backupFolders == 'function'  ){					
-			var arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFolders();
-			for(var n=0,m=arr.length;n<m;n++){
+			arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFolders();
+			for(n=0,m=arr.length;n<m;n++){
 				_this.folders.push(arr[n]);
 			}
 		}
@@ -1602,7 +1750,7 @@ uinv.FCM.configMgr.model.backup.updateFileArr = function(){
 
 /**
  * @description 更新备份文本数据值
- * @method updateText
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @static
  */
 uinv.FCM.configMgr.model.backup.updateText = function(){
@@ -1621,11 +1769,11 @@ uinv.FCM.configMgr.model.backup.updateText = function(){
 	
 	for(var i=0,k=_this.backModel.length;i<k;i++){ 
 		if( typeof _this.model[_this.backModel[i]].data != 'undefined' && typeof o.config[_this.model[_this.backModel[i]].data] != 'undefined' ){
-			backObj['config'][_this.model[_this.backModel[i]].data] = o.config[_this.model[_this.backModel[i]].data];
+			backObj.config[_this.model[_this.backModel[i]].data] = o.config[_this.model[_this.backModel[i]].data];
 		}
 		
 		if( typeof _this.model[_this.backModel[i]].data != 'undefined' && typeof o.string[_this.model[_this.backModel[i]].data] != 'undefined' ){
-			backObj['string'][_this.model[_this.backModel[i]].data] = o.string[_this.model[_this.backModel[i]].data];
+			backObj.string[_this.model[_this.backModel[i]].data] = o.string[_this.model[_this.backModel[i]].data];
 		}					
 	}
 	
@@ -1634,7 +1782,7 @@ uinv.FCM.configMgr.model.backup.updateText = function(){
 
 /**
  * @description 配置数据与文件打包
- * @method configCompression
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @see uinv.server.manager.frame.placeZip()
  * @param {DOM} obj 配置按钮DOM节点
  * @static
@@ -1660,31 +1808,36 @@ uinv.FCM.configMgr.model.backup.configCompression = function(obj){
 
 /**
  * @description 上传备份压缩包
- * @method configUpload
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @param {DOM} obj file DOM 节点
  * @return {Boolean} 返回false数据格式有误
  * @static
  */
 uinv.FCM.configMgr.model.backup.configUpload = function(obj){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-	var path = obj.value.split('\\');
-	fileName = path.pop();
-	
-	var arr = fileName.split(".");
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		o = null,
+		path = obj.value.split('\\'),
+		bool = false,
+		arr = [],
+		fileName = path.pop();
+		
+	arr = fileName.split(".");	
 	if(arr[arr.length-1] != 'zip'){
 		_obj.note.alert(_obj.msg.S3);
 		return false;
 	}
-	var bool = _obj.note.confirm(_obj.msg.F1(fileName));
+	
+	bool = _obj.note.confirm(_obj.msg.F1(fileName));
 	if(!bool){
 		return false;
 	}
 	
 	uinv.server.manager.frame.upAndUnZip(obj, fileName, function(result){
+		
 		if(result.success){
 			try{
-				var o = _obj.model.transform.str2obj(result.data);
+				o = _obj.model.transform.str2obj(result.data);
 			}catch(e){
 				_obj.note.alert(_obj.msg.S4);
 				return false;
@@ -1700,13 +1853,14 @@ uinv.FCM.configMgr.model.backup.configUpload = function(obj){
 
 /**
  * @description 把上传的数据写入库
- * @method setData
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @param {Object} o 上传备份的数据
  * @static
  */
 uinv.FCM.configMgr.model.backup.setData = function(o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var i = 0;
 	
 	var obj = { 
 		'config' : _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data ),
@@ -1714,13 +1868,13 @@ uinv.FCM.configMgr.model.backup.setData = function(o){
 	};
 	
 	if( typeof o.config == 'object' ){
-		for(var i in o.config){
+		for(i in o.config){
 			obj.config[i] = _obj.model.object.clone( o.config[i] );
 		}
 	}
 	
 	if( typeof o.string == 'object' ){
-		for(var i in o.string){
+		for(i in o.string){
 			obj.string[i] = _obj.model.object.clone( o.string[i] );
 		}
 	}				
@@ -1732,7 +1886,7 @@ uinv.FCM.configMgr.model.backup.setData = function(o){
 
 /**
  * @description 更新备份数据
- * @method updateConfig
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @param {Object} o 上传备份的数据
  * @static
  */
@@ -1743,6 +1897,7 @@ uinv.FCM.configMgr.model.backup.updateConfig = function(o){
 	_obj.data = _obj.model.object.clone(o.config);
 	_obj.form.init();
 };
+
 /**
  * @description 颜色范围
  * @type Array
@@ -1768,7 +1923,7 @@ uinv.FCM.configMgr.model.colorpicke.palette =  [
 
 /**
  * @description RGB转HEX
- * @method toHex
+ * @memberOf uinv.FCM.configMgr.model.colorpicke
  * @param {Array} aColor RGB色值
  * @return {String} HEX 色值
  * @static
@@ -1796,31 +1951,34 @@ uinv.FCM.configMgr.model.colorpicke.toHex = function(aColor){
 
 /**
  * @description HEX转RGB
- * @method toRgb
+ * @memberOf uinv.FCM.configMgr.model.colorpicke
  * @param {String} str HEX色值
  * @return {Array} RGB颜色
  * @static
  */
 uinv.FCM.configMgr.model.colorpicke.toRgb = function(str){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-	
-	var sColor = str.toLowerCase();
-	var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		i = 0,
+		sColorChange = [],
+		sColorNew = "",
+		sColor = str.toLowerCase(),
+		reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+		
 	if(sColor && reg.test(sColor)){
 		if(sColor.length === 4){
-			var sColorNew = "#";
-			for(var i=1; i<4; i+=1){
+			sColorNew = "#";
+			for(i=1; i<4; i+=1){
 				sColorNew += sColor.slice(i,i+1).concat(sColor.slice(i,i+1));	
 			}
 			sColor = sColorNew;
 		}
 		
 		//处理六位的颜色值
-		var sColorChange = [];
+		sColorChange = [];
 		
-		for(var i=1; i<7; i+=2){
-			sColorChange.push(parseInt("0x"+sColor.slice(i,i+2)));	
+		for(i=1; i<7; i+=2){
+			sColorChange.push(parseInt("0x"+sColor.slice(i,i+2), 16));	
 		}
 
 		return sColorChange;
@@ -1831,7 +1989,7 @@ uinv.FCM.configMgr.model.colorpicke.toRgb = function(str){
 
 /**
  * @description 显示色盘操作
- * @method show
+ * @memberOf uinv.FCM.configMgr.model.colorpicke
  * @see spectrum插件
  * @param {DOM} obj 显示色盘的DOM节点的依据
  * @static
@@ -1857,19 +2015,21 @@ uinv.FCM.configMgr.model.colorpicke.show = function(obj){
 		} 
 	}).val( obj.value );
 };
+
+ 
 /**
- * @description dialog DOM 节点ID值
- * 1) 实际上这里只是一个声明
+ * @description dialog DOM 节点ID值<br />
+ * 1) 实际上这里只是一个声明<br />
  * 2) 每次创建一个dialog都会把最新的ID改写此定义
  * @type String
  */
 uinv.FCM.configMgr.model.dialog.id = '';
 
 /**
- * @description dialog 创建函数
- * 1) str 可以是一串字符 or HTML格式，宽高度自动计算并居中
+ * @description dialog 创建函数<br />
+ * 1) str 可以是一串字符 or HTML格式，宽高度自动计算并居中<br />
  * 2) 你也可以外包一层div赋值width height决定dialog的宽高
- * @method show
+ * @memberOf uinv.FCM.configMgr.model.dialog
  * @param {String} str 字符串或者HTML格式字符
  * @static
  */
@@ -1897,7 +2057,7 @@ uinv.FCM.configMgr.model.dialog.show = function(str){
 
 /**
  * @description 关闭dialog操作
- * @method close
+ * @memberOf uinv.FCM.configMgr.model.dialog
  * @param {Function} fun 回调函数
  * @static
  */
@@ -1918,9 +2078,9 @@ uinv.FCM.configMgr.model.dialog.close = function(fun){
 };
 
 /**
- * @description 获取dialog的DOM节点
+ * @description 获取dialog的DOM节点<br />
  * 1) 如果节点不存在会返回null，比如在没有创建dialog的情况调用此方法就会返回null， 因为页面中就不存dialog的DOM节点
- * @method getObj
+ * @memberOf uinv.FCM.configMgr.model.dialog
  * @return {DOM} dialog DOM节点
  * @static
  */
@@ -1929,9 +2089,11 @@ uinv.FCM.configMgr.model.dialog.getObj = function(){
 	var _this = this;
 	return $('.config-dialog-'+_this.id);
 };
+
+ 
 /**
  * @description 根据路径查找的数据
- * @method pathFindObj
+ * @memberOf uinv.FCM.configMgr.model.download
  * @param {String} path 路径
  * @return {Object} 返回null表示查找不到
  * @static
@@ -1951,7 +2113,7 @@ uinv.FCM.configMgr.model.download.pathFindObj = function(path){
 
 /**
  * @description 根据路径查找到数据的索引值
- * @method pathFindIndex
+ * @memberOf uinv.FCM.configMgr.model.download
  * @param {String} path 路径
  * @return {Number} 返回-1表示查找不到
  * @static
@@ -1971,7 +2133,7 @@ uinv.FCM.configMgr.model.download.pathFindIndex = function(path){
 
 /**
  * @description 更新download数据 (修改or添加)
- * @method set
+ * @memberOf uinv.FCM.configMgr.model.download
  * @param {Object} o 要跟新或添加的数据
  * @static
  */
@@ -1992,7 +2154,7 @@ uinv.FCM.configMgr.model.download.set = function(o){
 
 /**
  * @description 删除下载信息
- * @method del
+ * @memberOf uinv.FCM.configMgr.model.download
  * @param {String} path 要删除的路径
  * @static
  */
@@ -2004,6 +2166,8 @@ uinv.FCM.configMgr.model.download.del = function(path){
 	_obj.data.download.splice(index,1);
 };
 
+
+ 
 //----------------------------
 // 基础设置
 //----------------------------
@@ -2050,7 +2214,7 @@ uinv.FCM.configMgr.model.images.limit = [
 /**
  * @description 图片上传处理
  * @see uinv.server.manager.frame.upImage()
- * @method imUpload
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {DOM} obj file 节点
  * @param {String} dir 文件夹
  * @static
@@ -2076,7 +2240,7 @@ uinv.FCM.configMgr.model.images.imUpload = function(obj, dir){
 /**
  * @description 删除图片
  * @see uinv.server.manager.frame.delImage()
- * @method delImages
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {String} path 图片路径
  * @static
  */
@@ -2091,7 +2255,7 @@ uinv.FCM.configMgr.model.images.delImages = function(path){
 
 /**
  * @description 相册关闭
- * @method close
+ * @memberOf uinv.FCM.configMgr.model.images
  * @static
  */
 uinv.FCM.configMgr.model.images.close = function(){
@@ -2102,7 +2266,7 @@ uinv.FCM.configMgr.model.images.close = function(){
 
 /**
  * @description 上传图片回调函数
- * @method uploadImagesCallback
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {Object} result 上传图片的返回结果
  * @static
  */
@@ -2120,7 +2284,7 @@ uinv.FCM.configMgr.model.images.uploadImagesCallback = function(result){
 
 /**
  * @description 删除图片回调函数
- * @method deleteImagesCallback
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {Object} result 删除图片返回结果
  * @static
  */
@@ -2144,7 +2308,7 @@ uinv.FCM.configMgr.model.images.deleteImagesCallback = function(result){
 
 /**
  * @description 选择图片操作
- * @method selectImg
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {DOM} obj 选中图片的DOM节点
  * @static
  */
@@ -2161,10 +2325,10 @@ uinv.FCM.configMgr.model.images.selectImg = function(obj){
 };
 	
 /**
- * @description 读取某个操作目录下的图片列表
- * 1) 这里有个bug，实际上如果目录下有其它的飞文件也会返回
+ * @description 读取某个操作目录下的图片列表<br />
+ * 1) 这里有个bug，实际上如果目录下有其它的飞文件也会返回<br />
  * 2) 已针对这个bug写了一个过滤特定文件的程序
- * @method getData
+ * @memberOf uinv.FCM.configMgr.model.images
  * @return {Array} 文件列表
  * @static
  */
@@ -2184,7 +2348,7 @@ uinv.FCM.configMgr.model.images.getData = function(){
 
 /**
  * @description 相册面板右侧显示大图，传入img对象，即可显示，并自动居中
- * @method viewsImg
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {DOM} obj 图片DOM节点
  * @static
  */
@@ -2203,7 +2367,7 @@ uinv.FCM.configMgr.model.images.viewsImg = function(obj){
 
 /**
  * @description urldecode
- * @method decode
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {String} str urlencode 字符
  * @return {String} urldecode后的字符
  * @static
@@ -2217,17 +2381,20 @@ uinv.FCM.configMgr.model.images.decode = function(str){
 
 /**
  * @description 更新相册列表
- * @method updateList
+ * @memberOf uinv.FCM.configMgr.model.images
  * @static
  */
 uinv.FCM.configMgr.model.images.updateList = function(){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-
-	var data = _this.getData();
-	var path = _obj.global.path + _this.path + _this.dir + '/';
-	
-	var arr = [];
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		data = _this.getData(),
+		cla = "",
+		filename = "",
+		img = "",
+		arr = [],
+		pathinfo = [],
+		path = _obj.global.path + _this.path + _this.dir + '/';
+		
 	for(var i=0,k=data.length; i<k; i++){
 		
 		if( _obj.model.array.inArray(data[i], _this.limit)){
@@ -2237,19 +2404,19 @@ uinv.FCM.configMgr.model.images.updateList = function(){
 		var value = _obj.form.box.find('*[name='+ _this.name +']').attr('src');
 		
 		if( value ){
-			var pathinfo = value.split('/');
-			var filename = pathinfo[ pathinfo.length-1 ];
+			pathinfo = value.split('/');
+			filename = pathinfo[ pathinfo.length-1 ];
 		}else{
-			var filename = '';
+			filename = '';
 		}
 		
 		if(filename == data[i]){
-			var cla = 'ok';
+			cla = 'ok';
 		}else{
-			var cla = '';
+			cla = '';
 		}
 		
-		var img = '';
+		img = '';
 		img += '<li class="' + cla + '" onmouseover="uinv.FCM.configMgr.model.images.viewsImg( $(this).find(\'img\').get(0) );" onclick="uinv.FCM.configMgr.model.images.selectImg(this);" >';
 			img += '<img onerror="$(this).parent().remove();" src="'+ _obj.global.projectPath + path+data[i]+'" style="max-width:'+_this.imgWidth+'px;max-height:'+_this.imgHeight+'px;" title="'+_this.decode(data[i])+'" />';
 			img += '<a onclick="uinv.FCM.configMgr.model.images.delImages(\''+path+data[i]+'\');" class="deletebtn" href="javascript:void(0);">DEL</a>';
@@ -2264,7 +2431,7 @@ uinv.FCM.configMgr.model.images.updateList = function(){
 
 /**
  * @description 鼠标移除左侧图片列表框后操作函数
- * @method out
+ * @memberOf uinv.FCM.configMgr.model.images
  * @static
  */
 uinv.FCM.configMgr.model.images.out = function(){
@@ -2276,7 +2443,7 @@ uinv.FCM.configMgr.model.images.out = function(){
 
 /**
  * @description 相册显示主函数入口
- * @method show
+ * @memberOf uinv.FCM.configMgr.model.images
  * @param {Object} param { dir:操作的图片目录 , name:本次操作的name值以便于修改配置数据 }
  * @example uinv.FCM.configMgr.model.images.show({dir:"logo",name:"logo"});
  * @static
@@ -2321,6 +2488,8 @@ uinv.FCM.configMgr.model.images.show = function(param){
 	uinv.FCM.configMgr.model.images.viewsImg( o );
 };
 
+
+ 
 /**
  * @description 生成key的字符范围
  * @type Array
@@ -2333,7 +2502,7 @@ uinv.FCM.configMgr.model.key.str = [
 
 /**
  * @description 生成范围间随机数
- * @method randint
+ * @memberOf uinv.FCM.configMgr.model.key
  * @param {Number} n 最小值
  * @param {Number} m 最大值
  * @return {Number} 随机数
@@ -2346,7 +2515,7 @@ uinv.FCM.configMgr.model.key.randint = function(n,m){
 
 /**
  * @description 生成随机字符
- * @method randStr
+ * @memberOf uinv.FCM.configMgr.model.key
  * @return {String} 字符
  * @static
  */
@@ -2359,9 +2528,9 @@ uinv.FCM.configMgr.model.key.randStr = function(){
 };
 
 /**
- * @description 生成随机字符串
+ * @description 生成随机字符串<br />
  * 1) 默认10个长度
- * @method create
+ * @memberOf uinv.FCM.configMgr.model.key
  * @param {Number} len 长度
  * @return {String} 字符串
  * @static
@@ -2378,6 +2547,8 @@ uinv.FCM.configMgr.model.key.create = function(len){
 
 	return str;
 };
+
+ 
 //--------------------------
 // 基础定义
 //--------------------------
@@ -2425,7 +2596,7 @@ uinv.FCM.configMgr.model.layer.classStr = '';
 
 /**
  * @description 根据key查找到图层对象
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 图层key值
  * @return {Object} 图层对象
  * @static
@@ -2445,7 +2616,7 @@ uinv.FCM.configMgr.model.layer.keyFindObj = function(key){
 
 /**
  * @description 根据key值删除图层对象（内存操作）
- * @method keyDelObj
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 图层key值
  * @return {Boolean} true 删除成功 false 删除失败（可能key值不存在）
  */
@@ -2463,9 +2634,9 @@ uinv.FCM.configMgr.model.layer.keyDelObj = function(key){
 };
 
 /**
- * @description 创建物体方法
+ * @description 创建物体方法<br />
  * 1) 实际调用选择器模块的公有方法选择对象节点作为创建
- * @method createObject
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.createObject = function(){
@@ -2494,7 +2665,7 @@ uinv.FCM.configMgr.model.layer.createObject = function(){
 
 /**
  * @description 插入分割线
- * @method insertDividingLine
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 单击创建分割线的DOM节点
  * @param {String} key 创建分割线的图层key值
  * @return {Boolean} 如果key值为false将return false终止后面的操作
@@ -2518,10 +2689,10 @@ uinv.FCM.configMgr.model.layer.insertDividingLine = function(obj,key){
 };
 
 /**
- * @description 删除物体操作
- * 1) 执行内存删除操作
+ * @description 删除物体操作<br />
+ * 1) 执行内存删除操作<br />
  * 2) 执行页面DOM节点删除操作
- * @method deleteObj
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 物体key值
  * @static
  */
@@ -2536,11 +2707,11 @@ uinv.FCM.configMgr.model.layer.deleteObj = function(key){
 
 
 /**
- * @description 删除图层项操作
- * @method deleteObjLayer
- * 1) 每一个物体下同名的图层都会一并删除
- * 2) 只是内存操作，不提交服务器
+ * @description 删除图层项操作<br />
+ * 1) 每一个物体下同名的图层都会一并删除<br />
+ * 2) 只是内存操作，不提交服务器<br />
  * 3) 每一个物体下都删除同名的DOM节点
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 触发删除事件的DOM节点
  * @return {Boolean} 将弹出确认会话框，如果取消删除操作则return false终止后面删除动作
  * @static
@@ -2570,7 +2741,7 @@ uinv.FCM.configMgr.model.layer.deleteObjLayer = function(obj){
 
 /**
  * @description 根据图层key删除物体对象里的order与item的图层项
- * @method keyDeleteObjLayer
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体对象数据
  * @param {String} layerKey 图层key值
  * @static
@@ -2578,21 +2749,22 @@ uinv.FCM.configMgr.model.layer.deleteObjLayer = function(obj){
 uinv.FCM.configMgr.model.layer.keyDeleteObjLayer = function(obj, layerKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var index = 0;
 	
 	if( _obj.model.array.inArray(layerKey, obj.order) ){
-		var index = _obj.model.array.strInArrayIndex( layerKey, obj.order );
+		index = _obj.model.array.strInArrayIndex( layerKey, obj.order );
 		obj.order.splice(index,1);
 	}
 	
 	if( _obj.model.array.inArray(layerKey, obj.item) ){
-		var index = _obj.model.array.strInArrayIndex( layerKey, obj.item );
+		index = _obj.model.array.strInArrayIndex( layerKey, obj.item );
 		obj.item.splice(index,1);
 	}
 };
 
 /**
  * @description 根据对象key，图层key，删除DOM节点
- * @method keyDeleteObjLayerLi
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} objkey 对象key值
  * @param {String} layerkey 图层key值
  * @static
@@ -2609,10 +2781,10 @@ uinv.FCM.configMgr.model.layer.keyDeleteObjLayerLi = function(objkey,layerkey){
 };
 
 /**
- * @description 修改物体名称
- * 1) DOM节点文本修改
+ * @description 修改物体名称<br />
+ * 1) DOM节点文本修改<br />
  * 2) 内存操作修改
- * @method modifyObjectName
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 物体key值
  * @param {DOM} obj 触发修改名称事件的DOM节点
  * @static
@@ -2637,7 +2809,7 @@ uinv.FCM.configMgr.model.layer.modifyObjectName = function(key,obj){
 
 /**
  * @description 创建物体DOM节点函数
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体数据
  * @return {String} DOM节点
  * @static
@@ -2673,7 +2845,7 @@ uinv.FCM.configMgr.model.layer.mkhtml = function(obj){
 
 /**
  * @description 创建物体图层项的DOM节点
- * @method mkHtmlList
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体数据
  * @param {Object} layer 图层数据
  * @return {}
@@ -2692,7 +2864,7 @@ uinv.FCM.configMgr.model.layer.mkHtmlList = function(obj, layer){
 		html += '<span class="action layer_up">';
 			html += '<a onclick="uinv.FCM.configMgr.model.layer.upMove(this);" class="'+_this.upMoveBtnClass+'" href="javascript:void(0);" style="display:none;"><s>上移</s></a>';
 			html += '</span>';
-			if( typeof layer['itemConfig'] == 'object' ){
+			if( typeof layer.itemConfig == 'object' ){
 				html += '<span class="layer_edit">';
 				html += '<a onclick="uinv.FCM.configMgr.model.layer.itemConfig(\''+key+'\',\''+obj.key+'\');" href="javascript:void(0);"><s>编辑</s></a>';
 				html += '</span>';				
@@ -2717,7 +2889,7 @@ uinv.FCM.configMgr.model.layer.mkHtmlList = function(obj, layer){
 
 /**
  * @description 图层编辑配置DOM节点创建 并且初始化图层配置数据
- * @method itemConfig
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 图层key值
  * @param {String} objectKey 隶属物体key值
  * @static
@@ -2726,19 +2898,19 @@ uinv.FCM.configMgr.model.layer.itemConfig = function(key, objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;	
 	
-	if(typeof _this.obj[key]['itemConfig'] == 'undefined'){
+	if(typeof _this.obj[key].itemConfig == 'undefined'){
 		_this.note.alert(_obj.msg.S9);
 	}
 
 	_layer = _this.keyFindObj(objectKey);
-	_layer['itemData'] = typeof _layer['itemData'] == 'undefined' ? {} : _layer['itemData'];
-	_layer['itemData'][key] = typeof _layer['itemData'][key] == 'undefined' ? {} : _layer['itemData'][key];
+	_layer.itemData = typeof _layer.itemData == 'undefined' ? {} : _layer.itemData;
+	_layer.itemData[key] = typeof _layer.itemData[key] == 'undefined' ? {} : _layer.itemData[key];
 
 	var html = '';
 	html += '<div class="itemConfig" style="padding:10px;">';
-	for(var i = 0 , k = _this.obj[key]['itemConfig'].length; i<k; i++){
-		if( typeof _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']] == 'function' ){
-			html += _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']](_this.obj[key]['itemConfig'][i],key, objectKey);
+	for(var i = 0 , k = _this.obj[key].itemConfig.length; i<k; i++){
+		if( typeof _this.itemConfigTypeToHtml[_this.obj[key].itemConfig[i].type] == 'function' ){
+			html += _this.itemConfigTypeToHtml[_this.obj[key].itemConfig[i].type](_this.obj[key].itemConfig[i],key, objectKey);
 		}
 	}
 	html += '<p class="action">';
@@ -2754,7 +2926,7 @@ uinv.FCM.configMgr.model.layer.itemConfig = function(key, objectKey){
 
 /**
  * @description 初始化图层配置项表单
- * @method itemConfigFormInit
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.itemConfigFormInit = function(){
@@ -2770,7 +2942,7 @@ uinv.FCM.configMgr.model.layer.itemConfigFormInit = function(){
 
 /**
  * @description 图层配置表单提交 将表单值写入内存中
- * @method itemConfigSubmit
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.itemConfigSubmit = function(){
@@ -2788,7 +2960,7 @@ uinv.FCM.configMgr.model.layer.itemConfigSubmit = function(){
 
 /**
  * @description 添加图层DOM节点到物体DOM树里
- * @method addLayerOneToObj
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 物体key值
  * @param {String} html 创建的DOM图层节点
  * @static
@@ -2801,7 +2973,7 @@ uinv.FCM.configMgr.model.layer.addLayerOneToObj = function( key, html ){
 
 /**
  * @description 根据value删除物体DOM树下的图层项DOM节点
- * @method removeObjLayerIsValue
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key 物体key值
  * @param {String} value 图层DOM节点的value值
  * @static
@@ -2814,7 +2986,7 @@ uinv.FCM.configMgr.model.layer.removeObjLayerIsValue = function( key, value ){
 
 /**
  * @description 图层排序 把已勾选的图层排到前面，未勾选的图层排到后面
- * @method order
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj DOM节点
  * @static
  */
@@ -2825,7 +2997,7 @@ uinv.FCM.configMgr.model.layer.order = function(obj){
 	var num = 0;
 	var index = 0;
 	_obj.form.box.find( '*[name='+$(obj).attr('name')+']' ).each(function(i){
-		if( this.checked == true && this != obj){
+		if( this.checked === true && this != obj){
 			num++;
 		}else if( this==obj ){
 			index = i;
@@ -2834,7 +3006,7 @@ uinv.FCM.configMgr.model.layer.order = function(obj){
 	
 	// 排序
 	if(index != num){
-		if(obj.checked == true){
+		if(obj.checked === true){
 			_obj.form.box.find( '*[name='+$(obj).attr('name')+']:eq('+num+')' ).parents('li').before( $(obj).parents('li') );
 		}else{
 			_obj.form.box.find( '*[name='+$(obj).attr('name')+']:eq('+num+')' ).parents('li').after( $(obj).parents('li') );
@@ -2844,7 +3016,7 @@ uinv.FCM.configMgr.model.layer.order = function(obj){
 
 /**
  * @description 显示图层上移按钮 因为图层未勾选的时候会隐藏
- * @method showUpMoveBtn
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 触发事件的DOM节点
  * @static
  */
@@ -2857,7 +3029,7 @@ uinv.FCM.configMgr.model.layer.showUpMoveBtn = function(obj){
 
 /**
  * @description 隐藏上移按钮 因为图层取消选中状态时要隐藏下移按钮
- * @method hideUpMoveBtn 
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj DOM节点
  * @static
  */
@@ -2868,8 +3040,9 @@ uinv.FCM.configMgr.model.layer.hideUpMoveBtn = function(obj){
 };
 
 /**
- * @description 选中图层触发函数
+ * @description 选中图层触发函数<br />
  * 1) 初始化图层checkbox为true的时候也触发
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 选中图层的checkbox DOM节点
  * @static
  */
@@ -2879,7 +3052,7 @@ uinv.FCM.configMgr.model.layer.checkd = function(obj){
 	// 排序
 	_this.order(obj);
 	
-	if(obj.checked == true){
+	if(obj.checked === true){
 		// 添加class
 		$(obj).parents('li').addClass('checked');
 		
@@ -2897,7 +3070,7 @@ uinv.FCM.configMgr.model.layer.checkd = function(obj){
 
 /**
  * @description 选中图层后要把选中的图层排到前面，主要防止在它前面有未选中的图层
- * @method checkedLayerOrder
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} name 图层name值
  * @static
  */
@@ -2921,7 +3094,7 @@ uinv.FCM.configMgr.model.layer.checkedLayerOrder = function(name){
 
 /**
  * @description 上移图层操作
- * @method upMove
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 触发事件的DOM节点
  * @static
  */
@@ -2932,14 +3105,14 @@ uinv.FCM.configMgr.model.layer.upMove = function(obj){
 	var checkObj =  $(obj).parents('li').find('input[type=checkbox][name]');
 	
 	// 如果图层没有被选中状态，就return退出，不执行上移操作
-	if( checkObj.get(0).checked == false ) {
+	if( checkObj.get(0).checked === false ) {
 		return;
 	}
 	
 	var index = $(obj).parents('li').index();
 	
 	// 如果图层排在首位就return退出，不执行上移操作
-	if(index == 0){
+	if(index === 0){
 		return;
 	}
 	
@@ -2951,7 +3124,7 @@ uinv.FCM.configMgr.model.layer.upMove = function(obj){
 
 /**
  * @description 判断key是否已被使用，防止key重复
- * @method checkHasKey
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} key值
  * @return {Boolean}
  * @static
@@ -2970,18 +3143,21 @@ uinv.FCM.configMgr.model.layer.checkHasKey = function(key){
 
 /**
  * @description 创建物体 （内存操作）
- * @method addObject
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体数据
  * @return {Object} 组合过的物体数据
  * @static
  */
 uinv.FCM.configMgr.model.layer.addObject = function( obj ){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		key = "",
+		i = null,
+		bool = false;
 	
 	do{
-		var key = _obj.model.key.create(32);
-		var bool = _this.checkHasKey(key);
+		key = _obj.model.key.create(32);
+		bool = _this.checkHasKey(key);
 	}while(bool);
 	
 	var comObj = {
@@ -2993,7 +3169,7 @@ uinv.FCM.configMgr.model.layer.addObject = function( obj ){
 		'item' : []
 	};
 	
-	for(var i in _this.obj ){
+	for(i in _this.obj ){
 		comObj.order.push(i);
 	}
 	
@@ -3002,10 +3178,10 @@ uinv.FCM.configMgr.model.layer.addObject = function( obj ){
 };
 		
 /**
- * @description 检测两个物体是否相等
- * 1) 实际上只是检测物体的condition
+ * @description 检测两个物体是否相等<br />
+ * 1) 实际上只是检测物体的condition<br />
  * 2) 当前检测的condition只有name attribute classid
- * @method judgeObjectIsEq
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} o1 物体1
  * @param {Object} o2 物体2
  * @return {Boolean} true 相等 false 不相等
@@ -3038,9 +3214,9 @@ uinv.FCM.configMgr.model.layer.judgeObjectIsEq = function(o1,o2){
 };
 
 /**
- * @description 判断物体是否已经存在
+ * @description 判断物体是否已经存在<br />
  * 1) 实际上是遍历已创建的物体挨个比较是否有condition一样的物体 fun除外
- * @method checkObjectExist
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 要检测的物体
  * @return {Boolean} true 存在 false 不存在
  * @static
@@ -3060,7 +3236,7 @@ uinv.FCM.configMgr.model.layer.checkObjectExist = function( obj ){
 	
 /**
  * @description 添加图层逻辑业务处理
- * @method add
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层数据
  * @param {Function} fun 回调函数
  * @static
@@ -3079,7 +3255,7 @@ uinv.FCM.configMgr.model.layer.add = function(obj, fun){
 
 /**
  * @description 添加图层到全局对象 （内存操作）
- * @method addLayerToGlobalLib
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层数据
  * @param {Function} fun 回调函数
  * @static
@@ -3103,7 +3279,7 @@ uinv.FCM.configMgr.model.layer.addLayerToGlobalLib = function( obj, fun ){
 
 /**
  * @description 添加图层到全局对象 回调
- * @method addLayerToGlobalLibCallback
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层数据
  * @static
  */
@@ -3130,7 +3306,7 @@ uinv.FCM.configMgr.model.layer.addLayerToGlobalLibCallback = function( obj ){
 
 /**
  * @description 对象写到文本数据后回调函数
- * @method setDBCallback
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.setDBCallback = function(){
@@ -3140,7 +3316,7 @@ uinv.FCM.configMgr.model.layer.setDBCallback = function(){
 
 /**
  * @description 添加图层到指定物体的图层库内
- * @method addLayerToObjLib
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层
  * @param {Function} fun 回调函数
  * @static
@@ -3171,7 +3347,7 @@ uinv.FCM.configMgr.model.layer.addLayerToObjLib = function( obj, fun ){
 
 /**
  * @description 添加图层到指定对象回调函数
- * @method addLayerToObjLibCallback
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 物体数据
  * @param {Object} layer 图层数据
  * @static
@@ -3192,7 +3368,7 @@ uinv.FCM.configMgr.model.layer.addLayerToObjLibCallback = function( obj, layer )
 
 /**
  * @description 索引图层副数据
- * @method getLayerList
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @return {Object} 图层副数据
  */
 uinv.FCM.configMgr.model.layer.getLayerList = function(){
@@ -3203,7 +3379,7 @@ uinv.FCM.configMgr.model.layer.getLayerList = function(){
 
 /**
  * @description 图层上传
- * @method uinv.FCM.configMgr.model.layer.upload
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @see uinv.server.manager.frame.upAndUnZip()
  * @param {DOM} obj 上传空间DOM对象
  * @param {} selector
@@ -3229,7 +3405,7 @@ uinv.FCM.configMgr.model.layer.upload = function(obj, selector){
 
 /**
  * @description 上传图层回调函数 主要接受回传的图层内容，以做下一步处理
- * @method uinv.FCM.configMgr.model.layer.uploadCallback
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} result 执行上传操作后服务器返回的结果
  * @static
  */
@@ -3260,7 +3436,7 @@ uinv.FCM.configMgr.model.layer.uploadCallback = function(result){
 
 /**
  * @description 检测上传图层数据的合法性
- * @method verificationLayerData
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 上传的图层数据
  * @return {Boolean} true 合法 false 不合法
  * @static
@@ -3295,7 +3471,7 @@ uinv.FCM.configMgr.model.layer.verificationLayerData = function(obj){
 
 /**
  * @description 根据传入参数创建全局图层的DOM节点
- * @method globalLayerListHtml
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {Object} obj 图层数据
  * @return {String} DOM节点
  * @static
@@ -3317,7 +3493,7 @@ uinv.FCM.configMgr.model.layer.globalLayerListHtml = function(obj){
 
 /**
  * @description 全局图层管理页面入口
- * @method globalLayerManager
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.globalLayerManager = function(){
@@ -3349,7 +3525,7 @@ uinv.FCM.configMgr.model.layer.globalLayerManager = function(){
 
 /**
  * @description 关闭全局图层管理窗口回调函数
- * @method globalLayerManagerCallBack
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @static
  */
 uinv.FCM.configMgr.model.layer.globalLayerManagerCallBack = function(){
@@ -3360,7 +3536,7 @@ uinv.FCM.configMgr.model.layer.globalLayerManagerCallBack = function(){
 
 /**
  * @description 删除全局图层操作，只操作内存
- * @method deleteGlobalLayer
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {DOM} obj 触发事件的DOM节点
  * @param {String} key 图层key值
  * @static
@@ -3377,7 +3553,7 @@ uinv.FCM.configMgr.model.layer.deleteGlobalLayer = function(obj, key){
 
 /**
  * @description 初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.layer
  * @param {String} classStr 图层盒子DOM Class 值
  * @static
  */
@@ -3401,6 +3577,8 @@ uinv.FCM.configMgr.model.layer.init = function(classStr){
 	_obj.form.box.find(_this.classStr).html(html);
 };
 
+
+
 /**
  * @description 字符串类型
  * @param {DOM} obj DOM节点
@@ -3410,8 +3588,8 @@ uinv.FCM.configMgr.model.layer.itemConfigInitData.string = function(obj){
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if(typeof _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'string'){
-		$(obj).val( _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')]  );
+	if(typeof _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'string'){
+		$(obj).val( _layer.itemData[$(obj).attr('path')][$(obj).attr('name')]  );
 	}
 };
 
@@ -3424,8 +3602,8 @@ uinv.FCM.configMgr.model.layer.itemConfigInitData.number = function(obj){
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if(typeof _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'number'){
-		$(obj).val( _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] );
+	if(typeof _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'number'){
+		$(obj).val( _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] );
 	}
 };
 
@@ -3438,10 +3616,10 @@ uinv.FCM.configMgr.model.layer.itemConfigInitData.bool = function(obj){
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if( typeof _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'boolean' ){
-		if( obj.value == '1' && _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] ){
+	if( typeof _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'boolean' ){
+		if( obj.value == '1' && _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] ){
 			obj.checked = true;
-		}else if( obj.value == '0' && !_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] ){
+		}else if( obj.value == '0' && !_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] ){
 			obj.checked = true;
 		}
 	}
@@ -3456,8 +3634,8 @@ uinv.FCM.configMgr.model.layer.itemConfigInitData.color = function(obj){
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if(  typeof _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')]  == 'string' ){
-		$(obj).val( _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] );
+	if(  typeof _layer.itemData[$(obj).attr('path')][$(obj).attr('name')]  == 'string' ){
+		$(obj).val( _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] );
 	}
 	_obj.model.colorpicke.show(obj);
 };
@@ -3466,14 +3644,14 @@ uinv.FCM.configMgr.model.layer.itemConfigInitData.color = function(obj){
  * @description 3D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.layer.itemConfigInitData['3dposition'] = function(obj){
+uinv.FCM.configMgr.model.layer.itemConfigInitData.position3d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if(typeof  _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')]  == 'object'){
+	if(typeof  _layer.itemData[$(obj).attr('path')][$(obj).attr('name')]  == 'object'){
 		var index = $(obj).parents('li').index();
-		$(obj).val(  _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')][index] );
+		$(obj).val(  _layer.itemData[$(obj).attr('path')][$(obj).attr('name')][index] );
 	}				
 };
 
@@ -3481,14 +3659,14 @@ uinv.FCM.configMgr.model.layer.itemConfigInitData['3dposition'] = function(obj){
  * @description 2D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.layer.itemConfigInitData['2dposition'] = function(obj){
+uinv.FCM.configMgr.model.layer.itemConfigInitData.position2d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if(typeof _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'object'){
+	if(typeof _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'object'){
 		var index = $(obj).parents('li').index();
-		$(obj).val( _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')][index] );
+		$(obj).val( _layer.itemData[$(obj).attr('path')][$(obj).attr('name')][index] );
 	}				
 };
 
@@ -3501,8 +3679,8 @@ uinv.FCM.configMgr.model.layer.itemConfigInitData.select = function(obj){
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if(typeof  _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] != 'undefined'){
-		var value =  _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')];
+	if(typeof  _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] != 'undefined'){
+		var value =  _layer.itemData[$(obj).attr('path')][$(obj).attr('name')];
 		$(obj).find('option').each(function(){
 			if($(this).attr('value') == value){
 				this.selected = true;
@@ -3512,6 +3690,8 @@ uinv.FCM.configMgr.model.layer.itemConfigInitData.select = function(obj){
 		});
 	}
 };
+
+
 /**
  * @description 字符串类型
  * @param {DOM} obj DOM节点
@@ -3520,7 +3700,7 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.string = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
 };
 
 /**
@@ -3531,7 +3711,7 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.number = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = Number($(obj).val());
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = Number($(obj).val());
 };
 
 
@@ -3545,9 +3725,9 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.bool = function(obj){
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
 	if( obj.checked ){
 		if(obj.value == '1'){
-			_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = true;
+			_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = true;
 		}else{
-			_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = false;
+			_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = false;
 		}
 	}
 };
@@ -3560,39 +3740,39 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.color = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
 };
 
 /**
  * @description 3D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.layer.itemConfigSetData['3dposition'] = function(obj){
+uinv.FCM.configMgr.model.layer.itemConfigSetData.position3d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if( typeof _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')].length == 3  ){
-		_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = [];
+	if( typeof _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _layer.itemData[$(obj).attr('path')][$(obj).attr('name')].length == 3  ){
+		_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = [];
 	}
 	
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
 };
 
 /**
  * @description 2D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.layer.itemConfigSetData['2dposition'] = function(obj){
+uinv.FCM.configMgr.model.layer.itemConfigSetData.position2d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
-	if( typeof _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _layer['itemData'][$(obj).attr('path')][$(obj).attr('name')].length == 2  ){
-		_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = [];
+	if( typeof _layer.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _layer.itemData[$(obj).attr('path')][$(obj).attr('name')].length == 2  ){
+		_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = [];
 	}
 	
-	_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
+	_layer.itemData[$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
 };
 
 /**
@@ -3606,10 +3786,12 @@ uinv.FCM.configMgr.model.layer.itemConfigSetData.select = function(obj){
 	var _layer = _obj.model.layer.keyFindObj($(obj).attr('objectkey'));
 	$(obj).find('option').each(function(){
 		if(this.selected){
-			_layer['itemData'][$(obj).attr('path')][$(obj).attr('name')] = $(this).attr('value');
+			_layer.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(this).attr('value');
 		}
 	});
 };
+
+
 /**
  * @description 字符串类型
  * @param {Object} obj 图层数据
@@ -3621,21 +3803,21 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.string = function(obj,key,ob
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	
-	var value = typeof obj['defaultItem'] == 'undefined' ? '' :  obj['defaultItem'];
-	
- 	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
-	 	}
- 	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="string" path="'+key+'" value="'+value+'" />';
- 	
- 	html += '</p>';
- 	return html;
+	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem;
+
+	var html = '';
+	html += '<p class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="string" path="'+key+'" value="'+value+'" />';
+
+	html += '</p>';
+	return html;
 };
 
 /**
@@ -3648,22 +3830,22 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.string = function(obj,key,ob
 uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.number = function(obj,key,objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
-	
-	var value = typeof obj['defaultItem'] == 'undefined' ? '' :  obj['defaultItem'];
-	
- 	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
-	 	}
-	 	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="number" path="'+key+'" value="'+value+'" />';
- 	
- 	html += '</p>';
- 	return html;
+
+	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem;
+
+	var html = '';
+	html += '<p class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="number" path="'+key+'" value="'+value+'" />';
+
+	html += '</p>';
+	return html;
 };
 
 /**
@@ -3677,27 +3859,27 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.bool = function(obj,key,obje
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	
-	var value = typeof obj['defaultItem'] == 'undefined' ? false :  obj['defaultItem'];
-	
- 	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
-	 	}
-	 	
-	 	if(value){
- 			html += obj['items'][true]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="1" checked /> ';
- 			html += obj['items'][false]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="0" /> ';
-	 	}else{
-	 		html += obj['items'][true]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="1" /> ';
- 			html += obj['items'][false]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="bool" path="'+key+'" value="0" checked /> ';
-	 	}
-	 	
- 	html += '</p>';
- 	return html;
+	var value = typeof obj.defaultItem == 'undefined' ? false :  obj.defaultItem;
+
+	var html = '';
+	html += '<p class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		if(value){
+			html += obj.items.TRUE+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" checked /> ';
+			html += obj.items.FALSE+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" /> ';
+		}else{
+			html += obj.items.TRUE+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" /> ';
+			html += obj.items.FALSE+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" checked /> ';
+		}
+
+	html += '</p>';
+	return html;
 };
 
 /**
@@ -3711,21 +3893,21 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.color = function(obj,key,obj
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
 	
-	var value = typeof obj['defaultItem'] == 'undefined' ? '#FFFFFF' :  obj['defaultItem'];
-	
- 	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
-	 	}
- 	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="color" path="'+key+'" value="'+value+'"  />';
- 	
- 	html += '</p>';
- 	return html;
+	var value = typeof obj.defaultItem == 'undefined' ? '#FFFFFF' :  obj.defaultItem;
+
+	var html = '';
+	html += '<p class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="color" path="'+key+'" value="'+value+'"  />';
+
+	html += '</p>';
+	return html;
 };
 
 /**
@@ -3735,27 +3917,27 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.color = function(obj,key,obj
  * @param {String} objectKey 物体key值
  * @return {String} DOM节点
  */
-uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml['3dposition'] = function(obj,key,objectKey){
+uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.position3d = function(obj,key,objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
-	
- 	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
-	 	}
-	 	
- 		html += '<ul>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="3dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="3dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][2]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="3dposition" path="'+key+'"  /></li>';
- 		html += '</ul>';
- 	
- 	html += '</div>';
- 	return html;					
+
+	var html = '';
+	html += '<div class="row" style="margin:10px auto;">';
+		
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<ul>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position3d" path="'+key+'"  /></li>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position3d" path="'+key+'"  /></li>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[2]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position3d" path="'+key+'"  /></li>';
+		html += '</ul>';
+
+	html += '</div>';
+	return html;					
 };
 
 /**
@@ -3765,26 +3947,26 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml['3dposition'] = function(obj
  * @param {String} objectKey 物体key值
  * @return {String} DOM节点
  */
-uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml['2dposition'] = function(obj,key,objectKey){
+uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.position2d = function(obj,key,objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
-	
- 	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span><s>'+obj['name']+'</s></span>';	
-	 	}else{
-	 		html += '<span><s>'+obj['caption']+'</s></span>';
-	 	}
-	 	
- 		html += '<ul>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="2dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj['items'][1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="2dposition" path="'+key+'"  /></li>';
- 		html += '</ul>';
- 	
- 	html += '</div>';
- 	return html;					
+
+	var html = '';
+	html += '<div class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span><s>'+obj.name+'</s></span>';	
+		}else{
+			html += '<span><s>'+obj.caption+'</s></span>';
+		}
+
+		html += '<ul>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position2d" path="'+key+'"  /></li>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position2d" path="'+key+'"  /></li>';
+		html += '</ul>';
+
+	html += '</div>';
+	return html;					
 };
 
 /**
@@ -3797,30 +3979,31 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml['2dposition'] = function(obj
 uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.select = function(obj,key,objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.layer;
-	
-	var value = typeof obj['defaultItem'] == 'undefined' ? '' :  obj['defaultItem'];
-	
- 	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj['caption'] == 'undefined' ){
-	 		html += '<span>'+obj['name']+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj['caption']+'</span>';
-	 	}
-	 	
-	 	html += '<select class="row_select" objectkey="'+objectKey+'" name="'+obj['name']+'" cate="select" path="'+key+'">';
-	 	for(var i = 0, k = obj['items'].length; i<k; i++){
-	 		if( obj['items'][i]==value ){
-	 			html += '<option value="'+obj['items'][i]+'" selected>'+obj['items'][i]+'</option>';
-	 		}else{
-	 			html += '<option value="'+obj['items'][i]+'">'+obj['items'][i]+'</option>';
-	 		}
-	 	}
-	 	html += '</select>';
-	 html += '</div>';
-	 return html;
+
+	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem;
+
+	var html = '';
+	html += '<div class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<select class="row_select" objectkey="'+objectKey+'" name="'+obj.name+'" cate="select" path="'+key+'">';
+		for(var i = 0, k = obj.items.length; i<k; i++){
+			if( obj.items[i]==value ){
+				html += '<option value="'+obj.items[i]+'" selected>'+obj.items[i]+'</option>';
+			}else{
+				html += '<option value="'+obj.items[i]+'">'+obj.items[i]+'</option>';
+			}
+		}
+		html += '</select>';
+	html += '</div>';
+	return html;
 };
+
 //---------------------------------------------------------
 // 基础定义
 //---------------------------------------------------------
@@ -3829,7 +4012,7 @@ uinv.FCM.configMgr.model.layer.itemConfigTypeToHtml.select = function(obj,key,ob
  * @deprecated 所有使用条件下拉的条件列表
  * @type Array
  */
-uinv.FCM.configMgr.model.monitor.conditionArr = ['<','>','='];
+uinv.FCM.configMgr.model.monitor.conditionArr = ['<'];
 
 /**
  * @description 待删除文件列表
@@ -3887,7 +4070,7 @@ uinv.FCM.configMgr.model.monitor.panelConfigAttributeField = [
 	{ 'name' : '指标取值', 'value' : 'propertyPath', 'type' : 'string'},
 	{ 'name' : '最小值', 'value' : 'min', 'type' : 'number'},
 	{ 'name' : '最大值', 'value' : 'max', 'type' : 'number'},
-	{ 'name' : '进度条', 'value' : 'isProgressBar', 'type' : 'boolean' },
+	{ 'name' : '进度条', 'value' : 'isProgressBar', 'type' : 'bool' },
 	{ 'name' : '颜色设置', 'value' : 'styleConfig', 'type' : 'styleConfig' }
 ];
 
@@ -3899,7 +4082,7 @@ uinv.FCM.configMgr.model.monitor.panelConfigAttributeField = [
 
 /**
  * @description 获取position的select列表
- * @method getSelectOptionHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} position x y z 
  * @param {String} value 值
  * @return {String} HTML文本
@@ -3922,14 +4105,17 @@ uinv.FCM.configMgr.model.monitor.getSelectOptionHtml = function(position, value)
 
 /**
  * @description 打开监控配置
- * @method configShow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} key 物体key值
  * @return {Boolean} 如果物体没有选择面板则return false终止操作
  * @static
  */
 uinv.FCM.configMgr.model.monitor.configShow = function(key){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		i = null,
+		tmp = null,
+		tmps = null;
 	
 	var o = _this.keyFindObj(key);
 	var panel = _this.nameFindPanel(o.panel);
@@ -3945,10 +4131,10 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 			html += '<div class="monitor_name"><span><s>面板图片</s></span><img src="'+imgSrc+'" /></div>';
 				html += '<div class="monitor_set">';
 				
-					var tmps = typeof o.config.pivotLayout  == 'undefined' ? panel.pivotLayout : o.config.pivotLayout ;
+					tmps = typeof o.config.pivotLayout  == 'undefined' ? panel.pivotLayout : o.config.pivotLayout ;
 					html += '<div class="each"  key="pivotLayout" cate="array">';
 						html += '<span class="monitor_setname"><s>二维位置</s></span>';
-						for(var i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
+						for(i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
 							if(i==tmp.length-1){
 								html += '<span>';
 									html += '<select name="pivotLayout" style="display:none;">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'</select>';
@@ -3961,17 +4147,17 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 						}
 					html += '</div>';
 					
-					var tmps = typeof o.config.layout  == 'undefined' ? panel.layout : o.config.layout;
+					tmps = typeof o.config.layout  == 'undefined' ? panel.layout : o.config.layout;
 					html += '<div class="each" key="layout" cate="array">';
 						html += '<span class="monitor_setname"><s>三维位置</s></span>';
-						for(var i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
+						for(i=0,tmp=['x','y','z'];i<tmp.length;i++){ 
 							html += '<span>';
 								html += '<select name="layout">'+_this.getSelectOptionHtml(tmp[i], tmps[i])+'</select>';
 							html += '</span>';
 						}
 					html += '</div>';
 					
-					var tmps = typeof o.config.layoutOffset == 'undefined' ? panel.layoutOffset : o.config.layoutOffset ;
+					tmps = typeof o.config.layoutOffset == 'undefined' ? panel.layoutOffset : o.config.layoutOffset ;
 					html += '<div class="each" key="layoutOffset" cate="array">';
 						html += '<span class="monitor_setname"><s>偏移设置</s></span>';
 						html += '<span>';
@@ -3985,7 +4171,7 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 						html += '</span>';
 					html += '</div>';
 					
-					var tmps = typeof o.config.canvasScale == 'undefined' ? panel.canvasScale : o.config.canvasScale ;
+					tmps = typeof o.config.canvasScale == 'undefined' ? panel.canvasScale : o.config.canvasScale ;
 					html += '<div class="each" key="canvasScale" cate="number">';
 						html += '<span class="monitor_setname"><s>面板大小</s></span>';
 						html += '<span class="monitor_zoom">';
@@ -4010,7 +4196,7 @@ uinv.FCM.configMgr.model.monitor.configShow = function(key){
 
 /**
  * @description 隐藏监控配置窗口
- * @method configHide
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 面板name值
  * @param {String} key 物体key值
  * @static
@@ -4031,7 +4217,7 @@ uinv.FCM.configMgr.model.monitor.configHide = function(name,key){
 /**
  * @description 同步监控信息配置数据
  * @param {String} key 物体key值
- * @method synchronousFormData
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.synchronousFormData = function(key){
@@ -4054,35 +4240,38 @@ uinv.FCM.configMgr.model.monitor.synchronousFormData = function(key){
 
 /**
  * @description 面板配置指标列表
- * @method panelConfigFormHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} panel 面板数据
  * @param {Object} o 物体配置数据
  * @return {String} 创建HTML文本
  * @static
  */
 uinv.FCM.configMgr.model.monitor.panelConfigFormHtml = function(panel,o){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-	var html = '';
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		n = 0,
+		i = 0,
+		html = '';
+
 	html += '<table class="monitor_table">';
 		html += '<tr>';
-			for(var i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
+			for(i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
 				html += '<th>'+ _this.panelConfigAttributeField[i].name +'</th>';
 			}
 		html += '</tr>';
-		
-		for(var n=0;n<panel.modifyCount;n++){
+
+		for(n=0;n<panel.modifyCount;n++){
 			html += '<tr class="row">';
-				for(var i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
+				for(i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
 					html += '<td>'+ _this.configTypeToHtml[_this.panelConfigAttributeField[i].type]( _this.panelConfigAttributeField[i], o.form[n] ) +'</td>';
 				}							
 			html += '</tr>';
 		}
-		
-		
+
+	
 	html += '</table>';
 	html += '<div class="color-config">';
-		for(var n=0;n<panel.modifyCount;n++){
+		for(n=0;n<panel.modifyCount;n++){
 			var param = [];
 			if(typeof o.form[n] == 'object' && typeof o.form[n].styleConfig == 'object'){
 				param = o.form[n].styleConfig;
@@ -4096,7 +4285,7 @@ uinv.FCM.configMgr.model.monitor.panelConfigFormHtml = function(panel,o){
 
 /**
  * @description 样式配置节点创建
- * @method styleConfigHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} data 面板数据
  * @return {String} HTML
  * @static
@@ -4106,7 +4295,7 @@ uinv.FCM.configMgr.model.monitor.styleConfigHtmlRow = function(data){
 	var _this = this;
 	if(typeof data == 'undefined'){
 	
-		var data = {
+		data = {
 			'condition' : _this.conditionArr[0],
 			'number' : 0,
 			'config' : '#FFFFFF'						
@@ -4145,7 +4334,7 @@ uinv.FCM.configMgr.model.monitor.styleConfigHtmlRow = function(data){
 
 /**
  * @description 删除样式配置
- * @method deleteStyleConfigRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} o 触发事件DOM节点
  * @static
  */
@@ -4155,7 +4344,7 @@ uinv.FCM.configMgr.model.monitor.deleteStyleConfigRow = function(o){
 
 /**
  * @description 添加一个样式配置节点
- * @method addStyleConfigHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} o 触发事件的DOM节点
  * @static
  */
@@ -4178,7 +4367,7 @@ uinv.FCM.configMgr.model.monitor.addStyleConfigHtmlRow = function(o){
 
 /**
  * @description 样式配置页面构建
- * @method styleConfigHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} data 样式配置数据
  * @return {String} HTML
  * @static
@@ -4213,7 +4402,7 @@ uinv.FCM.configMgr.model.monitor.styleConfigHtml = function(data){
 
 /**
  * @description 设置颜色条件面板显示
- * @method settingStyleConfigDisplay
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj 触发事件DOM节点
  * @static
  */
@@ -4233,7 +4422,7 @@ uinv.FCM.configMgr.model.monitor.settingStyleConfigDisplay = function(obj){
 
 /**
  * @description 上传监控面板
- * @method uploadPanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj file 控件
  * @static
  */
@@ -4263,7 +4452,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 
 /**
  * @description 上传监控面板处理函数
- * @method uploadPanelHandle
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 监控数据
  * @param {String} fileName 文件名
  * @return {Boolean} false异常
@@ -4272,6 +4461,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var i = 0;
 	
 	o.imagePath = o.previewImagePath;
 	
@@ -4294,7 +4484,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 		msg += "内容为：\r\n";
 		
 		var arr = [];
-		for(var i=o.modifyCount;i<obj.modifyCount;i++){
+		for(i=o.modifyCount;i<obj.modifyCount;i++){
 			arr.push(obj.form[i]);
 		}
 		msg += _obj.model.transform.obj2str( arr );
@@ -4307,7 +4497,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 	}
 	
 	if(bool){
-		var o = _this.addPanelToMemory(o);
+		o = _this.addPanelToMemory(o);
 		uinv.server.manager.frame.cutGeneralFile( o.downloadFile , _this.getPanelZipPath(o) );
 		uinv.server.manager.frame.cutGeneralFile( o.imagePath , _this.getPanelImagePath(o) );
 		
@@ -4325,7 +4515,7 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 		
 		// 如果要删除的文件与新上传的面板同名，取消删除
 		var path = _this.getPanelPath(o);
-		for(var i=0;i<_this.deleteFileArr.length;i++){
+		for(i=0;i<_this.deleteFileArr.length;i++){
 			if(_this.deleteFileArr[i] == path){
 				_this.deleteFileArr.splice(i,1);
 				i=0;
@@ -4336,25 +4526,26 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 
 /**
  * @description 全路径转路径
- * @method pathToDir
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} path 路径
  * @return {String} 路径
  * @example uinv.FCM.configMgr.model.monitor.pathToDir("/user/assf/asf.gif"); return  /user/assf
  * @static
  */
 uinv.FCM.configMgr.model.monitor.pathToDir = function(path){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-	var dir = "";
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		dir = "",
+		pathinfo = [];
 	
 	if(path.indexOf("/")>=0){
-		var pathinfo = path.split("/");
+		pathinfo = path.split("/");
 		pathinfo.pop();
 		dir = pathinfo.join("/");
 	}
 	
 	if(path.indexOf("\\")>=0){
-		var pathinfo = path.split("\\");
+		pathinfo = path.split("\\");
 		pathinfo.pop();
 		dir = pathinfo.join("\\");				
 	}
@@ -4364,7 +4555,7 @@ uinv.FCM.configMgr.model.monitor.pathToDir = function(path){
 
 /**
  * @description 根据面板配置信息获取监控面板主操作路径
- * @method getPanelPath
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {String} 路径
  * @static
@@ -4378,7 +4569,7 @@ uinv.FCM.configMgr.model.monitor.getPanelPath = function(o){
 
 /**
  * @description 根据面板数据获取面板图片路径
- * @method getPanelImagePath
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {String} 路径
  * @static
@@ -4392,7 +4583,7 @@ uinv.FCM.configMgr.model.monitor.getPanelImagePath = function(o){
 
 /**
  * @description 根据面板数据获取zip路径
- * @method getPanelZipPath
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {String} 路径
  * @static
@@ -4406,7 +4597,7 @@ uinv.FCM.configMgr.model.monitor.getPanelZipPath = function(o){
 
 /**
  * @description 添加面板数据到内存
- * @method addPanelToMemory
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 面板数据
  * @return {Object} 初始设置后的面板数据
  * @static
@@ -4429,7 +4620,7 @@ uinv.FCM.configMgr.model.monitor.addPanelToMemory = function(obj){
 
 /**
  * @description 检测面板是否被使用
- * @method isUsePanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 面板名称
  * @return {Boolean} true 使用 false 没使用
  * @static
@@ -4439,7 +4630,7 @@ uinv.FCM.configMgr.model.monitor.isUsePanel = function(name){
 	var _this = this;
 	
 	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
-		if(  _obj.data.monitor.object[i]['panel'] == name ){
+		if(  _obj.data.monitor.object[i].panel == name ){
 			return true;
 		}
 	}
@@ -4448,7 +4639,7 @@ uinv.FCM.configMgr.model.monitor.isUsePanel = function(name){
 
 /**
  * @description 加测面板数据modify配置项是否合法
- * @method checkModifyBody
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {Boolean} true 合法 false 不合法
  * @static
@@ -4494,10 +4685,10 @@ uinv.FCM.configMgr.model.monitor.checkModifyBody = function(o){
 };
 
 /**
- * @description 删除监控面板
- * 1) 内存删除
+ * @description 删除监控面板<br />
+ * 1) 内存删除<br />
  * 2) DOM删除
- * @method deletePanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 要删除面板的name值
  * @return {Boolean} false异常
  * @static
@@ -4525,10 +4716,10 @@ uinv.FCM.configMgr.model.monitor.deletePanel = function(name){
 };
 
 /**
- * @description 删除物体
- * 1) 内存删除
+ * @description 删除物体<br />
+ * 1) 内存删除<br />
  * 2) DOM删除
- * @method deleteObject
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} key 物体key值
  * @static
  */
@@ -4543,7 +4734,7 @@ uinv.FCM.configMgr.model.monitor.deleteObject = function(key){
 
 /**
  * @description 创建物体
- * @method createObject
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.createObject = function(){
@@ -4560,7 +4751,7 @@ uinv.FCM.configMgr.model.monitor.createObject = function(){
 
 /**
  * @description 添加物体数据到内存
- * @method addObjectToMemory
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 物体数据
  * @return {Object} 初始化后的物体数据
  * @static
@@ -4568,9 +4759,10 @@ uinv.FCM.configMgr.model.monitor.createObject = function(){
 uinv.FCM.configMgr.model.monitor.addObjectToMemory = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var key = "";
 	
 	do{
-		var key = _obj.model.key.create(10);
+		key = _obj.model.key.create(10);
 	}while(_this.keyFindObj(key));
 	
 	obj.key = key;
@@ -4582,7 +4774,7 @@ uinv.FCM.configMgr.model.monitor.addObjectToMemory = function(obj){
 
 /**
  * @description 根据key查找到物体索引值
- * @method keyFindObjIndex
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} key 物体key值
  * @return {Number} -1 找不到
  * @static
@@ -4591,7 +4783,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObjIndex = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
-		if(  _obj.data.monitor.object[i]['key'] == key ){
+		if(  _obj.data.monitor.object[i].key == key ){
 			return i;
 		}
 	}
@@ -4600,7 +4792,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObjIndex = function(key){
 
 /**
  * @description 根据key查找到物体数据
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} key 物体key值
  * @return {Boolean} false 表示找不到数据
  * @static
@@ -4609,7 +4801,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObj = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	for(var i=0,k=_obj.data.monitor.object.length;i<k;i++){
-		if(  _obj.data.monitor.object[i]['key'] == key ){
+		if(  _obj.data.monitor.object[i].key == key ){
 			return  _obj.data.monitor.object[i];
 		}
 	}
@@ -4618,7 +4810,7 @@ uinv.FCM.configMgr.model.monitor.keyFindObj = function(key){
 
 /**
  * @description 根据name值找到面板索引
- * @method nameFindPanelIndex
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 面板name值
  * @return {Number} -1 表示找不到
  * @static
@@ -4627,7 +4819,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanelIndex = function(name){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	for(var i=0,k=_this.obj.panel.length;i<k;i++){
-		if(  _this.obj.panel[i]['name'] == name ){
+		if(  _this.obj.panel[i].name == name ){
 			return i;
 		}
 	}
@@ -4636,7 +4828,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanelIndex = function(name){
 
 /**
  * @description 根据name值找到面板数据
- * @method nameFindPanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {String} name 面板name值
  * @return {Boolean} false表示找不到
  * @static
@@ -4650,7 +4842,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanel = function(name){
 	}
 	
 	for(var i=0,k=_this.obj.panel.length;i<k;i++){
-		if(  _this.obj.panel[i]['name'] == name ){
+		if(  _this.obj.panel[i].name == name ){
 			return _this.obj.panel[i];
 		}
 	}
@@ -4660,7 +4852,7 @@ uinv.FCM.configMgr.model.monitor.nameFindPanel = function(name){
 /**
  * @description 物体面板选择下拉控件处理<br />
  * 1) 如果新选择的面板modifyCount跟上一个modifyCount不一致，将会删除物体config数据
- * @method objSelectPanel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj 下拉控件节点
  * @param {String} key 物体key值
  * @static
@@ -4670,17 +4862,17 @@ uinv.FCM.configMgr.model.monitor.objSelectPanel = function(obj,key){
 	var _this = this;
 	
 	var bool = true;
-	if( _this.nameFindPanel( _this.keyFindObj(key)['panel'] ).modifyCount != _this.nameFindPanel( obj.value ).modifyCount ){
-		bool = _obj.note.confirm("此操作将会删除原"+_this.keyFindObj(key)['panel']+"的配置信息，是否要继续操作？");
+	if( _this.nameFindPanel( _this.keyFindObj(key).panel ).modifyCount != _this.nameFindPanel( obj.value ).modifyCount ){
+		bool = _obj.note.confirm("此操作将会删除原"+_this.keyFindObj(key).panel+"的配置信息，是否要继续操作？");
 		if(bool){
 			_this.keyFindObj(key).form = {};
 		}
 	}
 	
 	if(bool){
-		_this.keyFindObj(key)['panel'] = obj.value;
+		_this.keyFindObj(key).panel = obj.value;
 	}else{
-		var panel = _this.keyFindObj(key)['panel'];
+		var panel = _this.keyFindObj(key).panel;
 		$(obj).find("option").each(function(){
 			if($(this).val() == panel){
 				this.selected = true;
@@ -4693,7 +4885,7 @@ uinv.FCM.configMgr.model.monitor.objSelectPanel = function(obj,key){
 
 /**
  * @description 物体DOM创建
- * @method addHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 物体数据
  * @static
  */
@@ -4707,7 +4899,7 @@ uinv.FCM.configMgr.model.monitor.addHtmlRow = function(obj){
 
 /**
  * @description 创建物体HTML文本
- * @method objHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 物体数据
  * @return {String} HTML
  * @static
@@ -4726,10 +4918,10 @@ uinv.FCM.configMgr.model.monitor.objHtmlRow = function(obj){
 			html += '<select onchange="uinv.FCM.configMgr.model.monitor.objSelectPanel(this,\''+obj.key+'\');">';
 				html += '<option value="">'+u.le.get('请选择面板')+'</option>';
 				for(var i=0,k=_this.obj.panel.length;i<k;i++){
-					if( typeof obj.panel != 'undefined' && obj.panel == _this.obj.panel[i]['name'] ){
-						html += '<option value="'+_this.obj.panel[i]['name']+'" selected>'+_this.obj.panel[i]['caption']+'</option>';
+					if( typeof obj.panel != 'undefined' && obj.panel == _this.obj.panel[i].name ){
+						html += '<option value="'+_this.obj.panel[i].name+'" selected>'+_this.obj.panel[i].caption+'</option>';
 					}else{
-						html += '<option value="'+_this.obj.panel[i]['name']+'">'+_this.obj.panel[i]['caption']+'</option>';
+						html += '<option value="'+_this.obj.panel[i].name+'">'+_this.obj.panel[i].caption+'</option>';
 					}
 				}
 			html += '</select>';
@@ -4743,7 +4935,7 @@ uinv.FCM.configMgr.model.monitor.objHtmlRow = function(obj){
 
 /**
  * @description 物体页面构建
- * @method objHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.objHtml = function(){
@@ -4761,8 +4953,9 @@ uinv.FCM.configMgr.model.monitor.objHtml = function(){
 };
 
 /**
- * @description 物体重命名
+ * @description 物体重命名<br />
  * 1) 同时写内存
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj 触发事件DOM节点
  * @param {String} key 物体key值
  */
@@ -4777,20 +4970,20 @@ uinv.FCM.configMgr.model.monitor.objectRename = function(obj,key){
 	box.find('input').focus().blur(function(){
 		var value = $(this).val();
 		box.html(html).find('a').html(value);
-		_this.keyFindObj(key)['name'] = value;
+		_this.keyFindObj(key).name = value;
 	}).keydown(function(evt){
 		var e  = evt || window.event;
 		if(e.keyCode==13){
 			var value = $(this).val();
 			box.html(html).find('a').html(value);
-			_this.keyFindObj(key)['name'] = value;
+			_this.keyFindObj(key).name = value;
 		}
 	});
 };
 
 /**
  * @description 面板DOM创建
- * @method styleHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} obj 面板数据
  * @return {String} HTML
  * @static
@@ -4811,7 +5004,7 @@ uinv.FCM.configMgr.model.monitor.styleHtmlRow = function(obj){
 
 /**
  * @description 面板页面构建
- * @method styleHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.styleHtml = function(){
@@ -4830,14 +5023,15 @@ uinv.FCM.configMgr.model.monitor.styleHtml = function(){
 
 /**
  * @description 告警级别页面构建
- * @method alarmLevelHtml
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.alarmLevelHtml = function(){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var html = "";
+	
 	if( typeof  _obj.data.monitor.alarm.alarmLevel == 'object' ){
-		var html = '';
 		for(var i=0,k=_obj.data.monitor.alarm.alarmLevel.length;i<k;i++){
 			html += _this.alarmLevelHtmlRow( _obj.data.monitor.alarm.alarmLevel[i] );
 		}
@@ -4848,7 +5042,7 @@ uinv.FCM.configMgr.model.monitor.alarmLevelHtml = function(){
 
 /**
  * @description 告警数据HTML创建
- * @method alarmLevelHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 告警数据
  * @return {String} HTML
  * @static
@@ -4873,7 +5067,7 @@ uinv.FCM.configMgr.model.monitor.alarmLevelHtmlRow = function(o){
 
 /**
  * @description 删除告警级别
- * @method deleteAlarmLevelRow
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {DOM} obj 触发事件DOM节点
  * @static
  */
@@ -4885,7 +5079,7 @@ uinv.FCM.configMgr.model.monitor.deleteAlarmLevelRow = function(obj){
 
 /**
  * @description 添加告警级别
- * @method addAlarmLevel
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @static
  */
 uinv.FCM.configMgr.model.monitor.addAlarmLevel = function(){
@@ -4900,24 +5094,24 @@ uinv.FCM.configMgr.model.monitor.addAlarmLevel = function(){
 
 /**
  * @description 初始化
- * @constructor init()
+ * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} param 初始化参数
  * @static
  */
 uinv.FCM.configMgr.model.monitor.init = function(param){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	
-	_obj.form.submitCallback = 	function(){
+
+	_obj.form.submitCallback = function(){
 		_obj.model.stringDB.set( _this.index, _this.obj );
 		for(var i=0,k=_this.deleteFileArr.length;i<k;i++){
 			uinv.server.manager.frame.delFile(_this.deleteFileArr[i]);
 		}
 	};
 	
-	_this.objBoxClassStr = param['objBox'] || '';
-	_this.styleBoxClassStr = param['styleBox'] || '';
-	_this.alarmlevelBoxClassStr = param['alarmlevelBox'] || '';
+	_this.objBoxClassStr = param.objBox || '';
+	_this.styleBoxClassStr = param.styleBox || '';
+	_this.alarmlevelBoxClassStr = param.alarmlevelBox || '';
 	_this.obj = _obj.model.stringDB.get( _this.index );
 	_this.obj.panel = typeof _this.obj.panel == 'undefined' ? [] : _this.obj.panel;
 
@@ -4925,6 +5119,8 @@ uinv.FCM.configMgr.model.monitor.init = function(param){
 	_this.styleHtml();
 	_this.alarmLevelHtml();
 };
+
+
 /**
  * @description 数组类型
  * @param {DOM} obj from表单空间dom节点
@@ -4969,12 +5165,14 @@ uinv.FCM.configMgr.model.monitor.configSetData.form = function(obj, o){
 	});
 	
 };
+
+
 /**
  * @description 数字类型
  * @param {String} value 值
  * @return {Number}
  */
-uinv.FCM.configMgr.model.monitor.configStyleTypeToData['number'] = function(value){
+uinv.FCM.configMgr.model.monitor.configStyleTypeToData.number = function(value){
 	return Number(value);
 };
 
@@ -4983,8 +5181,8 @@ uinv.FCM.configMgr.model.monitor.configStyleTypeToData['number'] = function(valu
  * @param {String} value 值
  * @return {String}
  */
-uinv.FCM.configMgr.model.monitor.configStyleTypeToData['string'] = function(value){
- 	return value;
+uinv.FCM.configMgr.model.monitor.configStyleTypeToData.string = function(value){
+	return value;
 };
 
 /**
@@ -4992,11 +5190,13 @@ uinv.FCM.configMgr.model.monitor.configStyleTypeToData['string'] = function(valu
  * @param {String} value 值
  * @return {String}
  */
-uinv.FCM.configMgr.model.monitor.configStyleTypeToData['color'] = function(value){
- 	var _obj = uinv.FCM.configMgr;
- 	var _this = _obj.model.monitor;
- 	return value;
+uinv.FCM.configMgr.model.monitor.configStyleTypeToData.color = function(value){
+	var _obj = uinv.FCM.configMgr;
+	var _this = _obj.model.monitor;
+	return value;
 };
+
+
 /**
  * @description 字符串类型
  * @param {DOM} o From表单控件节点
@@ -5020,7 +5220,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToData.number = function(o,data){
  * @param {DOM} o From表单控件节点
  * @param {Object} data 数据
  */
-uinv.FCM.configMgr.model.monitor.configTypeToData.boolean = function(o,data){
+uinv.FCM.configMgr.model.monitor.configTypeToData.bool = function(o,data){
 	if( $(o).val() == "1" ){
 		data[$(o).attr('name')] = true;
 	}else{
@@ -5051,6 +5251,8 @@ uinv.FCM.configMgr.model.monitor.configTypeToData.styleConfig = function(o,data)
 	});
 	
 };
+
+
 /**
  * @description 字符串类型
  * @param {Object} o 面板数据
@@ -5059,7 +5261,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToData.styleConfig = function(o,data)
  */
 uinv.FCM.configMgr.model.monitor.configTypeToHtml.string = function(o,form){
 	if(typeof form == 'undefined'){
-		var form = {};
+		form = {};
 		form[o.value] = '';
 	}
 	return '<input type="text" name="'+o.value+'" value="'+form[o.value]+'" cate="string" />';
@@ -5073,7 +5275,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.string = function(o,form){
  */
 uinv.FCM.configMgr.model.monitor.configTypeToHtml.number =  function(o,form){
 	if(typeof form == 'undefined'){
-		var form = {};
+		form = {};
 		form[o.value] = 0;
 	}
 	return '<input type="text" name="'+o.value+'" value="'+form[o.value]+'" cate="number" />';
@@ -5085,14 +5287,14 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.number =  function(o,form){
  * @param {Object} form 物体配置表单数据
  * @return {String} HTML文本
  */
-uinv.FCM.configMgr.model.monitor.configTypeToHtml.boolean = function(o,form){
+uinv.FCM.configMgr.model.monitor.configTypeToHtml.bool = function(o,form){
 	if(typeof form == 'undefined'){
-		var form = {};
+		form = {};
 		form[o.value] = false;
 	}
 	var html = '';
 	
-	html += '<select name="'+o.value+'" cate="boolean">';
+	html += '<select name="'+o.value+'" cate="bool">';
 		if( form[o.value] ){
 			html += '<option value="1" selected>是</option>';
 			html += '<option value="0">否</option>';
@@ -5116,7 +5318,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.styleConfig = function(o,form)
 	var _this = _obj.model.monitor;
 	
 	if(typeof form == 'undefined'){
-		var form = {};
+		form = {};
 	}
 
 	if(typeof form[o.value] == 'undefined'){
@@ -5127,9 +5329,11 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.styleConfig = function(o,form)
 	
 	return '<input type="button" class="btn_set" name="'+o.value+'" cate="styleConfig" onclick="uinv.FCM.configMgr.model.monitor.settingStyleConfigDisplay(this);" />';
 };
+
+
 /**
  * @description 比较两个对象是否完全相等
- * @method o2o 
+ * @memberOf uinv.FCM.configMgr.model.object
  * @param {Object} o1 对象1
  * @param {Object} o2 对象2
  * @return {Boolean} true 相等 false 不相等
@@ -5138,7 +5342,8 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.styleConfig = function(o,form)
 uinv.FCM.configMgr.model.object.o2o = function(o1,o2){
 	
 	var _obj = uinv.FCM.configMgr;
-	var _this = this;	
+	var _this = this;
+	var i = null;
 
 	if(typeof o1 != typeof o2){
 		return false;	
@@ -5150,7 +5355,7 @@ uinv.FCM.configMgr.model.object.o2o = function(o1,o2){
 
 	var bool = true;
 
-	for(var i in o1){
+	for(i in o1){
 		if(i in o2){
 			if(typeof o1[i] == 'object' ){
 				bool = _this.o2o(o1[i],o2[i]);	
@@ -5163,7 +5368,7 @@ uinv.FCM.configMgr.model.object.o2o = function(o1,o2){
 		}
 	}	
 
-	for(var i in o2){
+	for(i in o2){
 		if(i in o1){
 			if(typeof o2[i] == 'object' ){
 				bool = _this.o2o(o2[i],o1[i]);	
@@ -5180,7 +5385,7 @@ uinv.FCM.configMgr.model.object.o2o = function(o1,o2){
 
 /**
  * @description 从一个对象覆盖另一个对象
- * @method coverObj
+ * @memberOf uinv.FCM.configMgr.model.object
  * @param {Object} formobj 源对象
  * @param {Object} toobj 目标对象
  * @static
@@ -5205,7 +5410,7 @@ uinv.FCM.configMgr.model.object.coverObj = function( formobj, toobj){
 			
 /**
  * @description 深度克隆对象
- * @method clone
+ * @memberOf uinv.FCM.configMgr.model.object
  * @param {Object} obj 要克隆的对象
  * @return {Object} 克隆的对象
  * @static
@@ -5213,17 +5418,20 @@ uinv.FCM.configMgr.model.object.coverObj = function( formobj, toobj){
 uinv.FCM.configMgr.model.object.clone = function(obj) {
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var copy = null;
 	
-    if (null == obj || "object" != typeof obj) return obj;
+    if (null === obj || "object" != typeof obj){
+		return obj;
+    }
 
     if (obj instanceof Date) {
-        var copy = new Date();
+        copy = new Date();
         copy.setTime(obj.getTime());
         return copy;
     }
 
     if (obj instanceof Array) {
-        var copy = [];
+        copy = [];
         for (var i = 0, len = obj.length; i < len; ++i) {
             copy[i] = _this.clone(obj[i]);
         }
@@ -5231,9 +5439,11 @@ uinv.FCM.configMgr.model.object.clone = function(obj) {
     }
 
     if (obj instanceof Object) {
-        var copy = {};
+		copy = {};
         for (var attr in obj) {
-            if (obj.hasOwnProperty(attr)) copy[attr] = _this.clone(obj[attr]);
+            if (obj.hasOwnProperty(attr)){
+				copy[attr] = _this.clone(obj[attr]);
+            }
         }
         return copy;
     }
@@ -5243,7 +5453,7 @@ uinv.FCM.configMgr.model.object.clone = function(obj) {
 
 /**
  * @description 判断传入的参数是不是object 主要用于区别是数组还是对象
- * @method isObject
+ * @memberOf uinv.FCM.configMgr.model.object
  * @param {Object} o 判断的参数
  * @return {Boolean} true 是对象 false 不是对象
  * @static
@@ -5253,6 +5463,8 @@ uinv.FCM.configMgr.model.object.isObject = function(o){
 	var _this = this;
 	return o instanceof Object;
 };
+
+ 
 //--------------------------
 // 基础定义
 //--------------------------
@@ -5300,7 +5512,7 @@ uinv.FCM.configMgr.model.panel.classStr = '';
 
 /**
  * @description 根据key查找到面板对象
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 面板key值
  * @return {Object} 面板对象
  * @static
@@ -5320,7 +5532,7 @@ uinv.FCM.configMgr.model.panel.keyFindObj = function(key){
 
 /**
  * @description 根据key值删除面板对象（内存操作）
- * @method keyDelObj
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 面板key值
  * @return {Boolean} true 删除成功 false 删除失败（可能key值不存在）
  */
@@ -5338,9 +5550,9 @@ uinv.FCM.configMgr.model.panel.keyDelObj = function(key){
 };
 
 /**
- * @description 创建物体方法
+ * @description 创建物体方法<br />
  * 1) 实际调用选择器模块的公有方法选择对象节点作为创建
- * @method createObject
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.createObject = function(){
@@ -5369,7 +5581,7 @@ uinv.FCM.configMgr.model.panel.createObject = function(){
 
 /**
  * @description 插入分割线
- * @method insertDividingLine
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 单击创建分割线的DOM节点
  * @param {String} key 创建分割线的面板key值
  * @return {Boolean} 如果key值为false将return false终止后面的操作
@@ -5393,10 +5605,10 @@ uinv.FCM.configMgr.model.panel.insertDividingLine = function(obj,key){
 };
 
 /**
- * @description 删除物体操作
- * 1) 执行内存删除操作
+ * @description 删除物体操作<br />
+ * 1) 执行内存删除操作<br />
  * 2) 执行页面DOM节点删除操作
- * @method deleteObj
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 物体key值
  * @static
  */
@@ -5411,11 +5623,11 @@ uinv.FCM.configMgr.model.panel.deleteObj = function(key){
 
 
 /**
- * @description 删除面板项操作
- * @method deleteObjPanel
- * 1) 每一个物体下同名的面板都会一并删除
- * 2) 只是内存操作，不提交服务器
+ * @description 删除面板项操作<br />
+ * 1) 每一个物体下同名的面板都会一并删除<br />
+ * 2) 只是内存操作，不提交服务器<br />
  * 3) 每一个物体下都删除同名的DOM节点
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 触发删除事件的DOM节点
  * @return {Boolean} 将弹出确认会话框，如果取消删除操作则return false终止后面删除动作
  * @static
@@ -5445,7 +5657,7 @@ uinv.FCM.configMgr.model.panel.deleteObjPanel = function(obj){
 
 /**
  * @description 根据面板key删除物体对象里的order与item的面板项
- * @method keyDeleteObjPanel
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体对象数据
  * @param {String} panelKey 面板key值
  * @static
@@ -5453,21 +5665,22 @@ uinv.FCM.configMgr.model.panel.deleteObjPanel = function(obj){
 uinv.FCM.configMgr.model.panel.keyDeleteObjPanel = function(obj, panelKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var index = 0;
 	
 	if( _obj.model.array.inArray(panelKey, obj.order) ){
-		var index = _obj.model.array.strInArrayIndex( panelKey, obj.order );
+		index = _obj.model.array.strInArrayIndex( panelKey, obj.order );
 		obj.order.splice(index,1);
 	}
 	
 	if( _obj.model.array.inArray(panelKey, obj.item) ){
-		var index = _obj.model.array.strInArrayIndex( panelKey, obj.item );
+		index = _obj.model.array.strInArrayIndex( panelKey, obj.item );
 		obj.item.splice(index,1);
 	}
 };
 
 /**
  * @description 根据对象key，面板key，删除DOM节点
- * @method keyDeleteObjPanelLi
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} objkey 对象key值
  * @param {String} panelkey 面板key值
  * @static
@@ -5484,10 +5697,10 @@ uinv.FCM.configMgr.model.panel.keyDeleteObjPanelLi = function(objkey,panelkey){
 };
 
 /**
- * @description 修改物体名称
- * 1) DOM节点文本修改
+ * @description 修改物体名称<br />
+ * 1) DOM节点文本修改<br />
  * 2) 内存操作修改
- * @method modifyObjectName
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 物体key值
  * @param {DOM} obj 触发修改名称事件的DOM节点
  * @static
@@ -5512,7 +5725,7 @@ uinv.FCM.configMgr.model.panel.modifyObjectName = function(key,obj){
 
 /**
  * @description 创建物体DOM节点函数
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体数据
  * @return {String} DOM节点
  * @static
@@ -5548,7 +5761,7 @@ uinv.FCM.configMgr.model.panel.mkhtml = function(obj){
 
 /**
  * @description 创建物体面板项的DOM节点
- * @method mkHtmlList
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体数据
  * @param {Object} panel 面板数据
  * @return {}
@@ -5567,7 +5780,7 @@ uinv.FCM.configMgr.model.panel.mkHtmlList = function(obj, panel){
 		html += '<span class="action panel_up">';
 			html += '<a onclick="uinv.FCM.configMgr.model.panel.upMove(this);" class="'+_this.upMoveBtnClass+'" href="javascript:void(0);" style="display:none;"><s>上移</s></a>';
 			html += '</span>';
-			if( typeof panel['itemConfig'] == 'object' ){
+			if( typeof panel.itemConfig == 'object' ){
 				html += '<span class="panel_edit">';
 				html += '<a onclick="uinv.FCM.configMgr.model.panel.itemConfig(\''+key+'\',\''+obj.key+'\');" href="javascript:void(0);"><s>编辑</s></a>';
 				html += '</span>';				
@@ -5592,7 +5805,7 @@ uinv.FCM.configMgr.model.panel.mkHtmlList = function(obj, panel){
 
 /**
  * @description 面板编辑配置DOM节点创建 并且初始化面板配置数据
- * @method itemConfig
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 面板key值
  * @param {String} objectKey 隶属物体key值
  * @static
@@ -5601,19 +5814,19 @@ uinv.FCM.configMgr.model.panel.itemConfig = function(key, objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;	
 	
-	if(typeof _this.obj[key]['itemConfig'] == 'undefined'){
+	if(typeof _this.obj[key].itemConfig == 'undefined'){
 		_this.note.alert(_obj.msg.S9);
 	}
 
 	_panel = _this.keyFindObj(objectKey);
-	_panel['itemData'] = typeof _panel['itemData'] == 'undefined' ? {} : _panel['itemData'];
-	_panel['itemData'][key] = typeof _panel['itemData'][key] == 'undefined' ? {} : _panel['itemData'][key];
+	_panel.itemData = typeof _panel.itemData == 'undefined' ? {} : _panel.itemData;
+	_panel.itemData[key] = typeof _panel.itemData[key] == 'undefined' ? {} : _panel.itemData[key];
 
 	var html = '';
 	html += '<div class="itemConfig" style="padding:10px;">';
-	for(var i = 0 , k = _this.obj[key]['itemConfig'].length; i<k; i++){
-		if( typeof _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']] == 'function' ){
-			html += _this.itemConfigTypeToHtml[_this.obj[key]['itemConfig'][i]['type']](_this.obj[key]['itemConfig'][i],key, objectKey);
+	for(var i = 0 , k = _this.obj[key].itemConfig.length; i<k; i++){
+		if( typeof _this.itemConfigTypeToHtml[_this.obj[key].itemConfig[i].type] == 'function' ){
+			html += _this.itemConfigTypeToHtml[_this.obj[key].itemConfig[i].type](_this.obj[key].itemConfig[i],key, objectKey);
 		}
 	}
 	html += '<p class="action">';
@@ -5629,7 +5842,7 @@ uinv.FCM.configMgr.model.panel.itemConfig = function(key, objectKey){
 
 /**
  * @description 初始化面板配置项表单
- * @method itemConfigFormInit
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.itemConfigFormInit = function(){
@@ -5645,7 +5858,7 @@ uinv.FCM.configMgr.model.panel.itemConfigFormInit = function(){
 
 /**
  * @description 面板配置表单提交 将表单值写入内存中
- * @method itemConfigSubmit
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.itemConfigSubmit = function(){
@@ -5663,7 +5876,7 @@ uinv.FCM.configMgr.model.panel.itemConfigSubmit = function(){
 
 /**
  * @description 添加面板DOM节点到物体DOM树里
- * @method addPanelOneToObj
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 物体key值
  * @param {String} html 创建的DOM面板节点
  * @static
@@ -5676,7 +5889,7 @@ uinv.FCM.configMgr.model.panel.addPanelOneToObj = function( key, html ){
 
 /**
  * @description 根据value删除物体DOM树下的面板项DOM节点
- * @method removeObjPanelIsValue
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key 物体key值
  * @param {String} value 面板DOM节点的value值
  * @static
@@ -5689,7 +5902,7 @@ uinv.FCM.configMgr.model.panel.removeObjPanelIsValue = function( key, value ){
 
 /**
  * @description 面板排序 把已勾选的面板排到前面，未勾选的面板排到后面
- * @method order
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj DOM节点
  * @static
  */
@@ -5700,7 +5913,7 @@ uinv.FCM.configMgr.model.panel.order = function(obj){
 	var num = 0;
 	var index = 0;
 	_obj.form.box.find( '*[name='+$(obj).attr('name')+']' ).each(function(i){
-		if( this.checked == true && this != obj){
+		if( this.checked === true && this != obj){
 			num++;
 		}else if( this==obj ){
 			index = i;
@@ -5709,7 +5922,7 @@ uinv.FCM.configMgr.model.panel.order = function(obj){
 	
 	// 排序
 	if(index != num){
-		if(obj.checked == true){
+		if(obj.checked === true){
 			_obj.form.box.find( '*[name='+$(obj).attr('name')+']:eq('+num+')' ).parents('li').before( $(obj).parents('li') );
 		}else{
 			_obj.form.box.find( '*[name='+$(obj).attr('name')+']:eq('+num+')' ).parents('li').after( $(obj).parents('li') );
@@ -5719,7 +5932,7 @@ uinv.FCM.configMgr.model.panel.order = function(obj){
 
 /**
  * @description 显示面板上移按钮 因为面板未勾选的时候会隐藏
- * @method showUpMoveBtn
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 触发事件的DOM节点
  * @static
  */
@@ -5732,7 +5945,7 @@ uinv.FCM.configMgr.model.panel.showUpMoveBtn = function(obj){
 
 /**
  * @description 隐藏上移按钮 因为面板取消选中状态时要隐藏下移按钮
- * @method hideUpMoveBtn 
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj DOM节点
  * @static
  */
@@ -5743,8 +5956,9 @@ uinv.FCM.configMgr.model.panel.hideUpMoveBtn = function(obj){
 };
 
 /**
- * @description 选中面板触发函数
+ * @description 选中面板触发函数<br />
  * 1) 初始化面板checkbox为true的时候也触发
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 选中面板的checkbox DOM节点
  * @static
  */
@@ -5754,7 +5968,7 @@ uinv.FCM.configMgr.model.panel.checkd = function(obj){
 	// 排序
 	_this.order(obj);
 	
-	if(obj.checked == true){
+	if(obj.checked === true){
 		// 添加class
 		$(obj).parents('li').addClass('checked');
 		
@@ -5772,7 +5986,7 @@ uinv.FCM.configMgr.model.panel.checkd = function(obj){
 
 /**
  * @description 选中面板后要把选中的面板排到前面，主要防止在它前面有未选中的面板
- * @method checkedPanelOrder
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} name 面板name值
  * @static
  */
@@ -5796,7 +6010,7 @@ uinv.FCM.configMgr.model.panel.checkedPanelOrder = function(name){
 
 /**
  * @description 上移面板操作
- * @method upMove
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 触发事件的DOM节点
  * @static
  */
@@ -5807,14 +6021,14 @@ uinv.FCM.configMgr.model.panel.upMove = function(obj){
 	var checkObj =  $(obj).parents('li').find('input[type=checkbox][name]');
 	
 	// 如果面板没有被选中状态，就return退出，不执行上移操作
-	if( checkObj.get(0).checked == false ) {
+	if( checkObj.get(0).checked === false ) {
 		return;
 	}
 	
 	var index = $(obj).parents('li').index();
 	
 	// 如果面板排在首位就return退出，不执行上移操作
-	if(index == 0){
+	if(index === 0){
 		return;
 	}
 	
@@ -5826,7 +6040,7 @@ uinv.FCM.configMgr.model.panel.upMove = function(obj){
 
 /**
  * @description 判断key是否已被使用，防止key重复
- * @method checkHasKey
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} key值
  * @return {Boolean}
  * @static
@@ -5845,7 +6059,7 @@ uinv.FCM.configMgr.model.panel.checkHasKey = function(key){
 
 /**
  * @description 创建物体 （内存操作）
- * @method addObject
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体数据
  * @return {Object} 组合过的物体数据
  * @static
@@ -5853,10 +6067,12 @@ uinv.FCM.configMgr.model.panel.checkHasKey = function(key){
 uinv.FCM.configMgr.model.panel.addObject = function( obj ){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var key = "";
+	var bool = false;
 	
 	do{
-		var key = _obj.model.key.create(32);
-		var bool = _this.checkHasKey(key);
+		key = _obj.model.key.create(32);
+		bool = _this.checkHasKey(key);
 	}while(bool);
 	
 	var comObj = {
@@ -5877,10 +6093,10 @@ uinv.FCM.configMgr.model.panel.addObject = function( obj ){
 };
 		
 /**
- * @description 检测两个物体是否相等
- * 1) 实际上只是检测物体的condition
+ * @description 检测两个物体是否相等<br />
+ * 1) 实际上只是检测物体的condition<br />
  * 2) 当前检测的condition只有name attribute classid
- * @method judgeObjectIsEq
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} o1 物体1
  * @param {Object} o2 物体2
  * @return {Boolean} true 相等 false 不相等
@@ -5913,9 +6129,9 @@ uinv.FCM.configMgr.model.panel.judgeObjectIsEq = function(o1,o2){
 };
 
 /**
- * @description 判断物体是否已经存在
+ * @description 判断物体是否已经存在<br />
  * 1) 实际上是遍历已创建的物体挨个比较是否有condition一样的物体 fun除外
- * @method checkObjectExist
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 要检测的物体
  * @return {Boolean} true 存在 false 不存在
  * @static
@@ -5935,7 +6151,7 @@ uinv.FCM.configMgr.model.panel.checkObjectExist = function( obj ){
 	
 /**
  * @description 添加面板逻辑业务处理
- * @method add
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板数据
  * @param {Function} fun 回调函数
  * @static
@@ -5954,7 +6170,7 @@ uinv.FCM.configMgr.model.panel.add = function(obj, fun){
 
 /**
  * @description 添加面板到全局对象 （内存操作）
- * @method addPanelToGlobalLib
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板数据
  * @param {Function} fun 回调函数
  * @static
@@ -5978,7 +6194,7 @@ uinv.FCM.configMgr.model.panel.addPanelToGlobalLib = function( obj, fun ){
 
 /**
  * @description 添加面板到全局对象 回调
- * @method addPanelToGlobalLibCallback
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板数据
  * @static
  */
@@ -6005,7 +6221,7 @@ uinv.FCM.configMgr.model.panel.addPanelToGlobalLibCallback = function( obj ){
 
 /**
  * @description 对象写到文本数据后回调函数
- * @method setDBCallback
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.setDBCallback = function(){
@@ -6015,7 +6231,7 @@ uinv.FCM.configMgr.model.panel.setDBCallback = function(){
 
 /**
  * @description 添加面板到指定物体的面板库内
- * @method addPanelToObjLib
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板
  * @param {Function} fun 回调函数
  * @static
@@ -6046,7 +6262,7 @@ uinv.FCM.configMgr.model.panel.addPanelToObjLib = function( obj, fun ){
 
 /**
  * @description 添加面板到指定对象回调函数
- * @method addPanelToObjLibCallback
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 物体数据
  * @param {Object} panel 面板数据
  * @static
@@ -6067,7 +6283,7 @@ uinv.FCM.configMgr.model.panel.addPanelToObjLibCallback = function( obj, panel )
 
 /**
  * @description 索引面板副数据
- * @method getPanelList
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @return {Object} 面板副数据
  */
 uinv.FCM.configMgr.model.panel.getPanelList = function(){
@@ -6078,7 +6294,7 @@ uinv.FCM.configMgr.model.panel.getPanelList = function(){
 
 /**
  * @description 面板上传
- * @method uinv.FCM.configMgr.model.panel.upload
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @see uinv.server.manager.frame.upAndUnZip()
  * @param {DOM} obj 上传空间DOM对象
  * @param {} selector
@@ -6104,7 +6320,7 @@ uinv.FCM.configMgr.model.panel.upload = function(obj, selector){
 
 /**
  * @description 上传面板回调函数 主要接受回传的面板内容，以做下一步处理
- * @method uinv.FCM.configMgr.model.panel.uploadCallback
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} result 执行上传操作后服务器返回的结果
  * @static
  */
@@ -6135,7 +6351,7 @@ uinv.FCM.configMgr.model.panel.uploadCallback = function(result){
 
 /**
  * @description 检测上传面板数据的合法性
- * @method verificationPanelData
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 上传的面板数据
  * @return {Boolean} true 合法 false 不合法
  * @static
@@ -6170,7 +6386,7 @@ uinv.FCM.configMgr.model.panel.verificationPanelData = function(obj){
 
 /**
  * @description 根据传入参数创建全局面板的DOM节点
- * @method globalPanelListHtml
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {Object} obj 面板数据
  * @return {String} DOM节点
  * @static
@@ -6192,7 +6408,7 @@ uinv.FCM.configMgr.model.panel.globalPanelListHtml = function(obj){
 
 /**
  * @description 全局面板管理页面入口
- * @method globalPanelManager
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.globalPanelManager = function(){
@@ -6224,7 +6440,7 @@ uinv.FCM.configMgr.model.panel.globalPanelManager = function(){
 
 /**
  * @description 关闭全局面板管理窗口回调函数
- * @method globalPanelManagerCallBack
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @static
  */
 uinv.FCM.configMgr.model.panel.globalPanelManagerCallBack = function(){
@@ -6235,7 +6451,7 @@ uinv.FCM.configMgr.model.panel.globalPanelManagerCallBack = function(){
 
 /**
  * @description 删除全局面板操作，只操作内存
- * @method deleteGlobalPanel
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {DOM} obj 触发事件的DOM节点
  * @param {String} key 面板key值
  * @static
@@ -6252,7 +6468,7 @@ uinv.FCM.configMgr.model.panel.deleteGlobalPanel = function(obj, key){
 
 /**
  * @description 初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.panel
  * @param {String} classStr 面板盒子DOM Class 值
  * @static
  */
@@ -6275,6 +6491,8 @@ uinv.FCM.configMgr.model.panel.init = function(classStr){
 	
 	_obj.form.box.find(_this.classStr).html(html);
 };
+
+ 
 /**
  * @description 字符串类型
  * @param {DOM} obj DOM节点
@@ -6284,8 +6502,8 @@ uinv.FCM.configMgr.model.panel.itemConfigInitData.string = function(obj){
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	if(typeof _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'string'){
-		$(obj).val( _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')]  );
+	if(typeof _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'string'){
+		$(obj).val( _panel.itemData[$(obj).attr('path')][$(obj).attr('name')]  );
 	}
 };
 
@@ -6298,8 +6516,8 @@ uinv.FCM.configMgr.model.panel.itemConfigInitData.number = function(obj){
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	if(typeof _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'number'){
-		$(obj).val( _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] );
+	if(typeof _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'number'){
+		$(obj).val( _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] );
 	}
 };
 
@@ -6312,10 +6530,10 @@ uinv.FCM.configMgr.model.panel.itemConfigInitData.bool = function(obj){
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	if( typeof _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'boolean' ){
-		if( obj.value == '1' && _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] ){
+	if( typeof _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'boolean' ){
+		if( obj.value == '1' && _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] ){
 			obj.checked = true;
-		}else if( obj.value == '0' && !_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] ){
+		}else if( obj.value == '0' && !_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] ){
 			obj.checked = true;
 		}
 	}
@@ -6330,8 +6548,8 @@ uinv.FCM.configMgr.model.panel.itemConfigInitData.color = function(obj){
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	if(  typeof _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')]  == 'string' ){
-		$(obj).val( _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] );
+	if(  typeof _panel.itemData[$(obj).attr('path')][$(obj).attr('name')]  == 'string' ){
+		$(obj).val( _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] );
 	}
 	_obj.model.colorpicke.show(obj);
 };
@@ -6340,14 +6558,14 @@ uinv.FCM.configMgr.model.panel.itemConfigInitData.color = function(obj){
  * @description 3D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.panel.itemConfigInitData['3dposition'] = function(obj){
+uinv.FCM.configMgr.model.panel.itemConfigInitData.position3d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	if(typeof  _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')]  == 'object'){
+	if(typeof  _panel.itemData[$(obj).attr('path')][$(obj).attr('name')]  == 'object'){
 		var index = $(obj).parents('li').index();
-		$(obj).val(  _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')][index] );
+		$(obj).val(  _panel.itemData[$(obj).attr('path')][$(obj).attr('name')][index] );
 	}				
 };
 
@@ -6355,14 +6573,14 @@ uinv.FCM.configMgr.model.panel.itemConfigInitData['3dposition'] = function(obj){
  * @description 2D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.panel.itemConfigInitData['2dposition'] = function(obj){
+uinv.FCM.configMgr.model.panel.itemConfigInitData.position2d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	if(typeof _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'object'){
+	if(typeof _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'object'){
 		var index = $(obj).parents('li').index();
-		$(obj).val( _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')][index] );
+		$(obj).val( _panel.itemData[$(obj).attr('path')][$(obj).attr('name')][index] );
 	}				
 };
 
@@ -6375,8 +6593,8 @@ uinv.FCM.configMgr.model.panel.itemConfigInitData.select = function(obj){
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	if(typeof  _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] != 'undefined'){
-		var value =  _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')];
+	if(typeof  _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] != 'undefined'){
+		var value =  _panel.itemData[$(obj).attr('path')][$(obj).attr('name')];
 		$(obj).find('option').each(function(){
 			if($(this).attr('value') == value){
 				this.selected = true;
@@ -6386,6 +6604,9 @@ uinv.FCM.configMgr.model.panel.itemConfigInitData.select = function(obj){
 		});
 	}
 };
+
+ 
+ 
 /**
  * @description 字符串类型
  * @param {DOM} obj DOM节点
@@ -6394,7 +6615,7 @@ uinv.FCM.configMgr.model.panel.itemConfigSetData.string = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+	_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
 };
 
 /**
@@ -6405,7 +6626,7 @@ uinv.FCM.configMgr.model.panel.itemConfigSetData.number = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] = Number($(obj).val());
+	_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = Number($(obj).val());
 };
 
 
@@ -6419,9 +6640,9 @@ uinv.FCM.configMgr.model.panel.itemConfigSetData.bool = function(obj){
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
 	if( obj.checked ){
 		if(obj.value == '1'){
-			_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] = true;
+			_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = true;
 		}else{
-			_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] = false;
+			_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = false;
 		}
 	}
 };
@@ -6434,39 +6655,39 @@ uinv.FCM.configMgr.model.panel.itemConfigSetData.color = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+	_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
 };
 
 /**
  * @description 3D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.panel.itemConfigSetData['3dposition'] = function(obj){
+uinv.FCM.configMgr.model.panel.itemConfigSetData.position3d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	if( typeof _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')].length == 3  ){
-		_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] = [];
+	if( typeof _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _panel.itemData[$(obj).attr('path')][$(obj).attr('name')].length == 3  ){
+		_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = [];
 	}
 	
-	_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
+	_panel.itemData[$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
 };
 
 /**
  * @description 2D位置类型
  * @param {DOM} obj DOM节点
  */
-uinv.FCM.configMgr.model.panel.itemConfigSetData['2dposition'] = function(obj){
+uinv.FCM.configMgr.model.panel.itemConfigSetData.position2d = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
-	if( typeof _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _panel['itemData'][$(obj).attr('path')][$(obj).attr('name')].length == 2  ){
-		_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] = [];
+	if( typeof _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'undefined' || _panel.itemData[$(obj).attr('path')][$(obj).attr('name')].length == 2  ){
+		_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = [];
 	}
 	
-	_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
+	_panel.itemData[$(obj).attr('path')][$(obj).attr('name')].push( $(obj).val() );
 };
 
 /**
@@ -6480,10 +6701,12 @@ uinv.FCM.configMgr.model.panel.itemConfigSetData.select = function(obj){
 	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
 	$(obj).find('option').each(function(){
 		if(this.selected){
-			_panel['itemData'][$(obj).attr('path')][$(obj).attr('name')] = $(this).attr('value');
+			_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(this).attr('value');
 		}
 	});
 };
+
+ 
 /**
  * @description 字符串类型
  * @param {Object} obj 面板数据
@@ -6496,20 +6719,20 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.string = function(obj,key,ob
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem;
-	
- 	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
-	 	}
- 	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="string" path="'+key+'" value="'+value+'" />';
- 	
- 	html += '</p>';
- 	return html;
+
+	var html = '';
+	html += '<p class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="string" path="'+key+'" value="'+value+'" />';
+
+	html += '</p>';
+	return html;
 };
 
 /**
@@ -6524,20 +6747,20 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.number = function(obj,key,ob
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem;
-	
- 	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
-	 	}
-	 	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="number" path="'+key+'" value="'+value+'" />';
- 	
- 	html += '</p>';
- 	return html;
+
+	var html = '';
+	html += '<p class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="number" path="'+key+'" value="'+value+'" />';
+
+	html += '</p>';
+	return html;
 };
 
 /**
@@ -6550,28 +6773,28 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.number = function(obj,key,ob
 uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.bool = function(obj,key,objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
-	
+
 	var value = typeof obj.defaultItem == 'undefined' ? false :  obj.defaultItem;
+
+	var html = '';
+	html += '<p class="row" style="margin:10px auto;">';
 	
- 	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
- 		
- 	if( typeof obj.caption == 'undefined' ){
- 		html += '<span>'+obj.name+'</span>';	
- 	}else{
- 		html += '<span>'+obj.caption+'</span>';
- 	}
-	 	
- 	if(value){
-		html += obj.items[true]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" checked /> ';
-		html += obj.items[false]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" /> ';
- 	}else{
- 		html += obj.items[true]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" /> ';
-		html += obj.items[false]+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" checked /> ';
- 	}
-	 	
- 	html += '</p>';
- 	return html;
+	if( typeof obj.caption == 'undefined' ){
+		html += '<span>'+obj.name+'</span>';	
+	}else{
+		html += '<span>'+obj.caption+'</span>';
+	}
+
+	if(value){
+		html += obj.items.TRUE+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" checked /> ';
+		html += obj.items.FALSE+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" /> ';
+	}else{
+		html += obj.items.TRUE+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="1" /> ';
+		html += obj.items.FALSE+'<input type="radio" objectkey="'+objectKey+'" name="'+obj.name+'" cate="bool" path="'+key+'" value="0" checked /> ';
+	}
+	
+	html += '</p>';
+	return html;
 };
 
 /**
@@ -6584,22 +6807,21 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.bool = function(obj,key,obje
 uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.color = function(obj,key,objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
-	
+
 	var value = typeof obj.defaultItem == 'undefined' ? '#FFFFFF' :  obj.defaultItem;
-	
- 	var html = '';
- 	html += '<p class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
-	 	}
- 	
- 		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="color" path="'+key+'" value="'+value+'"  />';
- 	
- 	html += '</p>';
- 	return html;
+
+	var html = '';
+	html += '<p class="row" style="margin:10px auto;">';
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="color" path="'+key+'" value="'+value+'"  />';
+
+	html += '</p>';
+	return html;
 };
 
 /**
@@ -6609,27 +6831,28 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.color = function(obj,key,obj
  * @param {String} objectKey 物体key值
  * @return {String} DOM节点
  */
-uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml['3dposition'] = function(obj,key,objectKey){
+uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.position3d = function(obj,key,objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
+
+	var html = '';
+	html += '<div class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<ul>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position3d" path="'+key+'"  /></li>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position3d" path="'+key+'"  /></li>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[2]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position3d" path="'+key+'"  /></li>';
+		html += '</ul>';
+
+	html += '</div>';
 	
- 	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
-	 	}
-	 	
- 		html += '<ul>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="3dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="3dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[2]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="3dposition" path="'+key+'"  /></li>';
- 		html += '</ul>';
- 	
- 	html += '</div>';
- 	return html;					
+	return html;					
 };
 
 /**
@@ -6639,26 +6862,26 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml['3dposition'] = function(obj
  * @param {String} objectKey 物体key值
  * @return {String} DOM节点
  */
-uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml['2dposition'] = function(obj,key,objectKey){
+uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.position2d = function(obj,key,objectKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
 	
- 	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span><s>'+obj.name+'</s></span>';	
-	 	}else{
-	 		html += '<span><s>'+obj.caption+'</s></span>';
-	 	}
-	 	
- 		html += '<ul>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="2dposition" path="'+key+'"  /></li>';
-	 		html += '<li style="list-style:none;"><span><s>'+obj.items[1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="2dposition" path="'+key+'"  /></li>';
- 		html += '</ul>';
- 	
- 	html += '</div>';
- 	return html;					
+	var html = '';
+	html += '<div class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span><s>'+obj.name+'</s></span>';	
+		}else{
+			html += '<span><s>'+obj.caption+'</s></span>';
+		}
+
+		html += '<ul>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[0]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position2d" path="'+key+'"  /></li>';
+			html += '<li style="list-style:none;"><span><s>'+obj.items[1]+'</s></span><input type="text" objectkey="'+objectKey+'" name="'+obj.name+'" cate="position2d" path="'+key+'"  /></li>';
+		html += '</ul>';
+
+	html += '</div>';
+	return html;					
 };
 
 /**
@@ -6673,28 +6896,30 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.select = function(obj,key,ob
 	var _this = uinv.FCM.configMgr.model.panel;
 	
 	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem;
-	
- 	var html = '';
- 	html += '<div class="row" style="margin:10px auto;">';
- 		
-	 	if( typeof obj.caption == 'undefined' ){
-	 		html += '<span>'+obj.name+'</span>';	
-	 	}else{
-	 		html += '<span>'+obj.caption+'</span>';
-	 	}
-	 	
-	 	html += '<select class="row_select" objectkey="'+objectKey+'" name="'+obj.name+'" cate="select" path="'+key+'">';
-	 	for(var i = 0, k = obj.items.length; i<k; i++){
-	 		if( obj.items[i]==value ){
-	 			html += '<option value="'+obj.items[i]+'" selected>'+obj.items[i]+'</option>';
-	 		}else{
-	 			html += '<option value="'+obj.items[i]+'">'+obj.items[i]+'</option>';
-	 		}
-	 	}
-	 	html += '</select>';
-	 html += '</div>';
-	 return html;
+
+	var html = '';
+	html += '<div class="row" style="margin:10px auto;">';
+
+		if( typeof obj.caption == 'undefined' ){
+			html += '<span>'+obj.name+'</span>';	
+		}else{
+			html += '<span>'+obj.caption+'</span>';
+		}
+
+		html += '<select class="row_select" objectkey="'+objectKey+'" name="'+obj.name+'" cate="select" path="'+key+'">';
+		for(var i = 0, k = obj.items.length; i<k; i++){
+			if( obj.items[i]==value ){
+				html += '<option value="'+obj.items[i]+'" selected>'+obj.items[i]+'</option>';
+			}else{
+				html += '<option value="'+obj.items[i]+'">'+obj.items[i]+'</option>';
+			}
+		}
+		html += '</select>';
+	html += '</div>';
+	return html;
 };
+
+
 //-----------------------------------
 // 基础定义
 //-----------------------------------
@@ -6706,8 +6931,8 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.select = function(obj,key,ob
 uinv.FCM.configMgr.model.resources.upResourcesDir = "/projects/resources";
 
 /**
- * @description 待删除文件
- * 1) 主要解决用户执行删除资源后提交保存时删除遗留的文件
+ * @description 待删除文件<br />
+ * 1) 主要解决用户执行删除资源后提交保存时删除遗留的文件<br />
  * 2) 最后还会二次判断确保没有正在被使用的资源文件
  * @type Array
  */
@@ -6726,7 +6951,7 @@ uinv.FCM.configMgr.model.resources.resourcesManagerClass = 'resourcesManager';
 
 /**
  * @description 根据传入参数设置某个资源的数据
- * @method setData
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} key 资源key值
  * @param {Object} param 要设置的数据
  * @static
@@ -6743,7 +6968,7 @@ uinv.FCM.configMgr.model.resources.setData = function(key, param){
 
 /**
  * @description 上传资源包后回调函数
- * @method uploadResourcesFileCallback
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {Object} result 上传资源包处理结果
  * @static
  */
@@ -6765,7 +6990,7 @@ uinv.FCM.configMgr.model.resources.uploadResourcesFileCallback = function(result
 	
 /**
  * @description 检测资源管理表单数据是否合法
- * @method checkForm
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {Object} param 检测表单的数据
  * @return {Object} { error 1 有错误 0 没有错误, msg 错误信息 }
  * @static
@@ -6809,7 +7034,7 @@ uinv.FCM.configMgr.model.resources.checkForm = function(param){
 
 /**
  * @description 资源表单处理回调函数
- * @method resourcesManagerHandleCallback
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @static
  */
 uinv.FCM.configMgr.model.resources.resourcesManagerHandleCallback = function(){
@@ -6831,6 +7056,7 @@ uinv.FCM.configMgr.model.resources.resourcesManagerHandleCallback = function(){
 
 /**
  * @description 创建新资源处理函数
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {Object} obj 要创建资源的数据
  * @return {Boolean} 如果表单有错误将return false 终止后面操作
  * @static
@@ -6895,7 +7121,7 @@ uinv.FCM.configMgr.model.resources.handleResourcesManager = function(obj){
 
 /**
  * @description 根据服务器路径查找资源
- * @method serverPathFindObj
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} path 路径
  * @return {Object} 如果返回null表示找不到
  * @static
@@ -6910,11 +7136,11 @@ uinv.FCM.configMgr.model.resources.serverPathFindObj = function(path){
 		}
 	}
 	return null;
-},
+};
 
 /**
  * @description 根据路径 返回 foder filename
- * @method pathToFileNameAndFoder
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} path 路径
  * @return {Object} {filename:文件名 , foder: 路径名}
  * @example var pathinfo = uinv.FCM.configMgr.model.resources.pathToFileNameAndFoder("/public/foder/filename.js");
@@ -6923,8 +7149,8 @@ uinv.FCM.configMgr.model.resources.serverPathFindObj = function(path){
 uinv.FCM.configMgr.model.resources.pathToFileNameAndFoder = function(path){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	
 	var result = {};
+	
 	if( typeof path == 'string' ){
 		var pathinfo = path.split('/');
 		result.filename = pathinfo[pathinfo.length-1];
@@ -6941,10 +7167,11 @@ uinv.FCM.configMgr.model.resources.pathToFileNameAndFoder = function(path){
 	
 	return result;
 };
+	
 
 /**
  * @description 资源管理器关闭
- * @method resourcesManagerClose
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @static
  */
 uinv.FCM.configMgr.model.resources.resourcesManagerClose = function(){
@@ -6955,10 +7182,10 @@ uinv.FCM.configMgr.model.resources.resourcesManagerClose = function(){
 };
 
 /**
- * @description 创建资源管理表单DOM节点
- * 1) key 存在表示修改操作
+ * @description 创建资源管理表单DOM节点<br />
+ * 1) key 存在表示修改操作<br />
  * 2) key 为空表示创建操作
- * @method resourcesManager
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {Stirng} key 要操作的资源key值
  * @return {Boolean} 有异常则return false 终止操作
  * @static
@@ -6995,7 +7222,7 @@ uinv.FCM.configMgr.model.resources.resourcesManager = function(key){
 
 /**
  * @description 根据key找到对象，如果key不存在，则返回空对象
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} key 资源key值
  * @return {Object} 资源数据
  * @static
@@ -7020,7 +7247,7 @@ uinv.FCM.configMgr.model.resources.keyFindObj = function(key){
 
 /**
  * @description 获取资源管理器表单数据
- * @method getResourcesManagerFormData
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @return {Object} 表单数据
  * @static
  */
@@ -7051,7 +7278,7 @@ uinv.FCM.configMgr.model.resources.getResourcesManagerFormData = function(){
 
 /**
  * @description 根据name值设置表单数据
- * @method setResourcesManagerFormData
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} key 表单name值
  * @param {String} value 表单值
  * @static
@@ -7065,7 +7292,7 @@ uinv.FCM.configMgr.model.resources.setResourcesManagerFormData = function(key,va
 
 /**
  * @description 创建资源标签页DOM节点
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @static
  */
 uinv.FCM.configMgr.model.resources.mkhtml = function(){
@@ -7093,7 +7320,7 @@ uinv.FCM.configMgr.model.resources.mkhtml = function(){
 		
 /**
  * @description 删除资源
- * @method delResource
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} key 要删除的资源key值
  * @return {Boolean} 如果取消操作则return false 终止后面的操作
  * @static
@@ -7118,11 +7345,11 @@ uinv.FCM.configMgr.model.resources.delResource = function(key){
 };
 
 /**
- * @description 备份接口
- * 1) 这个接口名为规范定义
- * 2) 当用户备份数据时将从这个接口获取额外需要打包备份的文件
+ * @description 备份接口<br />
+ * 1) 这个接口名为规范定义<br />
+ * 2) 当用户备份数据时将从这个接口获取额外需要打包备份的文件<br />
  * 3) 此函数遍历所有资源获取所有资源路径后返回作为额外备份文件
- * @method backupFiles
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @return {Array} 路径列表
  * @static
  */
@@ -7140,15 +7367,15 @@ uinv.FCM.configMgr.model.resources.backupFiles = function(){
 
 /**
  * @description 初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.resources
  * @param {String} classStr 资源盒型DOM的Class值
  * @static
  */
 uinv.FCM.configMgr.model.resources.init = function(classStr){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	
-	_obj.form.submitCallback = 	function(){
+
+	_obj.form.submitCallback = function(){
 		while( _this.delFileArr.length >= 1 ){
 			var path = _this.delFileArr.pop(); 
 			uinv.server.manager.frame.delFile(path);
@@ -7158,20 +7385,22 @@ uinv.FCM.configMgr.model.resources.init = function(classStr){
 	_this.classStr = classStr || '.resources-list';
 	_this.mkhtml();
 };
+
+
 //----------------
 // 选择器基础定义
 //----------------
 
 /**
- * @description 提交选择节点后的回调函数
- * 1) 调用show方法时传入，如果为null则等于没有回调函数
+ * @description 提交选择节点后的回调函数<br />
+ * 1) 调用show方法时传入，如果为null则等于没有回调函数<br />
  * 2) 主要是返回选择的结果
  * @type Function
  */
 uinv.FCM.configMgr.model.selector.publicSelectNodeSubmitCallback = null;
 
 /**
- * @description 选择器主容器的class值
+ * @description 选择器主容器的class值<br />
  * 1) 模块初始的时候传入，大部分DOM操作将依赖此值
  * @type String
  */
@@ -7201,11 +7430,11 @@ uinv.FCM.configMgr.model.selector.selectKey = '';
 //------------------------------
 
 /**
- * @description 创建对象选择器公用方法 呈现
- * 1) 通过dialog模块呈现
- * 2) 回调函数 返回 obj { 'name' : '物体名称', 'where' : { 物体的条件 } }
+ * @description 创建对象选择器公用方法 呈现<br />
+ * 1) 通过dialog模块呈现<br />
+ * 2) 回调函数 返回 obj { 'name' : '物体名称', 'where' : { 物体的条件 } }<br />
  * 3) 主要用于其它模块创建对象时使用
- * @method show
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Function} fun 回调函数
  * @static
  */
@@ -7233,9 +7462,9 @@ uinv.FCM.configMgr.model.selector.show = function(fun){
 };
 
 /**
- * @description 创建对象选择器公用方法 关闭
+ * @description 创建对象选择器公用方法 关闭<br />
  * 1) 实际是调用dialog模块的close方法
- * @method hide
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.hide = function(){
@@ -7245,10 +7474,10 @@ uinv.FCM.configMgr.model.selector.hide = function(){
 };
 
 /**
- * @description 创建对象选择器公用方法 提交处理函数
- * 1) 主要判断是否选择了节点
+ * @description 创建对象选择器公用方法 提交处理函数<br />
+ * 1) 主要判断是否选择了节点<br />
  * 2) 回调函数在这里触发，并将返回选择的结果
- * @method publicSelectNodeSubmit
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit = function(){
@@ -7274,7 +7503,7 @@ uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit = function(){
 
 /**
  * @description 创建对象选择器公用模块 选择节点处理函数
- * @method publicSelectNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {DOM} obj DOM节点
  * @param {String} key 被操作节点的key值
  * @static
@@ -7293,9 +7522,9 @@ uinv.FCM.configMgr.model.selector.publicSelectNode = function(obj,key){
 };
 
 /**
- * @description 创建对象选择器公用模块 创建DOM节点
+ * @description 创建对象选择器公用模块 创建DOM节点<br />
  * 1) 此方法为递归调用 如当前节点下还有子节点时再把子节点传入递归调用
- * @method publicShowHtml
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} obj 树的节点
  * @return {String} dom 节点
  * @static
@@ -7338,7 +7567,7 @@ uinv.FCM.configMgr.model.selector.publicShowHtml = function(obj){
 /**
  * @description 关闭为节点添加条件的Dialog
  * @param {Function} fun 回调方法
- * @method cancelAddNodeWhere
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.cancelAddNodeWhere = function(fun){
@@ -7353,7 +7582,7 @@ uinv.FCM.configMgr.model.selector.cancelAddNodeWhere = function(fun){
 /**
  * @description 获取所有整个系统定义的所有Class ID
  * @see uinv.factory.getAllClass()
- * @method getAllClassID
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @return {Object} ClassID Object
  * @static
  */
@@ -7364,7 +7593,7 @@ uinv.FCM.configMgr.model.selector.getAllClassID = function(){
 /**
  * @description 获取某一个ClassID的信息
  * @param {Number} classid 
- * @method getOneClassID
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @return {Object} classid 的属性
  * @static
  */
@@ -7381,7 +7610,7 @@ uinv.FCM.configMgr.model.selector.getOneClassID = function(classid){
 
 /**
  * @description 节点重命名
- * @method nodeRename
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 要操作节点的key值
  * @static
  */
@@ -7403,10 +7632,10 @@ uinv.FCM.configMgr.model.selector.nodeRename = function(key){
 };
 
 /**
- * @description 根据某一个几点的key值返回该节点的DOM对象
- * 1) 如果key值有效，则返回此节点的DOM对象
+ * @description 根据某一个几点的key值返回该节点的DOM对象<br />
+ * 1) 如果key值有效，则返回此节点的DOM对象<br />
  * 2) 如果key值为空，则返回整个selector盒子DOM对象
- * @method keyFindNodeHtmlObj
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点的key值
  * @return {DOM} DOM对象
  * @static
@@ -7423,11 +7652,11 @@ uinv.FCM.configMgr.model.selector.keyFindNodeHtmlObj = function(key){
 };
 
 /**
- * @description 删除节点
- * 1) 页面上删除DOM节点
- * 2) 内存里删除节点对象
+ * @description 删除节点<br />
+ * 1) 页面上删除DOM节点<br />
+ * 2) 内存里删除节点对象<br />
  * 3) 如果节点下面有子节点也会一并删除
- * @method deleteNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 要删除的key对象
  * @static
  */
@@ -7447,18 +7676,19 @@ uinv.FCM.configMgr.model.selector.deleteNode = function(key){
 
 
 /**
- * @description 创建节点
- * 1) 如果传入父节点则在此父节点下创建子节点
- * 2) 如果不传入父节点则在根下创建节点
- * 3) 创建相应的DOM节点
+ * @description 创建节点<br />
+ * 1) 如果传入父节点则在此父节点下创建子节点<br />
+ * 2) 如果不传入父节点则在根下创建节点<br />
+ * 3) 创建相应的DOM节点<br />
  * 4) 内存里写入节点信息
- * @method createNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} parentKey 创建节点的父节点key值
  * @static
  */
 uinv.FCM.configMgr.model.selector.createNode = function(parentKey){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var key = "";
 	_this.selectKey = parentKey || '';
 	
 	if(typeof _this.obj.lib == 'undefined'){
@@ -7470,19 +7700,19 @@ uinv.FCM.configMgr.model.selector.createNode = function(parentKey){
 	}
 	
 	do{
-		var key = _obj.model.key.create();
+		key = _obj.model.key.create();
 	}while(key in _this.obj.lib);
 	
-	var node = { 'name' : '新节点' , 'key': key };
+	var node = { name: '新节点', key: key };
 	_this.insertNodeToTreeObj(node, parentKey);
 	_this.insertNodeToTreeDom(node, parentKey);
 };
 
 /**
- * @description 把一个节点插入内存中树中
- * 1) 如果传入父节点的key，则在父节点的key下插入此节点
+ * @description 把一个节点插入内存中树中<br />
+ * 1) 如果传入父节点的key，则在父节点的key下插入此节点<br />
  * 2) 如果不传入父节点则在根下插入此节点
- * @method insertNodeToTreeObj
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} node 要插入的节点
  * @param {String} parentKey 父节点key值
  * @static
@@ -7507,10 +7737,10 @@ uinv.FCM.configMgr.model.selector.insertNodeToTreeObj = function(node,parentKey)
 };
 
 /**
- * @description 将节点插入到DOM树里
- * 1) 如果传入父节点key，则在父节点的DOM树下插入子节点
+ * @description 将节点插入到DOM树里<br />
+ * 1) 如果传入父节点key，则在父节点的DOM树下插入子节点<br />
  * 2) 如果不传入父节点key，则在根树下插入子节点
- * @method insertNodeToTreeDom
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} node 要操作的节点
  * @param {String} parentKey 父节点key值
  * @static
@@ -7529,10 +7759,10 @@ uinv.FCM.configMgr.model.selector.insertNodeToTreeDom = function(node, parentKey
 };
 
 /**
- * @description 根据key值查找到节点对象
- * 1) 此方法为递归查找
+ * @description 根据key值查找到节点对象<br />
+ * 1) 此方法为递归查找<br />
  * 2) 如果搜索到匹配节点后将return，不再执行后面的遍历匹配
- * @method keyFindTreeNodeObj
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} obj 要搜索的对象
  * @param {String} key 要匹配的key值
  * @return {Boolean|Object} 返回false表示没有匹配项 返回object表示匹配到的节点对象
@@ -7559,7 +7789,7 @@ uinv.FCM.configMgr.model.selector.keyFindTreeNodeObj = function(obj,key){
 
 /**
  * @description 递归创建树的DOM节点
- * @method recursionTreeHtml
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Object} obj 节点对象
  * @return {String} DOM节点
  * @static
@@ -7588,7 +7818,7 @@ uinv.FCM.configMgr.model.selector.recursionTreeHtml = function(obj){
 
 /**
  * @description 创建树的DOM节点方法
- * @method treeHtml
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @return {String} DOM节点
  * @static
  */
@@ -7610,7 +7840,7 @@ uinv.FCM.configMgr.model.selector.treeHtml = function(){
 
 /**
  * @description 添加条件的提交操作
- * @method addNodeWhereFormSubmit
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -7631,7 +7861,7 @@ uinv.FCM.configMgr.model.selector.addNodeWhereFormSubmit = function(key){
 
 /**
  * @description 判断节点是否存在条件
- * @method objIsExistWhere
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @return {Boolean} true 有条件 false 无条件
  * @static
@@ -7648,7 +7878,7 @@ uinv.FCM.configMgr.model.selector.objIsExistWhere = function(key){
 			
 /**
  * @description 添加条件表单初始化
- * @method addNodeWhereFormInit
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -7662,7 +7892,7 @@ uinv.FCM.configMgr.model.selector.addNodeWhereFormInit = function(key){
 
 /**
  * @description 节点form数据记忆的初始化 （内存操作）
- * @method formDataRememberInit
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -7678,10 +7908,10 @@ uinv.FCM.configMgr.model.selector.formDataRememberInit = function(key){
 };
 
 /**
- * @description 删除节点的条件
- * 1) 从内存中删除条件
+ * @description 删除节点的条件<br />
+ * 1) 从内存中删除条件<br />
  * 2) DOM节点删除有条件的Class值，使他恢复没有条件时的样式
- * @method delNodeWhere
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -7697,7 +7927,7 @@ uinv.FCM.configMgr.model.selector.delNodeWhere = function(key){
 
 /**
  * @description 编辑节点条件方法
- * @method editNodeWhere
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @return {Boolean} 如果key值无效或者key值不存在树里就return flase 终止下面的操作
  * @static
@@ -7778,6 +8008,7 @@ uinv.FCM.configMgr.model.selector.editNodeWhere = function(key){
 
 /**
  * @description 右键弹出主处理函数
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Event} evt
  * @param {DOM} obj 触发右键的DOM节点
  * @return {Boolean}
@@ -7815,7 +8046,7 @@ uinv.FCM.configMgr.model.selector.contextMenu = function(evt,obj){
 
 /**
  * @description 子节点展开
- * @method treeNodeShow 
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -7827,7 +8058,7 @@ uinv.FCM.configMgr.model.selector.treeNodeShow = function(key){
 
 /**
  * @description 子节点收起
- * @method treeNodeHide
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @static
  */
@@ -7839,7 +8070,7 @@ uinv.FCM.configMgr.model.selector.treeNodeHide = function(key){
 
 /**
  * @description 右键菜单操作触发动作路由
- * @method contextMenuRouting
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Function} fun 触发的方法
  * @param {String} key 操作的方法
  * @static
@@ -7854,7 +8085,7 @@ uinv.FCM.configMgr.model.selector.contextMenuRouting = function(fun, key){
 
 /**
  * @description 获取创建右键DOM节点
- * @method getContextMenuHtml
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Event} e
  * @param {String} key 节点key值
  * @return {String} 创建右键菜单DOM节点
@@ -7899,7 +8130,7 @@ uinv.FCM.configMgr.model.selector.getContextMenuHtml = function(e, key){
 
 /**
  * @description 右键DOM节点添加到DOM树种并显示
- * @method contextMenuShow
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {Event} e 
  * @param {String} key 节点key值
  * @static
@@ -7916,7 +8147,7 @@ uinv.FCM.configMgr.model.selector.contextMenuShow = function(e, key){
 
 /**
  * @description 右键DOM节点隐藏 实际上右键的DOM节点会被remove删除操作
- * @method contextMenuHide
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.contextMenuHide = function(){
@@ -7926,10 +8157,10 @@ uinv.FCM.configMgr.model.selector.contextMenuHide = function(){
 };
 
 /**
- * @description 当前节点选择操作
- * 1) 样式中添加选中节点的样式
+ * @description 当前节点选择操作<br />
+ * 1) 样式中添加选中节点的样式<br />
  * 2) 内存记录当前选中的节点key值
- * @method selectNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} key 节点key值
  * @param {Event} evt
  * @static
@@ -7957,10 +8188,10 @@ uinv.FCM.configMgr.model.selector.selectNode = function(key,evt){
 };
 
 /**
- * @description 撤销选中的节点
- * 1) DOM节点上移除选中样式
+ * @description 撤销选中的节点<br />
+ * 1) DOM节点上移除选中样式<br />
  * 2) 内存里删除选中记录
- * @method cancelSelectNode
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @static
  */
 uinv.FCM.configMgr.model.selector.cancelSelectNode = function(){
@@ -7972,7 +8203,7 @@ uinv.FCM.configMgr.model.selector.cancelSelectNode = function(){
 
 /**
  * @description 选择器模块初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} classStr 选择器盒子DOM Class 值
  * @static
  */
@@ -7996,6 +8227,8 @@ uinv.FCM.configMgr.model.selector.init = function(classStr){
 	
 	$('.config-info').html( _obj.msg.S22 );
 };
+
+
 /**
  * @description classid类型
  * @param {DOM} obj DOM节点
@@ -8047,6 +8280,7 @@ uinv.FCM.configMgr.model.selector.whereTypeSetObj.fun = function(obj,key){
 	_this.obj.lib[key].formDataRemember.fun = $(obj).parents('.row').find('textarea[name=fun]').val();
 	
 };
+
 //---------------------------------
 // 基础定义
 //---------------------------------
@@ -8061,7 +8295,7 @@ uinv.FCM.configMgr.model.statistics.classStr = '';
  * @description 统计条件范围
  * @type Array
  */
-uinv.FCM.configMgr.model.statistics.where = ['<','>','='];
+uinv.FCM.configMgr.model.statistics.where = ['<'];
 
 /**
  * @description 统计对象名称映射
@@ -8085,7 +8319,7 @@ uinv.FCM.configMgr.model.statistics.defaultColor = '#FFFFFF';
 
 /**
  * @description 删除统计条件项
- * @method delRow
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @param {DOM} obj 触发事件DOM节点
  * @static
  */
@@ -8096,9 +8330,9 @@ uinv.FCM.configMgr.model.statistics.delRow = function(obj){
 };
 
 /**
- * @description 添加统计条件项
+ * @description 添加统计条件项<br />
  * 1) DOM操作 不写内存
- * @method addRow
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @param {DOM} obj 触发事件DOM节点
  * @static
  */
@@ -8119,7 +8353,7 @@ uinv.FCM.configMgr.model.statistics.addRow = function(obj){
 
 /**
  * @description 创建统计项的DOM节点
- * @method mkhtmlTr
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @param {Object} obj 统计数据
  * @return {String} 可以创建DOM节点的HTML文本
  * @static
@@ -8165,7 +8399,7 @@ uinv.FCM.configMgr.model.statistics.mkhtmlTr = function(obj){
 
 /**
  * @description 创建统计对象的DOM节点
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @static
  */
 uinv.FCM.configMgr.model.statistics.mkhtml = function(){
@@ -8199,7 +8433,7 @@ uinv.FCM.configMgr.model.statistics.mkhtml = function(){
 
 /**
  * @description 初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @param {String} classStr 统计盒型DOM节点Class值
  * @static
  */
@@ -8209,9 +8443,10 @@ uinv.FCM.configMgr.model.statistics.init = function(classStr){
 	_this.classStr = classStr;
 	_this.mkhtml();
 };
+
 /**
  * @description 读取文本数据
- * @method readString
+ * @memberOf uinv.FCM.configMgr.model.stringDB
  * @see uinv.server.manager.frame.getString()
  * @return {Object} 读取结果
  * @static
@@ -8222,7 +8457,7 @@ uinv.FCM.configMgr.model.stringDB.readString = function(){
 
 /**
  * @description 写入文本数据
- * @method writeString
+ * @memberOf uinv.FCM.configMgr.model.stringDB
  * @see uinv.server.manager.frame.saveString()
  * @param {String} str 文本数据
  * @param {Function} fun 回调函数
@@ -8244,7 +8479,7 @@ uinv.FCM.configMgr.model.stringDB.writeString = function(str, fun){
 
 /**
  * @description 索引文本数据并返回索引的Object
- * @method get
+ * @memberOf uinv.FCM.configMgr.model.stringDB
  * @param {String} index 索引
  * @return {Object} 索引的Object
  * @static
@@ -8273,7 +8508,7 @@ uinv.FCM.configMgr.model.stringDB.get = function(index){
 
 /**
  * @description 根据索引把Object信息转字符串写入文本数据存储
- * @method set
+ * @memberOf uinv.FCM.configMgr.model.stringDB
  * @param {String} index 索引
  * @param {Object} obj 要存储的数据
  * @param {Function} fun 回调函数
@@ -8286,7 +8521,7 @@ uinv.FCM.configMgr.model.stringDB.set = function( index , obj, fun ){
 	
 	if( typeof obj == 'undefined' ) { 
 		return false;
-	};
+	}
 
 	var result = _this.readString();
 	var db = {};
@@ -8297,24 +8532,34 @@ uinv.FCM.configMgr.model.stringDB.set = function( index , obj, fun ){
 
 		db[index] = obj;
 		var str = _obj.model.transform.obj2str(db);
-		_this.writeString( str, fun );
+		
+		// Fixes #2
+		if(typeof str == "string" && str !== "" ){
+			_this.writeString( str, fun );
+		}else{
+			_obj.note.alert(_obj.msg.S26);
+		}
+		
 	}else{
-		alert(result.data);
+		_obj.note.alert(result.data);
 	}
 };
+
+ 
 /**
  * @description 对象转字符串
- * @method obj2str
+ * @memberOf uinv.FCM.configMgr.model.transform
  * @param {Object} o 对象
  * @return {String}
  * @static
  */
 uinv.FCM.configMgr.model.transform.obj2str = function(o){
 	
-	return $.toJson(o);
+	//return $.toJson(o);
 	
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var i = null;
 	
 	if(typeof o == 'undefined'){
 		return '""';
@@ -8326,7 +8571,7 @@ uinv.FCM.configMgr.model.transform.obj2str = function(o){
     }
     if( typeof o == "object" ){
         if(!o.sort){
-            for(var i in o){
+            for( i in o ){
                 r.push( "\"" + i + "\"" + ":" + _this.obj2str(o[i]) );
             }
             if( !!document.all && !/^\n?function\s*toString\(\)\s*\{\n?\s*\[native code\]\n?\s*\}\n?\s*$/.test(o.toString) ){
@@ -8334,7 +8579,7 @@ uinv.FCM.configMgr.model.transform.obj2str = function(o){
             }
             r= "{"+r.join()+"}";
         }else{
-            for( var i=0,k = o.length; i<k ; i++ ){
+            for( i=0,k=o.length; i<k ; i++ ){
                 r.push( _this.obj2str(o[i]) );
             }
             r= "[" + r.join() + "]";
@@ -8346,13 +8591,13 @@ uinv.FCM.configMgr.model.transform.obj2str = function(o){
 
 /**
  * @description 字符串转对象
- * @method str2obj
+ * @memberOf uinv.FCM.configMgr.model.transform
  * @param {String} s 字符串
  * @return {Object|Boolean} 返回object表示转换成功 返回 false 表示转换失败
  * @static
  */
 uinv.FCM.configMgr.model.transform.str2obj = function(s){
-	return $.jsonTo(s);
+	//return $.jsonTo(s);
 	
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
@@ -8373,6 +8618,8 @@ uinv.FCM.configMgr.model.transform.str2obj = function(s){
 		return false;
 	}
 };
+
+
 //----------------------------------
 // 基础定义
 //----------------------------------
@@ -8389,7 +8636,7 @@ uinv.FCM.configMgr.model.viewpoint.classStr = '';
 
 /**
  * @description 创建物体
- * @method createObject
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @static
  */
 uinv.FCM.configMgr.model.viewpoint.createObject = function(){
@@ -8404,7 +8651,7 @@ uinv.FCM.configMgr.model.viewpoint.createObject = function(){
 
 /**
  * @description 根据key查找物体
- * @method keyFindObj
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {String} key 物体key值
  * @return {Boolean|Object} 查找到物体返回Object 查找不到返回false
  * @static
@@ -8423,7 +8670,7 @@ uinv.FCM.configMgr.model.viewpoint.keyFindObj = function(key){
 
 /**
  * @description 根据key查找到物体的索引值
- * @method keyFindIndex
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {String} key 物体key值
  * @return {Number} -1 表示物体搜索不到
  * @static
@@ -8440,18 +8687,20 @@ uinv.FCM.configMgr.model.viewpoint.keyFindIndex = function(key){
 };
 
 /**
- * @description 生成唯一key
- * 1) 实际调用key模块生成32位的key值
+ * @description 生成唯一key<br />
+ * 1) 实际调用key模块生成32位的key值<br />
  * 2) 生成key以后会遍历目前所有物体使用的key，如果有重复的则重新生成直到生成的key没有被使用
- * @method createKey
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @return {String} key值
  * @static
  */
 uinv.FCM.configMgr.model.viewpoint.createKey = function(){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var key = "";
+	
 	do{
-		var key = _obj.model.key.create(32);
+		key = _obj.model.key.create(32);
 	}while( _this.keyFindObj(key) );
 	
 	return key;
@@ -8459,7 +8708,7 @@ uinv.FCM.configMgr.model.viewpoint.createKey = function(){
 
 /**
  * @description 添加新创建物体数据到内存
- * @method addObjectToMemory
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {Object} obj 选择器返回的物体
  * @return {Object} 初始化后的物体
  * @static
@@ -8484,7 +8733,7 @@ uinv.FCM.configMgr.model.viewpoint.addObjectToMemory = function(obj){
 
 /**
  * @description 添加物体DOM节点
- * @method addHtmlRow
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {Object} obj 物体数据
  * @static
  */
@@ -8497,7 +8746,7 @@ uinv.FCM.configMgr.model.viewpoint.addHtmlRow = function(obj){
 
 /**
  * @description 根据物体数据生成HTML文本
- * @method mkhtmlRow
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {Object} obj 物体数据
  * @return {String} HTML文本
  */
@@ -8509,7 +8758,7 @@ uinv.FCM.configMgr.model.viewpoint.mkhtmlRow = function(obj){
 		html += '<td>';
 			html += '<h3><span onclick="uinv.FCM.configMgr.model.viewpoint.objectRename(this,\''+obj.key+'\');" class="name">'+obj.name+'</span></h3>';
 		html += '</td>';
-		for(var i in obj['data']){
+		for(var i in obj.data){
 			html += '<td><input class="w50" type="text" key="'+i+'" name="'+obj.key+'" cate="viewpoint" path="viewpoint" /></td>';
 		}
 		html += '<td><a onclick="uinv.FCM.configMgr.model.viewpoint.objectDelete(this,\''+obj.key+'\');" href="javascript:void(0);"><s>删除</s></a></td>';
@@ -8519,7 +8768,7 @@ uinv.FCM.configMgr.model.viewpoint.mkhtmlRow = function(obj){
 
 /**
  * @description 创建所有物体的DOM节点
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @static
  */
 uinv.FCM.configMgr.model.viewpoint.mkhtml = function(){
@@ -8536,10 +8785,10 @@ uinv.FCM.configMgr.model.viewpoint.mkhtml = function(){
 };
 
 /**
- * @description 物体重命名 (内存也会改写)
- * 1) 内存会改写
+ * @description 物体重命名 (内存也会改写)<br />
+ * 1) 内存会改写<br />
  * 2) 实际上把触发事件的文本修改成input输入框，焦点离开或回车后恢复
- * @method objectRename
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {DOM} obj 触发事件的DOM节点
  * @param {String} key 物体key值
  * @static
@@ -8566,10 +8815,10 @@ uinv.FCM.configMgr.model.viewpoint.objectRename = function(obj,key){
 };
 
 /**
- * @description 删除物体
- * 1) 由触发这个事件的DOM节点往父节点找到row后删除
+ * @description 删除物体<br />
+ * 1) 由触发这个事件的DOM节点往父节点找到row后删除<br />
  * 2) 内存也会改写
- * @method objectDelete
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
  * @param {DOM} obj 触发事件的DOM节点
  * @param {String} key 物体key值
  */
@@ -8588,8 +8837,8 @@ uinv.FCM.configMgr.model.viewpoint.objectDelete = function(obj,key){
 
 /**
  * @description 初始化
- * @constructor init
- * @param {} classStr
+ * @memberOf uinv.FCM.configMgr.model.viewpoint
+ * @param {String} classStr
  * @static
  */
 uinv.FCM.configMgr.model.viewpoint.init = function(classStr){
@@ -8598,9 +8847,11 @@ uinv.FCM.configMgr.model.viewpoint.init = function(classStr){
 	_this.classStr = classStr || '';
 	_this.mkhtml();
 };
+
 //----------------------------------------
 // 普通提示区
 //----------------------------------------
+
 
 uinv.FCM.configMgr.msg.S1 = "下载配置";
 uinv.FCM.configMgr.msg.S2 = "正在打包...";
@@ -8631,7 +8882,9 @@ uinv.FCM.configMgr.msg.S22 = "节点字体加粗表示已添加条件";
 uinv.FCM.configMgr.msg.S23 = "警告(S23)：此操作将会将节点及它的子节点彻底删除，确认删除吗？";
 
 uinv.FCM.configMgr.msg.S24 = "警告(S24)：此操作将会将会删除此物体及物体的视角配置信息，确认删除吗？";
+uinv.FCM.configMgr.msg.S25 = "错误(S25)：Form数据定义占用系统关键字！";
 
+uinv.FCM.configMgr.msg.S26 = "错误(S26)：副数据转换string异常！";
 
 
 //---------------------------------------
@@ -8660,9 +8913,10 @@ uinv.FCM.configMgr.msg.F5 = function(fileName){
 
 
 
+
 /**
  * @description 弹出警告信息，将信息翻译后调用系统的alert函数
- * @method alert
+ * @memberOf uinv.FCM.configMgr.note
  * @param {String} str 警告信息
  * @static
  */
@@ -8672,7 +8926,7 @@ uinv.FCM.configMgr.note.alert = function(str){
 
 /**
  * @description 弹出确认回话信息，将信息翻译后调用系统的confirm函数
- * @method confirm
+ * @memberOf uinv.FCM.configMgr.note
  * @param {String} str 确认信息
  * @return {Boolean}
  * @static
@@ -8683,7 +8937,7 @@ uinv.FCM.configMgr.note.confirm = function(str){
 
 /**
  * @description 信息提示，将提示信息翻译后调用dialog函数弹层提示，大小随内容自适应
- * @method dialog
+ * @memberOf uinv.FCM.configMgr.note
  * @param {String} str 提示信息
  * @static
  */
@@ -8696,9 +8950,11 @@ uinv.FCM.configMgr.note.dialog = function(str){
 	
 	uinv.FCM.configMgr.model.dialog.show(html);
 };
+
+
 /**
  * @description 把条件名称转换为规范规范名称
- * @method conditionReplaceName
+ * @memberOf uinv.FCM.configMgr.other
  * @param {Object} o 数据
  * @return {Object} 返回转换后的数据
  * @static
@@ -8734,23 +8990,24 @@ uinv.FCM.configMgr.other.conditionReplaceName = function(o){
 	
 	return o;
 };
+
 /**
  * @description 翻译功能 默认遍历页面所有s标签的文本使用u.le.get函数翻译替换
- * @method translate
+ * @memberOf uinv.FCM.configMgr
  * @since 2013-07-31
  * @static
  */
 uinv.FCM.configMgr.translate = function(){
 	
 	$('s').each(function(){
-		if($(this)!= undefined && $(this).html!==""){
+		if($(this).html!==""){
 			$(this).replaceWith(u.le.get($(this).html()));
 		}
 	});
 	
 	/*
 	$("a,input").each(function(){
-		if($(this)!= undefined && $(this).attr("value")!= ""){
+		if($(this).attr("value")!== ""){
 			$(this).attr({"value": u.le.get($(this).attr("value"))});
 		}
 		if($(this)!= undefined && $(this).attr("title")!= ""){
@@ -8760,16 +9017,28 @@ uinv.FCM.configMgr.translate = function(){
 
 
 	$("select").each(function(){
-		if($(this)!= undefined && $(this).attr("data-placeholder")!=""){
+		if($(this).attr("data-placeholder")!==""){
 			$(this).attr({"data-placeholder": u.le.get($(this).attr("data-placeholder"))});
 		}
 	});
 
 	
 	$("select option").each(function(){
-		if($(this)!= undefined && $(this).html()!= ""){
+		if($(this).html()!== ""){
 			$(this).html(u.le.get($(this).html()));
 		}
 	});
 	*/
 };
+
+
+/**
+ * @fileOverview <span style="color:blue;">可视化配置系统文档说明</span>
+ * @author lizhong
+ * @since 2013-08-06
+ * @version 1.0.0
+ * @lastCreateDate 2013-08-08
+ */
+ 
+ 
+ 

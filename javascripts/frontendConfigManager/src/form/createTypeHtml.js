@@ -1,14 +1,11 @@
-/**
- * @description 类型
- */
- 
+
 
 /**
  * @description 布尔类型
  * @param {Object} o 表单数据
  * @return {String} HTML
  */
-uinv.FCM.configMgr.form.createTypeHtml.boolean = function(o){
+uinv.FCM.configMgr.form.createTypeHtml.bool = function(o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
 	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey];
@@ -18,11 +15,11 @@ uinv.FCM.configMgr.form.createTypeHtml.boolean = function(o){
 		html += '<span class="comments"><s>'+o.caption+'</s></span>';
 		html += '<span class="form">';
 			if(value){
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" checked value="1" /><s>是</s></label>';
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" value="0" /><s>否</s></label>';					
+				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="bool" name="'+o.name+'" checked value="1" /><s>是</s></label>';
+				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="bool" name="'+o.name+'" value="0" /><s>否</s></label>';					
 			}else{
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" value="1" /><s>是</s></label>';
-				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="boolean" name="'+o.name+'" checked value="0" /><s>否</s></label>';			
+				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="bool" name="'+o.name+'" value="1" /><s>是</s></label>';
+				html += '<label><input itemkey="'+o.itemkey+'" path="'+o.group+'" type="radio" cate="bool" name="'+o.name+'" checked value="0" /><s>否</s></label>';			
 			}
 		html += '</span>';
 	html += '</div>';

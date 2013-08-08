@@ -1,7 +1,4 @@
-/**
- * @description 类型
- */
- 
+
 
 /**
  * @description 字符串类型
@@ -11,7 +8,7 @@
  */
 uinv.FCM.configMgr.model.monitor.configTypeToHtml.string = function(o,form){
 	if(typeof form == 'undefined'){
-		var form = {};
+		form = {};
 		form[o.value] = '';
 	}
 	return '<input type="text" name="'+o.value+'" value="'+form[o.value]+'" cate="string" />';
@@ -25,7 +22,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.string = function(o,form){
  */
 uinv.FCM.configMgr.model.monitor.configTypeToHtml.number =  function(o,form){
 	if(typeof form == 'undefined'){
-		var form = {};
+		form = {};
 		form[o.value] = 0;
 	}
 	return '<input type="text" name="'+o.value+'" value="'+form[o.value]+'" cate="number" />';
@@ -37,14 +34,14 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.number =  function(o,form){
  * @param {Object} form 物体配置表单数据
  * @return {String} HTML文本
  */
-uinv.FCM.configMgr.model.monitor.configTypeToHtml.boolean = function(o,form){
+uinv.FCM.configMgr.model.monitor.configTypeToHtml.bool = function(o,form){
 	if(typeof form == 'undefined'){
-		var form = {};
+		form = {};
 		form[o.value] = false;
 	}
 	var html = '';
 	
-	html += '<select name="'+o.value+'" cate="boolean">';
+	html += '<select name="'+o.value+'" cate="bool">';
 		if( form[o.value] ){
 			html += '<option value="1" selected>是</option>';
 			html += '<option value="0">否</option>';
@@ -68,7 +65,7 @@ uinv.FCM.configMgr.model.monitor.configTypeToHtml.styleConfig = function(o,form)
 	var _this = _obj.model.monitor;
 	
 	if(typeof form == 'undefined'){
-		var form = {};
+		form = {};
 	}
 
 	if(typeof form[o.value] == 'undefined'){

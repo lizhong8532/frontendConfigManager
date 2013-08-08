@@ -1,7 +1,4 @@
-/**
- * @description key
- */
- 
+
  
 /**
  * @description 生成key的字符范围
@@ -15,7 +12,7 @@ uinv.FCM.configMgr.model.key.str = [
 
 /**
  * @description 生成范围间随机数
- * @method randint
+ * @memberOf uinv.FCM.configMgr.model.key
  * @param {Number} n 最小值
  * @param {Number} m 最大值
  * @return {Number} 随机数
@@ -28,7 +25,7 @@ uinv.FCM.configMgr.model.key.randint = function(n,m){
 
 /**
  * @description 生成随机字符
- * @method randStr
+ * @memberOf uinv.FCM.configMgr.model.key
  * @return {String} 字符
  * @static
  */
@@ -41,9 +38,9 @@ uinv.FCM.configMgr.model.key.randStr = function(){
 };
 
 /**
- * @description 生成随机字符串
+ * @description 生成随机字符串<br />
  * 1) 默认10个长度
- * @method create
+ * @memberOf uinv.FCM.configMgr.model.key
  * @param {Number} len 长度
  * @return {String} 字符串
  * @static

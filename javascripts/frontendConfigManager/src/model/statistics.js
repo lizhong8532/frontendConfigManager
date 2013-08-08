@@ -1,6 +1,3 @@
-/**
- * @description 统计模块
- */
 
 //---------------------------------
 // 基础定义
@@ -16,7 +13,7 @@ uinv.FCM.configMgr.model.statistics.classStr = '';
  * @description 统计条件范围
  * @type Array
  */
-uinv.FCM.configMgr.model.statistics.where = ['<','>','='];
+uinv.FCM.configMgr.model.statistics.where = ['<'];
 
 /**
  * @description 统计对象名称映射
@@ -40,7 +37,7 @@ uinv.FCM.configMgr.model.statistics.defaultColor = '#FFFFFF';
 
 /**
  * @description 删除统计条件项
- * @method delRow
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @param {DOM} obj 触发事件DOM节点
  * @static
  */
@@ -51,9 +48,9 @@ uinv.FCM.configMgr.model.statistics.delRow = function(obj){
 };
 
 /**
- * @description 添加统计条件项
+ * @description 添加统计条件项<br />
  * 1) DOM操作 不写内存
- * @method addRow
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @param {DOM} obj 触发事件DOM节点
  * @static
  */
@@ -74,7 +71,7 @@ uinv.FCM.configMgr.model.statistics.addRow = function(obj){
 
 /**
  * @description 创建统计项的DOM节点
- * @method mkhtmlTr
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @param {Object} obj 统计数据
  * @return {String} 可以创建DOM节点的HTML文本
  * @static
@@ -120,7 +117,7 @@ uinv.FCM.configMgr.model.statistics.mkhtmlTr = function(obj){
 
 /**
  * @description 创建统计对象的DOM节点
- * @method mkhtml
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @static
  */
 uinv.FCM.configMgr.model.statistics.mkhtml = function(){
@@ -154,7 +151,7 @@ uinv.FCM.configMgr.model.statistics.mkhtml = function(){
 
 /**
  * @description 初始化
- * @constructor init
+ * @memberOf uinv.FCM.configMgr.model.statistics
  * @param {String} classStr 统计盒型DOM节点Class值
  * @static
  */

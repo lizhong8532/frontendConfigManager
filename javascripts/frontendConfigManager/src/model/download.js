@@ -1,10 +1,8 @@
-/**
- * @description 下载
- */
+
  
 /**
  * @description 根据路径查找的数据
- * @method pathFindObj
+ * @memberOf uinv.FCM.configMgr.model.download
  * @param {String} path 路径
  * @return {Object} 返回null表示查找不到
  * @static
@@ -24,7 +22,7 @@ uinv.FCM.configMgr.model.download.pathFindObj = function(path){
 
 /**
  * @description 根据路径查找到数据的索引值
- * @method pathFindIndex
+ * @memberOf uinv.FCM.configMgr.model.download
  * @param {String} path 路径
  * @return {Number} 返回-1表示查找不到
  * @static
@@ -44,7 +42,7 @@ uinv.FCM.configMgr.model.download.pathFindIndex = function(path){
 
 /**
  * @description 更新download数据 (修改or添加)
- * @method set
+ * @memberOf uinv.FCM.configMgr.model.download
  * @param {Object} o 要跟新或添加的数据
  * @static
  */
@@ -65,7 +63,7 @@ uinv.FCM.configMgr.model.download.set = function(o){
 
 /**
  * @description 删除下载信息
- * @method del
+ * @memberOf uinv.FCM.configMgr.model.download
  * @param {String} path 要删除的路径
  * @static
  */

@@ -1,7 +1,4 @@
-/**
- * @description 颜色模块
- */
- 
+
 /**
  * @description 颜色范围
  * @type Array
@@ -27,7 +24,7 @@ uinv.FCM.configMgr.model.colorpicke.palette =  [
 
 /**
  * @description RGB转HEX
- * @method toHex
+ * @memberOf uinv.FCM.configMgr.model.colorpicke
  * @param {Array} aColor RGB色值
  * @return {String} HEX 色值
  * @static
@@ -55,31 +52,34 @@ uinv.FCM.configMgr.model.colorpicke.toHex = function(aColor){
 
 /**
  * @description HEX转RGB
- * @method toRgb
+ * @memberOf uinv.FCM.configMgr.model.colorpicke
  * @param {String} str HEX色值
  * @return {Array} RGB颜色
  * @static
  */
 uinv.FCM.configMgr.model.colorpicke.toRgb = function(str){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-	
-	var sColor = str.toLowerCase();
-	var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		i = 0,
+		sColorChange = [],
+		sColorNew = "",
+		sColor = str.toLowerCase(),
+		reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+		
 	if(sColor && reg.test(sColor)){
 		if(sColor.length === 4){
-			var sColorNew = "#";
-			for(var i=1; i<4; i+=1){
+			sColorNew = "#";
+			for(i=1; i<4; i+=1){
 				sColorNew += sColor.slice(i,i+1).concat(sColor.slice(i,i+1));	
 			}
 			sColor = sColorNew;
 		}
 		
 		//处理六位的颜色值
-		var sColorChange = [];
+		sColorChange = [];
 		
-		for(var i=1; i<7; i+=2){
-			sColorChange.push(parseInt("0x"+sColor.slice(i,i+2)));	
+		for(i=1; i<7; i+=2){
+			sColorChange.push(parseInt("0x"+sColor.slice(i,i+2), 16));	
 		}
 
 		return sColorChange;
@@ -90,7 +90,7 @@ uinv.FCM.configMgr.model.colorpicke.toRgb = function(str){
 
 /**
  * @description 显示色盘操作
- * @method show
+ * @memberOf uinv.FCM.configMgr.model.colorpicke
  * @see spectrum插件
  * @param {DOM} obj 显示色盘的DOM节点的依据
  * @static

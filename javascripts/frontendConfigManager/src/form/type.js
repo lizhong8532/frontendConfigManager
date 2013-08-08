@@ -1,6 +1,4 @@
-/**
- * @description 类型
- */
+
  
  
 /**
@@ -26,7 +24,7 @@ uinv.FCM.configMgr.form.type.radio = function(obj){
  * @description 布尔类型
  * @param {DOM} obj 控件节点
  */
-uinv.FCM.configMgr.form.type.boolean = function(obj){
+uinv.FCM.configMgr.form.type.bool = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;			
 
@@ -139,8 +137,8 @@ uinv.FCM.configMgr.form.type.layer = function(obj){
 		$(obj).attr('disabled', true);
 	}
 	
-	if(typeof layerObj['item'] == 'object'){
-		if( _obj.model.array.inArray( $(obj).attr('value') , layerObj['item'] ) ){
+	if(typeof layerObj.item == 'object'){
+		if( _obj.model.array.inArray( $(obj).attr('value') , layerObj.item ) ){
 			$(obj).attr('checked', true);
 			_obj.model.layer.checkd(obj);
 		}	
@@ -159,8 +157,8 @@ uinv.FCM.configMgr.form.type.panel = function(obj){
 	
 	var panelObj = _obj.model.panel.keyFindObj( $(obj).attr('name') );
 	
-	if(typeof panelObj['item'] == 'object'){
-		if( _obj.model.array.inArray( $(obj).attr('value') , panelObj['item'] ) ){
+	if(typeof panelObj.item == 'object'){
+		if( _obj.model.array.inArray( $(obj).attr('value') , panelObj.item ) ){
 			$(obj).attr('checked', true);
 			_obj.model.panel.checkd(obj);
 		}	
@@ -196,7 +194,7 @@ uinv.FCM.configMgr.form.type.statistics = function(obj){
 uinv.FCM.configMgr.form.type.viewpoint = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
-	$(obj).val( _obj.model.viewpoint.keyFindObj( $(obj).attr('name') )['data'][$(obj).attr('key')] );
+	$(obj).val( _obj.model.viewpoint.keyFindObj( $(obj).attr('name') ).data[$(obj).attr('key')] );
 };
 
 /**

@@ -283,3 +283,21 @@ h6
 .disabled {
     color: #454545;
 }
+
+.mt5 { margin-top:5px; }
+.mt10 { margin-top:10px; }
+.mt15 { margin-top:15px; }
+.mt20 { margin-top:20px; }
+
+.mb5 { margin-bottom:5px; }
+.mb10 { margin-bottom:10px; }
+.mb15 { margin-bottom:15px; }
+.mb20 { margin-bottom:20px; }
+
+.ml20 { margin-left:20px; }
+
+
+.line1 { display:block; zoom:1; width:100%; height:0; border-bottom:2px solid #CCC; }
+.line2 { display:block; zoom:1; width:100%; height:0; border-bottom:1px dashed #CCC; }
+.method-detailed-box { padding:15px; border:1px solid #FFF; }
+.method-detailed-box:hover { background:#F5F5F5; border:1px solid #8C0044; }

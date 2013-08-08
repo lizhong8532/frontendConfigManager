@@ -1,11 +1,7 @@
-/**
- * @description 提示模块
- */
-
 
 /**
  * @description 弹出警告信息，将信息翻译后调用系统的alert函数
- * @method alert
+ * @memberOf uinv.FCM.configMgr.note
  * @param {String} str 警告信息
  * @static
  */
@@ -15,7 +11,7 @@ uinv.FCM.configMgr.note.alert = function(str){
 
 /**
  * @description 弹出确认回话信息，将信息翻译后调用系统的confirm函数
- * @method confirm
+ * @memberOf uinv.FCM.configMgr.note
  * @param {String} str 确认信息
  * @return {Boolean}
  * @static
@@ -26,7 +22,7 @@ uinv.FCM.configMgr.note.confirm = function(str){
 
 /**
  * @description 信息提示，将提示信息翻译后调用dialog函数弹层提示，大小随内容自适应
- * @method dialog
+ * @memberOf uinv.FCM.configMgr.note
  * @param {String} str 提示信息
  * @static
  */

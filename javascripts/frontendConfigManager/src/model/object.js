@@ -1,10 +1,8 @@
-/**
- * @description object操作
- */
+
 
 /**
  * @description 比较两个对象是否完全相等
- * @method o2o 
+ * @memberOf uinv.FCM.configMgr.model.object
  * @param {Object} o1 对象1
  * @param {Object} o2 对象2
  * @return {Boolean} true 相等 false 不相等
@@ -13,7 +11,8 @@
 uinv.FCM.configMgr.model.object.o2o = function(o1,o2){
 	
 	var _obj = uinv.FCM.configMgr;
-	var _this = this;	
+	var _this = this;
+	var i = null;
 
 	if(typeof o1 != typeof o2){
 		return false;	
@@ -25,7 +24,7 @@ uinv.FCM.configMgr.model.object.o2o = function(o1,o2){
 
 	var bool = true;
 
-	for(var i in o1){
+	for(i in o1){
 		if(i in o2){
 			if(typeof o1[i] == 'object' ){
 				bool = _this.o2o(o1[i],o2[i]);	
@@ -38,7 +37,7 @@ uinv.FCM.configMgr.model.object.o2o = function(o1,o2){
 		}
 	}	
 
-	for(var i in o2){
+	for(i in o2){
 		if(i in o1){
 			if(typeof o2[i] == 'object' ){
 				bool = _this.o2o(o2[i],o1[i]);	
@@ -55,7 +54,7 @@ uinv.FCM.configMgr.model.object.o2o = function(o1,o2){
 
 /**
  * @description 从一个对象覆盖另一个对象
- * @method coverObj
+ * @memberOf uinv.FCM.configMgr.model.object
  * @param {Object} formobj 源对象
  * @param {Object} toobj 目标对象
  * @static
@@ -80,7 +79,7 @@ uinv.FCM.configMgr.model.object.coverObj = function( formobj, toobj){
 			
 /**
  * @description 深度克隆对象
- * @method clone
+ * @memberOf uinv.FCM.configMgr.model.object
  * @param {Object} obj 要克隆的对象
  * @return {Object} 克隆的对象
  * @static
@@ -88,17 +87,20 @@ uinv.FCM.configMgr.model.object.coverObj = function( formobj, toobj){
 uinv.FCM.configMgr.model.object.clone = function(obj) {
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var copy = null;
 	
-    if (null == obj || "object" != typeof obj) return obj;
+    if (null === obj || "object" != typeof obj){
+		return obj;
+    }
 
     if (obj instanceof Date) {
-        var copy = new Date();
+        copy = new Date();
         copy.setTime(obj.getTime());
         return copy;
     }
 
     if (obj instanceof Array) {
-        var copy = [];
+        copy = [];
         for (var i = 0, len = obj.length; i < len; ++i) {
             copy[i] = _this.clone(obj[i]);
         }
@@ -106,9 +108,11 @@ uinv.FCM.configMgr.model.object.clone = function(obj) {
     }
 
     if (obj instanceof Object) {
-        var copy = {};
+		copy = {};
         for (var attr in obj) {
-            if (obj.hasOwnProperty(attr)) copy[attr] = _this.clone(obj[attr]);
+            if (obj.hasOwnProperty(attr)){
+				copy[attr] = _this.clone(obj[attr]);
+            }
         }
         return copy;
     }
@@ -118,7 +122,7 @@ uinv.FCM.configMgr.model.object.clone = function(obj) {
 
 /**
  * @description 判断传入的参数是不是object 主要用于区别是数组还是对象
- * @method isObject
+ * @memberOf uinv.FCM.configMgr.model.object
  * @param {Object} o 判断的参数
  * @return {Boolean} true 是对象 false 不是对象
  * @static

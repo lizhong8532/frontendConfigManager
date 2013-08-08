@@ -80,9 +80,9 @@ uinv.FCM.configMgr.data.monitor = {
 	 * @type Object
 	 */
 	'alarm' : { 
-	 	alarmTime : 0,
-	 	alarmIconSize : 1,
-	 	monitorTime : 1
+		alarmTime : 0,
+		alarmIconSize : 1,
+		monitorTime : 1
 	}	
 };
 

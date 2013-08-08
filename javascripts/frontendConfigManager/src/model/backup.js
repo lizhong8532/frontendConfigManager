@@ -1,6 +1,4 @@
-/**
- * @description 配置备份上传模块
- */
+
  
 //----------------------------------------------
 // 基础定义
@@ -69,7 +67,7 @@ uinv.FCM.configMgr.model.backup.text = '';
 
 /**
  * @description 初始化数据备份基础数据
- * @method initData
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @static
  */
 uinv.FCM.configMgr.model.backup.initData = function(){
@@ -83,12 +81,14 @@ uinv.FCM.configMgr.model.backup.initData = function(){
 
 /**
  * @description 更新文件备份记录列表
- * @method updateFileArr
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @static
  */
 uinv.FCM.configMgr.model.backup.updateFileArr = function(){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		n = 0,
+		arr = [];
 	
 	_this.initData();
 	
@@ -97,15 +97,15 @@ uinv.FCM.configMgr.model.backup.updateFileArr = function(){
 	
 	for(var i=0,k=_this.backModel.length;i<k;i++){
 		if( typeof _this.model[_this.backModel[i]].model != 'undefined' && typeof _obj.model[_this.model[_this.backModel[i]].model].backupFiles == 'function'  ){					
-			var arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFiles();
-			for(var n=0,m=arr.length;n<m;n++){
+			arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFiles();
+			for(n=0,m=arr.length;n<m;n++){
 				_this.files.push(arr[n]);
 			}
 		}
 		
 		if( typeof _this.model[_this.backModel[i]].model != 'undefined' && typeof _obj.model[_this.model[_this.backModel[i]].model].backupFolders == 'function'  ){					
-			var arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFolders();
-			for(var n=0,m=arr.length;n<m;n++){
+			arr =  _obj.model[_this.model[_this.backModel[i]].model].backupFolders();
+			for(n=0,m=arr.length;n<m;n++){
 				_this.folders.push(arr[n]);
 			}
 		}
@@ -114,7 +114,7 @@ uinv.FCM.configMgr.model.backup.updateFileArr = function(){
 
 /**
  * @description 更新备份文本数据值
- * @method updateText
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @static
  */
 uinv.FCM.configMgr.model.backup.updateText = function(){
@@ -133,11 +133,11 @@ uinv.FCM.configMgr.model.backup.updateText = function(){
 	
 	for(var i=0,k=_this.backModel.length;i<k;i++){ 
 		if( typeof _this.model[_this.backModel[i]].data != 'undefined' && typeof o.config[_this.model[_this.backModel[i]].data] != 'undefined' ){
-			backObj['config'][_this.model[_this.backModel[i]].data] = o.config[_this.model[_this.backModel[i]].data];
+			backObj.config[_this.model[_this.backModel[i]].data] = o.config[_this.model[_this.backModel[i]].data];
 		}
 		
 		if( typeof _this.model[_this.backModel[i]].data != 'undefined' && typeof o.string[_this.model[_this.backModel[i]].data] != 'undefined' ){
-			backObj['string'][_this.model[_this.backModel[i]].data] = o.string[_this.model[_this.backModel[i]].data];
+			backObj.string[_this.model[_this.backModel[i]].data] = o.string[_this.model[_this.backModel[i]].data];
 		}					
 	}
 	
@@ -146,7 +146,7 @@ uinv.FCM.configMgr.model.backup.updateText = function(){
 
 /**
  * @description 配置数据与文件打包
- * @method configCompression
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @see uinv.server.manager.frame.placeZip()
  * @param {DOM} obj 配置按钮DOM节点
  * @static
@@ -172,31 +172,36 @@ uinv.FCM.configMgr.model.backup.configCompression = function(obj){
 
 /**
  * @description 上传备份压缩包
- * @method configUpload
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @param {DOM} obj file DOM 节点
  * @return {Boolean} 返回false数据格式有误
  * @static
  */
 uinv.FCM.configMgr.model.backup.configUpload = function(obj){
-	var _obj = uinv.FCM.configMgr;
-	var _this = this;
-	var path = obj.value.split('\\');
-	fileName = path.pop();
-	
-	var arr = fileName.split(".");
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		o = null,
+		path = obj.value.split('\\'),
+		bool = false,
+		arr = [],
+		fileName = path.pop();
+		
+	arr = fileName.split(".");	
 	if(arr[arr.length-1] != 'zip'){
 		_obj.note.alert(_obj.msg.S3);
 		return false;
 	}
-	var bool = _obj.note.confirm(_obj.msg.F1(fileName));
+	
+	bool = _obj.note.confirm(_obj.msg.F1(fileName));
 	if(!bool){
 		return false;
 	}
 	
 	uinv.server.manager.frame.upAndUnZip(obj, fileName, function(result){
+		
 		if(result.success){
 			try{
-				var o = _obj.model.transform.str2obj(result.data);
+				o = _obj.model.transform.str2obj(result.data);
 			}catch(e){
 				_obj.note.alert(_obj.msg.S4);
 				return false;
@@ -212,13 +217,14 @@ uinv.FCM.configMgr.model.backup.configUpload = function(obj){
 
 /**
  * @description 把上传的数据写入库
- * @method setData
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @param {Object} o 上传备份的数据
  * @static
  */
 uinv.FCM.configMgr.model.backup.setData = function(o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	var i = 0;
 	
 	var obj = { 
 		'config' : _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data ),
@@ -226,13 +232,13 @@ uinv.FCM.configMgr.model.backup.setData = function(o){
 	};
 	
 	if( typeof o.config == 'object' ){
-		for(var i in o.config){
+		for(i in o.config){
 			obj.config[i] = _obj.model.object.clone( o.config[i] );
 		}
 	}
 	
 	if( typeof o.string == 'object' ){
-		for(var i in o.string){
+		for(i in o.string){
 			obj.string[i] = _obj.model.object.clone( o.string[i] );
 		}
 	}				
@@ -244,7 +250,7 @@ uinv.FCM.configMgr.model.backup.setData = function(o){
 
 /**
  * @description 更新备份数据
- * @method updateConfig
+ * @memberOf uinv.FCM.configMgr.model.backup
  * @param {Object} o 上传备份的数据
  * @static
  */
