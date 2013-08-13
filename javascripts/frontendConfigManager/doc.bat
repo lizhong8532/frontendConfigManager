@@ -1,1 +1,0 @@
-D:\jsdoc\jsdoc D:\MyEclipse\devEnv\webapps\uinv_frontend\javascripts\frontendConfigManager\core.js -d D:\MyEclipse\devEnv\webapps\uinv_frontend\javascripts\frontendConfigManager\doc
