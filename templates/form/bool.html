@@ -1,0 +1,14 @@
+
+
+<div class="row {{classValue}}">
+	<span class="comments"><s>{{caption}}</s></span>
+	<span class="form">
+	{{#if value}}
+		<label><input itemkey="{{itemkey}}" path="{{group}}" type="radio" cate="bool" name="{{name}}" value="1" checked /><s>是</s></label>
+		<label><input itemkey="{{itemkey}}" path="{{group}}" type="radio" cate="bool" name="{{name}}" value="0" /><s>否</s></label>					
+	{{else}}
+		<label><input itemkey="{{itemkey}}" path="{{group}}" type="radio" cate="bool" name="{{name}}" value="1" /><s>是</s></label>
+		<label><input itemkey="{{itemkey}}" path="{{group}}" type="radio" cate="bool" name="{{name}}" value="0" checked /><s>否</s></label>			
+	{{/if}}
+	</span>
+</div>

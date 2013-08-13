@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: uinv.FCM.configMgr.model.object</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Namespace: uinv.FCM.configMgr.model.object</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+    uinv.FCM.configMgr.model.object
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+            <div class="description" style="font-size:18px; font-weight:bold; padding-left:25px;">object操作模块</div>
+        
+        
+        
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line116">line 116</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+        
+        
+
+        <i class="line1 mb20 mt20"></i>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+	
+    
+    
+
+        <h3 class="subsection-title">Methods Index</h3>
+	
+        <dl>
+            
+<dt>
+    <a style="text-decoration:none;" href="#clone">
+	<h4 class="name" id="clone"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.object.</span>clone<span class="signature">(obj)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    </a>
+    <span style="color:#666;">深度克隆对象</span>
+    
+    
+</dt>
+
+        
+            
+<dt>
+    <a style="text-decoration:none;" href="#coverObj">
+	<h4 class="name" id="coverObj"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.object.</span>coverObj<span class="signature">(formobj, toobj)</span><span class="type-signature"></span></h4>
+    </a>
+    <span style="color:#666;">从一个对象覆盖另一个对象</span>
+    
+    
+</dt>
+
+        
+            
+<dt>
+    <a style="text-decoration:none;" href="#isObject">
+	<h4 class="name" id="isObject"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.object.</span>isObject<span class="signature">(o)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    </a>
+    <span style="color:#666;">判断传入的参数是不是object 主要用于区别是数组还是对象</span>
+    
+    
+</dt>
+
+        
+            
+<dt>
+    <a style="text-decoration:none;" href="#o2o">
+	<h4 class="name" id="o2o"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.object.</span>o2o<span class="signature">(o1, o2)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    </a>
+    <span style="color:#666;">比较两个对象是否完全相等</span>
+    
+    
+</dt>
+
+        </dl>
+
+	<i class="line1 mb20 mt20"></i>
+
+        <h3 class="subsection-title">Methods Detailed</h3>
+    
+        <dl>
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="clone"></a>
+    <h4 class="name" id="clone"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.object.</span>clone<span class="signature">(obj)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 深度克隆对象
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">要克隆的对象</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line5470">line 5470</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    克隆的对象
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="coverObj"></a>
+    <h4 class="name" id="coverObj"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.object.</span>coverObj<span class="signature">(formobj, toobj)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 从一个对象覆盖另一个对象
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>formobj</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">源对象</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>toobj</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">目标对象</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line5445">line 5445</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="isObject"></a>
+    <h4 class="name" id="isObject"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.object.</span>isObject<span class="signature">(o)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 判断传入的参数是不是object 主要用于区别是数组还是对象
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">判断的参数</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line5513">line 5513</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    true 是对象 false 不是对象
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Boolean</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="o2o"></a>
+    <h4 class="name" id="o2o"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.object.</span>o2o<span class="signature">(o1, o2)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 比较两个对象是否完全相等
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>o1</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">对象1</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>o2</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">对象2</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line5394">line 5394</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    true 相等 false 不相等
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Boolean</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        </dl>
+
+        <i class="line1 mb20 mt20"></i>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Namespaces</h3><ul><li><a href="uinv.FCM.configMgr_.html">uinv.FCM.configMgr</a></li><li><a href="uinv.FCM.configMgr.api.html">uinv.FCM.configMgr.api</a></li><li><a href="uinv.FCM.configMgr.data.html">uinv.FCM.configMgr.data</a></li><li><a href="uinv.FCM.configMgr.form.html">uinv.FCM.configMgr.form</a></li><li><a href="uinv.FCM.configMgr.global.html">uinv.FCM.configMgr.global</a></li><li><a href="uinv.FCM.configMgr.model.array.html">uinv.FCM.configMgr.model.array</a></li><li><a href="uinv.FCM.configMgr.model.backup.html">uinv.FCM.configMgr.model.backup</a></li><li><a href="uinv.FCM.configMgr.model.colorpicke.html">uinv.FCM.configMgr.model.colorpicke</a></li><li><a href="uinv.FCM.configMgr.model.dialog.html">uinv.FCM.configMgr.model.dialog</a></li><li><a href="uinv.FCM.configMgr.model.download.html">uinv.FCM.configMgr.model.download</a></li><li><a href="uinv.FCM.configMgr.model.images.html">uinv.FCM.configMgr.model.images</a></li><li><a href="uinv.FCM.configMgr.model.key.html">uinv.FCM.configMgr.model.key</a></li><li><a href="uinv.FCM.configMgr.model.layer.html">uinv.FCM.configMgr.model.layer</a></li><li><a href="uinv.FCM.configMgr.model.monitor.html">uinv.FCM.configMgr.model.monitor</a></li><li><a href="uinv.FCM.configMgr.model.object.html">uinv.FCM.configMgr.model.object</a></li><li><a href="uinv.FCM.configMgr.model.panel.html">uinv.FCM.configMgr.model.panel</a></li><li><a href="uinv.FCM.configMgr.model.resources.html">uinv.FCM.configMgr.model.resources</a></li><li><a href="uinv.FCM.configMgr.model.selector.html">uinv.FCM.configMgr.model.selector</a></li><li><a href="uinv.FCM.configMgr.model.statistics.html">uinv.FCM.configMgr.model.statistics</a></li><li><a href="uinv.FCM.configMgr.model.stringDB.html">uinv.FCM.configMgr.model.stringDB</a></li><li><a href="uinv.FCM.configMgr.model.transform.html">uinv.FCM.configMgr.model.transform</a></li><li><a href="uinv.FCM.configMgr.model.viewpoint.html">uinv.FCM.configMgr.model.viewpoint</a></li><li><a href="uinv.FCM.configMgr.msg.html">uinv.FCM.configMgr.msg</a></li><li><a href="uinv.FCM.configMgr.note.html">uinv.FCM.configMgr.note</a></li><li><a href="uinv.FCM.configMgr.other.html">uinv.FCM.configMgr.other</a></li><li><a href="uinv.FCM.configMgr.template.html">uinv.FCM.configMgr.template</a></li><li><a href="uinv.FCM.configMgr_.html#translate">uinv.FCM.configMgr.translate</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Aug 13 2013 16:48:33 GMT+0800 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+
+<div class="list">
+	<div class="header">{{name}}</div>
+		<table style="width:100%;text-align:center;" path="statistics" name="{{key}}" cate="statistics">
+			<tr>
+				<th><s>条件</s></th>
+				<th><s>数值</s></th>
+				<th><s>颜色</s></th>
+				<th><s>删除</s></th>
+			</tr>
+		</table>
+		<div class="action" style="text-align:right;">
+		<input type="button" class="btn_add" onclick="uinv.FCM.configMgr.model.statistics.addRow(this);" />
+	</div>
+</div>

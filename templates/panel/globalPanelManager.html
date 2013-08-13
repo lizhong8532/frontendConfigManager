@@ -1,0 +1,17 @@
+
+
+
+<div style="width:500px;" class="{{globalPanelManagementBoxClass}}">
+	<div>
+		<s>上传新面板</s><input type="file" onchange="uinv.FCM.configMgr.model.panel.upload(this);" /><br />
+		<input type="text" /><button><s>添加分类</s></button>
+	</div>
+		
+	<br />
+		
+	<ul style="width:100%;">{{{list}}}</ul>
+		
+	<div class="action" style="width:100%;text-align:center;">
+		<input class="btn_save" onclick="uinv.FCM.configMgr.model.dialog.close(uinv.FCM.configMgr.model.panel.globalPanelManagerCallBack);" />
+	</div>
+</div>

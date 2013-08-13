@@ -1,0 +1,24 @@
+
+2013-08-13
+
+* 引入handlebars模板引擎实现HTML与JavaScript分离(lizhong)
+* FORM表单应需求增加title与line类型以实现在FORM页实现段落分割与说明(lizhong)
+* 目录结构发生一些改动，主要把views目录移到项目下以方便管理(lizhong)
+* 新增一个api接口实现通过name值即可查找页面上相应name值的DOM对象(lizhong)
+* FORM表单数据初始化新增回调函数操作，只要提交表单并且已经声明回调函数的项会被触发(lizhong)
+* 图层/面板编辑项3d与2d类型新增支持defaultValue默认值(lizhong)
+
+
+2013-08-08
+
+* 处理uinv.FCM.configMgr.api.getPanel()接口返回空数据的问题，这是由于之前开发时没有完成的功能 (lizhong)
+* 修复系统初始异步读取配置文件的导致其他地方调用api接口获取数据出错的问题，改成同步模式  (Fixes #1) (lizhong)
+* 修复副数据存储false的问题，只有正常的数据才会执行保存操作 (Fixes #2) (lizhong)
+* 将所有提示信息定义从业务逻辑层分离，方便管理维护 (lizhong)
+* 把所有成员定义与关键字重名的都重命名，如boolean改bool、true改TRUE、false改FALSE (lizhong)
+* 修复数组转换对象时，数组里有子数组会转换出多余的空项 (Fixes #3) (lizhong)
+
+
+2013-08-01
+
+* Initial release

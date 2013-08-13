@@ -1,0 +1,12 @@
+
+
+uinv.util.require([ 
+		'javascripts/frontendConfigManager/config.css',
+		'javascripts/frontendConfigManager/views/plug/Colorpicke/spectrum.css',
+		'javascripts/frontendConfigManager/views/plug/Colorpicke/spectrum.js?'+Date.parse(new Date()),
+		'javascripts/frontendConfigManager/views/plug/handlebars/handlebars.js?'+Date.parse(new Date()),
+		'javascripts/frontendConfigManager/namespace.js?'+Date.parse(new Date()),
+		'javascripts/frontendConfigManager/core.js?'+Date.parse(new Date()),
+		'javascripts/frontendConfigManager/initData.js?'+Date.parse(new Date()),
+		'javascripts/frontendConfigManager/init.js?'+Date.parse(new Date())
+]);

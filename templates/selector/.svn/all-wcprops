@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/selector
+END
+main.html
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/selector/main.html
+END
+publicTreeNode.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/selector/publicTreeNode.html
+END
+publicTreeChildrenNode.html
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/selector/publicTreeChildrenNode.html
+END
+node.html
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/selector/node.html
+END
+publicMain.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/selector/publicMain.html
+END
+contextmenu.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/selector/contextmenu.html
+END
+tree.html
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/selector/tree.html
+END
+editWhere.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/selector/editWhere.html
+END

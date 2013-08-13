@@ -1,0 +1,14 @@
+
+
+<div class="{{resourcesManagerClass}}" style="width:400px; height:200px; padding:10px;">
+	<p style="margin:10px auto 0;"><span><s>资源名称</s></span><input type="text" original="{{title}}" name="title" value="{{title}}" /></p>
+	<p style="margin:10px auto 0; display:none;"><span><s>服务器目录</s></span><input type="text" original="{{serverPath}}" name="serverPath" value="{{serverPath}}" /></p>
+	<p style="margin:10px auto 0;"><span><s>本地目录</s></span><input type="text" name="localPath" value="{{localPath}}" /></p>
+	<p style="margin:10px auto 0;"><span><s>版本</s></span><input type="text" name="version" value="{{version}}" readonly /></p>
+	<p style="margin:10px auto 0;"><span><s>资源包</s></span><input type="file" name="resourcesFile" /></p>
+	<input type="hidden" name="type" value="{{type}}" />
+	<p class="action">
+		<input type="button" class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />
+		<input type="button" class="btn_save" onclick="uinv.FCM.configMgr.model.resources.handleResourcesManager(this);" />
+	</p>
+</div>

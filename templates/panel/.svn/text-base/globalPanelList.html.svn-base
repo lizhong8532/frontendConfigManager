@@ -1,0 +1,7 @@
+
+<li style="margin:10px; position:relative;" key="{{name}}">
+	{{name}}
+	<span class="action" style="position:absolute;right:0; top:0;">
+		<a onclick="uinv.FCM.configMgr.model.panel.deleteGlobalPanel(this, '{{name}}');" href="javascript:void(0);"><s>删除</s></a>
+	</span>
+</li>

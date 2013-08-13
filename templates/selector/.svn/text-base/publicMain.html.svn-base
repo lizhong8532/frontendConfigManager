@@ -1,0 +1,11 @@
+
+
+
+<div class="selector" style="width:500px;height:300px;">
+	<div class="tree" style="height:250px;width:100%;border:1px solid #EEE;overflow-y:auto;">{{{tree}}}</div>
+		
+	<div class="action">
+		<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />
+		<input class="btn_save" onclick="uinv.FCM.configMgr.model.selector.publicSelectNodeSubmit();" />
+	</div>
+</div>

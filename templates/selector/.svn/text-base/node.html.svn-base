@@ -1,0 +1,5 @@
+
+<div  key="{{key}}" class="treeNode" style="padding-left:20px;">
+	<span onclick="uinv.FCM.configMgr.model.selector.selectNode('{{key}}',event);"  oncontextmenu="uinv.FCM.configMgr.model.selector.contextMenu(event,this);">{{name}}</span>
+	<div class="childrenNode"></div>
+</div>

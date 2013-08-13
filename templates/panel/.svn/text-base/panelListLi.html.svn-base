@@ -1,0 +1,25 @@
+
+<li>
+	<span class="panel_name">{{panelName}}</span>
+	<span class="action panel_up">
+		<a onclick="uinv.FCM.configMgr.model.panel.upMove(this);" class="{{upMoveBtnClass}}" href="javascript:void(0);" style="display:none;">
+			<s>上移</s>
+		</a>
+	</span>
+	
+	{{#if isViewsEditBtn}}
+		<span class="panel_edit">
+		<a onclick="uinv.FCM.configMgr.model.panel.itemConfig('{{key}}','{{objKey}}');" href="javascript:void(0);"><s>编辑</s></a>
+		</span>				
+	{{else}}
+		<span class="panel_edit"></span>
+	{{/if}}
+	
+	<span class="panel_del">
+		<a onclick="uinv.FCM.configMgr.model.panel.deleteObjPanel(this);" href="javascript:void(0);"><s>{{delbtnValue}}</s></a>
+	</span>
+	
+	<span class="panel_checkbox">
+		<input onclick="uinv.FCM.configMgr.model.panel.checkd(this);" name="{{objKey}}" value="{{key}}" cate="panel" path="panel" type="checkbox" />
+	</span>
+</li>

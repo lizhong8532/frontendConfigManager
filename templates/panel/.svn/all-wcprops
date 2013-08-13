@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/panel
+END
+typeSelect.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/panel/typeSelect.html
+END
+typeBool.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/panel/typeBool.html
+END
+globalPanelList.html
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/panel/globalPanelList.html
+END
+panelListLi.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/panel/panelListLi.html
+END
+itemConfigMain.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/panel/itemConfigMain.html
+END
+typeInputText.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/panel/typeInputText.html
+END
+globalPanelManager.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/panel/globalPanelManager.html
+END
+panelListMain.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/panel/panelListMain.html
+END
+position2d.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/panel/position2d.html
+END
+position3d.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/panel/position3d.html
+END

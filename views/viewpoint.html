@@ -1,0 +1,24 @@
+
+
+<div>
+	<div class="header">视角配置列表</div>
+	<table class="viewpoint-list">
+		<tr>
+			<th><s>对象名称</s></th>
+			<th><s>x</s></th>
+			<th><s>y</s></th>
+			<th><s>z</s></th>
+			<th><s>操作</s></th>
+		</tr>
+	</table>
+</div>
+
+<button class="button-btn mt10" onclick="uinv.FCM.configMgr.model.viewpoint.createObject();"><s>添加对象</s></button>
+
+<script type="text/javascript">
+
+(function(){
+	uinv.FCM.configMgr.model.viewpoint.init('.viewpoint-list');
+})(uinv.FCM.configMgr);
+
+</script>

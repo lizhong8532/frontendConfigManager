@@ -1,0 +1,7 @@
+
+<div class="row {{classValue}}">
+	<span class="comments"><s>{{caption}}</s></span>
+	<span class="form">
+		<input itemkey="{{itemkey}}" path="{{group}}" type="text" cate="{{cate}}" name="{{name}}" value="{{value}}" />
+	</span>
+</div>

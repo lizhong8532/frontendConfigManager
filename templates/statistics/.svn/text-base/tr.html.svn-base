@@ -1,0 +1,25 @@
+
+
+
+<tr style="height:50px;" class="item">
+	<td>
+		<select key="where">
+		{{#each range}}
+			{{#ifCond ../where "==" this}}
+					<option value="{{this}}" selected>{{this}}</option>
+			{{else}}
+					<option value="{{this}}">{{this}}</option>
+			{{/ifCond}}
+		{{/each}}
+		</select>
+	</td>
+	<td>
+		<input class="config-input-text config-input-percentage" type="text" key="number" value="{{number}}" /><span class="config-unit">%</span>
+	</td>
+	<td>
+		<input type="text" key="color" value="{{color}}" />
+	</td>
+	<td>
+		<button onclick="uinv.FCM.configMgr.model.statistics.delRow(this);"><s>删除</s></button>
+	</td>
+</tr>

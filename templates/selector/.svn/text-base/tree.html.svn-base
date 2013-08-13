@@ -1,0 +1,16 @@
+
+		
+{{#if hasWhere}}
+	<div class="treeNode where" style="padding-left:20px;"  key="{{key}}">
+{{else}}
+	<div class="treeNode" style="padding-left:20px;"  key="{{key}}">
+{{/if}}
+	
+	<span onclick="uinv.FCM.configMgr.model.selector.selectNode('{{key}}',event);" oncontextmenu="uinv.FCM.configMgr.model.selector.contextMenu(event,this);">{{name}}</span>
+			
+	<div class="childrenNode">
+		{{#if hasChildrenNode}}
+			{{childrenNode}}
+		{{/if}}
+	</div>
+</div>

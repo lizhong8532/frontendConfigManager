@@ -1,0 +1,23 @@
+
+
+<tr key="{{key}}">
+	<td class="name">
+		<a onclick="uinv.FCM.configMgr.model.monitor.objectRename(this,'{{key}}');" href="javascript:void(0);">{{name}}</a>
+	</td>
+	
+	<td>
+		<select onchange="uinv.FCM.configMgr.model.monitor.objSelectPanel(this,'{{key}}');">
+			<option value="">请选择面板</option>
+			{{#each panelArr}}
+				{{#ifCond ../panel "==" name}}
+					<option value="{{name}}" selected>{{caption}}</option>
+				{{else}}
+					<option value="{{name}}">{{caption}}</option>
+				{{/ifCond}}
+			{{/each}}
+		</select>
+	</td>
+	
+	<td><a onclick="uinv.FCM.configMgr.model.monitor.configShow('{{key}}');" href="javascript:void(0);"><s>编辑</s></a></td>
+	<td><a onclick="uinv.FCM.configMgr.model.monitor.deleteObject('{{key}}');" href="javascript:void(0);"><s>删除</s></a></td>
+</tr>

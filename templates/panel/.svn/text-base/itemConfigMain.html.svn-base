@@ -1,0 +1,8 @@
+
+<div class="itemConfig" style="padding:10px;">
+	{{{itemConfigRows}}}
+	<p class="action">
+		<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.dialog.close();" />
+		<input class="btn_save" onclick="uinv.FCM.configMgr.model.panel.itemConfigSubmit();" />
+	</p>
+</div>

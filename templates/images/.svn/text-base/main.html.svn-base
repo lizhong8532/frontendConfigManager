@@ -1,0 +1,23 @@
+
+
+
+<div class="img">
+	<div class="left">
+		<div class="header">
+			<div class="action">
+				<span class="uploadbtn">
+					<a href="javascript:void(0);"><s>上传图片</s><input onchange="uinv.FCM.configMgr.model.images.imUpload(this);" type="file"  /></a>
+				</span>
+			</div>
+		</div>
+		
+		<div class="imglist" onmouseout="uinv.FCM.configMgr.model.images.out();">Loading...</div>
+	</div>
+	
+	<div class="right">
+		<div class="views"></div>
+	</div>
+	<div class="close">
+		<button title="点击关闭窗口" onclick="uinv.FCM.configMgr.model.images.close();"><s>Close</s></button>
+	</div>
+</div>

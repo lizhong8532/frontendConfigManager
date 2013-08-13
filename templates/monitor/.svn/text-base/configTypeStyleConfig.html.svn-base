@@ -1,0 +1,3 @@
+
+
+<input type="button" class="btn_set" name="{{name}}" cate="{{cate}}" onclick="uinv.FCM.configMgr.model.monitor.settingStyleConfigDisplay(this);" />

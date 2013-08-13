@@ -1,0 +1,57 @@
+
+
+<div class="addnodewhere">
+		
+	<div class="row">
+		<span>
+			<input type="radio" name="wheretype" value="classid" checked />
+			<s>classid</s>
+		</span>
+		
+		<select class="classidselect" name="classid">
+		{{#each classids}}
+			{{#ifCond ../classid "==" classId}}
+				<option value="{{classId}}" selected>{{caption}}</option>
+			{{else}}
+				<option value="{{classId}}">{{caption}}</option>
+			{{/ifCond}}
+		{{/each}}
+		</select>
+	</div>
+		
+	<div class="row">
+		<span>
+			<input type="radio" name="wheretype" value="name" />
+			<s>物体名称</s>
+		</span>
+		<input type="text" name="name" value="{{name}}" />
+	</div>
+		
+	<div class="row">
+		<span>
+			<input type="radio" name="wheretype" value="attribute" />
+			<s>属性定义</s>
+		</span>
+			
+		<div class="row" style="clear:both;">
+			<span><s>属性名</s></span><input type="text" name="key" value="{{attrKey}}" />
+		</div>
+		
+		<div class="row">
+			<span><s>属性值</s></span><input type="text" name="value" value="{{attrValue}}" />
+		</div>
+	</div>
+		
+	<div class="row">
+		<span>
+			<input type="radio" name="wheretype" value="fun" />
+			<s>函数</s>
+		</span>
+		<textarea name="fun">{{fun}}</textarea>
+	</div>
+		
+	<div class="btn">
+		<input class="btn_save" onclick="uinv.FCM.configMgr.model.selector.addNodeWhereFormSubmit('{{key}}');" />
+		<input class="btn_cancel" onclick="uinv.FCM.configMgr.model.selector.cancelAddNodeWhere();"  />
+	</div>
+</div>

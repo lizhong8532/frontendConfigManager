@@ -1,0 +1,13 @@
+
+<tr>
+	<td>{{i}}</td>
+	<td><a href="{{url}}" target="_blank" title="点击下载">{{serverPath}}</a></td>
+	<td>{{localPath}}</td>
+	<td>{{version}}</td>
+	<td>
+		<a onclick="uinv.FCM.configMgr.model.resources.delResource('{{i}}');" href="javascript:void(0);"><s>删除</s></a>
+	</td>
+	<td>
+		<a onclick="uinv.FCM.configMgr.model.resources.resourcesManager('{{i}}');" href="javascript:void(0);"><s>更新</s></a>
+	</td>
+</td>

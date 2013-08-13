@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/develop/!svn/ver/9437/uinv_frontend/javascripts/frontendConfigManager/templates/form
+END
+array.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/develop/!svn/ver/9437/uinv_frontend/javascripts/frontendConfigManager/templates/form/array.html
+END
+title.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/develop/!svn/ver/9437/uinv_frontend/javascripts/frontendConfigManager/templates/form/title.html
+END
+inputText.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/develop/!svn/ver/9437/uinv_frontend/javascripts/frontendConfigManager/templates/form/inputText.html
+END
+line.html
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/develop/!svn/ver/9437/uinv_frontend/javascripts/frontendConfigManager/templates/form/line.html
+END
+image.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/develop/!svn/ver/9437/uinv_frontend/javascripts/frontendConfigManager/templates/form/image.html
+END
+bool.html
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/develop/!svn/ver/9437/uinv_frontend/javascripts/frontendConfigManager/templates/form/bool.html
+END

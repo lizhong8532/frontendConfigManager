@@ -1,0 +1,15 @@
+
+<div class="row" style="margin:10px auto;">
+	<span>{{caption}}</span>
+	<ul>
+		<li style="list-style:none;">
+			<span><s>{{itemsCaption.[0]}}</s></span>
+			<input type="text" objectkey="{{objectKey}}" name="{{name}}" cate="position2d" path="{{key}}" value="{{value.[0]}}" />
+		</li>
+		
+		<li style="list-style:none;">
+			<span><s>{{itemsCaption.[1]}}</s></span>
+			<input type="text" objectkey="{{objectKey}}" name="{{name}}" cate="position2d" path="{{key}}" value="{{value.[1]}}" />
+		</li>
+	</ul>
+</div>

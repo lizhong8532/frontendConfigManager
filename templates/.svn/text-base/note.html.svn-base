@@ -1,0 +1,8 @@
+
+
+<div class="dialog-note">
+	<div><s>{{msg}}</s></div>
+	<div class="action">
+		<button class="button-btn" onclick="uinv.FCM.configMgr.model.dialog.close();"><s>确定</s></button>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+
+<div class="row" style="display:none;">
+	<div class="monitor_twarp">
+		<table class="monitor_table">
+			<tr>
+				<th><s>条件</s></th>
+				<th><s>数值</s></th>
+				<th><s>颜色</s></th>
+				<th><s>操作</s></th>
+			</tr>
+			{{{styleConfigRows}}}
+		</table>
+	</div>
+	<div class="action" style="margin-bottom:10px;">
+		<input type="button" class="btn_add" onclick="uinv.FCM.configMgr.model.monitor.addStyleConfigHtmlRow(this);" />
+	</div>
+</div>

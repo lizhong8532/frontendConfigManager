@@ -1,0 +1,15 @@
+
+
+<div class="row" style="margin:10px auto;">
+	<span>{{caption}}</span>
+	
+	<select class="row_select" objectkey="{{objectKey}}" name="{{name}}" cate="select" path="{{key}}">
+		{{#each items}}
+			{{#ifCond value "==" ../value}}
+				<option value="{{value}}" selected>{{caption}}</option>
+			{{else}}
+				<option value="{{value}}">{{caption}}</option>
+			{{/ifCond}}
+		{{/each}}
+	</select>
+</div>

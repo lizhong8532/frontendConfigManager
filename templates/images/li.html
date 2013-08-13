@@ -1,0 +1,6 @@
+
+
+<li class="{{cla}}" onmouseover="uinv.FCM.configMgr.model.images.viewsImg($(this).find('img').get(0));" onclick="uinv.FCM.configMgr.model.images.selectImg(this);" >
+	<img onerror="$(this).parent().remove();" src="{{url}}" style="max-width:{{maxWidth}}px;max-height:{{maxHeight}}px;" title="{{title}}" />
+	<a onclick="uinv.FCM.configMgr.model.images.delImages('{{path}}',event);" class="deletebtn" href="javascript:void(0);">DEL</a>
+</li>

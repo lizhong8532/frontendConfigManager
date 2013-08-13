@@ -1,0 +1,24 @@
+
+<div>
+	<div class="header">资源列表</div>
+	<table class="resources-list">
+		<tr>
+			<th><s>资源名称</s></th>
+			<th><s>服务器目录</s></th>
+			<th><s>本地目录</s></th>
+			<th><s>资源版本</s></th>
+			<th colspan="2"><s>操作</s></th>
+		</tr>
+	</table>
+</div>
+
+<button class="button-btn mt10" onclick="uinv.FCM.configMgr.model.resources.resourcesManager();"><s>创建资源</s></button> 
+
+<script type="text/javascript">
+
+(function(){
+	uinv.FCM.configMgr.model.resources.init('.resources-list');
+})(uinv.FCM.configMgr);
+
+</script>
+

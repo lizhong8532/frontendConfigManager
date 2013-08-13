@@ -1,0 +1,10 @@
+
+<div class="statistics-list"></div>
+
+<script type="text/javascript">
+
+(function(){
+	uinv.FCM.configMgr.model.statistics.init('.statistics-list');
+})(uinv.FCM.configMgr);
+
+</script>

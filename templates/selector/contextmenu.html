@@ -1,0 +1,32 @@
+
+
+
+<div class="config-contextmenu" style="background:#E6E6FA;width:100px;position:absolute;z-index:9999;left:{{x}}px;top:{{y}}px;">
+
+	{{#if selectNode}}
+		{{#if hasChildrenNode}}
+		
+			{{#if childrenNodeVisible}}
+					<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting('treeNodeHide', '{{key}}');"><s>收起</s></li>
+			{{else}}
+					<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting('treeNodeShow', '{{key}}');"><s>展开</s></li>
+			{{/if}}
+			
+		{{/if}}
+			
+		<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting('createNode', '{{key}}');"><s>创建节点</s></li>
+		<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting('deleteNode', '{{key}}');"><s>删除节点</s></li>
+		<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting('nodeRename', '{{key}}');"><s>重新命名</s></li>
+		
+		{{#if hasWhere}}
+			<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting('editNodeWhere', '{{key}}');"><s>修改条件</s></li>
+			<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting('delNodeWhere', '{{key}}');"><s>删除条件</s></li>				
+		{{else}}
+			<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting('editNodeWhere', '{{key}}');"><s>添加条件</s></li>
+		{{/if}}
+
+	{{else}}
+		<li style="list-style:none;" onclick="uinv.FCM.configMgr.model.selector.contextMenuRouting('createNode', '{{key}}');"><s>创建节点</s></li>
+	{{/if}}
+	
+</div>

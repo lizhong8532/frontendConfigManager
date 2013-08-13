@@ -1,0 +1,12 @@
+
+<span>
+	<select name="{{name}}">
+	{{#each items}}
+		{{#ifCond value "==" ../position}}
+			<option value="{{value}}" selected>{{name}}</option>
+		{{else}}
+			<option value="{{value}}">{{name}}</option>
+		{{/ifCond}}
+	{{/each}}
+	</select>
+</span>

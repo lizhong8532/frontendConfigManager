@@ -1,0 +1,54 @@
+
+<div class="monitor">
+	<div class="monitor_warp">
+		<div class="monitor_name">
+			<span><s>面板图片</s></span>
+			<img src="{{imgSrc}}" />
+		</div>
+		
+		<div class="monitor_set">
+				
+			<div class="each"  key="pivotLayout" cate="array">
+				<span class="monitor_setname"><s>二维位置</s></span>
+				{{{pivotLayoutSelectHtml}}}
+			</div>
+					
+			<div class="each" key="layout" cate="array">
+				<span class="monitor_setname"><s>三维位置</s></span>	
+				{{{layoutSelectHtml}}}
+			</div>
+					
+			<div class="each" key="layoutOffset" cate="array">
+				<span class="monitor_setname"><s>偏移设置</s></span>
+				<span>
+					<input type="text" name="layoutOffset" value="{{layoutOffset.[0]}}" />
+					<lable>m</lable>
+				</span>
+						
+				<span>
+					<input type="text" name="layoutOffset" value="{{layoutOffset.[1]}}" />
+					<lable>m</lable>
+				</span>
+				
+				<span>
+					<input type="text" name="layoutOffset" value="{{layoutOffset.[2]}}" />
+					<lable>m</lable>
+				</span>
+				
+			</div>
+					
+			<div class="each" key="canvasScale" cate="number">
+				<span class="monitor_setname"><s>面板大小</s></span>
+				<span class="monitor_zoom">
+					<input type="text" name="canvasScale" value="{{canvasScale}}" />
+				</span>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="each" key="form" cate="form">{{{form}}}</div>
+		
+	<div class="config-submit-btn">
+		<input class="btn_save" onclick="uinv.FCM.configMgr.model.monitor.configHide('{{panel}}','{{key}}');" /></div>
+	</div>

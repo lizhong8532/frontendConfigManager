@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor
+END
+position.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/position.html
+END
+panelConfigFormTr.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/panelConfigFormTr.html
+END
+configTypeStyleConfig.html
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/configTypeStyleConfig.html
+END
+configTypeBool.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/configTypeBool.html
+END
+panelTr.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/panelTr.html
+END
+alarmLevelTr.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/alarmLevelTr.html
+END
+objMain.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/objMain.html
+END
+td.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/develop/!svn/ver/9412/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/td.html
+END
+tr.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/tr.html
+END
+styleConfigMain.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/styleConfigMain.html
+END
+styleConfigRows.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/styleConfigRows.html
+END
+configMain.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/configMain.html
+END
+configTypeInputText.html
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/configTypeInputText.html
+END
+panelConfigForm.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/panelConfigForm.html
+END

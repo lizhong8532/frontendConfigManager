@@ -1,0 +1,5 @@
+
+<p class="row" style="margin:10px auto;">
+	<span>{{caption}}</span>
+	<input type="text" objectkey="{{objectKey}}" name="{{name}}" cate="{{cate}}" path="{{key}}" value="{{value}}" />
+</p>

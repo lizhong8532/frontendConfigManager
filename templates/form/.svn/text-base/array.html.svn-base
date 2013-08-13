@@ -1,0 +1,7 @@
+
+<div class="row {{classValue}}">
+	<span class="comments"><s>{{caption}}</s></span>
+	<span class="form">
+		{{{html}}}
+	</span>
+</div>

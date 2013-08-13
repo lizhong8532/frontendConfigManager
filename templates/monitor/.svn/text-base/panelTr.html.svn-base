@@ -1,0 +1,8 @@
+
+
+<tr key="{{name}}">
+	<td class="name">{{caption}}</td>
+	<td>{{des}}</td>
+	{{! <td><a href="javascript:void(0);"><s>上传</s></a></td> }}
+	<td><a onclick="uinv.FCM.configMgr.model.monitor.deletePanel('{{name}}');" href="javascript:void(0);"><s>删除</s></a></td>
+</tr>

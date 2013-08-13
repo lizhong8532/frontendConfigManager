@@ -1,0 +1,15 @@
+
+<p class="row" style="margin:10px auto;">
+	<span>{{caption}}</span>
+	{{#if isTrue}}
+		<lable>{{itemsTrueCaption}}</label>
+		<input type="radio" objectkey="{{objectKey}}" name="{{name}}" cate="bool" path="{{key}}" value="1" checked />
+		<lable>{{itemsFalseCaption}}</label>
+		<input type="radio" objectkey="{{objectKey}}" name="{{name}}" cate="bool" path="{{key}}" value="0" />
+	{{else}}
+		<lable>{{itemsTrueCaption}}</label>
+		<input type="radio" objectkey="{{objectKey}}" name="{{name}}" cate="bool" path="{{key}}" value="1" />
+		<lable>{{itemsFalseCaption}}</label>
+		<input type="radio" objectkey="{{objectKey}}" name="{{name}}" cate="bool" path="{{key}}" value="0" checked />
+	{{/if}}
+</p>

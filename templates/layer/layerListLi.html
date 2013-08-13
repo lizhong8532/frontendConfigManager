@@ -1,0 +1,25 @@
+
+<li>
+	<span class="layer_name">{{layerName}}</span>
+	<span class="action layer_up">
+		<a onclick="uinv.FCM.configMgr.model.layer.upMove(this);" class="{{upMoveBtnClass}}" href="javascript:void(0);" style="display:none;">
+			<s>上移</s>
+		</a>
+	</span>
+	
+	{{#if isViewsEditBtn}}
+		<span class="layer_edit">
+		<a onclick="uinv.FCM.configMgr.model.layer.itemConfig('{{key}}','{{objKey}}');" href="javascript:void(0);"><s>编辑</s></a>
+		</span>				
+	{{else}}
+		<span class="layer_edit"></span>
+	{{/if}}
+	
+	<span class="layer_del">
+		<a onclick="uinv.FCM.configMgr.model.layer.deleteObjLayer(this);" href="javascript:void(0);"><s>{{delbtnValue}}</s></a>
+	</span>
+	
+	<span class="layer_checkbox">
+		<input onclick="uinv.FCM.configMgr.model.layer.checkd(this);" name="{{objKey}}" value="{{key}}" cate="layer" path="layer" type="checkbox" />
+	</span>
+</li>

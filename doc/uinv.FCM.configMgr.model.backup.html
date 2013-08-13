@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: uinv.FCM.configMgr.model.backup</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Namespace: uinv.FCM.configMgr.model.backup</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+    uinv.FCM.configMgr.model.backup
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+            <div class="description" style="font-size:18px; font-weight:bold; padding-left:25px;">备份模块</div>
+        
+        
+        
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line152">line 152</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+        
+        
+
+        <i class="line1 mb20 mt20"></i>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="backModel"><span class="type-signature">&lt;static> </span><span style="color:#999">uinv.FCM.configMgr.model.backup.</span>backModel<span class="type-signature"> :Array</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description" style="color:#666;">
+        备份的模块1) 这个列表里有哪项就会备份哪一项2) 备份的时候也可以通过改写此列表项达到按需备份3) 也作为一个后续通过勾选功能块备份相应模块的一个拓展4) 目前暂时写死
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1813">line 1813</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+
+
+        
+            
+<dt>
+    <h4 class="name" id="files"><span class="type-signature">&lt;static> </span><span style="color:#999">uinv.FCM.configMgr.model.backup.</span>files<span class="type-signature"> :Array</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description" style="color:#666;">
+        备份时需要额外备份的文件夹文件1) 备份程序会根据各个模块提供的路径统一记录在这个列表内2) 也作为默认
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1832">line 1832</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+
+
+        
+            
+<dt>
+    <h4 class="name" id="folders"><span class="type-signature">&lt;static> </span><span style="color:#999">uinv.FCM.configMgr.model.backup.</span>folders<span class="type-signature"> :Array</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description" style="color:#666;">
+        备份时需要额外备份的文件夹路径1) 备份程序会根据各个模块提供的路径统一记录在这个列表内2) 也作为默认
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1824">line 1824</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+
+
+        
+            
+<dt>
+    <h4 class="name" id="model"><span class="type-signature">&lt;static> </span><span style="color:#999">uinv.FCM.configMgr.model.backup.</span>model<span class="type-signature"> :Array</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description" style="color:#666;">
+        所有可用备份模块定义1) 如果这里定义到模块表示可以备份2) 没有定义到的模块则不能备份3) DATA值的是数据索引声明，这和程序内部定义有关
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1792">line 1792</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+
+
+        
+            
+<dt>
+    <h4 class="name" id="text"><span class="type-signature">&lt;static> </span><span style="color:#999">uinv.FCM.configMgr.model.backup.</span>text<span class="type-signature"> :String</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description" style="color:#666;">
+        需要备份的文本数据1) 将把所有配置信息转字符串改写此值
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1839">line 1839</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+
+
+        </dl>
+        
+        <i class="line1 mb20 mt20"></i>
+    
+
+	
+    
+    
+
+        <h3 class="subsection-title">Methods Index</h3>
+	
+        <dl>
+            
+<dt>
+    <a style="text-decoration:none;" href="#configCompression">
+	<h4 class="name" id="configCompression"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>configCompression<span class="signature">(obj)</span><span class="type-signature"></span></h4>
+    </a>
+    <span style="color:#666;">配置数据与文件打包</span>
+    
+    
+</dt>
+
+        
+            
+<dt>
+    <a style="text-decoration:none;" href="#configUpload">
+	<h4 class="name" id="configUpload"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>configUpload<span class="signature">(obj)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    </a>
+    <span style="color:#666;">上传备份压缩包</span>
+    
+    
+</dt>
+
+        
+            
+<dt>
+    <a style="text-decoration:none;" href="#initData">
+	<h4 class="name" id="initData"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>initData<span class="signature">()</span><span class="type-signature"></span></h4>
+    </a>
+    <span style="color:#666;">初始化数据备份基础数据</span>
+    
+    
+</dt>
+
+        
+            
+<dt>
+    <a style="text-decoration:none;" href="#setData">
+	<h4 class="name" id="setData"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>setData<span class="signature">(o)</span><span class="type-signature"></span></h4>
+    </a>
+    <span style="color:#666;">把上传的数据写入库</span>
+    
+    
+</dt>
+
+        
+            
+<dt>
+    <a style="text-decoration:none;" href="#updateConfig">
+	<h4 class="name" id="updateConfig"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>updateConfig<span class="signature">(o)</span><span class="type-signature"></span></h4>
+    </a>
+    <span style="color:#666;">更新备份数据</span>
+    
+    
+</dt>
+
+        
+            
+<dt>
+    <a style="text-decoration:none;" href="#updateFileArr">
+	<h4 class="name" id="updateFileArr"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>updateFileArr<span class="signature">()</span><span class="type-signature"></span></h4>
+    </a>
+    <span style="color:#666;">更新文件备份记录列表</span>
+    
+    
+</dt>
+
+        
+            
+<dt>
+    <a style="text-decoration:none;" href="#updateText">
+	<h4 class="name" id="updateText"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>updateText<span class="signature">()</span><span class="type-signature"></span></h4>
+    </a>
+    <span style="color:#666;">更新备份文本数据值</span>
+    
+    
+</dt>
+
+        </dl>
+
+	<i class="line1 mb20 mt20"></i>
+
+        <h3 class="subsection-title">Methods Detailed</h3>
+    
+        <dl>
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="configCompression"></a>
+    <h4 class="name" id="configCompression"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>configCompression<span class="signature">(obj)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 配置数据与文件打包
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">DOM</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">配置按钮DOM节点</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1932">line 1932</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>uinv.server.manager.frame.placeZip()</li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="configUpload"></a>
+    <h4 class="name" id="configUpload"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>configUpload<span class="signature">(obj)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 上传备份压缩包
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">DOM</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">file DOM 节点</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1958">line 1958</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    返回false数据格式有误
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Boolean</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="initData"></a>
+    <h4 class="name" id="initData"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>initData<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 初始化数据备份基础数据
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1851">line 1851</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="setData"></a>
+    <h4 class="name" id="setData"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>setData<span class="signature">(o)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 把上传的数据写入库
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">上传备份的数据</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line2002">line 2002</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="updateConfig"></a>
+    <h4 class="name" id="updateConfig"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>updateConfig<span class="signature">(o)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 更新备份数据
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">上传备份的数据</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line2035">line 2035</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="updateFileArr"></a>
+    <h4 class="name" id="updateFileArr"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>updateFileArr<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 更新文件备份记录列表
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1865">line 1865</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        
+            
+
+<div class="method-detailed-box">
+
+<dt>
+    <a name="updateText"></a>
+    <h4 class="name" id="updateText"><span class="type-signature">&lt;static> </span><span style="color:#999;">uinv.FCM.configMgr.model.backup.</span>updateText<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        description : 更新备份文本数据值
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line1898">line 1898</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+</div>
+
+<i class="line2 mt20 mb20"></i>
+
+        </dl>
+
+        <i class="line1 mb20 mt20"></i>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Namespaces</h3><ul><li><a href="uinv.FCM.configMgr_.html">uinv.FCM.configMgr</a></li><li><a href="uinv.FCM.configMgr.api.html">uinv.FCM.configMgr.api</a></li><li><a href="uinv.FCM.configMgr.data.html">uinv.FCM.configMgr.data</a></li><li><a href="uinv.FCM.configMgr.form.html">uinv.FCM.configMgr.form</a></li><li><a href="uinv.FCM.configMgr.global.html">uinv.FCM.configMgr.global</a></li><li><a href="uinv.FCM.configMgr.model.array.html">uinv.FCM.configMgr.model.array</a></li><li><a href="uinv.FCM.configMgr.model.backup.html">uinv.FCM.configMgr.model.backup</a></li><li><a href="uinv.FCM.configMgr.model.colorpicke.html">uinv.FCM.configMgr.model.colorpicke</a></li><li><a href="uinv.FCM.configMgr.model.dialog.html">uinv.FCM.configMgr.model.dialog</a></li><li><a href="uinv.FCM.configMgr.model.download.html">uinv.FCM.configMgr.model.download</a></li><li><a href="uinv.FCM.configMgr.model.images.html">uinv.FCM.configMgr.model.images</a></li><li><a href="uinv.FCM.configMgr.model.key.html">uinv.FCM.configMgr.model.key</a></li><li><a href="uinv.FCM.configMgr.model.layer.html">uinv.FCM.configMgr.model.layer</a></li><li><a href="uinv.FCM.configMgr.model.monitor.html">uinv.FCM.configMgr.model.monitor</a></li><li><a href="uinv.FCM.configMgr.model.object.html">uinv.FCM.configMgr.model.object</a></li><li><a href="uinv.FCM.configMgr.model.panel.html">uinv.FCM.configMgr.model.panel</a></li><li><a href="uinv.FCM.configMgr.model.resources.html">uinv.FCM.configMgr.model.resources</a></li><li><a href="uinv.FCM.configMgr.model.selector.html">uinv.FCM.configMgr.model.selector</a></li><li><a href="uinv.FCM.configMgr.model.statistics.html">uinv.FCM.configMgr.model.statistics</a></li><li><a href="uinv.FCM.configMgr.model.stringDB.html">uinv.FCM.configMgr.model.stringDB</a></li><li><a href="uinv.FCM.configMgr.model.transform.html">uinv.FCM.configMgr.model.transform</a></li><li><a href="uinv.FCM.configMgr.model.viewpoint.html">uinv.FCM.configMgr.model.viewpoint</a></li><li><a href="uinv.FCM.configMgr.msg.html">uinv.FCM.configMgr.msg</a></li><li><a href="uinv.FCM.configMgr.note.html">uinv.FCM.configMgr.note</a></li><li><a href="uinv.FCM.configMgr.other.html">uinv.FCM.configMgr.other</a></li><li><a href="uinv.FCM.configMgr.template.html">uinv.FCM.configMgr.template</a></li><li><a href="uinv.FCM.configMgr_.html#translate">uinv.FCM.configMgr.translate</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Aug 13 2013 16:48:32 GMT+0800 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

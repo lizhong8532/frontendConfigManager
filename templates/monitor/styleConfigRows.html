@@ -1,0 +1,26 @@
+
+<tr class="one" style="list-style:none;">
+	<td>
+		<select name="condition" cate="string">
+		{{#each conditionArr}}
+			{{#ifCond ../condition "==" this}}
+				<option value="{{this}}" selected>{{this}}</option>
+			{{else}}
+				<option value="{{this}}">{{this}}</option>
+			{{/ifCond}}
+		{{/each}}	
+		</select>
+	</td>
+		
+	<td>
+		<input type="text" name="number" cate="number" value="{{number}}" />
+	</td>
+		
+	<td>
+		<input type="text" name="config" cate="color" value="{{config}}" />
+	</td>
+		
+	<td>
+		<a onclick="uinv.FCM.configMgr.model.monitor.deleteStyleConfigRow(this);" href="javascript:void(0);"><s>删除</s></a>
+	</td>
+</tr>
