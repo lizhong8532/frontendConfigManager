@@ -34,7 +34,7 @@ uinv.FCM.configMgr.model.backup.model = {
  */
 uinv.FCM.configMgr.model.backup.backModel =  [
 	'视角','图层','资源','下载','监控',
-	'统计','选择','系统','布局'
+	'统计','选择','系统','布局','面板'
 ];
 
 /**

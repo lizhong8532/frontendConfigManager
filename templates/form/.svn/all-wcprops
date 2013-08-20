@@ -7,7 +7,7 @@ array.html
 K 25
 svn:wc:ra_dav:version-url
 V 100
-/svn/develop/!svn/ver/9437/uinv_frontend/javascripts/frontendConfigManager/templates/form/array.html
+/svn/develop/!svn/ver/9453/uinv_frontend/javascripts/frontendConfigManager/templates/form/array.html
 END
 title.html
 K 25
@@ -31,7 +31,7 @@ image.html
 K 25
 svn:wc:ra_dav:version-url
 V 100
-/svn/develop/!svn/ver/9437/uinv_frontend/javascripts/frontendConfigManager/templates/form/image.html
+/svn/develop/!svn/ver/9488/uinv_frontend/javascripts/frontendConfigManager/templates/form/image.html
 END
 bool.html
 K 25

@@ -26,8 +26,13 @@ version 1.0.0
 
 Author
 ------
-lizhong <mail@lizhong.me>
+|[![twitter/lee](http://www.gravatar.com/avatar/508c2929a1cbb62992951fb028f516af.jpg?s=60$d=&r=G)](https://twitter.com/lee17080794 "Follow @lee17080794 on Twitter")|
+|---|
+|lizhong <mail@lizhong.me>|
 
+Blog
+----
+[琼台博客](http://www.qttc.net)
 
 License
 -------

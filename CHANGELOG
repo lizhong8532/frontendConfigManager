@@ -1,4 +1,16 @@
 
+2013-08-16
+
+* 修复加分割线是getForm接口报错(Fixes #5)(lizhong)
+
+
+2013-08-14
+
+* 修复Form数组定义只显示最后一项控件的问题 (Fixes #4)(lizhong)
+* 调整监控编辑面板的宽度，解决打开监控面板后位置控件折行显示的bug(lizhong)
+* 修复From图片类型不能选择图片的bug(lizhong)
+
+
 2013-08-13
 
 * 引入handlebars模板引擎实现HTML与JavaScript分离(lizhong)

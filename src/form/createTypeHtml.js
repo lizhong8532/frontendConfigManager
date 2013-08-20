@@ -58,9 +58,9 @@ uinv.FCM.configMgr.form.createTypeHtml.image = function(o){
 	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey],
 		html = "";
 		
-	html = _obj.template.load("form/inputText.html",{
+	html = _obj.template.load("form/image.html",{
 		value		: value,
-		classValue	: o.level + " " + o.dir,
+		classValue	: o.level + " " + o.name,
 		itemkey		: o.itemkey,
 		group		: o.group,
 		name		: o.name,
@@ -139,7 +139,9 @@ uinv.FCM.configMgr.form.createTypeHtml.array = function(o){
 			o.settings[i].level = 'children';
 			o.settings[i].defaultValue = o.defaultValue[i];
 			o.settings[i].itemkey = i;
-			contents = _this.createTypeHtml[o.settings[i].type](o.settings[i]);
+			
+			// Fixes #4 把=改成+=修复数组定义只显示最后一项控件的bug
+			contents += _this.createTypeHtml[o.settings[i].type](o.settings[i]);
 		}
 	}
 

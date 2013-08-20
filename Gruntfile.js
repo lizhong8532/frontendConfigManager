@@ -75,16 +75,31 @@ module.exports = function (grunt) {
                 		src : 'core.js',
                 		dest : 'core.min.js'
             		}
+		},
+
+		min: {
+    			dist: {
+        			src: ['core.js'],
+        			dest: 'core.min.js'
+    			}
+		},
+		cssmin: {
+    			dist: {
+        			src: ['config.css'],
+        			dest: 'config.min.css'
+    			}
 		}
 
 	});
+
 
     	grunt.loadNpmTasks('grunt-contrib-jshint');
     	grunt.loadNpmTasks('grunt-contrib-concat');
     	grunt.loadNpmTasks('grunt-contrib-watch');
     	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-yui-compressor');
  
-    	grunt.registerTask('default', ['concat','jshint']);
+    	grunt.registerTask('default', ['concat','jshint','min']);
 	
 }
 

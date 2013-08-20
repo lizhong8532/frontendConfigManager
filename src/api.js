@@ -247,6 +247,15 @@ uinv.FCM.configMgr.api.getForm = function(group){
 	
 	var o = _obj.model.object.clone(_obj.form.createFormData);
 	
+	// Fixes #5 过滤掉分割线
+	for(i=0,k=o.length;i<k;i++){
+		if(_obj.form.inSpecialType(o[i].type)){
+			o.splice(i,1);
+			i--;
+			k=o.length;
+		}
+	}
+	
 	for(i=0,k=o.length;i<k;i++){
 		o[i].value = _obj.data[o[i].group][o[i].name];
 		if(o[i].type == 'color'){

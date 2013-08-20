@@ -6,7 +6,7 @@
  * @author: lizhong 
  * @description: frontendConfigManager 
  * @project: frontendConfigManager 
- * @date: 2013-08-13 
+ * @date: 2013-08-16 
  * ------------------------------------------------------------- 
  */ 
 
@@ -508,6 +508,15 @@ uinv.FCM.configMgr.api.getForm = function(group){
 		k = 0;
 	
 	var o = _obj.model.object.clone(_obj.form.createFormData);
+	
+	// Fixes #5 过滤掉分割线
+	for(i=0,k=o.length;i<k;i++){
+		if(_obj.form.inSpecialType(o[i].type)){
+			o.splice(i,1);
+			i--;
+			k=o.length;
+		}
+	}
 	
 	for(i=0,k=o.length;i<k;i++){
 		o[i].value = _obj.data[o[i].group][o[i].name];
@@ -1020,9 +1029,9 @@ uinv.FCM.configMgr.form.createTypeHtml.image = function(o){
 	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey],
 		html = "";
 		
-	html = _obj.template.load("form/inputText.html",{
+	html = _obj.template.load("form/image.html",{
 		value		: value,
-		classValue	: o.level + " " + o.dir,
+		classValue	: o.level + " " + o.name,
 		itemkey		: o.itemkey,
 		group		: o.group,
 		name		: o.name,
@@ -1101,7 +1110,9 @@ uinv.FCM.configMgr.form.createTypeHtml.array = function(o){
 			o.settings[i].level = 'children';
 			o.settings[i].defaultValue = o.defaultValue[i];
 			o.settings[i].itemkey = i;
-			contents = _this.createTypeHtml[o.settings[i].type](o.settings[i]);
+			
+			// Fixes #4 把=改成+=修复数组定义只显示最后一项控件的bug
+			contents += _this.createTypeHtml[o.settings[i].type](o.settings[i]);
 		}
 	}
 
@@ -1812,7 +1823,7 @@ uinv.FCM.configMgr.model.backup.model = {
  */
 uinv.FCM.configMgr.model.backup.backModel =  [
 	'视角','图层','资源','下载','监控',
-	'统计','选择','系统','布局'
+	'统计','选择','系统','布局','面板'
 ];
 
 /**

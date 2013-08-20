@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		
+		<!-- 引入QUnit -->
+		<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css" />
+		<script type="text/javascript" src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+		<!-- 引入QUnit END -->
+		
+		<!-- 测试头部定义条件  -->
+		<script type="text/javascript" src="../../namespace.js"></script>
+		<script type="text/javascript" src="../../src/namespace.js"></script>
+		<!-- 测试头部定义条件 END  -->
+		
+	</head>
+	<body>
+		<h1 id="qunit-header">frontendConfigManager单元测试</h1>
+		<h2 id="qunit-banner"></h2>	
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>		
+	</body>
+</html>
+
+
+<script type="text/javascript" src="../../src/model/array.js"></script>
+
+<script type="text/javascript">
+
+module("array模块");
+
+test("isArray()", function(){
+    ok( uinv.FCM.configMgr.model.array.isArray([]) , "传入一个空数组");
+    ok( uinv.FCM.configMgr.model.array.isArray([1]) , "传入只有一个元素的数组");
+    ok( !uinv.FCM.configMgr.model.array.isArray("") , "传入只有一个空字符串");
+    ok( !uinv.FCM.configMgr.model.array.isArray() , "不传入参数");
+    ok( !uinv.FCM.configMgr.model.array.isArray({}) , "传入一个对象");
+    ok( !uinv.FCM.configMgr.model.array.isArray(true) , "传入一个 布尔值");
+});
+
+test("strInArrayIndex()", function(){
+
+	strictEqual( uinv.FCM.configMgr.model.array.strInArrayIndex(
+		"a",
+		["a","b","c"]
+	), 0, "字符串a在数组a,b,c中的索引值为0");
+	
+	strictEqual( uinv.FCM.configMgr.model.array.strInArrayIndex(
+		"b",
+		["a","b","c"]
+	), 1, "字符串b在数组a,b,c中的索引值为1");
+	
+	strictEqual( uinv.FCM.configMgr.model.array.strInArrayIndex(
+		"d",
+		["a","b","c"]
+	), -1, "字符串d在数组a,b,c中不存在，返回 -1");
+	
+	strictEqual( uinv.FCM.configMgr.model.array.strInArrayIndex(
+		"1",
+		["a","b","c",1]
+	), 3, "字符串1在数组a,b,c,1中都存在，返回3");
+	
+});
+
+
+test("inArray()", function(){
+
+	ok( uinv.FCM.configMgr.model.array.inArray(
+		"a",
+		["a","b","c"]
+	), "字符串a存在数组a,b,c中");
+	
+	ok( uinv.FCM.configMgr.model.array.inArray(
+		"c",
+		["a","b","c"]
+	), "字符串c存在数组a,b,c中");
+	
+	ok( !uinv.FCM.configMgr.model.array.inArray(
+		"d",
+		["a","b","c"]
+	), "字符串d不存在数组a,b,c中");
+	
+});
+
+</script>

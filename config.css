@@ -257,7 +257,7 @@ div.childrenNodeHide{background:url(images/icon_slider.png) 0 6px no-repeat;}
 .config-load .obj-list th, 
 .config-load .obj-list td { text-align:center;  border: 1px solid #CCCCCC; padding: 2px 4px 2px 6px; }
 
-.config-dialog .monitor { width:600px; }
+.config-dialog .monitor { width:630px; }
 
 .config-load .monitor-box-up,
 .config-load .monitor-box-down { width:100%; height:300px; overflow-y:auto; }
@@ -357,4 +357,9 @@ div.childrenNodeHide{background:url(images/icon_slider.png) 0 6px no-repeat;}
 
 /* dialog note */
 .config-dialog .dialog-note { text-align:center; padding:10px 20px; min-width:200px; }
-.config-dialog .dialog-note .action { width:80px; margin:20px auto 0; } 
+.config-dialog .dialog-note .action { width:80px; margin:20px auto 0; }
+
+
+#conleft li a#menu-config {
+    background: url("../../resource/images/menu_icon.png") no-repeat scroll 60px -310px transparent;
+}
