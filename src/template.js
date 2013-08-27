@@ -48,6 +48,7 @@ uinv.FCM.configMgr.template.get = function(tpl){
 	if(_this.cacheEnable && (path in _this.cache) ){
 		result = _this.cache[path];
 	}else{
+		
 		result = $.ajax({ url: path, async: false });
 		if( result.readyState === 4 &&  result.status === 200  ){
 			

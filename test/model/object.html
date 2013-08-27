@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		
+		<!-- 引入QUnit -->
+		<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css" />
+		<script type="text/javascript" src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+		<!-- 引入QUnit END -->
+		
+		<!-- 测试头部定义条件  -->
+		<script type="text/javascript" src="../../namespace.js"></script>
+		<script type="text/javascript" src="../../src/namespace.js"></script>
+		<!-- 测试头部定义条件 END  -->
+		
+	</head>
+	<body>
+		<h1 id="qunit-header">frontendConfigManager单元测试</h1>
+		<h2 id="qunit-banner"></h2>	
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>		
+	</body>
+</html>
+
+
+<script type="text/javascript" src="../../src/model/object.js"></script>
+
+<script type="text/javascript">
+
+module("object模块");
+
+test("o2o()", function(){
+	var o1,o2;
+	
+	o1 = {};
+	o2 = {};
+    ok( uinv.FCM.configMgr.model.object.o2o(o1,o2) , "o1与o2都是空的，所以两个object相等");
+    
+    o1 = { name: "lizhong", age:18 };
+	o2 = { age:"18", name: "lizhong" };
+    ok( !uinv.FCM.configMgr.model.object.o2o(o1,o2) , "age类型不一致，所以两个object不相等");
+
+    o1 = { name: "lizhong", age:18 };
+	o2 = { age:18, name: "lizhong" };
+    ok( uinv.FCM.configMgr.model.object.o2o(o1,o2) , "o1,o2元素一致，所以两个object相等");
+    
+    o1 = { name: "lizhong", age:18, info:{ tel:3880, add:"东城" } };
+	o2 = { age:18, name: "lizhong", info:{ add:"东城", tel:3880 } };
+    ok( uinv.FCM.configMgr.model.object.o2o(o1,o2) , "深度比较，子对象里o1与o2相等，所以两个object相等");
+    
+    o1 = { name: "lizhong", age:18, info:{ tel:3880, add:"东城" } };
+	o2 = { age:18, name: "lizhong", info:{ add:"东城", tel:3881 } };
+    ok( !uinv.FCM.configMgr.model.object.o2o(o1,o2) , "深度比较，子对象里o1与o2不相等，所以两个object不相等");
+});
+
+
+test("isObject()", function(){
+
+	ok( uinv.FCM.configMgr.model.object.isObject({}), "传入一个没有元素的对象，返回true");
+	ok( uinv.FCM.configMgr.model.object.isObject({name:"name"}), "传入有元素的对象，返回true");
+	ok( !uinv.FCM.configMgr.model.object.isObject(null), "传入null，返回false");
+	ok( !uinv.FCM.configMgr.model.object.isObject(true), "传入true，返回false");
+	
+});
+
+
+test("clone()", function(){
+	var o1 = { name : "lizhong" };
+	var o2 = uinv.FCM.configMgr.model.object.clone(o1);
+	o1.name = "zhangsan";
+	
+	notDeepEqual(o1, o2 , "两个对象不相等");
+});
+
+
+
+
+</script>

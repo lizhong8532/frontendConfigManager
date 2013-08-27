@@ -235,7 +235,7 @@ div.childrenNodeHide{background:url(images/icon_slider.png) 0 6px no-repeat;}
 
 
 /* 监控 */
-.alarm {  border: 1px solid #CCCCCC; padding:10px 0; }
+.alarm {  border: 1px solid #CCCCCC; padding:10px 0; position: relative; }
 .alarm p { padding-left:25px;line-height:28px; margin:5px 0;overflow:hidden;}
 .obj-list li .name a{text-decoration:none;}
 .alarm p input,.alarm .row input,.viewpoint-list .form input,.list_warp li input{width:120px;border:1px solid #E0E0E0;height:23px;text-indent:3px;}

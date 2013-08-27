@@ -6,7 +6,7 @@
  * @author: lizhong 
  * @description: frontendConfigManager 
  * @project: frontendConfigManager 
- * @date: 2013-08-16 
+ * @date: 2013-08-27 
  * ------------------------------------------------------------- 
  */ 
 
@@ -264,7 +264,7 @@ namespace.reg('uinv.FCM.configMgr.template');
 /**
  * @description 获取监控面板数据
  * @memberOf uinv.FCM.configMgr.api
- * @return {Object} { monitorTime:监控时间, monitorPanelConfig:监控配置数据  }
+ * @return {Object} 监控配置数据
  * @example var result = uinv.FCM.configMgr.api.getMonitor();
  * @author lizhong
  * @since 2013-07
@@ -318,8 +318,13 @@ uinv.FCM.configMgr.api.getMonitor = function(){
 	}
 	
 	return {
-		'monitorTime' : _obj.data.monitor.alarm.monitorTime,
-		'monitorPanelConfig' : obj
+		monitorTime							: _obj.data.monitor.alarm.monitorTime,
+		monitorManagerOvertime				: _obj.data.monitor.alarm.monitorManagerOvertime,
+		monitorManagerInDeviceIntervalTime	: _obj.data.monitor.alarm.monitorManagerInDeviceIntervalTime,
+		monitorManagerInDeviceOvertime		: _obj.data.monitor.alarm.monitorManagerInDeviceOvertime,
+		alarmManagerOvertime				: _obj.data.monitor.alarm.alarmManagerOvertime,
+		monitorManagerIconScale				: _obj.data.monitor.alarm.monitorManagerIconScale,
+		monitorPanelConfig					: obj
 	};
 };
 
@@ -345,6 +350,38 @@ uinv.FCM.configMgr.api.getViewpoint = function(){
 	
 	return obj;
 };
+
+/**
+ * @description 设置视角数据
+ * @memberOf uinv.FCM.configMgr.api
+ * @param {String} key 物体key值
+ * @param {Object} o 视角数据 {x,y,z}的值
+ * @return {Boolean} true 正常处理 false key值不存在
+ * @example uinv.FCM.configMgr.api.getViewpoint();
+ * @author lizhong
+ * @since 2013-07
+ * @static
+ */
+uinv.FCM.configMgr.api.setViewpoint = function(key, o){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	var obj,i,k;
+	
+	obj = _obj.data.viewpoint;
+
+	for(i=0,k=obj.length;i<k;i++){
+		if(obj[i].key == key){
+			obj[i].data.x = typeof o.x == "undefined" ? obj[i].data.x : o.x;
+			obj[i].data.y = typeof o.y == "undefined" ? obj[i].data.y : o.y;
+			obj[i].data.z = typeof o.z == "undefined" ? obj[i].data.z : o.z;
+			return true;
+		}
+	}
+	
+	return false;
+	
+};
+
 
 /**
  * @description 获取统计数据
@@ -600,6 +637,7 @@ uinv.FCM.configMgr.api.nameFindDom = function(name){
 
 	return _obj.form.box.find('*[name='+name+'][cate][path]');
 };
+
 
 /**
  * @description 系统配置
@@ -8980,6 +9018,7 @@ uinv.FCM.configMgr.template.get = function(tpl){
 	if(_this.cacheEnable && (path in _this.cache) ){
 		result = _this.cache[path];
 	}else{
+		
 		result = $.ajax({ url: path, async: false });
 		if( result.readyState === 4 &&  result.status === 200  ){
 			
