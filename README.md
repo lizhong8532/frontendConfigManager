@@ -37,5 +37,5 @@ Blog
 License
 -------
 
-frontendConfigManager is copyright (c) 2011-2012 lizhong <mail@lizhong.me>.
+frontendConfigManager is copyright (c) 2013 lizhong <mail@lizhong.me>.
 
