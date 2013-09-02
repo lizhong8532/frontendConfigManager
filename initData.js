@@ -154,7 +154,7 @@ uinv.FCM.configMgr.form.createFormData = [
 {tab:"layout",   group : "_layout", level : "cabinetFullFreeBy1U", name:"cabinetFullFreeBy1U_resourcePath", uinvInterface:"cabinetFullFreeBy1U_resourcePath",caption:"1U挡板路径", type:"string", defaultValue:"uinv_cosmos_1U_Blank" },
 
 //{ group : "_layout", level : "top", name:"strScenesBackgroundColor",uinvInterface:"", caption:"场景背景颜色", type:"color", defaultValue:"#FFFFFF" },
-{tab:"layout",   group : "_layout", level : "top", name:"strLogo",uinvInterface:"isStrLogo", caption:"LOGO", type:"image", defaultValue:"" , dir:"logo" },
+{tab:"layout",   group : "_layout", level : "top", name:"strLogo",uinvInterface:"isStrLogo", caption:"LOGO", type:"image", defaultValue:"" , dir:"resource/images/logo.png" },
 
 {tab:"system",   group : "_system", level : "top", name:"cameraInitLimitY", uinvInterface:"cameraInitLimitY", caption:"摄影机上下浮动角度范围", type:"array", settings:[
 	{

@@ -121,9 +121,13 @@ uinv.FCM.configMgr.model.backup.updateText = function(){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
+	// Fixes #6 解决数据时空的时候，返回undefined
+	var con = _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data );
+	var str = _obj.model.transform.str2obj( uinv.server.manager.frame.getString().data );
+	
 	var o = { 
-		'config' : _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data ),
-		'string' : _obj.model.transform.str2obj( uinv.server.manager.frame.getString().data )
+		'config' : typeof con === "object" ? _obj.model.object.clone(con) : {} ,
+		'string' : typeof con === "object" ? _obj.model.object.clone(str) : {}
 	};
 	
 	var backObj = {
@@ -225,10 +229,14 @@ uinv.FCM.configMgr.model.backup.setData = function(o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var i = 0;
+
+	// Fixes #6 解决数据时空的时候，返回undefined
+	var con = _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data );
+	var str = _obj.model.transform.str2obj( uinv.server.manager.frame.getString().data );
 	
 	var obj = { 
-		'config' : _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data ),
-		'string' : _obj.model.transform.str2obj( uinv.server.manager.frame.getString().data )
+		'config' : typeof con === "object" ? _obj.model.object.clone(con) : {} ,
+		'string' : typeof con === "object" ? _obj.model.object.clone(str) : {}
 	};
 	
 	if( typeof o.config == 'object' ){
@@ -259,5 +267,9 @@ uinv.FCM.configMgr.model.backup.updateConfig = function(o){
 	var _this = this;			
 	
 	_obj.data = _obj.model.object.clone(o.config);
+	
+	// Fixes #7 解决备份的数据与form初始数据不一致时出错bug
+	_obj.form.initFormDataToData();
+	
 	_obj.form.init();
 };

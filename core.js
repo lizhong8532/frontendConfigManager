@@ -6,7 +6,7 @@
  * @author: lizhong 
  * @description: frontendConfigManager 
  * @project: frontendConfigManager 
- * @date: 2013-08-27 
+ * @date: 2013-09-02 
  * ------------------------------------------------------------- 
  */ 
 
@@ -322,7 +322,6 @@ uinv.FCM.configMgr.api.getMonitor = function(){
 		monitorManagerOvertime				: _obj.data.monitor.alarm.monitorManagerOvertime,
 		monitorManagerInDeviceIntervalTime	: _obj.data.monitor.alarm.monitorManagerInDeviceIntervalTime,
 		monitorManagerInDeviceOvertime		: _obj.data.monitor.alarm.monitorManagerInDeviceOvertime,
-		alarmManagerOvertime				: _obj.data.monitor.alarm.alarmManagerOvertime,
 		monitorManagerIconScale				: _obj.data.monitor.alarm.monitorManagerIconScale,
 		monitorPanelConfig					: obj
 	};
@@ -357,7 +356,7 @@ uinv.FCM.configMgr.api.getViewpoint = function(){
  * @param {String} key 物体key值
  * @param {Object} o 视角数据 {x,y,z}的值
  * @return {Boolean} true 正常处理 false key值不存在
- * @example uinv.FCM.configMgr.api.getViewpoint();
+ * @example uinv.FCM.configMgr.api.setViewpoint("asdfkjaskdfjlagjladsfsadfsa", {x:10,y:40,z:200});
  * @author lizhong
  * @since 2013-07
  * @static
@@ -374,6 +373,9 @@ uinv.FCM.configMgr.api.setViewpoint = function(key, o){
 			obj[i].data.x = typeof o.x == "undefined" ? obj[i].data.x : o.x;
 			obj[i].data.y = typeof o.y == "undefined" ? obj[i].data.y : o.y;
 			obj[i].data.z = typeof o.z == "undefined" ? obj[i].data.z : o.z;
+			
+			_obj.form.saveData();
+			
 			return true;
 		}
 	}
@@ -576,6 +578,34 @@ uinv.FCM.configMgr.api.getForm = function(group){
 };
 
 /**
+ * @description 设置表单数据
+ * @memberOf uinv.FCM.configMgr.api
+ * @param {String} group 
+ * @param {String} name
+ * @param {*} 数据
+ * @return {Boolean} true 设置成功 false group不存在或者name值不存在
+ * @example 
+ * uinv.FCM.configMgr.api.setForm( "_system", "logo", "images/logo.gif" ); <br />
+ * uinv.FCM.configMgr.api.setForm( "_system", "pos", {x:30,y:50} );
+ * @author lizhong
+ * @since 2013-07
+ * @static
+ */
+uinv.FCM.configMgr.api.setForm = function(group, name, data){
+	var _obj = uinv.FCM.configMgr,
+		_this = this;
+		
+	if( typeof _obj.data[group] == "object" &&  typeof _obj.data[group][name] == "object" ){
+		_obj.data[group][name] = data;
+		_obj.form.saveData();
+		
+		return true;
+	}else{
+		return false;
+	}
+};
+
+/**
  * @description 获取告警数据
  * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 告警级别数据
@@ -601,6 +631,8 @@ uinv.FCM.configMgr.api.getAlarm = function(){
 	
 	// 把moniterTime删除，放到moniter接口
 	delete obj.monitorTime;
+	
+	obj.alarmManagerOvertime = _obj.data.monitor.alarm.alarmManagerOvertime;
 	
 	return obj;
 };
@@ -1948,9 +1980,13 @@ uinv.FCM.configMgr.model.backup.updateText = function(){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
+	// Fixes #6 解决数据时空的时候，返回undefined
+	var con = _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data );
+	var str = _obj.model.transform.str2obj( uinv.server.manager.frame.getString().data );
+	
 	var o = { 
-		'config' : _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data ),
-		'string' : _obj.model.transform.str2obj( uinv.server.manager.frame.getString().data )
+		'config' : typeof con === "object" ? _obj.model.object.clone(con) : {} ,
+		'string' : typeof con === "object" ? _obj.model.object.clone(str) : {}
 	};
 	
 	var backObj = {
@@ -2052,10 +2088,14 @@ uinv.FCM.configMgr.model.backup.setData = function(o){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var i = 0;
+
+	// Fixes #6 解决数据时空的时候，返回undefined
+	var con = _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data );
+	var str = _obj.model.transform.str2obj( uinv.server.manager.frame.getString().data );
 	
 	var obj = { 
-		'config' : _obj.model.transform.str2obj( uinv.server.manager.frame.getFrameConfig().data ),
-		'string' : _obj.model.transform.str2obj( uinv.server.manager.frame.getString().data )
+		'config' : typeof con === "object" ? _obj.model.object.clone(con) : {} ,
+		'string' : typeof con === "object" ? _obj.model.object.clone(str) : {}
 	};
 	
 	if( typeof o.config == 'object' ){
@@ -2086,6 +2126,10 @@ uinv.FCM.configMgr.model.backup.updateConfig = function(o){
 	var _this = this;			
 	
 	_obj.data = _obj.model.object.clone(o.config);
+	
+	// Fixes #7 解决备份的数据与form初始数据不一致时出错bug
+	_obj.form.initFormDataToData();
+	
 	_obj.form.init();
 };
 
@@ -2417,7 +2461,7 @@ uinv.FCM.configMgr.model.images.imUpload = function(obj, dir){
 	var _this = this;
 	_this.dir = dir || _this.dir;
 	var pathinfo = obj.value.split('\\');
-	var filename = encodeURIComponent(pathinfo[pathinfo.length-1]).replaceAll('%','_');
+	var filename = encodeURIComponent(pathinfo[pathinfo.length-1]).replaceAll('%','___');
 	var path = _obj.global.path + _this.path + _this.dir;
 	var result = uinv.server.manager.frame.isFileExist(path+'/'+filename);
 	var bool = true;
@@ -2586,7 +2630,7 @@ uinv.FCM.configMgr.model.images.decode = function(str){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	// 把 _ 替换 % 因为之前为了方便urldecode编码命名
-	return decodeURIComponent(str.replaceAll('_','%'));
+	return decodeURIComponent(str.replaceAll('___','%'));
 };
 
 /**

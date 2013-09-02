@@ -56,7 +56,7 @@ uinv.FCM.configMgr.model.images.imUpload = function(obj, dir){
 	var _this = this;
 	_this.dir = dir || _this.dir;
 	var pathinfo = obj.value.split('\\');
-	var filename = encodeURIComponent(pathinfo[pathinfo.length-1]).replaceAll('%','_');
+	var filename = encodeURIComponent(pathinfo[pathinfo.length-1]).replaceAll('%','___');
 	var path = _obj.global.path + _this.path + _this.dir;
 	var result = uinv.server.manager.frame.isFileExist(path+'/'+filename);
 	var bool = true;
@@ -225,7 +225,7 @@ uinv.FCM.configMgr.model.images.decode = function(str){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	// 把 _ 替换 % 因为之前为了方便urldecode编码命名
-	return decodeURIComponent(str.replaceAll('_','%'));
+	return decodeURIComponent(str.replaceAll('___','%'));
 };
 
 /**

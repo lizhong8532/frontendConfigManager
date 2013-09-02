@@ -60,7 +60,6 @@ uinv.FCM.configMgr.api.getMonitor = function(){
 		monitorManagerOvertime				: _obj.data.monitor.alarm.monitorManagerOvertime,
 		monitorManagerInDeviceIntervalTime	: _obj.data.monitor.alarm.monitorManagerInDeviceIntervalTime,
 		monitorManagerInDeviceOvertime		: _obj.data.monitor.alarm.monitorManagerInDeviceOvertime,
-		alarmManagerOvertime				: _obj.data.monitor.alarm.alarmManagerOvertime,
 		monitorManagerIconScale				: _obj.data.monitor.alarm.monitorManagerIconScale,
 		monitorPanelConfig					: obj
 	};
@@ -95,7 +94,7 @@ uinv.FCM.configMgr.api.getViewpoint = function(){
  * @param {String} key 物体key值
  * @param {Object} o 视角数据 {x,y,z}的值
  * @return {Boolean} true 正常处理 false key值不存在
- * @example uinv.FCM.configMgr.api.getViewpoint();
+ * @example uinv.FCM.configMgr.api.setViewpoint("asdfkjaskdfjlagjladsfsadfsa", {x:10,y:40,z:200});
  * @author lizhong
  * @since 2013-07
  * @static
@@ -112,6 +111,9 @@ uinv.FCM.configMgr.api.setViewpoint = function(key, o){
 			obj[i].data.x = typeof o.x == "undefined" ? obj[i].data.x : o.x;
 			obj[i].data.y = typeof o.y == "undefined" ? obj[i].data.y : o.y;
 			obj[i].data.z = typeof o.z == "undefined" ? obj[i].data.z : o.z;
+			
+			_obj.form.saveData();
+			
 			return true;
 		}
 	}
@@ -314,6 +316,34 @@ uinv.FCM.configMgr.api.getForm = function(group){
 };
 
 /**
+ * @description 设置表单数据
+ * @memberOf uinv.FCM.configMgr.api
+ * @param {String} group 
+ * @param {String} name
+ * @param {*} 数据
+ * @return {Boolean} true 设置成功 false group不存在或者name值不存在
+ * @example 
+ * uinv.FCM.configMgr.api.setForm( "_system", "logo", "images/logo.gif" ); <br />
+ * uinv.FCM.configMgr.api.setForm( "_system", "pos", {x:30,y:50} );
+ * @author lizhong
+ * @since 2013-07
+ * @static
+ */
+uinv.FCM.configMgr.api.setForm = function(group, name, data){
+	var _obj = uinv.FCM.configMgr,
+		_this = this;
+		
+	if( typeof _obj.data[group] == "object" &&  typeof _obj.data[group][name] == "object" ){
+		_obj.data[group][name] = data;
+		_obj.form.saveData();
+		
+		return true;
+	}else{
+		return false;
+	}
+};
+
+/**
  * @description 获取告警数据
  * @memberOf uinv.FCM.configMgr.api
  * @return {Object} 告警级别数据
@@ -339,6 +369,8 @@ uinv.FCM.configMgr.api.getAlarm = function(){
 	
 	// 把moniterTime删除，放到moniter接口
 	delete obj.monitorTime;
+	
+	obj.alarmManagerOvertime = _obj.data.monitor.alarm.alarmManagerOvertime;
 	
 	return obj;
 };
