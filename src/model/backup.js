@@ -19,8 +19,8 @@ uinv.FCM.configMgr.model.backup.model = {
 	'资源' : { 'model' : 'resources' , 'data' : 'resources' },
 	'统计' : { 'model' : 'statistics', 'data' : 'statistics' },
 	'选择' : { 'model' : 'selector', 'data' : 'selector' },
-	'系统' : { 'data' : 'system' },
-	'布局' : { 'data' : 'layout' },
+	// '系统' : { 'data' : 'system' },
+	// '布局' : { 'data' : 'layout' },
 	'下载' : { 'data' : 'download' }
 };
 
@@ -34,7 +34,8 @@ uinv.FCM.configMgr.model.backup.model = {
  */
 uinv.FCM.configMgr.model.backup.backModel =  [
 	'视角','图层','资源','下载','监控',
-	'统计','选择','系统','布局','面板'
+	// '系统','布局',
+	'统计','选择','面板'
 ];
 
 /**
@@ -204,6 +205,9 @@ uinv.FCM.configMgr.model.backup.configUpload = function(obj){
 	uinv.server.manager.frame.upAndUnZip(obj, fileName, function(result){
 		
 		if(result.success){
+			
+			result.data = _obj.model.string.varFixSub(result.data);
+			
 			try{
 				o = _obj.model.transform.str2obj(result.data);
 			}catch(e){

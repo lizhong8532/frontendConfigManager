@@ -1,5 +1,12 @@
+
+2013-09-10
+
+* 新增varFixSub功能，此功能主要判断上传的frame.js前面有没有定义变量，如有将过滤掉变量 (lizhong)
+
+
 2013-09-02
 
+* 新增设置布局与系统备份索引字段API接口 (lizhong)
 * 修复bug备份的数据与form定义的数据不一致时出现找不到对象的错误 (Fixes #7) (lizhong)
 * 修复bug当数据为空时转换为空对象  (Fixes #6) (lizhong)
 

@@ -6,7 +6,7 @@
  * @author: lizhong 
  * @description: frontendConfigManager 
  * @project: frontendConfigManager 
- * @date: 2013-09-02 
+ * @date: 2013-09-10 
  * ------------------------------------------------------------- 
  */ 
 
@@ -148,6 +148,12 @@ namespace.reg('uinv.FCM.configMgr.model.resources');
  * @namespace uinv.FCM.configMgr.model.viewpoint
  */
 namespace.reg('uinv.FCM.configMgr.model.viewpoint');
+
+/**
+ * @fileOverview 字符串
+ * @namespace uinv.FCM.configMgr.model.string
+ */
+namespace.reg('uinv.FCM.configMgr.model.string');
 
 /**
  * @fileOverview 备份模块
@@ -668,6 +674,29 @@ uinv.FCM.configMgr.api.nameFindDom = function(name){
 	var _this = this;
 
 	return _obj.form.box.find('*[name='+name+'][cate][path]');
+};
+
+/**
+ * @description 新增备份索引字段信息
+ * @memberOf uinv.FCM.configMgr.api
+ * @param {Object} 字段信息
+ * @example uinv.FCM.configMgr.api.setBackupIndex({_system:"系统",_layout:"布局"});
+ * @author lizhong
+ * @since 2013-08
+ * @static
+ */
+uinv.FCM.configMgr.api.setBackupIndex = function(o){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	var i;
+
+	for(i in o){
+		if( !_obj.model.array.inArray(o[i], _obj.model.backup.backModel) ){
+			_obj.model.backup.backModel.push( o[i] );
+		}
+		
+		_obj.model.backup.model[o[i]] = { data : i };
+	}
 };
 
 
@@ -1878,8 +1907,8 @@ uinv.FCM.configMgr.model.backup.model = {
 	'资源' : { 'model' : 'resources' , 'data' : 'resources' },
 	'统计' : { 'model' : 'statistics', 'data' : 'statistics' },
 	'选择' : { 'model' : 'selector', 'data' : 'selector' },
-	'系统' : { 'data' : 'system' },
-	'布局' : { 'data' : 'layout' },
+	// '系统' : { 'data' : 'system' },
+	// '布局' : { 'data' : 'layout' },
 	'下载' : { 'data' : 'download' }
 };
 
@@ -1893,7 +1922,8 @@ uinv.FCM.configMgr.model.backup.model = {
  */
 uinv.FCM.configMgr.model.backup.backModel =  [
 	'视角','图层','资源','下载','监控',
-	'统计','选择','系统','布局','面板'
+	// '系统','布局',
+	'统计','选择','面板'
 ];
 
 /**
@@ -2063,6 +2093,9 @@ uinv.FCM.configMgr.model.backup.configUpload = function(obj){
 	uinv.server.manager.frame.upAndUnZip(obj, fileName, function(result){
 		
 		if(result.success){
+			
+			result.data = _obj.model.string.varFixSub(result.data);
+			
 			try{
 				o = _obj.model.transform.str2obj(result.data);
 			}catch(e){
@@ -3625,8 +3658,9 @@ uinv.FCM.configMgr.model.layer.uploadCallback = function(result){
 	var _this = this;
 	if( result.success ){
 		
-		var obj = _obj.model.transform.str2obj(result.data);
+		result.data = _obj.model.string.varFixSub(result.data);
 		
+		var obj = _obj.model.transform.str2obj(result.data);
 		var bool = _this.verificationLayerData(obj);
 
 		if(bool){
@@ -3690,7 +3724,7 @@ uinv.FCM.configMgr.model.layer.verificationLayerData = function(obj){
 uinv.FCM.configMgr.model.layer.globalLayerListHtml = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;	
-	var html = '';
+	var html = "";
 
 	html = _obj.template.load("layer/globalLayerList.html",obj);
 	
@@ -4592,6 +4626,8 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 
 	uinv.server.manager.frame.upAndUnZip(obj, fileName, function(result){
 		if(result.success){
+			result.data = _obj.model.string.varFixSub(result.data);
+			
 			var o = _obj.model.transform.str2obj(result.data);
 			if( _obj.model.array.isArray(o) ){
 				for(var i=0,k=o.length;i<k;i++){
@@ -6457,9 +6493,10 @@ uinv.FCM.configMgr.model.panel.uploadCallback = function(result){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	if( result.success ){
+
+		result.data = _obj.model.string.varFixSub(result.data);
 		
 		var obj = _obj.model.transform.str2obj(result.data);
-		
 		var bool = _this.verificationPanelData(obj);
 
 		if(bool){
@@ -8443,6 +8480,24 @@ uinv.FCM.configMgr.model.statistics.init = function(classStr){
 	var _this = this;
 	_this.classStr = classStr;
 	_this.mkhtml();
+};
+
+/**
+ * @description 过滤字符串前边的等号与变量，使其能
+ * @memberOf uinv.FCM.configMgr.model.string
+ * @param {String} str
+ * @return {String} 处理后的字符串
+ * @static
+ */
+uinv.FCM.configMgr.model.string.varFixSub = function(str){
+	str = $.trim(str);			
+	var firstChar = str.substr(0,1);
+	if(firstChar !== "[" && firstChar !== "{"){
+		var num = str.indexOf("=") + 1;	
+		str = str.substr(num);
+	}
+	
+	return str;
 };
 
 /**

@@ -407,3 +407,26 @@ uinv.FCM.configMgr.api.nameFindDom = function(name){
 
 	return _obj.form.box.find('*[name='+name+'][cate][path]');
 };
+
+/**
+ * @description 新增备份索引字段信息
+ * @memberOf uinv.FCM.configMgr.api
+ * @param {Object} 字段信息
+ * @example uinv.FCM.configMgr.api.setBackupIndex({_system:"系统",_layout:"布局"});
+ * @author lizhong
+ * @since 2013-08
+ * @static
+ */
+uinv.FCM.configMgr.api.setBackupIndex = function(o){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	var i;
+
+	for(i in o){
+		if( !_obj.model.array.inArray(o[i], _obj.model.backup.backModel) ){
+			_obj.model.backup.backModel.push( o[i] );
+		}
+		
+		_obj.model.backup.model[o[i]] = { data : i };
+	}
+};

@@ -18,9 +18,9 @@ var namespace = {
 		for(var i=0,k=arr.length;i<k;i++){
 			if(typeof namespace[arr[i]] == 'undefined'){
 				namespace[arr[i]] = {}; 
-		    	}
+		    }
 	 
-		    	namespace = namespace[arr[i]];          
+		    namespace = namespace[arr[i]];          
 		}
 
 		return namespace;
