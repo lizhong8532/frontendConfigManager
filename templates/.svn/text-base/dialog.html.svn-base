@@ -1,3 +1,0 @@
-
-<div class="config-dialog-bg config-dialog-bg-{{id}}"></div>
-<div class="config-dialog config-dialog-{{id}}" style="display:none;">{{{msg}}}</div>
