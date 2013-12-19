@@ -205,6 +205,9 @@ uinv.FCM.configMgr.model.backup.configUpload = function(obj){
 	uinv.server.manager.frame.upAndUnZip(obj, fileName, function(result){
 		
 		if(result.success){
+			
+			result.data = _obj.model.string.varFixSub(result.data);
+			
 			try{
 				o = _obj.model.transform.str2obj(result.data);
 			}catch(e){

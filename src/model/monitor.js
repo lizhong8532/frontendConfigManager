@@ -398,6 +398,8 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 
 	uinv.server.manager.frame.upAndUnZip(obj, fileName, function(result){
 		if(result.success){
+			result.data = _obj.model.string.varFixSub(result.data);
+			
 			var o = _obj.model.transform.str2obj(result.data);
 			if( _obj.model.array.isArray(o) ){
 				for(var i=0,k=o.length;i<k;i++){

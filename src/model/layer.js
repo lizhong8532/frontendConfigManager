@@ -852,8 +852,9 @@ uinv.FCM.configMgr.model.layer.uploadCallback = function(result){
 	var _this = this;
 	if( result.success ){
 		
-		var obj = _obj.model.transform.str2obj(result.data);
+		result.data = _obj.model.string.varFixSub(result.data);
 		
+		var obj = _obj.model.transform.str2obj(result.data);
 		var bool = _this.verificationLayerData(obj);
 
 		if(bool){
@@ -916,7 +917,7 @@ uinv.FCM.configMgr.model.layer.verificationLayerData = function(obj){
 uinv.FCM.configMgr.model.layer.globalLayerListHtml = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;	
-	var html = '';
+	var html = "";
 
 	html = _obj.template.load("layer/globalLayerList.html",obj);
 	

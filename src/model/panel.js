@@ -850,9 +850,10 @@ uinv.FCM.configMgr.model.panel.uploadCallback = function(result){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	if( result.success ){
+
+		result.data = _obj.model.string.varFixSub(result.data);
 		
 		var obj = _obj.model.transform.str2obj(result.data);
-		
 		var bool = _this.verificationPanelData(obj);
 
 		if(bool){

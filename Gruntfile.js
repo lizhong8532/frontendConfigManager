@@ -69,7 +69,7 @@ module.exports = function (grunt) {
                         		' * @version: <%= pkg.version%> \n' +
                         		' * @since: 2013-08-01 \n' +
                         		' * @author: <%= pkg.author%> \n' +
-					' */ \n\n',
+					' */ \n\n'
             		},
             		build : {
                 		src : 'core.js',

@@ -6,7 +6,11 @@
  * @author: lizhong 
  * @description: frontendConfigManager 
  * @project: frontendConfigManager 
+<<<<<<< HEAD
  * @date: 2013-12-19 
+=======
+ * @date: 2013-09-10 
+>>>>>>> 9275f3495e9baffac7bb3f0c5ab5136cf72b66b2
  * ------------------------------------------------------------- 
  */ 
 
@@ -148,6 +152,12 @@ namespace.reg('uinv.FCM.configMgr.model.resources');
  * @namespace uinv.FCM.configMgr.model.viewpoint
  */
 namespace.reg('uinv.FCM.configMgr.model.viewpoint');
+
+/**
+ * @fileOverview 字符串
+ * @namespace uinv.FCM.configMgr.model.string
+ */
+namespace.reg('uinv.FCM.configMgr.model.string');
 
 /**
  * @fileOverview 备份模块
@@ -2293,6 +2303,9 @@ uinv.FCM.configMgr.model.backup.configUpload = function(obj){
 	uinv.server.manager.frame.upAndUnZip(obj, fileName, function(result){
 		
 		if(result.success){
+			
+			result.data = _obj.model.string.varFixSub(result.data);
+			
 			try{
 				o = _obj.model.transform.str2obj(result.data);
 			}catch(e){
@@ -3874,8 +3887,9 @@ uinv.FCM.configMgr.model.layer.uploadCallback = function(result){
 	var _this = this;
 	if( result.success ){
 		
-		var obj = _obj.model.transform.str2obj(result.data);
+		result.data = _obj.model.string.varFixSub(result.data);
 		
+		var obj = _obj.model.transform.str2obj(result.data);
 		var bool = _this.verificationLayerData(obj);
 
 		if(bool){
@@ -3938,7 +3952,7 @@ uinv.FCM.configMgr.model.layer.verificationLayerData = function(obj){
 uinv.FCM.configMgr.model.layer.globalLayerListHtml = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;	
-	var html = '';
+	var html = "";
 
 	html = _obj.template.load("layer/globalLayerList.html",obj);
 	
@@ -5025,6 +5039,8 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 
 	uinv.server.manager.frame.upAndUnZip(obj, fileName, function(result){
 		if(result.success){
+			result.data = _obj.model.string.varFixSub(result.data);
+			
 			var o = _obj.model.transform.str2obj(result.data);
 			if( _obj.model.array.isArray(o) ){
 				for(var i=0,k=o.length;i<k;i++){
@@ -7035,9 +7051,10 @@ uinv.FCM.configMgr.model.panel.uploadCallback = function(result){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	if( result.success ){
+
+		result.data = _obj.model.string.varFixSub(result.data);
 		
 		var obj = _obj.model.transform.str2obj(result.data);
-		
 		var bool = _this.verificationPanelData(obj);
 
 		if(bool){
@@ -9506,6 +9523,24 @@ uinv.FCM.configMgr.model.statistics.order = function(obj){
 			$(obj).find("table").append(dom[sort[i]]);
 		}	
 	}
+};
+
+/**
+ * @description 过滤字符串前边的等号与变量，使其能
+ * @memberOf uinv.FCM.configMgr.model.string
+ * @param {String} str
+ * @return {String} 处理后的字符串
+ * @static
+ */
+uinv.FCM.configMgr.model.string.varFixSub = function(str){
+	str = $.trim(str);			
+	var firstChar = str.substr(0,1);
+	if(firstChar !== "[" && firstChar !== "{"){
+		var num = str.indexOf("=") + 1;	
+		str = str.substr(num);
+	}
+	
+	return str;
 };
 
 /**

@@ -138,6 +138,12 @@ namespace.reg('uinv.FCM.configMgr.model.resources');
 namespace.reg('uinv.FCM.configMgr.model.viewpoint');
 
 /**
+ * @fileOverview 字符串
+ * @namespace uinv.FCM.configMgr.model.string
+ */
+namespace.reg('uinv.FCM.configMgr.model.string');
+
+/**
  * @fileOverview 备份模块
  * @namespace uinv.FCM.configMgr.model.backup
  */
