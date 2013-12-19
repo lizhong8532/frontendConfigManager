@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 92
-/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor
+V 93
+/svn/develop/!svn/ver/11021/uinv_frontend/javascripts/frontendConfigManager/templates/monitor
 END
 position.html
 K 25
@@ -36,8 +36,8 @@ END
 alarmLevelTr.html
 K 25
 svn:wc:ra_dav:version-url
-V 110
-/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/alarmLevelTr.html
+V 111
+/svn/develop/!svn/ver/10944/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/alarmLevelTr.html
 END
 objMain.html
 K 25
@@ -48,8 +48,8 @@ END
 td.html
 K 25
 svn:wc:ra_dav:version-url
-V 100
-/svn/develop/!svn/ver/9412/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/td.html
+V 101
+/svn/develop/!svn/ver/10944/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/td.html
 END
 tr.html
 K 25
@@ -57,29 +57,29 @@ svn:wc:ra_dav:version-url
 V 100
 /svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/tr.html
 END
-styleConfigMain.html
-K 25
-svn:wc:ra_dav:version-url
-V 113
-/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/styleConfigMain.html
-END
 styleConfigRows.html
 K 25
 svn:wc:ra_dav:version-url
 V 113
 /svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/styleConfigRows.html
 END
-configMain.html
+styleConfigMain.html
 K 25
 svn:wc:ra_dav:version-url
-V 108
-/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/configMain.html
+V 113
+/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/styleConfigMain.html
 END
 configTypeInputText.html
 K 25
 svn:wc:ra_dav:version-url
 V 117
 /svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/configTypeInputText.html
+END
+configMain.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/develop/!svn/ver/11021/uinv_frontend/javascripts/frontendConfigManager/templates/monitor/configMain.html
 END
 panelConfigForm.html
 K 25

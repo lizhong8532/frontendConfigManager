@@ -1,9 +1,16 @@
 <div class="panel-action">
 	<div class="file-btn fl"><span><s>上传面板</s></span><input type="file" onchange="uinv.FCM.configMgr.model.panel.upload(this);" /></div>
+	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.panel.download();"><s>下载面板</s></button>
 	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.panel.createObject();"><s>创建对象</s></button>
+	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.panel.hideFold();"><s>全部收起</s></button>
+	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.panel.showFold();"><s>全部展开</s></button>
 </div>
 
-<div class="panel-list"></div>
+<div class="panel-list">
+	<div class="panel-col"></div>
+	<div class="panel-col"></div>
+	<div class="panel-col"></div>
+</div>
 
 <script type="text/javascript">
 

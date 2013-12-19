@@ -37,3 +37,25 @@ uinv.FCM.configMgr.note.dialog = function(str){
 	
 	uinv.FCM.configMgr.model.dialog.show(html);
 };
+
+/**
+ * @description 提示错误信息
+ * @memberOf uinv.FCM.configMgr.note
+ * @param {String} msg 信息
+ * @static
+ */
+uinv.FCM.configMgr.note.showError = function(msg){
+	var span = document.createElement("span");
+	span.style.cssText = "color:red;";
+	span.innerHTML = msg;
+	$(".config-page").find(".config-info").html(span);
+};
+
+/**
+ * @description 错误信息清楚
+ * @memberOf uinv.FCM.configMgr.note
+ * @static
+ */
+uinv.FCM.configMgr.note.clearError = function(){
+	$(".config-page").find(".config-info").html("");
+};

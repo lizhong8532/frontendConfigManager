@@ -1,7 +1,15 @@
 
-<div class="treeNode where" key="{{key}}">
+{{#if hasWhere}}
+	<div class="treeNode where" key="{{key}}">
+{{else}}
+	<div class="treeNode" key="{{key}}">
+{{/if}}
+
+	<i class="config-selector-fold config-selector-fold-close" onclick="uinv.FCM.configMgr.model.selector.foldToggle(this);"></i>
 	<span onclick="uinv.FCM.configMgr.model.selector.publicSelectNode(this,'{{key}}');">{{name}}</span>
-	{{#if hasChildrenNode}}
-		{{childrenNode}}
-	{{/if}}
+	<div class="childrenNode">
+		{{#if hasChildrenNode}}
+			{{{childrenNode}}}
+		{{/if}}
+	</div>
 </div>

@@ -58,11 +58,13 @@ uinv.FCM.configMgr.model.transform.str2obj = function(s){
 	var _this = this;
 	
 	if(typeof s == "string"){
-		s = s.replaceAll("\r\n",'');
-		s = s.replaceAll("\n",'');
-		s = s.replaceAll("\t",'');
+		//wxz modify
+		// s = s.replaceAll("\r\n",'');
+		// s = s.replaceAll("\n",'');
+		// s = s.replaceAll("\t",'');
 		try{
-			return eval("(function(){ return  " + s + " })();");
+			//return eval("(function(){ return  " + s + " })();");
+			return eval("uinv_FCM_configMgr_model_transform_str2obj = " + s);
 		}catch(e){
 			//_obj.note.alert('str2obj:'+e);
 			return false;

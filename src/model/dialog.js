@@ -31,7 +31,7 @@ uinv.FCM.configMgr.model.dialog.show = function(str){
 	$('body').css('position','relative').append(html);
 	
 	var $obj = $('.config-dialog-'+_this.id);
-
+	
 	$obj.css({
 		'margin-left':'-'+parseInt($obj.outerWidth()/2,10)+'px',
 		'margin-top':'-'+parseInt($obj.outerHeight()/2,10)+'px'

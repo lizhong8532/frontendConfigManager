@@ -15,6 +15,20 @@ uinv.FCM.configMgr.model.panel.itemConfigInitData.string = function(obj){
 };
 
 /**
+ * @description 多行字符串类型
+ * @param {DOM} obj DOM节点
+ */
+uinv.FCM.configMgr.model.panel.itemConfigInitData.multi = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.model.panel;
+	
+	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
+	if(typeof _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'string'){
+		$(obj).val( _panel.itemData[$(obj).attr('path')][$(obj).attr('name')]  );
+	}
+};
+
+/**
  * @description 数字串类型
  * @param {DOM} obj DOM节点
  */

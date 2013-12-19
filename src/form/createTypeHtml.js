@@ -119,6 +119,32 @@ uinv.FCM.configMgr.form.createTypeHtml.string = function(o){
 	return html;
 };
 
+
+/**
+ * @description 多行字符类型
+ * @param {Object} o 表单数据
+ * @return {String} HTML
+ */
+uinv.FCM.configMgr.form.createTypeHtml.multi = function(o){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.form;
+	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey],
+		html = "";
+		
+	html = _obj.template.load("form/textarea.html",{
+		value		: value,
+		classValue	: o.level,
+		itemkey		: o.itemkey,
+		group		: o.group,
+		name		: o.name,
+		caption		: o.caption,
+		cate		: "multi"
+	});
+	
+	return html;
+};
+
+
 /**
  * @description 数组类型
  * @param {Object} o 表单数据

@@ -6,11 +6,13 @@
 	<div class="treeNode" style="padding-left:20px;"  key="{{key}}">
 {{/if}}
 	
+	<i class="config-selector-fold config-selector-fold-close" onclick="uinv.FCM.configMgr.model.selector.foldToggle(this);"></i>
+	
 	<span onclick="uinv.FCM.configMgr.model.selector.selectNode('{{key}}',event);" oncontextmenu="uinv.FCM.configMgr.model.selector.contextMenu(event,this);">{{name}}</span>
 			
 	<div class="childrenNode">
 		{{#if hasChildrenNode}}
-			{{childrenNode}}
+			{{{childrenNode}}}
 		{{/if}}
 	</div>
 </div>

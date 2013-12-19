@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/develop/!svn/ver/9383/uinv_frontend/javascripts/frontendConfigManager/templates
+V 85
+/svn/develop/!svn/ver/11021/uinv_frontend/javascripts/frontendConfigManager/templates
 END
 dialog.html
 K 25
@@ -21,17 +21,17 @@ svn:wc:ra_dav:version-url
 V 100
 /svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/option_selected
 END
-note.html
-K 25
-svn:wc:ra_dav:version-url
-V 94
-/svn/develop/!svn/ver/9392/uinv_frontend/javascripts/frontendConfigManager/templates/note.html
-END
 input_text.html
 K 25
 svn:wc:ra_dav:version-url
 V 100
 /svn/develop/!svn/ver/9403/uinv_frontend/javascripts/frontendConfigManager/templates/input_text.html
+END
+note.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/develop/!svn/ver/9392/uinv_frontend/javascripts/frontendConfigManager/templates/note.html
 END
 line1.html
 K 25

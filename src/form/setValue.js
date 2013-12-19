@@ -79,6 +79,22 @@ uinv.FCM.configMgr.form.setValue.string = function(obj){
 };
 
 /**
+ * @description 多行字符串类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
+ * @param {DOM} obj 控件节点
+ */
+uinv.FCM.configMgr.form.setValue.multi = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.form;
+	
+	if($(obj).attr('itemkey') !== ""){
+		_obj.data[$(obj).attr('path')][$(obj).attr('name')][$(obj).attr('itemkey')] = $(obj).val();
+	}else{
+		_obj.data[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+	}
+};
+
+/**
  * @description 数字类型
  * @memberOf uinv.FCM.configMgr.form.setValue
  * @param {DOM} obj 控件节点

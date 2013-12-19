@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 81
-/svn/develop/!svn/ver/9383/uinv_frontend/javascripts/frontendConfigManager/images
+V 82
+/svn/develop/!svn/ver/10979/uinv_frontend/javascripts/frontendConfigManager/images
 END
 icon_slider.png
 K 25
@@ -14,4 +14,10 @@ K 25
 svn:wc:ra_dav:version-url
 V 93
 /svn/develop/!svn/ver/9383/uinv_frontend/javascripts/frontendConfigManager/images/bg_menu.png
+END
+chosen_sprite.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/develop/!svn/ver/10979/uinv_frontend/javascripts/frontendConfigManager/images/chosen_sprite.png
 END

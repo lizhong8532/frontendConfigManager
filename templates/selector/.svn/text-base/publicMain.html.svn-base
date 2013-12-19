@@ -1,6 +1,4 @@
 
-
-
 <div class="selector" style="width:500px;height:300px;">
 	<div class="tree" style="height:250px;width:100%;border:1px solid #EEE;overflow-y:auto;">{{{tree}}}</div>
 		

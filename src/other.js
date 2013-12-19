@@ -38,3 +38,18 @@ uinv.FCM.configMgr.other.conditionReplaceName = function(o){
 	
 	return o;
 };
+
+/**
+ * @description 限制只能输入数字
+ * @memberOf uinv.FCM.configMgr.other
+ * @static
+ */
+uinv.FCM.configMgr.other.inputNumber = function(event){
+	var value = $.trim(this.value);
+	var r = /^(-?\\d+)(\\.\\d+)?$/;
+	if(!r.test(value)){
+		return false;
+	}else{
+		return true;
+	}
+};

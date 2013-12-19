@@ -132,3 +132,21 @@ uinv.FCM.configMgr.model.object.isObject = function(o){
 	var _this = this;
 	return o instanceof Object;
 };
+
+/**
+ * @description 判断对象是否有成员
+ * @memberOf uinv.FCM.configMgr.model.object
+ * @param {Object} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.object.hasMember = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	var has = false, i;
+	for(i in obj){
+		has = true;
+		break;
+	}
+	
+	return has;
+};

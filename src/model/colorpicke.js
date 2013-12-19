@@ -102,6 +102,7 @@ uinv.FCM.configMgr.model.colorpicke.show = function(obj){
 	var bool = true;
 	var value = obj.value.length >= 3 ? obj.value : _obj.data[$(obj).attr('path')][$(obj).attr('name')];
 	$(obj).spectrum({
+		showInput: true,
 		color: value ,
 		showInitial: bool,
 		showAlpha: bool,

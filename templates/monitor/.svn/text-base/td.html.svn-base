@@ -1,1 +1,1 @@
-<td>{{{contents}}}</td>
+<td class="{{className}}">{{{contents}}}</td>

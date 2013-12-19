@@ -60,13 +60,13 @@ uinv.FCM.configMgr.model.monitor.position = {
  * @type Object
  */
 uinv.FCM.configMgr.model.monitor.panelConfigAttributeField = [
-	{ 'name' : '指标名称', 'value' : 'attributeName', 'type' : 'string' },
-	{ 'name' : '单位', 'value' : 'unit', 'type' : 'string' },
-	{ 'name' : '指标取值', 'value' : 'propertyPath', 'type' : 'string'},
-	{ 'name' : '最小值', 'value' : 'min', 'type' : 'number'},
-	{ 'name' : '最大值', 'value' : 'max', 'type' : 'number'},
-	{ 'name' : '进度条', 'value' : 'isProgressBar', 'type' : 'bool' },
-	{ 'name' : '颜色设置', 'value' : 'styleConfig', 'type' : 'styleConfig' }
+	{ 'name' : '指标名称', 'value' : 'attributeName', 'type' : 'string', 'className' : 'monitor-name'},
+	{ 'name' : '单位', 'value' : 'unit', 'type' : 'string' , 'className': 'monitor-unit' },
+	{ 'name' : '指标取值', 'value' : 'propertyPath', 'type' : 'string', 'className': 'monitor-propertyPath'},
+	{ 'name' : '最小值', 'value' : 'min', 'type' : 'number', 'className': 'monitor-min' },
+	{ 'name' : '最大值', 'value' : 'max', 'type' : 'number', 'className': 'monitor-max' },
+	{ 'name' : '进度条', 'value' : 'isProgressBar', 'type' : 'bool', 'className': 'monitor-isProgressBar' },
+	{ 'name' : '颜色设置', 'value' : 'styleConfig', 'type' : 'styleConfig', 'className': 'monitor-styleConfig' }
 ];
 
 
@@ -249,7 +249,8 @@ uinv.FCM.configMgr.model.monitor.panelConfigFormHtml = function(panel,o){
 		
 		for(i=0,k=_this.panelConfigAttributeField.length;i<k;i++){
 			panelConfigFormTypeDom += _obj.template.load("monitor/td.html",{
-				contents :  _this.configTypeToHtml[_this.panelConfigAttributeField[i].type]( _this.panelConfigAttributeField[i], o.form[n] )
+				contents :  _this.configTypeToHtml[_this.panelConfigAttributeField[i].type]( _this.panelConfigAttributeField[i], o.form[n] ),
+				className :  _this.panelConfigAttributeField[i].className
 			});
 		}	
 		
@@ -400,10 +401,19 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 			var o = _obj.model.transform.str2obj(result.data);
 			if( _obj.model.array.isArray(o) ){
 				for(var i=0,k=o.length;i<k;i++){
-					_this.uploadPanelHandle(o[i], fileName);
+					if(_this.checkModifyBody(o[i]) && typeof o[i].name === "string"){
+						_this.uploadPanelHandle(o[i], fileName);
+					}else{
+						_obj.note.alert(_obj.msg.S37);
+						break;
+					}
 				}
 			}else{
-				_this.uploadPanelHandle(o, fileName);
+				if(_this.checkModifyBody(o) && typeof o.name === "string"){
+					_this.uploadPanelHandle(o, fileName);
+				}else{
+					_obj.note.alert(_obj.msg.S37);
+				}
 			}
 		}else{
 			_obj.note.alert(result.data);
@@ -426,10 +436,6 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 	var i = 0;
 	
 	o.imagePath = o.previewImagePath;
-	
-	if(!_this.checkModifyBody(o)){
-		return false;
-	}
 	
 	var bool = true;
 	
@@ -588,7 +594,20 @@ uinv.FCM.configMgr.model.monitor.isUsePanel = function(name){
 };
 
 /**
- * @description 加测面板数据modify配置项是否合法
+ * @description 面板数据基本检测
+ * @memberOf uinv.FCM.configMgr.model.monitor
+ * @param {Object} o 面板数据
+ * @return {Boolean} true 通过 false 不通过
+ */
+uinv.FCM.configMgr.model.monitor.checkBase = function(o){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	
+};
+
+/**
+ * @description 检测面板数据modify配置项是否合法
  * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {Boolean} true 合法 false 不合法
@@ -657,15 +676,17 @@ uinv.FCM.configMgr.model.monitor.deletePanel = function(name){
 		return false;
 	}
 	
-	var obj = _this.nameFindPanel(name);
-	_obj.model.download.del( _this.getPanelZipPath(obj) );
-	_this.deleteFileArr.push( _this.getPanelPath(obj) );
-	
-	var index = _this.nameFindPanelIndex(name);
-	if( index >= 0 ){
-		_this.obj.panel.splice(index, 1);
-		_this.objHtml();
-		_this.styleHtml();
+	if(_obj.note.confirm(_obj.msg.S29)){
+		var obj = _this.nameFindPanel(name);
+		_obj.model.download.del( _this.getPanelZipPath(obj) );
+		_this.deleteFileArr.push( _this.getPanelPath(obj) );
+		
+		var index = _this.nameFindPanelIndex(name);
+		if( index >= 0 ){
+			_this.obj.panel.splice(index, 1);
+			_this.objHtml();
+			_this.styleHtml();
+		}
 	}
 };
 
@@ -681,9 +702,11 @@ uinv.FCM.configMgr.model.monitor.deleteObject = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	var index = _this.keyFindObjIndex(key);
-	_obj.data.monitor.object.splice(index, 1);
-	_this.objHtml();
+	if(_obj.note.confirm(_obj.msg.S29)){
+		var index = _this.keyFindObjIndex(key);
+		_obj.data.monitor.object.splice(index, 1);
+		_this.objHtml();
+	}
 };
 
 /**
@@ -696,10 +719,22 @@ uinv.FCM.configMgr.model.monitor.createObject = function(){
 	var _this = this;
 	
 	_obj.model.selector.show(function(obj){
-		_obj.model.selector.hide();
 		
-		var o = _this.addObjectToMemory(obj);
-		_this.addHtmlRow(o);
+		var i, isExist = false;
+		for(i=0; i<_obj.data.monitor.object.length; i++){
+			if(obj.name === _obj.data.monitor.object[i].name){
+				isExist = true;
+			}
+		}
+		
+		if(isExist){
+			_obj.note.alert(_obj.msg.F11(obj.name));
+		}else{
+			_obj.model.selector.hide();
+			
+			var o = _this.addObjectToMemory(obj);
+			_this.addHtmlRow(o);		
+		}
 	});
 };
 
@@ -848,6 +883,7 @@ uinv.FCM.configMgr.model.monitor.objSelectPanel = function(obj,key){
 uinv.FCM.configMgr.model.monitor.addHtmlRow = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	
 	var html = _this.objHtmlRow(obj);
 	_obj.form.box.find(_this.objBoxClassStr).append(html);
 	_obj.translate();
@@ -1008,7 +1044,10 @@ uinv.FCM.configMgr.model.monitor.alarmLevelHtmlRow = function(o){
 uinv.FCM.configMgr.model.monitor.deleteAlarmLevelRow = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	$(obj).parents('.row:eq(0)').remove();
+	
+	if(_obj.note.confirm(_obj.msg.S29)){
+		$(obj).parents('.row:eq(0)').remove();
+	}
 };
 
 /**
@@ -1024,6 +1063,52 @@ uinv.FCM.configMgr.model.monitor.addAlarmLevel = function(){
 	_obj.form.box.find(_this.alarmlevelBoxClassStr).append(html);
 	var dom = _obj.form.box.find(_this.alarmlevelBoxClassStr).find('.row:last').find('input[name=color]').get(0);
 	_obj.model.colorpicke.show(dom);
+};
+
+
+/**
+ * @description 检测是否有重复的告警等级
+ * @memberOf uinv.FCM.configMgr.model.monitor
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.monitor.checkRepeatAlarmLevel = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	$(".config-page").find(".config-top-submit").show();
+	_obj.note.clearError();
+	
+	if($.trim(obj.value) === ""){
+		_obj.note.showError(_obj.msg.S31);
+		window.setTimeout(function(){
+			obj.value = "";
+			obj.focus();
+		}, 200);
+		$(".config-page").find(".config-top-submit").hide();
+		return;
+	}
+	
+	var arr = [], isExist = false;
+	_obj.form.box.find(_this.alarmlevelBoxClassStr).find(".row").each(function(){
+		var value = $.trim($(this).find("input[name=name]").val());
+		if(_obj.model.array.inArray(value, arr)){
+			isExist = true;
+		}else{
+			arr.push(value);
+		}
+	});
+
+	if(isExist){
+		_obj.note.showError(_obj.msg.S30);
+		
+		window.setTimeout(function(){
+			obj.value = "";
+			obj.focus();
+		}, 200);
+		
+		$(".config-page").find(".config-top-submit").hide();
+	}
 };
 
 /**
@@ -1052,4 +1137,44 @@ uinv.FCM.configMgr.model.monitor.init = function(param){
 	_this.objHtml();
 	_this.styleHtml();
 	_this.alarmLevelHtml();
+};
+
+
+// Add 2013-12-19
+
+/**
+ * @description 获取焦点触发
+ * @memberOf uinv.FCM.configMgr.model.monitor
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.monitor.otherFocus = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	$(".config-top-submit").hide();
+};
+
+/**
+ * @description 焦点离开触发
+ * @memberOf uinv.FCM.configMgr.model.monitor
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.monitor.otherBlur = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var value = $.trim(obj.value);
+	var r = /^(\d+)(\.\d+)?$/;
+	if(!r.test(value)){
+		_obj.note.alert(_obj.msg.S36);
+		(function(obj){
+			window.setTimeout(function(){ obj.focus(); }, 200);
+		})(obj);
+		
+		$(".config-top-submit").hide();
+	}else{
+		$(".config-top-submit").show();
+	}
 };

@@ -1,6 +1,6 @@
 
 <div class="list obj-{{key}}">
-	<div class="header" style="position:relative;">
+	<div class="header" style="position:relative;" ondblclick="uinv.FCM.configMgr.model.panel.toggleFold(this);">
 		<h3><span onclick="uinv.FCM.configMgr.model.panel.modifyObjectName('{{key}}',this);">{{name}}</span></h3>
 		<span class="action" style="position:absolute;right:10px;">
 			<a onclick="uinv.FCM.configMgr.model.panel.deleteObj('{{key}}');" href="javascript:void(0);"><s>删除</s></a>
@@ -8,4 +8,7 @@
 	</div>
 	
 	<ul>{{{panelLis}}}</ul>
+	<div class="fold" onclick="uinv.FCM.configMgr.model.panel.toggleHiddenDisabled(this);">
+		<span></span>
+	</div>
 </div>

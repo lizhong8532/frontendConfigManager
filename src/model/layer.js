@@ -109,8 +109,7 @@ uinv.FCM.configMgr.model.layer.createObject = function(){
 		var comObj = _this.addObject( obj );
 		
 		// 画出html
-		var html = _this.mkhtml( comObj );
-		$(_this.classStr).append( html );
+		_this.appendObjectDom(_this.mkhtml( comObj ));
 	});
 };
 
@@ -241,6 +240,8 @@ uinv.FCM.configMgr.model.layer.keyDeleteObjLayerLi = function(objkey,layerkey){
  * @static
  */
 uinv.FCM.configMgr.model.layer.modifyObjectName = function(key,obj){
+	return;	// 暂时关闭此功能
+	
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var value = $(obj).html();
@@ -499,6 +500,9 @@ uinv.FCM.configMgr.model.layer.checkd = function(obj){
 		// 隐藏 上移按钮
 		_this.hideUpMoveBtn(obj);
 	}
+	
+	// 隐藏
+	_this.updateToggleDisabled($(obj).parents('.list').get(0));
 	
 };
 
@@ -859,10 +863,9 @@ uinv.FCM.configMgr.model.layer.uploadCallback = function(result){
 				}
 			}else{
 				_this.add(obj , _this.addCallback );
-			}							
+			}
+			_obj.form.submit();
 		}
-		
-		_obj.form.submit();
 	}else{
 		_obj.note.alert(result.data);
 	}
@@ -990,10 +993,195 @@ uinv.FCM.configMgr.model.layer.init = function(classStr){
 	
 	_this.obj = _this.getLayerList();
 
-	var html = '';
+	var box = _obj.form.box.find(_this.classStr);
 	for(var i=0,k=_obj.data.layer.length; i<k; i++){
-		html += _this.mkhtml( _obj.data.layer[i] );
+		box.find(".layer-col:eq("+i%3+")").append(_this.mkhtml( _obj.data.layer[i] ));
 	}
 	
-	_obj.form.box.find(_this.classStr).html(html);
+	_obj.form.box.find(_this.classStr).find(".list").each(function(){
+		_this.checkToggleDisabledInit(this);
+	});
+};
+
+
+// 2013-12-18 ADD
+/**
+ * @description 全部展开
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.showFold = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	_obj.form.box.find(_this.classStr).find(".list").each(function(){
+		$(this).find('ul').show();
+		$(this).find(".fold").show();
+	});
+};
+
+/**
+ * @description 全部收起
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.hideFold = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	_obj.form.box.find(_this.classStr).find(".list").each(function(){
+		$(this).find('ul').hide();
+		$(this).find(".fold").hide();
+	});
+};
+
+/**
+ * @description 切换收起
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.toggleFold = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var ul = $(obj).parent().find("ul");
+	var fold = $(obj).parent().find(".fold");
+	if(ul.is(":visible")){
+		ul.hide();
+		fold.hide();
+	}else{
+		ul.show();
+		fold.show();
+	}
+};
+
+/**
+ * @description 切换隐藏disabled项目
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.toggleHiddenDisabled = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var lis = $(obj).parent().find("ul").find("li");
+	
+	if(lis.length >= 1){
+		if($(obj).find("span").attr("class")==="up"){
+			lis.removeClass("db");
+			$(obj).find("span").removeClass("up").addClass("down");
+		}else{
+			lis.addClass("db");
+			$(obj).find("span").removeClass("down").addClass("up");
+		}
+	}
+};
+
+/**
+ * @description 检测是否显示fold
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.checkToggleDisabledInit = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var lislength = $(obj).find("ul>li").length;
+	var checklength = $(obj).find("ul>li.checked").length;
+	var fold = $(obj).find(".fold");
+	if( lislength>0 && lislength>checklength){
+		fold.show();
+		fold.find("span").removeClass("up").addClass("down");
+	}else{
+		fold.hide();
+	}
+};
+
+/**
+ * @description 更新图标状态
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.updateToggleDisabled = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var lisChecked = $(obj).find("ul").find("li.checked");
+	var lis = $(obj).find("ul").find("li");
+	var fold = $(obj).find(".fold");
+	
+	if(lis.length === lisChecked.length){
+		fold.hide();
+	}else{
+		fold.show();		
+	}
+};
+
+/**
+ * @description 添加obj DOM节点
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {String} html
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.appendObjectDom = function(html){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var box = _obj.form.box.find(_this.classStr),
+		arr = [], obj = [], i, min;
+	
+	box.find(".layer-col").each(function(){
+		var list = $(this).find(".list:last");
+		if(list.length===1){
+			arr.push(list.position().top + list.outerHeight());
+		}else{
+			arr.push(0);
+		}
+		obj.push(this);
+	});
+	
+	min = Number(Math.min(arr[0], arr[1], arr[2]));
+	
+	for(i=0; i<arr.length; i++){
+		if(arr[i] === min){
+			$(obj[i]).append(html);
+			$(obj[i]).find(".list:last").find("li").addClass("db");
+			$(obj[i]).find(".list:last").find(".fold").show().find("span").addClass("up");
+			break;
+		}
+	}
+};
+
+
+/**
+ * @description 下载图层
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.download = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	if(_obj.model.object.hasMember(_this.obj)){
+		var i, arr = [];
+		for(i in _this.obj){
+			arr.push(_this.obj[i]);
+		}
+		
+		var text = _obj.model.transform.obj2str(arr);
+	
+		uinv.server.manager.frame.placeZip( text, [], [], function(result){
+			if(result.success){
+				document.location = _obj.global.projectPath + result.data;
+			}else{
+				_obj.note.alert(result.data);
+			}
+		});	
+	}else{
+		_obj.note.alert(_obj.msg.S35);
+	}
 };

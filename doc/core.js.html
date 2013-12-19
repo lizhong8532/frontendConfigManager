@@ -33,7 +33,7 @@
  * @author: lizhong 
  * @description: frontendConfigManager 
  * @project: frontendConfigManager 
- * @date: 2013-09-02 
+ * @date: 2013-12-19 
  * ------------------------------------------------------------- 
  */ 
 
@@ -697,6 +697,29 @@ uinv.FCM.configMgr.api.nameFindDom = function(name){
 	return _obj.form.box.find('*[name='+name+'][cate][path]');
 };
 
+/**
+ * @description 新增备份索引字段信息
+ * @memberOf uinv.FCM.configMgr.api
+ * @param {Object} 字段信息
+ * @example uinv.FCM.configMgr.api.setBackupIndex({_system:"系统",_layout:"布局"});
+ * @author lizhong
+ * @since 2013-08
+ * @static
+ */
+uinv.FCM.configMgr.api.setBackupIndex = function(o){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	var i;
+
+	for(i in o){
+		if( !_obj.model.array.inArray(o[i], _obj.model.backup.backModel) ){
+			_obj.model.backup.backModel.push( o[i] );
+		}
+		
+		_obj.model.backup.model[o[i]] = { data : i };
+	}
+};
+
 
 /**
  * @description 系统配置
@@ -802,6 +825,12 @@ uinv.FCM.configMgr.data.download = [];
 uinv.FCM.configMgr.form.createFormData = [];
 
 /**
+ * @description 错误
+ * @type Boolean
+ */
+uinv.FCM.configMgr.form.hasError = false;
+
+/**
  * @description name轮询记录
  * @type Array
  */
@@ -905,14 +934,144 @@ uinv.FCM.configMgr.form.createHtml = function(o){
 	
 	o.data = _this.tabFindItem(o.tab);
 
-	var html = "";
+	var html = [];
 	for(var i=0,k=o.data.length;i&lt;k;i++){
 		if( typeof _this.createTypeHtml[o.data[i].type] == 'function' ){
-			html += _this.createTypeHtml[o.data[i].type]( o.data[i]  );
+			html.push(_this.createTypeHtml[o.data[i].type]( o.data[i] ));
 		}
 	}
 	
-	o.dom.html(html);
+	o.dom.html(html.join(""));
+	
+	// event
+	_this.eventListener(o.dom, o.data);
+	
+	// 组开关控制
+	_this.groupSwitch(o.data);
+};
+
+/**
+ * @description 事件监听
+ * @memberOf uinv.FCM.configMgr.form
+ * @param {DOM} dom
+ * @param {Object} obj
+ * @static
+ */
+uinv.FCM.configMgr.form.eventListener = function(dom, obj){
+	var _obj = uinv.FCM.configMgr,
+		_this = this;
+		
+	var getObj = function(name){
+		var i;
+		for(i=0; i&lt;obj.length; i++){
+			if(obj[i].name === name){
+				return obj[i];
+				break;
+			}
+		}
+	};
+		
+	dom.find(".form *[path][name][cate]").each(function(){
+		var o = getObj($(this).attr("name"));
+		var tmp = {};
+		var index = $(this).attr("itemkey");
+		if(index !== ""){
+			tmp.blur = o.settings[index].blur;
+			tmp.focus = o.settings[index].focus;
+		}else{
+			tmp.blur = o.blur;
+			tmp.focus = o.focus;
+		}
+		
+		if(typeof tmp.blur === "function"){
+			$(this).blur(function(){
+				tmp.blur.apply(this);
+			});
+		}
+		
+		if(typeof tmp.focus === "function"){
+			$(this).focus(function(){
+				tmp.focus.apply(this);
+			});
+		}
+		
+		if($(this).attr("cate") === "number" && typeof tmp.blur === "undefined"){
+			$(this).blur(function(){
+				var r = /^(-?\d+)(\.\d+)?$/;
+				var value = $.trim(this.value);
+				if(r.test(value)){
+					$(".config-top-submit").show();
+				}else{
+					alert("您输入的字符类型有误！");
+					(function(obj){
+						window.setTimeout(function(){ obj.focus(); }, 200);
+					})(this);
+					$(".config-top-submit").hide();				
+				}
+			});
+		}
+	});
+};
+
+
+/**
+ * @description 组的单选按钮开关
+ * @param data 表单生成数据
+ * @memberOf uinv.FCM.configMgr.form
+ * @static
+ */
+uinv.FCM.configMgr.form.groupSwitch = function(data){
+	var _obj = uinv.FCM.configMgr,
+		_this = this,
+		global = ".config-page .config-load",
+		top = ".top input[type=radio][cate][path]",
+		child = ".children input[path][cate][name]";
+	
+	var findNameChildItem = function(name){
+		var i, k, arr=[];
+		for(i=0, k=data.length; i&lt;k; i++){
+			if(data[i].parent === name){
+				arr.push(data[i].name);
+			}
+		}
+		
+		return arr;
+	};
+	
+	var action = function(arr, value){
+		if(arr.length >= 1){
+			$(global).find(child).each(function(){
+				var i,k;
+				for(i=0, k=arr.length; i&lt;k; i++){
+					if($(this).attr("name") === arr[i]){
+						if(value==="1"){
+							$(this).removeAttr("disabled");
+						}else{
+							$(this).attr("disabled", "disabled");
+						}
+					}
+				}
+			});
+		}
+	};
+	
+	$(global).find(top).each(function(){
+		
+		if($(this).val()==="0" && $(this).is(":checked")){
+			action(
+				findNameChildItem($(this).attr('name')),
+				$(this).val()
+			);
+		}
+		
+		$(this).click(function(){
+			action(
+				findNameChildItem($(this).attr('name')),
+				$(this).val()
+			);
+		});
+	});
+	
 };
 
 /**
@@ -957,19 +1116,20 @@ uinv.FCM.configMgr.form.initFormDataToData = function(){
  * @description 装载页面&lt;br />
  * 1) 如果异常将显示404
  * @memberOf uinv.FCM.configMgr.form
- * @param {Object} param { page:页面名称, obj:页面DOM对象 }
+ * @param {Object} param { page:页面名称, saveBtn:保存按钮节点, obj:页面DOM对象 }
  * @static
  */
 uinv.FCM.configMgr.form.load = function(param){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	_this.box  = param.obj || $('.config-load');
+	param.saveBtn.hide();
 	_this.box.load(
 		_obj.global.viewsPath + param.page + '?' + Date.parse(new Date()),
 		function(response, status, xhr) {
 			if ( status == "success" ){	
 				_this.init();
-				$('.config-submit-btn').show();
+				param.saveBtn.show();
 			}else{
 				$(this).load(_obj.global.errorPage);
 			}
@@ -988,6 +1148,16 @@ uinv.FCM.configMgr.form.submit = function(){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
+	// submit save berfore
+	if(typeof _this.submitBefore === "function"){
+		_this.submitBefore();
+	}
+	
+	if(_this.hasError){
+		_obj.note.alert(_this.hasError);
+		return;
+	}
+	
 	_this.nameInit = [];
 	
 	_this.box.find('*[name][cate][path]').each(function(){
@@ -1004,6 +1174,7 @@ uinv.FCM.configMgr.form.submit = function(){
 			_this.submitCallback();
 		}
 	});
+	
 	
 	// 调用回调函数
 	for(i=0, k=_this.createFormData.length; i&lt;k; i++){
@@ -1187,6 +1358,32 @@ uinv.FCM.configMgr.form.createTypeHtml.string = function(o){
 	return html;
 };
 
+
+/**
+ * @description 多行字符类型
+ * @param {Object} o 表单数据
+ * @return {String} HTML
+ */
+uinv.FCM.configMgr.form.createTypeHtml.multi = function(o){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.form;
+	var value = o.itemkey === "" ? _obj.data[o.group][o.name] : _obj.data[o.group][o.name][o.itemkey],
+		html = "";
+		
+	html = _obj.template.load("form/textarea.html",{
+		value		: value,
+		classValue	: o.level,
+		itemkey		: o.itemkey,
+		group		: o.group,
+		name		: o.name,
+		caption		: o.caption,
+		cate		: "multi"
+	});
+	
+	return html;
+};
+
+
 /**
  * @description 数组类型
  * @param {Object} o 表单数据
@@ -1327,6 +1524,22 @@ uinv.FCM.configMgr.form.setValue.text = function(obj){
  * @param {DOM} obj 控件节点
  */
 uinv.FCM.configMgr.form.setValue.string = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.form;
+	
+	if($(obj).attr('itemkey') !== ""){
+		_obj.data[$(obj).attr('path')][$(obj).attr('name')][$(obj).attr('itemkey')] = $(obj).val();
+	}else{
+		_obj.data[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+	}
+};
+
+/**
+ * @description 多行字符串类型
+ * @memberOf uinv.FCM.configMgr.form.setValue
+ * @param {DOM} obj 控件节点
+ */
+uinv.FCM.configMgr.form.setValue.multi = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.form;
 	
@@ -1579,6 +1792,22 @@ uinv.FCM.configMgr.form.type.string = function(obj){
 		$(obj).val( _obj.data[$(obj).attr('path')][$(obj).attr('name')] );
 	}
 };
+
+/**
+ * @description 多行字符串类型
+ * @param {DOM} obj 控件节点
+ */
+uinv.FCM.configMgr.form.type.multi = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.form;
+	
+	if($(obj).attr('itemkey') !== ""){
+		$(obj).val( _obj.data[$(obj).attr('path')][$(obj).attr('name')][$(obj).attr('itemkey')] );
+	}else{
+		$(obj).val( _obj.data[$(obj).attr('path')][$(obj).attr('name')] );
+	}
+};
+
 
 /**
  * @description 数字类型
@@ -1905,8 +2134,8 @@ uinv.FCM.configMgr.model.backup.model = {
 	'资源' : { 'model' : 'resources' , 'data' : 'resources' },
 	'统计' : { 'model' : 'statistics', 'data' : 'statistics' },
 	'选择' : { 'model' : 'selector', 'data' : 'selector' },
-	'系统' : { 'data' : 'system' },
-	'布局' : { 'data' : 'layout' },
+	// '系统' : { 'data' : 'system' },
+	// '布局' : { 'data' : 'layout' },
 	'下载' : { 'data' : 'download' }
 };
 
@@ -1920,7 +2149,8 @@ uinv.FCM.configMgr.model.backup.model = {
  */
 uinv.FCM.configMgr.model.backup.backModel =  [
 	'视角','图层','资源','下载','监控',
-	'统计','选择','系统','布局','面板'
+	// '系统','布局',
+	'统计','选择','面板'
 ];
 
 /**
@@ -2263,6 +2493,7 @@ uinv.FCM.configMgr.model.colorpicke.show = function(obj){
 	var bool = true;
 	var value = obj.value.length >= 3 ? obj.value : _obj.data[$(obj).attr('path')][$(obj).attr('name')];
 	$(obj).spectrum({
+		showInput: true,
 		color: value ,
 		showInitial: bool,
 		showAlpha: bool,
@@ -2310,7 +2541,7 @@ uinv.FCM.configMgr.model.dialog.show = function(str){
 	$('body').css('position','relative').append(html);
 	
 	var $obj = $('.config-dialog-'+_this.id);
-
+	
 	$obj.css({
 		'margin-left':'-'+parseInt($obj.outerWidth()/2,10)+'px',
 		'margin-top':'-'+parseInt($obj.outerHeight()/2,10)+'px'
@@ -2488,7 +2719,12 @@ uinv.FCM.configMgr.model.images.imUpload = function(obj, dir){
 	var _this = this;
 	_this.dir = dir || _this.dir;
 	var pathinfo = obj.value.split('\\');
-	var filename = encodeURIComponent(pathinfo[pathinfo.length-1]).replaceAll('%','___');
+	var filename = pathinfo[pathinfo.length-1];
+	if(/.*[\u4e00-\u9fa5]+.*$/.test(filename)){
+		_obj.note.alert(_obj.msg.S34);
+		return;
+	}
+	var filename = encodeURIComponent(filename).replaceAll('%','___');
 	var path = _obj.global.path + _this.path + _this.dir;
 	var result = uinv.server.manager.frame.isFileExist(path+'/'+filename);
 	var bool = true;
@@ -2636,14 +2872,9 @@ uinv.FCM.configMgr.model.images.getData = function(){
 uinv.FCM.configMgr.model.images.viewsImg = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	var img = '&lt;img src="'+$(obj).attr('src')+'" />';
+	var img = document.createElement("img");
+	img.src = $(obj).attr('src');
 	_obj.model.dialog.getObj().find('.img .right .views').html(img);
-	var $obj = _obj.model.dialog.getObj().find('.img .right .views img');
-	$obj.css({
-		'margin-left':'-'+parseInt($obj.outerWidth()/2,10)+'px',
-		'margin-top':'-'+parseInt($obj.outerHeight()/2,10)+'px'
-	});
-	
 };
 
 /**
@@ -2696,14 +2927,28 @@ uinv.FCM.configMgr.model.images.updateList = function(){
 			cla			: cla,
 			url			: _obj.global.projectPath + path+data[i],
 			path		: path+data[i],
-			maxHeight	: _this.imgHeight,
-			maxWidth	: _this.imgWidth,
 			title		: _this.decode(data[i])
 		}));
 		
 	}
 	
 	_obj.model.dialog.getObj().find('.img .left .imglist').html(arr.join(''));
+};
+
+/**
+ * @description  列表图标加载结束触发
+ * @memberOf uinv.FCM.configMgr.model.images
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.images.liImgLoad = function(obj){
+	var _obj = uinv.FCM.configMgr,
+		_this = this;
+	if($(obj).width() > $(obj).height()){
+		$(obj).css("max-width", "100%");
+	}else{
+		$(obj).css("max-height", "100%");
+	}
 };
 
 /**
@@ -2913,8 +3158,7 @@ uinv.FCM.configMgr.model.layer.createObject = function(){
 		var comObj = _this.addObject( obj );
 		
 		// 画出html
-		var html = _this.mkhtml( comObj );
-		$(_this.classStr).append( html );
+		_this.appendObjectDom(_this.mkhtml( comObj ));
 	});
 };
 
@@ -3045,6 +3289,8 @@ uinv.FCM.configMgr.model.layer.keyDeleteObjLayerLi = function(objkey,layerkey){
  * @static
  */
 uinv.FCM.configMgr.model.layer.modifyObjectName = function(key,obj){
+	return;	// 暂时关闭此功能
+	
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var value = $(obj).html();
@@ -3303,6 +3549,9 @@ uinv.FCM.configMgr.model.layer.checkd = function(obj){
 		// 隐藏 上移按钮
 		_this.hideUpMoveBtn(obj);
 	}
+	
+	// 隐藏
+	_this.updateToggleDisabled($(obj).parents('.list').get(0));
 	
 };
 
@@ -3663,10 +3912,9 @@ uinv.FCM.configMgr.model.layer.uploadCallback = function(result){
 				}
 			}else{
 				_this.add(obj , _this.addCallback );
-			}							
+			}
+			_obj.form.submit();
 		}
-		
-		_obj.form.submit();
 	}else{
 		_obj.note.alert(result.data);
 	}
@@ -3794,14 +4042,198 @@ uinv.FCM.configMgr.model.layer.init = function(classStr){
 	
 	_this.obj = _this.getLayerList();
 
-	var html = '';
+	var box = _obj.form.box.find(_this.classStr);
 	for(var i=0,k=_obj.data.layer.length; i&lt;k; i++){
-		html += _this.mkhtml( _obj.data.layer[i] );
+		box.find(".layer-col:eq("+i%3+")").append(_this.mkhtml( _obj.data.layer[i] ));
 	}
 	
-	_obj.form.box.find(_this.classStr).html(html);
+	_obj.form.box.find(_this.classStr).find(".list").each(function(){
+		_this.checkToggleDisabledInit(this);
+	});
 };
 
+
+// 2013-12-18 ADD
+/**
+ * @description 全部展开
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.showFold = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	_obj.form.box.find(_this.classStr).find(".list").each(function(){
+		$(this).find('ul').show();
+		$(this).find(".fold").show();
+	});
+};
+
+/**
+ * @description 全部收起
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.hideFold = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	_obj.form.box.find(_this.classStr).find(".list").each(function(){
+		$(this).find('ul').hide();
+		$(this).find(".fold").hide();
+	});
+};
+
+/**
+ * @description 切换收起
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.toggleFold = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var ul = $(obj).parent().find("ul");
+	var fold = $(obj).parent().find(".fold");
+	if(ul.is(":visible")){
+		ul.hide();
+		fold.hide();
+	}else{
+		ul.show();
+		fold.show();
+	}
+};
+
+/**
+ * @description 切换隐藏disabled项目
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.toggleHiddenDisabled = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var lis = $(obj).parent().find("ul").find("li");
+	
+	if(lis.length >= 1){
+		if($(obj).find("span").attr("class")==="up"){
+			lis.removeClass("db");
+			$(obj).find("span").removeClass("up").addClass("down");
+		}else{
+			lis.addClass("db");
+			$(obj).find("span").removeClass("down").addClass("up");
+		}
+	}
+};
+
+/**
+ * @description 检测是否显示fold
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.checkToggleDisabledInit = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var lislength = $(obj).find("ul>li").length;
+	var checklength = $(obj).find("ul>li.checked").length;
+	var fold = $(obj).find(".fold");
+	if( lislength>0 && lislength>checklength){
+		fold.show();
+		fold.find("span").removeClass("up").addClass("down");
+	}else{
+		fold.hide();
+	}
+};
+
+/**
+ * @description 更新图标状态
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.updateToggleDisabled = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var lisChecked = $(obj).find("ul").find("li.checked");
+	var lis = $(obj).find("ul").find("li");
+	var fold = $(obj).find(".fold");
+	
+	if(lis.length === lisChecked.length){
+		fold.hide();
+	}else{
+		fold.show();		
+	}
+};
+
+/**
+ * @description 添加obj DOM节点
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @param {String} html
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.appendObjectDom = function(html){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var box = _obj.form.box.find(_this.classStr),
+		arr = [], obj = [], i, min;
+	
+	box.find(".layer-col").each(function(){
+		var list = $(this).find(".list:last");
+		if(list.length===1){
+			arr.push(list.position().top + list.outerHeight());
+		}else{
+			arr.push(0);
+		}
+		obj.push(this);
+	});
+	
+	min = Number(Math.min(arr[0], arr[1], arr[2]));
+	
+	for(i=0; i&lt;arr.length; i++){
+		if(arr[i] === min){
+			$(obj[i]).append(html);
+			$(obj[i]).find(".list:last").find("li").addClass("db");
+			$(obj[i]).find(".list:last").find(".fold").show().find("span").addClass("up");
+			break;
+		}
+	}
+};
+
+
+/**
+ * @description 下载图层
+ * @memberOf uinv.FCM.configMgr.model.layer
+ * @static
+ */
+uinv.FCM.configMgr.model.layer.download = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	if(_obj.model.object.hasMember(_this.obj)){
+		var i, arr = [];
+		for(i in _this.obj){
+			arr.push(_this.obj[i]);
+		}
+		
+		var text = _obj.model.transform.obj2str(arr);
+	
+		uinv.server.manager.frame.placeZip( text, [], [], function(result){
+			if(result.success){
+				document.location = _obj.global.projectPath + result.data;
+			}else{
+				_obj.note.alert(result.data);
+			}
+		});	
+	}else{
+		_obj.note.alert(_obj.msg.S35);
+	}
+};
 
 
 /**
@@ -4282,13 +4714,13 @@ uinv.FCM.configMgr.model.monitor.position = {
  * @type Object
  */
 uinv.FCM.configMgr.model.monitor.panelConfigAttributeField = [
-	{ 'name' : '指标名称', 'value' : 'attributeName', 'type' : 'string' },
-	{ 'name' : '单位', 'value' : 'unit', 'type' : 'string' },
-	{ 'name' : '指标取值', 'value' : 'propertyPath', 'type' : 'string'},
-	{ 'name' : '最小值', 'value' : 'min', 'type' : 'number'},
-	{ 'name' : '最大值', 'value' : 'max', 'type' : 'number'},
-	{ 'name' : '进度条', 'value' : 'isProgressBar', 'type' : 'bool' },
-	{ 'name' : '颜色设置', 'value' : 'styleConfig', 'type' : 'styleConfig' }
+	{ 'name' : '指标名称', 'value' : 'attributeName', 'type' : 'string', 'className' : 'monitor-name'},
+	{ 'name' : '单位', 'value' : 'unit', 'type' : 'string' , 'className': 'monitor-unit' },
+	{ 'name' : '指标取值', 'value' : 'propertyPath', 'type' : 'string', 'className': 'monitor-propertyPath'},
+	{ 'name' : '最小值', 'value' : 'min', 'type' : 'number', 'className': 'monitor-min' },
+	{ 'name' : '最大值', 'value' : 'max', 'type' : 'number', 'className': 'monitor-max' },
+	{ 'name' : '进度条', 'value' : 'isProgressBar', 'type' : 'bool', 'className': 'monitor-isProgressBar' },
+	{ 'name' : '颜色设置', 'value' : 'styleConfig', 'type' : 'styleConfig', 'className': 'monitor-styleConfig' }
 ];
 
 
@@ -4471,7 +4903,8 @@ uinv.FCM.configMgr.model.monitor.panelConfigFormHtml = function(panel,o){
 		
 		for(i=0,k=_this.panelConfigAttributeField.length;i&lt;k;i++){
 			panelConfigFormTypeDom += _obj.template.load("monitor/td.html",{
-				contents :  _this.configTypeToHtml[_this.panelConfigAttributeField[i].type]( _this.panelConfigAttributeField[i], o.form[n] )
+				contents :  _this.configTypeToHtml[_this.panelConfigAttributeField[i].type]( _this.panelConfigAttributeField[i], o.form[n] ),
+				className :  _this.panelConfigAttributeField[i].className
 			});
 		}	
 		
@@ -4622,10 +5055,19 @@ uinv.FCM.configMgr.model.monitor.uploadPanel = function(obj){
 			var o = _obj.model.transform.str2obj(result.data);
 			if( _obj.model.array.isArray(o) ){
 				for(var i=0,k=o.length;i&lt;k;i++){
-					_this.uploadPanelHandle(o[i], fileName);
+					if(_this.checkModifyBody(o[i]) && typeof o[i].name === "string"){
+						_this.uploadPanelHandle(o[i], fileName);
+					}else{
+						_obj.note.alert(_obj.msg.S37);
+						break;
+					}
 				}
 			}else{
-				_this.uploadPanelHandle(o, fileName);
+				if(_this.checkModifyBody(o) && typeof o.name === "string"){
+					_this.uploadPanelHandle(o, fileName);
+				}else{
+					_obj.note.alert(_obj.msg.S37);
+				}
 			}
 		}else{
 			_obj.note.alert(result.data);
@@ -4648,10 +5090,6 @@ uinv.FCM.configMgr.model.monitor.uploadPanelHandle = function(o, fileName){
 	var i = 0;
 	
 	o.imagePath = o.previewImagePath;
-	
-	if(!_this.checkModifyBody(o)){
-		return false;
-	}
 	
 	var bool = true;
 	
@@ -4810,7 +5248,20 @@ uinv.FCM.configMgr.model.monitor.isUsePanel = function(name){
 };
 
 /**
- * @description 加测面板数据modify配置项是否合法
+ * @description 面板数据基本检测
+ * @memberOf uinv.FCM.configMgr.model.monitor
+ * @param {Object} o 面板数据
+ * @return {Boolean} true 通过 false 不通过
+ */
+uinv.FCM.configMgr.model.monitor.checkBase = function(o){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	
+};
+
+/**
+ * @description 检测面板数据modify配置项是否合法
  * @memberOf uinv.FCM.configMgr.model.monitor
  * @param {Object} o 面板数据
  * @return {Boolean} true 合法 false 不合法
@@ -4879,15 +5330,17 @@ uinv.FCM.configMgr.model.monitor.deletePanel = function(name){
 		return false;
 	}
 	
-	var obj = _this.nameFindPanel(name);
-	_obj.model.download.del( _this.getPanelZipPath(obj) );
-	_this.deleteFileArr.push( _this.getPanelPath(obj) );
-	
-	var index = _this.nameFindPanelIndex(name);
-	if( index >= 0 ){
-		_this.obj.panel.splice(index, 1);
-		_this.objHtml();
-		_this.styleHtml();
+	if(_obj.note.confirm(_obj.msg.S29)){
+		var obj = _this.nameFindPanel(name);
+		_obj.model.download.del( _this.getPanelZipPath(obj) );
+		_this.deleteFileArr.push( _this.getPanelPath(obj) );
+		
+		var index = _this.nameFindPanelIndex(name);
+		if( index >= 0 ){
+			_this.obj.panel.splice(index, 1);
+			_this.objHtml();
+			_this.styleHtml();
+		}
 	}
 };
 
@@ -4903,9 +5356,11 @@ uinv.FCM.configMgr.model.monitor.deleteObject = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	
-	var index = _this.keyFindObjIndex(key);
-	_obj.data.monitor.object.splice(index, 1);
-	_this.objHtml();
+	if(_obj.note.confirm(_obj.msg.S29)){
+		var index = _this.keyFindObjIndex(key);
+		_obj.data.monitor.object.splice(index, 1);
+		_this.objHtml();
+	}
 };
 
 /**
@@ -4918,10 +5373,22 @@ uinv.FCM.configMgr.model.monitor.createObject = function(){
 	var _this = this;
 	
 	_obj.model.selector.show(function(obj){
-		_obj.model.selector.hide();
 		
-		var o = _this.addObjectToMemory(obj);
-		_this.addHtmlRow(o);
+		var i, isExist = false;
+		for(i=0; i&lt;_obj.data.monitor.object.length; i++){
+			if(obj.name === _obj.data.monitor.object[i].name){
+				isExist = true;
+			}
+		}
+		
+		if(isExist){
+			_obj.note.alert(_obj.msg.F11(obj.name));
+		}else{
+			_obj.model.selector.hide();
+			
+			var o = _this.addObjectToMemory(obj);
+			_this.addHtmlRow(o);		
+		}
 	});
 };
 
@@ -5070,6 +5537,7 @@ uinv.FCM.configMgr.model.monitor.objSelectPanel = function(obj,key){
 uinv.FCM.configMgr.model.monitor.addHtmlRow = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	
 	var html = _this.objHtmlRow(obj);
 	_obj.form.box.find(_this.objBoxClassStr).append(html);
 	_obj.translate();
@@ -5230,7 +5698,10 @@ uinv.FCM.configMgr.model.monitor.alarmLevelHtmlRow = function(o){
 uinv.FCM.configMgr.model.monitor.deleteAlarmLevelRow = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	$(obj).parents('.row:eq(0)').remove();
+	
+	if(_obj.note.confirm(_obj.msg.S29)){
+		$(obj).parents('.row:eq(0)').remove();
+	}
 };
 
 /**
@@ -5246,6 +5717,52 @@ uinv.FCM.configMgr.model.monitor.addAlarmLevel = function(){
 	_obj.form.box.find(_this.alarmlevelBoxClassStr).append(html);
 	var dom = _obj.form.box.find(_this.alarmlevelBoxClassStr).find('.row:last').find('input[name=color]').get(0);
 	_obj.model.colorpicke.show(dom);
+};
+
+
+/**
+ * @description 检测是否有重复的告警等级
+ * @memberOf uinv.FCM.configMgr.model.monitor
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.monitor.checkRepeatAlarmLevel = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	$(".config-page").find(".config-top-submit").show();
+	_obj.note.clearError();
+	
+	if($.trim(obj.value) === ""){
+		_obj.note.showError(_obj.msg.S31);
+		window.setTimeout(function(){
+			obj.value = "";
+			obj.focus();
+		}, 200);
+		$(".config-page").find(".config-top-submit").hide();
+		return;
+	}
+	
+	var arr = [], isExist = false;
+	_obj.form.box.find(_this.alarmlevelBoxClassStr).find(".row").each(function(){
+		var value = $.trim($(this).find("input[name=name]").val());
+		if(_obj.model.array.inArray(value, arr)){
+			isExist = true;
+		}else{
+			arr.push(value);
+		}
+	});
+
+	if(isExist){
+		_obj.note.showError(_obj.msg.S30);
+		
+		window.setTimeout(function(){
+			obj.value = "";
+			obj.focus();
+		}, 200);
+		
+		$(".config-page").find(".config-top-submit").hide();
+	}
 };
 
 /**
@@ -5274,6 +5791,46 @@ uinv.FCM.configMgr.model.monitor.init = function(param){
 	_this.objHtml();
 	_this.styleHtml();
 	_this.alarmLevelHtml();
+};
+
+
+// Add 2013-12-19
+
+/**
+ * @description 获取焦点触发
+ * @memberOf uinv.FCM.configMgr.model.monitor
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.monitor.otherFocus = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	$(".config-top-submit").hide();
+};
+
+/**
+ * @description 焦点离开触发
+ * @memberOf uinv.FCM.configMgr.model.monitor
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.monitor.otherBlur = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var value = $.trim(obj.value);
+	var r = /^(\d+)(\.\d+)?$/;
+	if(!r.test(value)){
+		_obj.note.alert(_obj.msg.S36);
+		(function(obj){
+			window.setTimeout(function(){ obj.focus(); }, 200);
+		})(obj);
+		
+		$(".config-top-submit").hide();
+	}else{
+		$(".config-top-submit").show();
+	}
 };
 
 
@@ -5636,6 +6193,24 @@ uinv.FCM.configMgr.model.object.isObject = function(o){
 	return o instanceof Object;
 };
 
+/**
+ * @description 判断对象是否有成员
+ * @memberOf uinv.FCM.configMgr.model.object
+ * @param {Object} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.object.hasMember = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	var has = false, i;
+	for(i in obj){
+		has = true;
+		break;
+	}
+	
+	return has;
+};
+
  
 //--------------------------
 // 基础定义
@@ -5746,8 +6321,7 @@ uinv.FCM.configMgr.model.panel.createObject = function(){
 		var comObj = _this.addObject( obj );
 		
 		// 画出html
-		var html = _this.mkhtml( comObj );
-		$(_this.classStr).append( html );
+		_this.appendObjectDom(_this.mkhtml( comObj ));
 	});
 };
 
@@ -5878,6 +6452,8 @@ uinv.FCM.configMgr.model.panel.keyDeleteObjPanelLi = function(objkey,panelkey){
  * @static
  */
 uinv.FCM.configMgr.model.panel.modifyObjectName = function(key,obj){
+	return; // 暂时关闭此功能
+	
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	var value = $(obj).html();
@@ -6138,6 +6714,8 @@ uinv.FCM.configMgr.model.panel.checkd = function(obj){
 		_this.hideUpMoveBtn(obj);
 	}
 	
+	// 隐藏
+	_this.updateToggleDisabled($(obj).parents('.list').get(0));
 };
 
 /**
@@ -6496,10 +7074,12 @@ uinv.FCM.configMgr.model.panel.uploadCallback = function(result){
 				}
 			}else{
 				_this.add(obj , _this.addCallback );
-			}							
+			}
+			
+			_obj.form.submit();
 		}
 		
-		_obj.form.submit();
+		
 	}else{
 		_obj.note.alert(result.data);
 	}
@@ -6626,13 +7206,198 @@ uinv.FCM.configMgr.model.panel.init = function(classStr){
 	
 	_this.obj = _this.getPanelList();
 
-	var html = '';
+	var box = _obj.form.box.find(_this.classStr);
 	for(var i=0,k=_obj.data.panel.length; i&lt;k; i++){
-		html += _this.mkhtml( _obj.data.panel[i] );
+		box.find(".panel-col:eq("+i%3+")").append(_this.mkhtml( _obj.data.panel[i] ));
 	}
 	
-	_obj.form.box.find(_this.classStr).html(html);
+	_obj.form.box.find(_this.classStr).find(".list").each(function(){
+		_this.checkToggleDisabledInit(this);
+	});
 };
+
+
+// 2013-12-18 ADD
+/**
+ * @description 全部展开
+ * @memberOf uinv.FCM.configMgr.model.panel
+ * @static
+ */
+uinv.FCM.configMgr.model.panel.showFold = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	_obj.form.box.find(_this.classStr).find(".list").each(function(){
+		$(this).find('ul').show();
+		$(this).find(".fold").show();
+	});
+};
+
+/**
+ * @description 全部收起
+ * @memberOf uinv.FCM.configMgr.model.panel
+ * @static
+ */
+uinv.FCM.configMgr.model.panel.hideFold = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	_obj.form.box.find(_this.classStr).find(".list").each(function(){
+		$(this).find('ul').hide();
+		$(this).find(".fold").hide();
+	});
+};
+
+/**
+ * @description 切换收起
+ * @memberOf uinv.FCM.configMgr.model.panel
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.panel.toggleFold = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var ul = $(obj).parent().find("ul");
+	var fold = $(obj).parent().find(".fold");
+	if(ul.is(":visible")){
+		ul.hide();
+		fold.hide();
+	}else{
+		ul.show();
+		fold.show();
+	}
+};
+
+/**
+ * @description 切换隐藏disabled项目
+ * @memberOf uinv.FCM.configMgr.model.panel
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.panel.toggleHiddenDisabled = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var lis = $(obj).parent().find("ul").find("li");
+	
+	if(lis.length >= 1){
+		if($(obj).find("span").attr("class")==="up"){
+			lis.removeClass("db");
+			$(obj).find("span").removeClass("up").addClass("down");
+		}else{
+			lis.addClass("db");
+			$(obj).find("span").removeClass("down").addClass("up");
+		}
+	}
+};
+
+/**
+ * @description 检测是否显示fold
+ * @memberOf uinv.FCM.configMgr.model.panel
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.panel.checkToggleDisabledInit = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var lislength = $(obj).find("ul>li").length;
+	var checklength = $(obj).find("ul>li.checked").length;
+	var fold = $(obj).find(".fold");
+	if( lislength>0 && lislength>checklength){
+		fold.show();
+		fold.find("span").removeClass("up").addClass("down");
+	}else{
+		fold.hide();
+	}
+};
+
+/**
+ * @description 更新图标状态
+ * @memberOf uinv.FCM.configMgr.model.panel
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.panel.updateToggleDisabled = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var lisChecked = $(obj).find("ul").find("li.checked");
+	var lis = $(obj).find("ul").find("li");
+	var fold = $(obj).find(".fold");
+	
+	if(lis.length === lisChecked.length){
+		fold.hide();
+	}else{
+		fold.show();		
+	}
+};
+
+/**
+ * @description 添加obj DOM节点
+ * @memberOf uinv.FCM.configMgr.model.panel
+ * @param {String} html
+ * @static
+ */
+uinv.FCM.configMgr.model.panel.appendObjectDom = function(html){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var box = _obj.form.box.find(_this.classStr),
+		arr = [], obj = [], i, min;
+	
+	box.find(".panel-col").each(function(){
+		var list = $(this).find(".list:last");
+		if(list.length===1){
+			arr.push(list.position().top + list.outerHeight());
+		}else{
+			arr.push(0);
+		}
+		obj.push(this);
+	});
+	
+	min = Number(Math.min(arr[0], arr[1], arr[2]));
+	
+	for(i=0; i&lt;arr.length; i++){
+		if(arr[i] === min){
+			$(obj[i]).append(html);
+			$(obj[i]).find(".list:last").find("li").addClass("db");
+			$(obj[i]).find(".list:last").find(".fold").show().find("span").addClass("up");
+			break;
+		}
+	}
+};
+
+/**
+ * @description 下载面板
+ * @memberOf uinv.FCM.configMgr.model.panel
+ * @static
+ */
+uinv.FCM.configMgr.model.panel.download = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	if(_obj.model.object.hasMember(_this.obj)){
+		var i, arr = [];
+		for(i in _this.obj){
+			arr.push(_this.obj[i]);
+		}
+		
+		var text = _obj.model.transform.obj2str(arr);
+	
+		uinv.server.manager.frame.placeZip( text, [], [], function(result){
+			if(result.success){
+				document.location = _obj.global.projectPath + result.data;
+			}else{
+				_obj.note.alert(result.data);
+			}
+		});	
+	}else{
+		_obj.note.alert(_obj.msg.S35);
+	}
+};
+
 
  
 /**
@@ -6640,6 +7405,20 @@ uinv.FCM.configMgr.model.panel.init = function(classStr){
  * @param {DOM} obj DOM节点
  */
 uinv.FCM.configMgr.model.panel.itemConfigInitData.string = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.model.panel;
+	
+	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
+	if(typeof _panel.itemData[$(obj).attr('path')][$(obj).attr('name')] == 'string'){
+		$(obj).val( _panel.itemData[$(obj).attr('path')][$(obj).attr('name')]  );
+	}
+};
+
+/**
+ * @description 多行字符串类型
+ * @param {DOM} obj DOM节点
+ */
+uinv.FCM.configMgr.model.panel.itemConfigInitData.multi = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = uinv.FCM.configMgr.model.panel;
 	
@@ -6761,6 +7540,17 @@ uinv.FCM.configMgr.model.panel.itemConfigSetData.string = function(obj){
 };
 
 /**
+ * @description 多行字符串类型
+ * @param {DOM} obj DOM节点
+ */
+uinv.FCM.configMgr.model.panel.itemConfigSetData.multi = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.model.panel;
+	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
+	_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+};
+
+/**
  * @description 数字类型
  * @param {DOM} obj DOM节点
  */
@@ -6871,6 +7661,33 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.string = function(obj,key,ob
 		name		: obj.name,
 		objectKey	: objectKey,
 		cate		: "string"
+	});
+	
+	return html;
+};
+
+/**
+ * @description 多行字符串类型
+ * @param {Object} obj 面板数据
+ * @param {Stirng} key 面板key值
+ * @param {String} objectKey 物体key值
+ * @return {String} DOM节点
+ */
+uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.multi = function(obj,key,objectKey){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.model.panel;
+	
+	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem,
+		caption	= typeof obj.caption == 'undefined' ? obj.name : obj.caption,
+		html = '';
+		
+	html = _obj.template.load("panel/typeTextarea.html",{
+		key			: key,
+		value		: value,
+		caption		: caption,
+		name		: obj.name,
+		objectKey	: objectKey,
+		cate		: "multi"
 	});
 	
 	return html;
@@ -7546,11 +8363,40 @@ uinv.FCM.configMgr.model.selector.obj = null;
 uinv.FCM.configMgr.model.selector.index = 'selector';
 
 /**
- * 当前选中节点的key值
+ * @description 当前选中节点的key值
  * @type String
  */
 uinv.FCM.configMgr.model.selector.selectKey = '';
 
+/**
+ * @description 创建节点计数器
+ * @type Number
+ */
+uinv.FCM.configMgr.model.selector.nodeCount = 1;
+
+/**
+ * @description 展开类名
+ * @type String
+ */
+uinv.FCM.configMgr.model.selector.openFoldClassName = "config-selector-fold-open";
+
+/**
+ * @description 关闭类名
+ * @type String
+ */
+uinv.FCM.configMgr.model.selector.closeFoldClassName = "config-selector-fold-close";
+
+/**
+ * @description fold类名
+ * @type String
+ */
+uinv.FCM.configMgr.model.selector.foldClassName = "config-selector-fold";
+
+/**
+ * @description 是否有操作记录
+ * @type Boolean
+ */
+uinv.FCM.configMgr.model.selector.history = false;
 
 //------------------------------
 // 创建对象公有函数处理
@@ -7576,6 +8422,12 @@ uinv.FCM.configMgr.model.selector.show = function(fun){
 	_obj.model.dialog.show(_obj.template.load("selector/publicMain.html",{
 		tree : _this.publicShowHtml(_this.obj.tree)
 	}));
+	
+	_obj.model.dialog.getObj().find(".treeNode").each(function(){
+		if($(this).find(".childrenNode").find(".treeNode").length > 0){
+			$(this).find(">.config-selector-fold").show();
+		}
+	});
 };
 
 /**
@@ -7656,13 +8508,14 @@ uinv.FCM.configMgr.model.selector.publicShowHtml = function(obj){
 	}
 	
 	for(i = 0, k = obj.length; i&lt;k; i++){
-		
+		childrenNode = "";
 		if( typeof obj[i].childrenNode == 'object' ){
 			hasChildrenNode = true;
 			childrenNode = _this.publicShowHtml(obj[i].childrenNode);
 		}
 		
 		html += _obj.template.load("selector/publicTreeNode.html",{
+			hasWhere		: _this.objIsExistWhere( obj[i].key ),
 			name			: _this.obj.lib[obj[i].key].name,
 			key				: obj[i].key,
 			hasChildrenNode	: hasChildrenNode,
@@ -7783,8 +8636,19 @@ uinv.FCM.configMgr.model.selector.deleteNode = function(key){
 	if(bool){
 		var node = _this.keyFindTreeNodeObj( _this.obj.tree, key);
 		node.parent.splice(node.index,1);
+		var dom = _this.keyFindNodeHtmlObj(key);
+		
+		dom.find(".treeNode").each(function(){
+			delete _this.obj.lib[$(this).attr("key")];
+		});
+		
+		if(dom.parent().find(">.treeNode").length &lt;= 1){
+			dom.parent().parent().find(">.config-selector-fold").hide();
+		}
+		
 		delete _this.obj.lib[key];
-		_this.keyFindNodeHtmlObj(key).remove();		
+		
+		dom.remove();
 	}
 };
 
@@ -7817,9 +8681,13 @@ uinv.FCM.configMgr.model.selector.createNode = function(parentKey){
 		key = _obj.model.key.create();
 	}while(key in _this.obj.lib);
 	
-	var node = { name: '新节点', key: key };
+	var name = "新节点-" + _this.nodeCount;
+	
+	var node = { name: name, key: key };
 	_this.insertNodeToTreeObj(node, parentKey);
 	_this.insertNodeToTreeDom(node, parentKey);
+	
+	_this.nodeCount++;
 };
 
 /**
@@ -7871,8 +8739,8 @@ uinv.FCM.configMgr.model.selector.insertNodeToTreeDom = function(node, parentKey
 		_obj.form.box.find(_this.classStr).append(html);
 	}else{
 		_this.keyFindNodeHtmlObj( _this.selectKey ).find('>.childrenNode').append(html);
+		_this.keyFindNodeHtmlObj( _this.selectKey ).find('>.config-selector-fold').show();
 	}
-
 };
 
 /**
@@ -7917,7 +8785,7 @@ uinv.FCM.configMgr.model.selector.recursionTreeHtml = function(obj){
 	var html = "", i, k, hasChildrenNode = false, childrenNode = "";
 	
 	for(i=0, k=obj.length; i&lt;k; i++){
-
+		childrenNode = "";
 		if(typeof obj[i].childrenNode == 'object'){
 			hasChildrenNode = true;
 			childrenNode = _this.recursionTreeHtml(obj[i].childrenNode);
@@ -8008,7 +8876,7 @@ uinv.FCM.configMgr.model.selector.addNodeWhereFormInit = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	if( _this.objIsExistWhere(key) ){
-		_obj.model.dialog.getObj().find('input[type=radio][name=wheretype][value='+_this.obj.lib[key].where+']').attr('checked',true);
+		_obj.model.dialog.getObj().find('input[type=radio][name=wheretype][value='+_this.obj.lib[key].where+']').attr('checked',true).click();
 	}
 };
 
@@ -8080,6 +8948,23 @@ uinv.FCM.configMgr.model.selector.editNodeWhere = function(key){
 	_obj.model.dialog.show(html);
 	_this.addNodeWhereFormInit(key);
 	
+};
+
+/**
+ * 
+ * @description 选择条件类型触发函数
+ * @memberOf uinv.FCM.configMgr.model.selector
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.selector.selectNodeWhere = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	$(obj).parents(".addnodewhere").find(".row").each(function(){
+		$(this).find("input[type=text], select, textarea").attr("disabled", "true");
+	});
+	
+	$(obj).parents(".row").find("input[type=text], select, textarea").removeAttr("disabled");
 };
 
 /**
@@ -8174,7 +9059,7 @@ uinv.FCM.configMgr.model.selector.getContextMenuHtml = function(e, key){
 
 	html = _obj.template.load("selector/contextmenu.html",{
 		x					: e.clientX - _obj.form.box.offset().left,
-		y					: e.clientY - _obj.form.box.offset().top,
+		y					: e.clientY - _obj.form.box.offset().top + $(window).scrollTop(),
 		selectNode			: key && key in _this.obj.lib,
 		hasChildrenNode		: _this.keyFindNodeHtmlObj(key).find('>.childrenNode>.treeNode').length >= 1,
 		childrenNodeVisible : _this.keyFindNodeHtmlObj(key).find('>.childrenNode').is(':visible'),
@@ -8195,10 +9080,11 @@ uinv.FCM.configMgr.model.selector.getContextMenuHtml = function(e, key){
 uinv.FCM.configMgr.model.selector.contextMenuShow = function(e, key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	uinv.FCM.configMgr.model.selector.history = true;
 	_this.contextMenuHide();
 	var html = _this.getContextMenuHtml(e, key);
 	_obj.form.box.append(html);	
-	
+
 	_obj.translate();
 };
 
@@ -8259,6 +9145,27 @@ uinv.FCM.configMgr.model.selector.cancelSelectNode = function(){
 };
 
 /**
+ * @description fold 切换
+ * @memberOf uinv.FCM.configMgr.model.selector
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.selector.foldToggle = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var childrenNode = $(obj).parent().find(".childrenNode");
+	
+	if(childrenNode.is(":visible")){
+		$(obj).removeClass(_this.closeFoldClassName).addClass(_this.openFoldClassName);
+		childrenNode.hide();
+	}else{
+		$(obj).removeClass(_this.openFoldClassName).addClass(_this.closeFoldClassName);
+		childrenNode.show();
+	}	
+};
+
+/**
  * @description 选择器模块初始化
  * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} classStr 选择器盒子DOM Class 值
@@ -8270,6 +9177,7 @@ uinv.FCM.configMgr.model.selector.init = function(classStr){
 	
 	_obj.form.submitCallback = function(){
 		_obj.model.stringDB.set( _this.index, _this.obj, function(){} );
+		uinv.FCM.configMgr.model.selector.history = false;
 	};
 
 	_this.obj = _obj.model.stringDB.get(_this.index);
@@ -8282,8 +9190,56 @@ uinv.FCM.configMgr.model.selector.init = function(classStr){
 		_this.contextMenuHide();
 	});
 	
+	_obj.form.box.find(_this.classStr).find(".treeNode").each(function(){
+		if($(this).find(".childrenNode").find(".treeNode").length > 0){
+			$(this).find(">.config-selector-fold").show();
+		}
+	});
+	
 	$('.config-info').html( _obj.msg.S22 );
+	
+	_obj.form.submitBefore = function(){
+		var repeatName = _this.isRepeatNode();
+		if(repeatName){
+			_obj.form.hasError = _obj.msg.F13(repeatName);
+		}else{
+			_obj.form.hasError = false;
+		}
+	};
+	
+	_this.nodeCount = 1;
 };
+
+
+// Add 2013-12-19
+
+/**
+ * @description 检测是否有重复的值
+ * @memberOf uinv.FCM.configMgr.model.selector
+ * @return {Boolean/String} 是否重复/重复名称
+ * @static
+ */
+uinv.FCM.configMgr.model.selector.isRepeatNode = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var arr = [], i, repeat = [];
+	
+	for(i in _this.obj.lib){
+		if(_obj.model.array.inArray(_this.obj.lib[i].name, arr)){
+			repeat.push(_this.obj.lib[i].name);
+		}else{
+			arr.push(_this.obj.lib[i].name);
+		}
+	}
+	
+	if(repeat.length>=1){
+		return repeat.join(", ");
+	}else{
+		return false;
+	}
+};
+
 
 
 /**
@@ -8382,8 +9338,13 @@ uinv.FCM.configMgr.model.statistics.defaultColor = '#FFFFFF';
  */
 uinv.FCM.configMgr.model.statistics.delRow = function(obj){
 	var _obj = uinv.FCM.configMgr;
-	var _this = this;			
-	$(obj).parents('tr').remove();
+	var _this = this;
+	
+	if(_obj.note.confirm(_obj.msg.S29)){
+		var _obj = uinv.FCM.configMgr;
+		var _this = this;			
+		$(obj).parents('tr').remove();	
+	}
 };
 
 /**
@@ -8404,8 +9365,10 @@ uinv.FCM.configMgr.model.statistics.addRow = function(obj){
 	
 	var html = _this.mkhtmlTr(data);
 	$(obj).parents('.list').find('table').append(html);
-	var dom = $(obj).parents('.list').find('table').find('tr:last').find('input[key=color]').get(0);
+	var box = $(obj).parents('.list').find('table').find('tr:last')
+	var dom = box.find('input[key=color]').get(0);
 	_obj.model.colorpicke.show(dom);
+	box.find('input.config-input-percentage').get(0).focus();
 };
 
 /**
@@ -8431,7 +9394,9 @@ uinv.FCM.configMgr.model.statistics.mkhtmlTr = function(obj){
 		where : obj.where,
 		color : obj.color,
 		number : obj.number,
-		range : _this.where
+		range : _this.where,
+		conditionnum : _this.where.length,
+		condition : _this.where[0]
 	});
 };
 
@@ -8457,6 +9422,30 @@ uinv.FCM.configMgr.model.statistics.mkhtml = function(){
 	
 	_obj.form.box.find(_this.classStr).html(arr.join(_obj.template.load("line1.html")));
 	_obj.translate();
+	
+	window.setTimeout(function(){
+		_obj.form.box.find(_this.classStr).find(">.list").each(function(){
+			_this.order(this);
+		});
+	}, 200);
+};
+
+/**
+ * @description 鼠标离开百分比input判断是否为空
+ * @memberOf uinv.FCM.configMgr.model.statistics
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.statistics.percentageBlur = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	if($.trim(obj.value)===""){
+		_obj.note.alert(_obj.msg.F12("数值"));
+		window.setTimeout(function(){
+			obj.focus();
+		}, 200);
+	}
 };
 
 /**
@@ -8470,6 +9459,80 @@ uinv.FCM.configMgr.model.statistics.init = function(classStr){
 	var _this = this;
 	_this.classStr = classStr;
 	_this.mkhtml();
+};
+
+
+// Add 2013-12-19
+
+/**
+ * @description 获取焦点触发
+ * @memberOf uinv.FCM.configMgr.model.statistics
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.statistics.focus = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	$(".config-top-submit").hide();
+};
+
+/**
+ * @description 焦点离开触发
+ * @memberOf uinv.FCM.configMgr.model.statistics
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.statistics.blur = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var value = $.trim(obj.value);
+	var r = /^(\d+){1,3}$/;
+	if(!r.test(value) || value > 100){
+		_obj.note.alert(_obj.msg.S32);
+		(function(obj){
+			window.setTimeout(function(){ obj.focus(); }, 200);
+		})(obj);
+		
+		$(".config-top-submit").hide();
+	}else{
+		$(".config-top-submit").show();
+		_this.order($(obj).parents(".list").get(0));
+	}
+};
+
+/**
+ * @description 排序
+ * @memberOf uinv.FCM.configMgr.model.statistics
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.statistics.order = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+
+	var sort = [], dom = {};
+	$(obj).find("table").find("tr.item").each(function(){
+		var percentage = parseFloat($.trim($(this).find("input.config-input-percentage").val()), 10);
+		sort.push(percentage);
+		dom[percentage] = this;
+	});
+	
+	if(sort.length >= 2){
+		sort.sort(function(a, b){
+			if(a>b){
+				return 1;
+			}else{
+				return -1
+			}
+		});
+		
+		var i;
+		for(i=0; i&lt;sort.length; i++){
+			$(obj).find("table").append(dom[sort[i]]);
+		}	
+	}
 };
 
 /**
@@ -8632,11 +9695,13 @@ uinv.FCM.configMgr.model.transform.str2obj = function(s){
 	var _this = this;
 	
 	if(typeof s == "string"){
-		s = s.replaceAll("\r\n",'');
-		s = s.replaceAll("\n",'');
-		s = s.replaceAll("\t",'');
+		//wxz modify
+		// s = s.replaceAll("\r\n",'');
+		// s = s.replaceAll("\n",'');
+		// s = s.replaceAll("\t",'');
 		try{
-			return eval("(function(){ return  " + s + " })();");
+			//return eval("(function(){ return  " + s + " })();");
+			return eval("uinv_FCM_configMgr_model_transform_str2obj = " + s);
 		}catch(e){
 			//_obj.note.alert('str2obj:'+e);
 			return false;
@@ -8894,7 +9959,7 @@ uinv.FCM.configMgr.msg.S12 = "错误(S12)：不能克隆对象！";
 uinv.FCM.configMgr.msg.S13 = "错误(S13)：资源名称不能为空！";
 uinv.FCM.configMgr.msg.S14 = "错误(S14)：服务器路径不能为空！";
 uinv.FCM.configMgr.msg.S15 = "错误(S15)：版本号不能为空！";
-uinv.FCM.configMgr.msg.S16 = "错误(S16)：本地路径不能为空 ！";
+uinv.FCM.configMgr.msg.S16 = "错误(S16)：本地目录不能为空 ！";
 uinv.FCM.configMgr.msg.S17 = "错误(S17)：资源包不能为空！";
 
 uinv.FCM.configMgr.msg.S18 = "警告(S18)：删除资源包不可恢复，确认删除吗？";
@@ -8913,6 +9978,16 @@ uinv.FCM.configMgr.msg.S26 = "错误(S26)：副数据转换string异常！";
 uinv.FCM.configMgr.msg.S27 = "错误(S27)：删除面板错误：这个面板正在使用，请先解除使用后再删除！";
 
 uinv.FCM.configMgr.msg.S28 = "错误(S28)：上传失败！";
+
+uinv.FCM.configMgr.msg.S29 = "错误(S29)：确认删除？";
+uinv.FCM.configMgr.msg.S30 = "错误(S30)：告警级别不能重复！";
+uinv.FCM.configMgr.msg.S31 = "错误(S31)：告警级别不能为空！";
+uinv.FCM.configMgr.msg.S32 = "错误(S32)：您输入的值有误，请输入数字类型并且小于等于100的数值！";
+uinv.FCM.configMgr.msg.S33 = "错误(S33)：不能有重复的节点！";
+uinv.FCM.configMgr.msg.S34 = "错误(S34)：图片名称不能包含中文，请把图片名称的中文去除后再上传！";
+uinv.FCM.configMgr.msg.S35 = "错误(S35)：没有可用数据下载，请先上传后再尝试下载！";
+uinv.FCM.configMgr.msg.S36 = "错误(S36)：您输入的值类型有误，请重新输入！";
+uinv.FCM.configMgr.msg.S37 = "错误(S37)：面板数据格式有错误，请重新上传面板！";
 
 
 //---------------------------------------
@@ -8959,6 +10034,17 @@ uinv.FCM.configMgr.msg.F10 = function(n){
 	return "警告(F10):您上传的新面板modifyCount比原面板modifyCount小，将要删除原面板配置信息的最后"+n+"行配置？";
 };
 
+uinv.FCM.configMgr.msg.F11 = function(msg){
+	return "错误(F11):对象（"+msg+"）已存在！";
+};
+
+uinv.FCM.configMgr.msg.F12 = function(msg){
+	return "错误(F12):"+msg+"不能为空！";
+};
+
+uinv.FCM.configMgr.msg.F13 = function(name){
+	return "错误(F13):节点【"+name+"】有重复！";
+};
 
 
 /**
@@ -9000,6 +10086,28 @@ uinv.FCM.configMgr.note.dialog = function(str){
 	uinv.FCM.configMgr.model.dialog.show(html);
 };
 
+/**
+ * @description 提示错误信息
+ * @memberOf uinv.FCM.configMgr.note
+ * @param {String} msg 信息
+ * @static
+ */
+uinv.FCM.configMgr.note.showError = function(msg){
+	var span = document.createElement("span");
+	span.style.cssText = "color:red;";
+	span.innerHTML = msg;
+	$(".config-page").find(".config-info").html(span);
+};
+
+/**
+ * @description 错误信息清楚
+ * @memberOf uinv.FCM.configMgr.note
+ * @static
+ */
+uinv.FCM.configMgr.note.clearError = function(){
+	$(".config-page").find(".config-info").html("");
+};
+
 
 /**
  * @description 把条件名称转换为规范规范名称
@@ -9038,6 +10146,21 @@ uinv.FCM.configMgr.other.conditionReplaceName = function(o){
 	}
 	
 	return o;
+};
+
+/**
+ * @description 限制只能输入数字
+ * @memberOf uinv.FCM.configMgr.other
+ * @static
+ */
+uinv.FCM.configMgr.other.inputNumber = function(event){
+	var value = $.trim(this.value);
+	var r = /^(-?\\d+)(\\.\\d+)?$/;
+	if(!r.test(value)){
+		return false;
+	}else{
+		return true;
+	}
 };
 
 //-----------------------------------------------
@@ -9177,7 +10300,7 @@ uinv.FCM.configMgr.translate = function(){
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Sep 02 2013 16:18:29 GMT+0800 (CST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Dec 19 2013 15:33:52 GMT+0800 (CST)
 </footer>
 
 <script> prettyPrint(); </script>

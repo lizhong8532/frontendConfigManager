@@ -1,25 +1,36 @@
 
-
-
 <tr style="height:50px;" class="item">
 	<td>
-		<select key="where">
-		{{#each range}}
-			{{#ifCond ../where "==" this}}
-					<option value="{{this}}" selected>{{this}}</option>
-			{{else}}
-					<option value="{{this}}">{{this}}</option>
-			{{/ifCond}}
-		{{/each}}
-		</select>
+		{{#ifCond conditionnum ">" 1}}
+			<select key="where">
+			{{#each range}}
+				{{#ifCond ../where "==" this}}
+						<option value="{{this}}" selected>{{this}}</option>
+				{{else}}
+						<option value="{{this}}">{{this}}</option>
+				{{/ifCond}}
+			{{/each}}
+			</select>
+		{{else}}
+			<select key="where" style="display:none;">
+			{{#each range}}
+				{{#ifCond ../where "==" this}}
+						<option value="{{this}}" selected>{{this}}</option>
+				{{else}}
+						<option value="{{this}}">{{this}}</option>
+				{{/ifCond}}
+			{{/each}}
+			</select>
+			<span>{{condition}}</span>	
+		{{/ifCond}}
 	</td>
 	<td>
-		<input class="config-input-text config-input-percentage" type="text" key="number" value="{{number}}" /><span class="config-unit">%</span>
+		<input class="config-input-text config-input-percentage" onfocus="uinv.FCM.configMgr.model.statistics.focus(this)" onblur="uinv.FCM.configMgr.model.statistics.blur(this)" type="text" key="number" value="{{number}}" onblur="uinv.FCM.configMgr.model.statistics.percentageBlur(this);" /><span class="config-unit">%</span>
 	</td>
 	<td>
 		<input type="text" key="color" value="{{color}}" />
 	</td>
 	<td>
-		<button onclick="uinv.FCM.configMgr.model.statistics.delRow(this);"><s>删除</s></button>
+		<a href="javascript:void(0);" onclick="uinv.FCM.configMgr.model.statistics.delRow(this);"><s>删除</s></a>
 	</td>
 </tr>

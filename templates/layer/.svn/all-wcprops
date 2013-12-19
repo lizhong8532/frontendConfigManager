@@ -1,13 +1,13 @@
 K 25
 svn:wc:ra_dav:version-url
-V 90
-/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/layer
+V 91
+/svn/develop/!svn/ver/11021/uinv_frontend/javascripts/frontendConfigManager/templates/layer
 END
 layerListMain.html
 K 25
 svn:wc:ra_dav:version-url
-V 109
-/svn/develop/!svn/ver/9625/uinv_frontend/javascripts/frontendConfigManager/templates/layer/layerListMain.html
+V 110
+/svn/develop/!svn/ver/10979/uinv_frontend/javascripts/frontendConfigManager/templates/layer/layerListMain.html
 END
 typeSelect.html
 K 25
@@ -30,8 +30,8 @@ END
 itemConfigMain.html
 K 25
 svn:wc:ra_dav:version-url
-V 110
-/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/layer/itemConfigMain.html
+V 111
+/svn/develop/!svn/ver/11021/uinv_frontend/javascripts/frontendConfigManager/templates/layer/itemConfigMain.html
 END
 typeInputText.html
 K 25
@@ -39,17 +39,17 @@ svn:wc:ra_dav:version-url
 V 109
 /svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/layer/typeInputText.html
 END
+layerListLi.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/develop/!svn/ver/10283/uinv_frontend/javascripts/frontendConfigManager/templates/layer/layerListLi.html
+END
 globalLayerList.html
 K 25
 svn:wc:ra_dav:version-url
 V 111
 /svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/layer/globalLayerList.html
-END
-layerListLi.html
-K 25
-svn:wc:ra_dav:version-url
-V 107
-/svn/develop/!svn/ver/9423/uinv_frontend/javascripts/frontendConfigManager/templates/layer/layerListLi.html
 END
 position2d.html
 K 25

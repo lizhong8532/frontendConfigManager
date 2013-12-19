@@ -1,6 +1,10 @@
 
 <li>
-	<span class="layer_name">{{layerName}}</span>
+	{{#ifCond layerName "==" "分割线"}}
+		<span class="layer_name dividing-line">{{layerName}}</span>
+	{{else}}
+		<span class="layer_name">{{layerName}}</span>
+	{{/ifCond}}
 	<span class="action layer_up">
 		<a onclick="uinv.FCM.configMgr.model.layer.upMove(this);" class="{{upMoveBtnClass}}" href="javascript:void(0);" style="display:none;">
 			<s>上移</s>

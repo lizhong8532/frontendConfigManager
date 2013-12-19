@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 91
-/svn/develop/!svn/ver/9406/uinv_frontend/javascripts/frontendConfigManager/templates/images
+V 92
+/svn/develop/!svn/ver/11021/uinv_frontend/javascripts/frontendConfigManager/templates/images
 END
 main.html
 K 25
@@ -12,6 +12,6 @@ END
 li.html
 K 25
 svn:wc:ra_dav:version-url
-V 99
-/svn/develop/!svn/ver/9410/uinv_frontend/javascripts/frontendConfigManager/templates/images/li.html
+V 100
+/svn/develop/!svn/ver/11021/uinv_frontend/javascripts/frontendConfigManager/templates/images/li.html
 END

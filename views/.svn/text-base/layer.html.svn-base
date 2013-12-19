@@ -1,8 +1,16 @@
 <div class="layer-action">
 	<div class="file-btn fl"><span><s>上传图层</s></span><input type="file" onchange="uinv.FCM.configMgr.model.layer.upload(this);" /></div>
-	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.layer.createObject();"><s>创建对象</s></button></div>
+	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.layer.download();"><s>下载图层</s></button>
+	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.layer.createObject();"><s>创建对象</s></button>
+	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.layer.hideFold();"><s>全部收起</s></button>
+	<button class="button-btn fl ml10" onclick="uinv.FCM.configMgr.model.layer.showFold();"><s>全部展开</s></button>
+</div>
 
-<div class="layer-list"></div>
+<div class="layer-list">
+	<div class="layer-col"></div>
+	<div class="layer-col"></div>
+	<div class="layer-col"></div>
+</div>
 
 <script type="text/javascript">
 

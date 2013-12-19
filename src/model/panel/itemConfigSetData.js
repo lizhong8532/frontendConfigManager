@@ -13,6 +13,17 @@ uinv.FCM.configMgr.model.panel.itemConfigSetData.string = function(obj){
 };
 
 /**
+ * @description 多行字符串类型
+ * @param {DOM} obj DOM节点
+ */
+uinv.FCM.configMgr.model.panel.itemConfigSetData.multi = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.model.panel;
+	var _panel = _obj.model.panel.keyFindObj($(obj).attr('objectkey'));
+	_panel.itemData[$(obj).attr('path')][$(obj).attr('name')] = $(obj).val();
+};
+
+/**
  * @description 数字类型
  * @param {DOM} obj DOM节点
  */

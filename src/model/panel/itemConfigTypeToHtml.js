@@ -28,6 +28,33 @@ uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.string = function(obj,key,ob
 };
 
 /**
+ * @description 多行字符串类型
+ * @param {Object} obj 面板数据
+ * @param {Stirng} key 面板key值
+ * @param {String} objectKey 物体key值
+ * @return {String} DOM节点
+ */
+uinv.FCM.configMgr.model.panel.itemConfigTypeToHtml.multi = function(obj,key,objectKey){
+	var _obj = uinv.FCM.configMgr;
+	var _this = uinv.FCM.configMgr.model.panel;
+	
+	var value = typeof obj.defaultItem == 'undefined' ? '' :  obj.defaultItem,
+		caption	= typeof obj.caption == 'undefined' ? obj.name : obj.caption,
+		html = '';
+		
+	html = _obj.template.load("panel/typeTextarea.html",{
+		key			: key,
+		value		: value,
+		caption		: caption,
+		name		: obj.name,
+		objectKey	: objectKey,
+		cate		: "multi"
+	});
+	
+	return html;
+};
+
+/**
  * @description 数字类型
  * @param {Object} obj 面板数据
  * @param {Stirng} key 面板key值

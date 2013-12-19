@@ -43,8 +43,13 @@ uinv.FCM.configMgr.model.statistics.defaultColor = '#FFFFFF';
  */
 uinv.FCM.configMgr.model.statistics.delRow = function(obj){
 	var _obj = uinv.FCM.configMgr;
-	var _this = this;			
-	$(obj).parents('tr').remove();
+	var _this = this;
+	
+	if(_obj.note.confirm(_obj.msg.S29)){
+		var _obj = uinv.FCM.configMgr;
+		var _this = this;			
+		$(obj).parents('tr').remove();	
+	}
 };
 
 /**
@@ -65,8 +70,10 @@ uinv.FCM.configMgr.model.statistics.addRow = function(obj){
 	
 	var html = _this.mkhtmlTr(data);
 	$(obj).parents('.list').find('table').append(html);
-	var dom = $(obj).parents('.list').find('table').find('tr:last').find('input[key=color]').get(0);
+	var box = $(obj).parents('.list').find('table').find('tr:last')
+	var dom = box.find('input[key=color]').get(0);
 	_obj.model.colorpicke.show(dom);
+	box.find('input.config-input-percentage').get(0).focus();
 };
 
 /**
@@ -92,7 +99,9 @@ uinv.FCM.configMgr.model.statistics.mkhtmlTr = function(obj){
 		where : obj.where,
 		color : obj.color,
 		number : obj.number,
-		range : _this.where
+		range : _this.where,
+		conditionnum : _this.where.length,
+		condition : _this.where[0]
 	});
 };
 
@@ -118,6 +127,30 @@ uinv.FCM.configMgr.model.statistics.mkhtml = function(){
 	
 	_obj.form.box.find(_this.classStr).html(arr.join(_obj.template.load("line1.html")));
 	_obj.translate();
+	
+	window.setTimeout(function(){
+		_obj.form.box.find(_this.classStr).find(">.list").each(function(){
+			_this.order(this);
+		});
+	}, 200);
+};
+
+/**
+ * @description 鼠标离开百分比input判断是否为空
+ * @memberOf uinv.FCM.configMgr.model.statistics
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.statistics.percentageBlur = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	if($.trim(obj.value)===""){
+		_obj.note.alert(_obj.msg.F12("数值"));
+		window.setTimeout(function(){
+			obj.focus();
+		}, 200);
+	}
 };
 
 /**
@@ -131,4 +164,78 @@ uinv.FCM.configMgr.model.statistics.init = function(classStr){
 	var _this = this;
 	_this.classStr = classStr;
 	_this.mkhtml();
+};
+
+
+// Add 2013-12-19
+
+/**
+ * @description 获取焦点触发
+ * @memberOf uinv.FCM.configMgr.model.statistics
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.statistics.focus = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	$(".config-top-submit").hide();
+};
+
+/**
+ * @description 焦点离开触发
+ * @memberOf uinv.FCM.configMgr.model.statistics
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.statistics.blur = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var value = $.trim(obj.value);
+	var r = /^(\d+){1,3}$/;
+	if(!r.test(value) || value > 100){
+		_obj.note.alert(_obj.msg.S32);
+		(function(obj){
+			window.setTimeout(function(){ obj.focus(); }, 200);
+		})(obj);
+		
+		$(".config-top-submit").hide();
+	}else{
+		$(".config-top-submit").show();
+		_this.order($(obj).parents(".list").get(0));
+	}
+};
+
+/**
+ * @description 排序
+ * @memberOf uinv.FCM.configMgr.model.statistics
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.statistics.order = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+
+	var sort = [], dom = {};
+	$(obj).find("table").find("tr.item").each(function(){
+		var percentage = parseFloat($.trim($(this).find("input.config-input-percentage").val()), 10);
+		sort.push(percentage);
+		dom[percentage] = this;
+	});
+	
+	if(sort.length >= 2){
+		sort.sort(function(a, b){
+			if(a>b){
+				return 1;
+			}else{
+				return -1
+			}
+		});
+		
+		var i;
+		for(i=0; i<sort.length; i++){
+			$(obj).find("table").append(dom[sort[i]]);
+		}	
+	}
 };

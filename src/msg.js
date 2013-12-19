@@ -21,7 +21,7 @@ uinv.FCM.configMgr.msg.S12 = "错误(S12)：不能克隆对象！";
 uinv.FCM.configMgr.msg.S13 = "错误(S13)：资源名称不能为空！";
 uinv.FCM.configMgr.msg.S14 = "错误(S14)：服务器路径不能为空！";
 uinv.FCM.configMgr.msg.S15 = "错误(S15)：版本号不能为空！";
-uinv.FCM.configMgr.msg.S16 = "错误(S16)：本地路径不能为空 ！";
+uinv.FCM.configMgr.msg.S16 = "错误(S16)：本地目录不能为空 ！";
 uinv.FCM.configMgr.msg.S17 = "错误(S17)：资源包不能为空！";
 
 uinv.FCM.configMgr.msg.S18 = "警告(S18)：删除资源包不可恢复，确认删除吗？";
@@ -40,6 +40,16 @@ uinv.FCM.configMgr.msg.S26 = "错误(S26)：副数据转换string异常！";
 uinv.FCM.configMgr.msg.S27 = "错误(S27)：删除面板错误：这个面板正在使用，请先解除使用后再删除！";
 
 uinv.FCM.configMgr.msg.S28 = "错误(S28)：上传失败！";
+
+uinv.FCM.configMgr.msg.S29 = "错误(S29)：确认删除？";
+uinv.FCM.configMgr.msg.S30 = "错误(S30)：告警级别不能重复！";
+uinv.FCM.configMgr.msg.S31 = "错误(S31)：告警级别不能为空！";
+uinv.FCM.configMgr.msg.S32 = "错误(S32)：您输入的值有误，请输入数字类型并且小于等于100的数值！";
+uinv.FCM.configMgr.msg.S33 = "错误(S33)：不能有重复的节点！";
+uinv.FCM.configMgr.msg.S34 = "错误(S34)：图片名称不能包含中文，请把图片名称的中文去除后再上传！";
+uinv.FCM.configMgr.msg.S35 = "错误(S35)：没有可用数据下载，请先上传后再尝试下载！";
+uinv.FCM.configMgr.msg.S36 = "错误(S36)：您输入的值类型有误，请重新输入！";
+uinv.FCM.configMgr.msg.S37 = "错误(S37)：面板数据格式有错误，请重新上传面板！";
 
 
 //---------------------------------------
@@ -86,3 +96,14 @@ uinv.FCM.configMgr.msg.F10 = function(n){
 	return "警告(F10):您上传的新面板modifyCount比原面板modifyCount小，将要删除原面板配置信息的最后"+n+"行配置？";
 };
 
+uinv.FCM.configMgr.msg.F11 = function(msg){
+	return "错误(F11):对象（"+msg+"）已存在！";
+};
+
+uinv.FCM.configMgr.msg.F12 = function(msg){
+	return "错误(F12):"+msg+"不能为空！";
+};
+
+uinv.FCM.configMgr.msg.F13 = function(name){
+	return "错误(F13):节点【"+name+"】有重复！";
+};

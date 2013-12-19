@@ -17,18 +17,27 @@
 		</div>
 	</div>
 
-	<div class="obj monitor-obj monitor-box mb20">
-		<div class="header"><s>对象列表</s></div>
-		<table class="obj-list">
-			<tr>
-				<th><s>对象分配</s></th>
-				<th><s>面板名称</s></th>
-				<th colspan="2"><s>操作</s></th>
-			</tr>
-		</table>
-		
-		<button class="button-btn mt10" onclick="uinv.FCM.configMgr.model.monitor.createObject();"><s>创建对象</s></button>
+	<div class="monitor-box mb20">
+		<div class="header"><s>其它设置</s></div>
+		<div class="alarm">
+			
+			<div>
+				<p><span class="w200 dib"><s>监控时间 （秒）</s></span><input onfocus="uinv.FCM.configMgr.model.monitor.otherFocus(this);" onblur="uinv.FCM.configMgr.model.monitor.otherBlur(this);" path="monitor" type="text" cate="alarm" name="monitorTime" value="5" /></p>
+				<p><span class="w200 dib"><s>告警时间 </s></span><input onfocus="uinv.FCM.configMgr.model.monitor.otherFocus(this);" onblur="uinv.FCM.configMgr.model.monitor.otherBlur(this);" path="monitor" type="text" cate="alarm" name="alarmTime" value="5" /></p>
+				<p><span class="w200 dib"><s>图标大小 </s></span><input onfocus="uinv.FCM.configMgr.model.monitor.otherFocus(this);" onblur="uinv.FCM.configMgr.model.monitor.otherBlur(this);" path="monitor" type="text" cate="alarm" name="alarmIconSize" value="1.5" /></p>
+			</div>
+
+			<div>
+				<p><span class="w200 dib"><s>监控超时时间  （秒）</s></span><input onfocus="uinv.FCM.configMgr.model.monitor.otherFocus(this);" onblur="uinv.FCM.configMgr.model.monitor.otherBlur(this);" path="monitor" type="text" cate="alarm" name="monitorManagerOvertime" value="10" /></p>
+				<p><span class="w200 dib"><s>设备内监控刷新时间 （秒）</s></span><input onfocus="uinv.FCM.configMgr.model.monitor.otherFocus(this);" onblur="uinv.FCM.configMgr.model.monitor.otherBlur(this);" path="monitor" type="text" cate="alarm" name="monitorManagerInDeviceIntervalTime" value="10"  /></p>
+				<p><span class="w200 dib"><s>设备内监控超时时间（秒） </s></span><input onfocus="uinv.FCM.configMgr.model.monitor.otherFocus(this);" onblur="uinv.FCM.configMgr.model.monitor.otherBlur(this);" path="monitor" type="text" cate="alarm" name="monitorManagerInDeviceOvertime" value="20" /></p>
+				<p><span class="w200 dib"><s>报警超时时间（秒） </s></span><input onfocus="uinv.FCM.configMgr.model.monitor.otherFocus(this);" onblur="uinv.FCM.configMgr.model.monitor.otherBlur(this);" path="monitor" type="text" cate="alarm" name="alarmManagerOvertime" value="10" /></p>
+				<p><span class="w200 dib"><s>监控图标大小 </s></span><input onfocus="uinv.FCM.configMgr.model.monitor.otherFocus(this);" onblur="uinv.FCM.configMgr.model.monitor.otherBlur(this);" path="monitor" type="text" cate="alarm" name="monitorManagerIconScale" value="1" /></p>
+			</div>
+		</div>
 	</div>
+
+
 </div>
 
 <i class="config-line1"></i>
@@ -47,27 +56,18 @@
 		<button class="button-btn mt10" onclick="uinv.FCM.configMgr.model.monitor.addAlarmLevel();"><s>添加级别</s></button>
 	</div>
 	
-	
-	<div class="monitor-box mb20">
-		<div class="header"><s>其它设置</s></div>
-		<div class="alarm">
-			
-			<div>
-				<p><s>监控时间 </s><input path="monitor" type="text" cate="alarm" name="monitorTime" /></p>
-				<p><s>告警时间 </s><input path="monitor" type="text" cate="alarm" name="alarmTime" /></p>
-				<p><s>图标大小 </s><input path="monitor" type="text" cate="alarm" name="alarmIconSize" /></p>
-			</div>
-
-			<div>
-				<p><s>监控超时时间 </s><input path="monitor" type="text" cate="alarm" name="monitorManagerOvertime" /></p>
-				<p><s>设备内监控刷新时间</s><input path="monitor" type="text" cate="alarm" name="monitorManagerInDeviceIntervalTime" /></p>
-				<p><s>设备内监控超时时间</s><input path="monitor" type="text" cate="alarm" name="monitorManagerInDeviceOvertime" /></p>
-				<p><s>报警超时时间</s><input path="monitor" type="text" cate="alarm" name="alarmManagerOvertime" /></p>
-				<p><s>监控图标大小</s><input path="monitor" type="text" cate="alarm" name="monitorManagerIconScale" /></p>
-			</div>
-		</div>
+	<div class="obj monitor-obj monitor-box mb20">
+		<div class="header"><s>对象列表</s></div>
+		<table class="obj-list">
+			<tr>
+				<th><s>对象分配</s></th>
+				<th><s>面板名称</s></th>
+				<th colspan="2"><s>操作</s></th>
+			</tr>
+		</table>
+		
+		<button class="button-btn mt10" onclick="uinv.FCM.configMgr.model.monitor.createObject();"><s>创建对象</s></button>
 	</div>
-
 </div>
 
 <script type="text/javascript">

@@ -1,6 +1,10 @@
 
 <li>
-	<span class="panel_name">{{panelName}}</span>
+	{{#ifCond panelName "==" "分割线"}}
+		<span class="panel_name dividing-line">{{panelName}}</span>
+	{{else}}
+		<span class="panel_name">{{panelName}}</span>
+	{{/ifCond}}
 	<span class="action panel_up">
 		<a onclick="uinv.FCM.configMgr.model.panel.upMove(this);" class="{{upMoveBtnClass}}" href="javascript:void(0);" style="display:none;">
 			<s>上移</s>

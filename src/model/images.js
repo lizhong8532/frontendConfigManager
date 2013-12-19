@@ -56,7 +56,12 @@ uinv.FCM.configMgr.model.images.imUpload = function(obj, dir){
 	var _this = this;
 	_this.dir = dir || _this.dir;
 	var pathinfo = obj.value.split('\\');
-	var filename = encodeURIComponent(pathinfo[pathinfo.length-1]).replaceAll('%','___');
+	var filename = pathinfo[pathinfo.length-1];
+	if(/.*[\u4e00-\u9fa5]+.*$/.test(filename)){
+		_obj.note.alert(_obj.msg.S34);
+		return;
+	}
+	var filename = encodeURIComponent(filename).replaceAll('%','___');
 	var path = _obj.global.path + _this.path + _this.dir;
 	var result = uinv.server.manager.frame.isFileExist(path+'/'+filename);
 	var bool = true;
@@ -204,14 +209,9 @@ uinv.FCM.configMgr.model.images.getData = function(){
 uinv.FCM.configMgr.model.images.viewsImg = function(obj){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
-	var img = '<img src="'+$(obj).attr('src')+'" />';
+	var img = document.createElement("img");
+	img.src = $(obj).attr('src');
 	_obj.model.dialog.getObj().find('.img .right .views').html(img);
-	var $obj = _obj.model.dialog.getObj().find('.img .right .views img');
-	$obj.css({
-		'margin-left':'-'+parseInt($obj.outerWidth()/2,10)+'px',
-		'margin-top':'-'+parseInt($obj.outerHeight()/2,10)+'px'
-	});
-	
 };
 
 /**
@@ -264,14 +264,28 @@ uinv.FCM.configMgr.model.images.updateList = function(){
 			cla			: cla,
 			url			: _obj.global.projectPath + path+data[i],
 			path		: path+data[i],
-			maxHeight	: _this.imgHeight,
-			maxWidth	: _this.imgWidth,
 			title		: _this.decode(data[i])
 		}));
 		
 	}
 	
 	_obj.model.dialog.getObj().find('.img .left .imglist').html(arr.join(''));
+};
+
+/**
+ * @description  列表图标加载结束触发
+ * @memberOf uinv.FCM.configMgr.model.images
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.images.liImgLoad = function(obj){
+	var _obj = uinv.FCM.configMgr,
+		_this = this;
+	if($(obj).width() > $(obj).height()){
+		$(obj).css("max-width", "100%");
+	}else{
+		$(obj).css("max-height", "100%");
+	}
 };
 
 /**

@@ -32,11 +32,40 @@ uinv.FCM.configMgr.model.selector.obj = null;
 uinv.FCM.configMgr.model.selector.index = 'selector';
 
 /**
- * 当前选中节点的key值
+ * @description 当前选中节点的key值
  * @type String
  */
 uinv.FCM.configMgr.model.selector.selectKey = '';
 
+/**
+ * @description 创建节点计数器
+ * @type Number
+ */
+uinv.FCM.configMgr.model.selector.nodeCount = 1;
+
+/**
+ * @description 展开类名
+ * @type String
+ */
+uinv.FCM.configMgr.model.selector.openFoldClassName = "config-selector-fold-open";
+
+/**
+ * @description 关闭类名
+ * @type String
+ */
+uinv.FCM.configMgr.model.selector.closeFoldClassName = "config-selector-fold-close";
+
+/**
+ * @description fold类名
+ * @type String
+ */
+uinv.FCM.configMgr.model.selector.foldClassName = "config-selector-fold";
+
+/**
+ * @description 是否有操作记录
+ * @type Boolean
+ */
+uinv.FCM.configMgr.model.selector.history = false;
 
 //------------------------------
 // 创建对象公有函数处理
@@ -62,6 +91,12 @@ uinv.FCM.configMgr.model.selector.show = function(fun){
 	_obj.model.dialog.show(_obj.template.load("selector/publicMain.html",{
 		tree : _this.publicShowHtml(_this.obj.tree)
 	}));
+	
+	_obj.model.dialog.getObj().find(".treeNode").each(function(){
+		if($(this).find(".childrenNode").find(".treeNode").length > 0){
+			$(this).find(">.config-selector-fold").show();
+		}
+	});
 };
 
 /**
@@ -142,13 +177,14 @@ uinv.FCM.configMgr.model.selector.publicShowHtml = function(obj){
 	}
 	
 	for(i = 0, k = obj.length; i<k; i++){
-		
+		childrenNode = "";
 		if( typeof obj[i].childrenNode == 'object' ){
 			hasChildrenNode = true;
 			childrenNode = _this.publicShowHtml(obj[i].childrenNode);
 		}
 		
 		html += _obj.template.load("selector/publicTreeNode.html",{
+			hasWhere		: _this.objIsExistWhere( obj[i].key ),
 			name			: _this.obj.lib[obj[i].key].name,
 			key				: obj[i].key,
 			hasChildrenNode	: hasChildrenNode,
@@ -269,8 +305,19 @@ uinv.FCM.configMgr.model.selector.deleteNode = function(key){
 	if(bool){
 		var node = _this.keyFindTreeNodeObj( _this.obj.tree, key);
 		node.parent.splice(node.index,1);
+		var dom = _this.keyFindNodeHtmlObj(key);
+		
+		dom.find(".treeNode").each(function(){
+			delete _this.obj.lib[$(this).attr("key")];
+		});
+		
+		if(dom.parent().find(">.treeNode").length <= 1){
+			dom.parent().parent().find(">.config-selector-fold").hide();
+		}
+		
 		delete _this.obj.lib[key];
-		_this.keyFindNodeHtmlObj(key).remove();		
+		
+		dom.remove();
 	}
 };
 
@@ -303,9 +350,13 @@ uinv.FCM.configMgr.model.selector.createNode = function(parentKey){
 		key = _obj.model.key.create();
 	}while(key in _this.obj.lib);
 	
-	var node = { name: '新节点', key: key };
+	var name = "新节点-" + _this.nodeCount;
+	
+	var node = { name: name, key: key };
 	_this.insertNodeToTreeObj(node, parentKey);
 	_this.insertNodeToTreeDom(node, parentKey);
+	
+	_this.nodeCount++;
 };
 
 /**
@@ -357,8 +408,8 @@ uinv.FCM.configMgr.model.selector.insertNodeToTreeDom = function(node, parentKey
 		_obj.form.box.find(_this.classStr).append(html);
 	}else{
 		_this.keyFindNodeHtmlObj( _this.selectKey ).find('>.childrenNode').append(html);
+		_this.keyFindNodeHtmlObj( _this.selectKey ).find('>.config-selector-fold').show();
 	}
-
 };
 
 /**
@@ -403,7 +454,7 @@ uinv.FCM.configMgr.model.selector.recursionTreeHtml = function(obj){
 	var html = "", i, k, hasChildrenNode = false, childrenNode = "";
 	
 	for(i=0, k=obj.length; i<k; i++){
-
+		childrenNode = "";
 		if(typeof obj[i].childrenNode == 'object'){
 			hasChildrenNode = true;
 			childrenNode = _this.recursionTreeHtml(obj[i].childrenNode);
@@ -494,7 +545,7 @@ uinv.FCM.configMgr.model.selector.addNodeWhereFormInit = function(key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
 	if( _this.objIsExistWhere(key) ){
-		_obj.model.dialog.getObj().find('input[type=radio][name=wheretype][value='+_this.obj.lib[key].where+']').attr('checked',true);
+		_obj.model.dialog.getObj().find('input[type=radio][name=wheretype][value='+_this.obj.lib[key].where+']').attr('checked',true).click();
 	}
 };
 
@@ -566,6 +617,23 @@ uinv.FCM.configMgr.model.selector.editNodeWhere = function(key){
 	_obj.model.dialog.show(html);
 	_this.addNodeWhereFormInit(key);
 	
+};
+
+/**
+ * 
+ * @description 选择条件类型触发函数
+ * @memberOf uinv.FCM.configMgr.model.selector
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.selector.selectNodeWhere = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	$(obj).parents(".addnodewhere").find(".row").each(function(){
+		$(this).find("input[type=text], select, textarea").attr("disabled", "true");
+	});
+	
+	$(obj).parents(".row").find("input[type=text], select, textarea").removeAttr("disabled");
 };
 
 /**
@@ -660,7 +728,7 @@ uinv.FCM.configMgr.model.selector.getContextMenuHtml = function(e, key){
 
 	html = _obj.template.load("selector/contextmenu.html",{
 		x					: e.clientX - _obj.form.box.offset().left,
-		y					: e.clientY - _obj.form.box.offset().top,
+		y					: e.clientY - _obj.form.box.offset().top + $(window).scrollTop(),
 		selectNode			: key && key in _this.obj.lib,
 		hasChildrenNode		: _this.keyFindNodeHtmlObj(key).find('>.childrenNode>.treeNode').length >= 1,
 		childrenNodeVisible : _this.keyFindNodeHtmlObj(key).find('>.childrenNode').is(':visible'),
@@ -681,10 +749,11 @@ uinv.FCM.configMgr.model.selector.getContextMenuHtml = function(e, key){
 uinv.FCM.configMgr.model.selector.contextMenuShow = function(e, key){
 	var _obj = uinv.FCM.configMgr;
 	var _this = this;
+	uinv.FCM.configMgr.model.selector.history = true;
 	_this.contextMenuHide();
 	var html = _this.getContextMenuHtml(e, key);
 	_obj.form.box.append(html);	
-	
+
 	_obj.translate();
 };
 
@@ -745,6 +814,27 @@ uinv.FCM.configMgr.model.selector.cancelSelectNode = function(){
 };
 
 /**
+ * @description fold 切换
+ * @memberOf uinv.FCM.configMgr.model.selector
+ * @param {DOM} obj
+ * @static
+ */
+uinv.FCM.configMgr.model.selector.foldToggle = function(obj){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var childrenNode = $(obj).parent().find(".childrenNode");
+	
+	if(childrenNode.is(":visible")){
+		$(obj).removeClass(_this.closeFoldClassName).addClass(_this.openFoldClassName);
+		childrenNode.hide();
+	}else{
+		$(obj).removeClass(_this.openFoldClassName).addClass(_this.closeFoldClassName);
+		childrenNode.show();
+	}	
+};
+
+/**
  * @description 选择器模块初始化
  * @memberOf uinv.FCM.configMgr.model.selector
  * @param {String} classStr 选择器盒子DOM Class 值
@@ -756,6 +846,7 @@ uinv.FCM.configMgr.model.selector.init = function(classStr){
 	
 	_obj.form.submitCallback = function(){
 		_obj.model.stringDB.set( _this.index, _this.obj, function(){} );
+		uinv.FCM.configMgr.model.selector.history = false;
 	};
 
 	_this.obj = _obj.model.stringDB.get(_this.index);
@@ -768,5 +859,52 @@ uinv.FCM.configMgr.model.selector.init = function(classStr){
 		_this.contextMenuHide();
 	});
 	
+	_obj.form.box.find(_this.classStr).find(".treeNode").each(function(){
+		if($(this).find(".childrenNode").find(".treeNode").length > 0){
+			$(this).find(">.config-selector-fold").show();
+		}
+	});
+	
 	$('.config-info').html( _obj.msg.S22 );
+	
+	_obj.form.submitBefore = function(){
+		var repeatName = _this.isRepeatNode();
+		if(repeatName){
+			_obj.form.hasError = _obj.msg.F13(repeatName);
+		}else{
+			_obj.form.hasError = false;
+		}
+	};
+	
+	_this.nodeCount = 1;
+};
+
+
+// Add 2013-12-19
+
+/**
+ * @description 检测是否有重复的值
+ * @memberOf uinv.FCM.configMgr.model.selector
+ * @return {Boolean/String} 是否重复/重复名称
+ * @static
+ */
+uinv.FCM.configMgr.model.selector.isRepeatNode = function(){
+	var _obj = uinv.FCM.configMgr;
+	var _this = this;
+	
+	var arr = [], i, repeat = [];
+	
+	for(i in _this.obj.lib){
+		if(_obj.model.array.inArray(_this.obj.lib[i].name, arr)){
+			repeat.push(_this.obj.lib[i].name);
+		}else{
+			arr.push(_this.obj.lib[i].name);
+		}
+	}
+	
+	if(repeat.length>=1){
+		return repeat.join(", ");
+	}else{
+		return false;
+	}
 };

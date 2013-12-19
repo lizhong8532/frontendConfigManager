@@ -4,7 +4,7 @@
 		
 	<div class="row">
 		<span>
-			<input type="radio" name="wheretype" value="classid" checked />
+			<input type="radio" name="wheretype" value="classid" checked onclick="uinv.FCM.configMgr.model.selector.selectNodeWhere(this)" />
 			<s>classid</s>
 		</span>
 		
@@ -21,7 +21,7 @@
 		
 	<div class="row">
 		<span>
-			<input type="radio" name="wheretype" value="name" />
+			<input type="radio" name="wheretype" value="name" onclick="uinv.FCM.configMgr.model.selector.selectNodeWhere(this)" />
 			<s>物体名称</s>
 		</span>
 		<input type="text" name="name" value="{{name}}" />
@@ -29,7 +29,7 @@
 		
 	<div class="row">
 		<span>
-			<input type="radio" name="wheretype" value="attribute" />
+			<input type="radio" name="wheretype" value="attribute" onclick="uinv.FCM.configMgr.model.selector.selectNodeWhere(this)" />
 			<s>属性定义</s>
 		</span>
 			
@@ -44,7 +44,7 @@
 		
 	<div class="row">
 		<span>
-			<input type="radio" name="wheretype" value="fun" />
+			<input type="radio" name="wheretype" value="fun" onclick="uinv.FCM.configMgr.model.selector.selectNodeWhere(this)" />
 			<s>函数</s>
 		</span>
 		<textarea name="fun">{{fun}}</textarea>

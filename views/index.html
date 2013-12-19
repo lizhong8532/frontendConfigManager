@@ -14,14 +14,18 @@
 		</ul>
 	</div>
 
+	<div class="config-top-submit">
+		<input type="button" class="btn_save" onclick="uinv.FCM.configMgr.form.submit();" />
+	</div>
+	
 	<div class="config-load" style="position:relative;">
 		Loading...
 	</div>
 	
-	<div class="row btn config-submit-btn" style="display:none;">
-		<input type="button" class="btn_save" onclick="uinv.FCM.configMgr.form.submit();" />
+	<div class="row btn config-submit-btn">
 		<div class="config-info"></div>
 	</div>
+	
 </div>
 
 <script type="text/javascript">
@@ -35,18 +39,32 @@
 	
 	$('.config-page .menu li').each(function(){
 		$(this).click(function(){
+			
+			var element = $(this).parents(".menu").find("li.ok");
+			if(element.attr("to") === "selector.html" && uinv.FCM.configMgr.model.selector.history){
+				if(uinv.FCM.configMgr.note.confirm("保存数据？")){
+					uinv.FCM.configMgr.form.submit();
+					return false;
+				}else{
+					uinv.FCM.configMgr.model.selector.history = false;
+				}
+			}
 		
 			obj.html('Loading...');
-			$('.config-submit-btn').hide();
-			$('.config-info').html('');
-		
+			$('.config-info').html("");
+
 			uinv.FCM.configMgr.form.load({
-				'page' : $(this).attr('to'),
-				'obj'  : obj
+				page : $(this).attr('to'),
+				saveBtn : $('.config-top-submit'),
+				obj  : obj
 			});
 			
 			$(this).parents('.menu').find('li.ok').removeClass('ok');
 			$(this).addClass('ok');
+			
+			// Add 2013-12-19
+			uinv.FCM.configMgr.form.hasError = false;
+			delete uinv.FCM.configMgr.form.submitBefore;
 			
 		});
 	});

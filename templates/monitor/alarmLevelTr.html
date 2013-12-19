@@ -1,7 +1,7 @@
 
 <tr class="row">
 	<td>
-		<input type="text" name="name" value="{{name}}" />
+		<input type="text" name="name" value="{{name}}" onblur="uinv.FCM.configMgr.model.monitor.checkRepeatAlarmLevel(this);" />
 	</td>
 	<td>
 		<input type="text" name="color" value="{{color}}" />
